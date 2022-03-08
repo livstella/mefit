@@ -50,7 +50,7 @@ export class LoginPageComponent implements OnInit {
         else {
           //---if found -> register in local storage
           this.users = res
-          localStorage.setItem("current-user", JSON.stringify(this.users))
+          sessionStorage.setItem("current-user", JSON.stringify(this.users))
           this.router.navigateByUrl('/dashboard');
         }
       })

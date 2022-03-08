@@ -13,7 +13,6 @@ export class LoginService {
   private error: string = "";
 
   apiURL = ''
-  apiKey = ''
   status: string | undefined;
 
   constructor(public readonly http: HttpClient){
@@ -21,14 +20,14 @@ export class LoginService {
 
   //---check for user
   public queryUser(username:string): Observable<Login[]> {
-    return this.http.get<Login[]>(`${this.apiURL}/trainers?username=${username}`)
+    return this.http.get<Login[]>(`${this.apiURL}/XXX?username=${username}`)
   }
 
   //---register users
-  public setUserToApi(username:string): Observable<Login[]> {
-    const headers = { 'X-API-Key': this.apiKey, 'Content-Type': 'application/json' };
-    const body = {username: username, pokemon: []};
-    let data = this.http.post<Login[]>(`${this.apiURL}/trainers?username=${username}`, JSON.stringify(body), {'headers':headers})
+  public setUserToApi(username:string, password:string): Observable<Login[]> {
+    const headers = {'Content-Type': 'application/json' };
+    const body = {username: username, password: password};
+    let data = this.http.post<Login[]>(`${this.apiURL}/XXX?username=${username}`, JSON.stringify(body), {'headers':headers})
     return data
   }
 
