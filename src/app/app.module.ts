@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
-import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
+import { UserProfilePageComponent } from './components/user-profile-page/user-profile-page.component';
 
 @NgModule({
   declarations: [

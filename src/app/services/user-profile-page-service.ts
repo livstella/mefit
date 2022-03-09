@@ -7,8 +7,8 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class userProfileService {
-  private user: User[] = [];
-  private error: string = '';
+  private _user: User[] = [];
+  private _error: string = '';
 
   constructor(private readonly http: HttpClient) {}
 
@@ -19,11 +19,19 @@ export class userProfileService {
       .get<User[]>('https://mefitbackend-ajlm.herokuapp.com/user')
       .subscribe(
         (user) => {
-          this.user = user;
+          this._user = user;
         },
         (error: HttpErrorResponse) => {
-          this.error = error.message;
+          this._error = error.message;
         }
       );
+  }
+
+  public User(): User[]{
+    return this._user
+  }
+
+  public Error(): string{
+    return this._error;
   }
 }
