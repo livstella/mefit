@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { userProfileService } from '../services/user-profile-page-service';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfilePageComponent implements OnInit {
 
-  constructor() { }
+  constructor( private readonly userProfileService: userProfileService) { }
 
   ngOnInit(): void {
+    this.userProfileService.fetchUser();
   }
 
 }
