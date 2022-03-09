@@ -1,0 +1,15 @@
+<div class="main">
+    <h1>MeFit login page</h1>
+    <div class = "textbutton">
+    <form class="form-control" (ngSubmit)= "onSubmit()">
+      <label class="label">Welcome, please login to continue!</label>
+      <input type ="text" id = "login-form" name = "username" [(ngModel)] = "username" placeholder ="Type in your username" />
+      <input type ="text" id = "login-form" name = "password" [(ngModel)] = "password" placeholder ="Type in your password" />
+      <button id="btn-login" type="form-control"  class="btn">Login!</button>
+    </form>
+    </div>
+    <div>
+      <button id="btn-register" type="form-control" (click)="toRegister()" class="btn">Register!</button>
+    </div>
+<footer>By Experis Academy</footer>
+</div>
