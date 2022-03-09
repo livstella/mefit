@@ -11,8 +11,9 @@ import { LoginService } from 'src/app/services/login.service';
 export class RegistrationPageComponent implements OnInit {
 
   username: string = "";
-  password: string = "";
-
+  password1: string = "";
+  password2: string = "";
+  
   @Input() login: Login | undefined;
   @Output() onUserLogin: EventEmitter<Login> = new EventEmitter()
 
@@ -29,9 +30,17 @@ export class RegistrationPageComponent implements OnInit {
       alert("Please enter a username to continue...")
       return
     }
-    else if(this.password == ""){
+    else if(this.password1 == ""){
       alert("Please enter a password to continue...")
       return
+    }
+    else if(this.password2 == ""){
+      alert("Please enter a password in both fields to continue...")
+     return
+    }
+    else if(this.password1 != this.password2){
+      alert("Password in both fields must match!")
+     return
     }
     else {
       this.onNavigate();
@@ -39,7 +48,7 @@ export class RegistrationPageComponent implements OnInit {
   }
   
   onNavigate(){
-      this.loginService.setUserToApi(this.username, this.password).subscribe((res: Login[]) => {
+      this.loginService.setUserToApi(this.username, this.password1).subscribe((res: Login[]) => {
         sessionStorage.setItem("current-user", JSON.stringify([res]))
         this.router.navigateByUrl('/profile');
         })
