@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { userProfileService } from '../../services/user-profile-page-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -8,7 +9,7 @@ import { userProfileService } from '../../services/user-profile-page-service';
   styleUrls: ['./user-profile-page.component.css'],
 })
 export class UserProfilePageComponent implements OnInit {
-  constructor(private readonly userProfileService: userProfileService) {}
+  constructor(private readonly userProfileService: userProfileService,  private router: Router) {}
 
   ngOnInit(): void {
     this.userProfileService.fetchUser();
@@ -16,5 +17,9 @@ export class UserProfilePageComponent implements OnInit {
 
   get user(): User[] {
     return this.userProfileService.User();
+  }
+
+  toDashBoard(){
+    this.router.navigateByUrl('/dashboard');
   }
 }
