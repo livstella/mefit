@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Exercise } from '../models/exercise.model';
-import { exercisePageService } from '../services/exercise-page.service';
+import { Exercise } from '../../models/exercise.model';
+import { exercisePageService } from '../../services/exercise-page.service';
 
 @Component({
   selector: 'app-exercise-page',
@@ -8,10 +8,12 @@ import { exercisePageService } from '../services/exercise-page.service';
   styleUrls: ['./exercise-page.component.css']
 })
 export class ExercisePageComponent implements OnInit {
-
+//Injects the services needed
   constructor(private readonly exercisePageService: exercisePageService) { }
 
   ngOnInit(): void {
+
+  //Fetches all exercises
     this.exercisePageService.fetchExercise();
   }
 get exercises():Exercise[]{
