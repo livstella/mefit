@@ -38,7 +38,9 @@ export class GoalDashboardComponent implements OnInit {
 
   total_finish_list: string[]=[];
 
-  progress: number | string | undefined;
+  progress: number | string | undefined = "";
+
+  mapCountKeys: string[]|any = [];
 
   constructor() { }
 
@@ -231,22 +233,34 @@ export class GoalDashboardComponent implements OnInit {
   commitFinish(){
        this.total_finish_list = this.ex_finish_list.concat(this.ex_finish_list2);
        this.total_finish_list = this.total_finish_list.concat(this.ex_finish_list3);
-    
+      
+       this.progress = ((this.total_finish_list.length/this.program_ex.length)*100).toFixed(2);
+
        if(this.total_finish_list.length == 5 && this.ex_choice_list.length == 0 && this.ex_choice_list2.length == 0 && this.ex_choice_list3.length == 0){
 
           for (let i = 0; i < this.total_finish_list.length;i++){
-            let InValue = this.mapCountInitial.get(this.total_finish_list[i]) 
             let newValue = this.mapCountCommit.get(this.total_finish_list[i])-1;
-            this.mapCountCommit.set(this.total_finish_list[i], [newValue, " ("+((1-(newValue/InValue))*100).toFixed(2)+") Percent finished"])
-            if(this.mapCountCommit.get(this.total_finish_list[i][0])==NaN){
+            if(newValue==NaN||newValue==0){
               this.mapCountCommit.set(this.total_finish_list[i], [0,"Finished"]);
-            }
-          }  
+            }else{
+              this.mapCountCommit.set(this.total_finish_list[i], newValue)
+              }
+          }
+
+          for (let key of this.mapCountCommit.keys()){
+            this.mapCountKeys.push(key);
+          }
+
+        //  for(let i = 0; i<this.mapCountKeys.length;i++){
+         //   let InValue = this.mapCountInitial.get(this.mapCountKeys[i]) 
+         //   let newValue2 = this.mapCountCommit.get(this.mapCountKeys[i])
+          //  this.mapCountCommit.set(this.total_finish_list[i], [newValue2+": routines left ", " ("+((1-(newValue2/InValue))*100).toFixed(2)+") Percent finished"])
+          
+         // }
+              
 
           $('#commit').attr('disabled','disabled');
           $('.NotFinish').attr('disabled','disabled');
-
-          this.progress = Number((1-(this.total_finish_list.length/this.InCommit_keys.length))*100).toFixed(2);
 
        }else{
           alert("only commit finished when workout is finished! Choose all allowed excersizes")
