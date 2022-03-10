@@ -10,6 +10,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { ExercisePageComponent } from './components/exercise-page/exercise-page.component';
 import { SelectedExerciseComponent } from './components/selected-exercise/selected-exercise.component';
 import { WorkoutPageComponent } from './components/workout-page/workout-page.component';
+import { ProgrammePageComponent } from './components/programme-page/programme-page.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { WorkoutPageComponent } from './components/workout-page/workout-page.com
     UserProfilePageComponent,
     ExercisePageComponent,
     SelectedExerciseComponent,
-    WorkoutPageComponent
+    WorkoutPageComponent,
+    ProgrammePageComponent
   ],
   imports: [
     HttpClientModule,
