@@ -38,7 +38,7 @@
                     </select>
 
                     <select class = "WorkoutOptions1" name="select1.2" (change)="onChangeWork()">
-                        <option *ngFor="let workout of workout_keys2 ; let i = index" >
+                        <option *ngFor="let workout of workout_keys ; let i = index" >
                           {{workout}}
                         </option>
                     </select>
@@ -72,7 +72,7 @@
                     </select>
 
                     <select class = "WorkoutOptions2" name="select2.2" (change)="onChangeWork2()">
-                        <option *ngFor="let workout of workout_keys2 ; let i = index" >
+                        <option *ngFor="let workout of workout_keys ; let i = index" >
                           {{workout}}
                         </option>
                     </select>
@@ -107,14 +107,40 @@
                     </select>
 
                     <select class = "WorkoutOptions3" name="select3.2" (change)="onChangeWork3()">
-                        <option *ngFor="let workout of workout_keys2 ; let i = index" >
+                        <option *ngFor="let workout of workout_keys ; let i = index" >
                           {{workout}}
                         </option>
                     </select>
                 </span>
             </li>
         </ol>
-    
+    <div>
+        <h2>Weekly Goal!</h2>
+        <button id="i" (click)="commitProgram()">Commit program!</button>
+        <select class = "ProgramOption" name="selectProgram" (change)="onChangeProgram()">
+            <option *ngFor="let program of program_keys ; let i = index" >
+              {{program}}
+            </option>     
+        </select>
+
+    </div>
+    <div>
+        <ul class="WeeklyGoal">
+            <li *ngFor="let item of mapCount | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li>    
+        </ul>
+    </div>
+    <div>
+        <h2>Choosen program!</h2>
+        <ul class="WeeklyGoalcommit">
+            <li *ngFor="let item of mapCountCommit | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li>    
+        </ul>
+    </div>
     </div>
 <footer>By Experis Academy</footer>
 </div>

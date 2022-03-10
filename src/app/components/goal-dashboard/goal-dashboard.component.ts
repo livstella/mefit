@@ -18,12 +18,20 @@ export class GoalDashboardComponent implements OnInit {
   ex_finish_list2: string[] = [];
   ex_choice_list3: string[] = [];
   ex_finish_list3: string[] = [];
+  
   workout_options = new Map();
   workout_keys: string[]|any = [] ;
-  workout_keys2: string[]|any = [];
   workout_key: string | undefined;
   workout_ex: string[] = [];
-
+  
+  program_options = new Map();
+  program_keys: string[]|any = [] ;
+  program_key: string | undefined;
+  program_work: string[] = [];
+  program_ex: string[] = [];
+  
+  mapCount = new Map();
+  mapCountCommit = new Map();
 
   constructor() { }
 
@@ -43,9 +51,18 @@ export class GoalDashboardComponent implements OnInit {
     this.workout_options.set("arms",["lower arms","upper arms","stomach","chest", "shoulders"]);
 
     for (let key of this.workout_options.keys()){
-      this.workout_keys2.push(key);
+      this.workout_keys.push(key);
     }
     
+    this.program_options.set(["Choose a program"],null);
+    this.program_options.set("Balance",["legs","arms","legs","arms", "legs","arms"]);
+    this.program_options.set("Only arms",["arms","arms","arms"]);
+    this.program_options.set("Only legs",["legs","legs","legs"]);
+   
+    for (let key of this.program_options.keys()){
+      this.program_keys.push(key);
+    }
+
   }
   //---Morning
   //---when picking excersize from dropdown-list display 
@@ -59,7 +76,7 @@ export class GoalDashboardComponent implements OnInit {
   //---when picking workout from dropdown-list display 
   onChangeWork(){
     let choiceWork = $("select[name='select1.2'] option:selected").index();
-    this.workout_key = this.workout_keys2[choiceWork];
+    this.workout_key = this.workout_keys[choiceWork];
     this.workout_ex = this.workout_options.get(this.workout_key);
     if (this.ex_choice_list.length == 0 && this.ex_finish_list.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
       for (let i = 0; i<this.workout_ex.length; i++){
@@ -98,7 +115,7 @@ export class GoalDashboardComponent implements OnInit {
   //---when picking workout from dropdown-list display 
   onChangeWork2(){
     let choiceWork = $("select[name='select2.2'] option:selected").index();
-    this.workout_key = this.workout_keys2[choiceWork];
+    this.workout_key = this.workout_keys[choiceWork];
     this.workout_ex = this.workout_options.get(this.workout_key);
     if (this.ex_choice_list2.length == 0 && this.ex_finish_list2.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
       for (let i = 0; i<this.workout_ex.length; i++){
@@ -135,7 +152,7 @@ export class GoalDashboardComponent implements OnInit {
   //---when picking workout from dropdown-list display 
   onChangeWork3(){
     let choiceWork = $("select[name='select3.2'] option:selected").index();
-    this.workout_key = this.workout_keys2[choiceWork];
+    this.workout_key = this.workout_keys[choiceWork];
     this.workout_ex = this.workout_options.get(this.workout_key);
     if (this.ex_choice_list3.length == 0 && this.ex_finish_list3.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
       for (let i = 0; i<this.workout_ex.length; i++){
@@ -160,4 +177,38 @@ export class GoalDashboardComponent implements OnInit {
     this.ex_choice_list3.splice(id,1);
   }
 
+  //---Weekly goals
+  onChangeProgram(){
+
+    this.mapCount.clear();
+    this.program_ex.length = 0; 
+
+    let choiceProgram = $("select[name='selectProgram'] option:selected").index();
+    this.program_key = this.program_keys[choiceProgram];
+    this.program_work = this.program_options.get(this.program_key); //---have a list of workouts
+
+    for(let i = 0; i <this.program_work.length;i++){
+      this.program_ex.push(this.workout_options.get(this.program_work[i]));
+    }
+    this.program_ex = this.program_ex.flat();
+
+    this.mapCount.clear();
+    for (let i = 0; i < this.program_ex.length; i++) {
+            if (this.mapCount.has(this.program_ex[i])) {
+                this.mapCount.set(this.program_ex[i], this.mapCount.get(this.program_ex[i]) + 1);
+            }
+            else {
+                this.mapCount.set(this.program_ex[i],1); // Map to capture Count of elements
+            }
+        }
+  }
+  //---remove program
+  commitProgram(){
+    if (this.mapCountCommit.size == 0){
+      this.mapCountCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
+    }else{
+      alert("You can only be commited to one program per week!")
+    }
+    
+  }
 }
