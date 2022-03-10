@@ -9,6 +9,7 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { ExercisePageComponent } from './components/exercise-page/exercise-page.component';
 import { SelectedExerciseComponent } from './components/selected-exercise/selected-exercise.component';
+import { WorkoutPageComponent } from './components/workout-page/workout-page.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SelectedExerciseComponent } from './components/selected-exercise/select
     RegistrationPageComponent,
     UserProfilePageComponent,
     ExercisePageComponent,
-    SelectedExerciseComponent
+    SelectedExerciseComponent,
+    WorkoutPageComponent
   ],
   imports: [
     HttpClientModule,

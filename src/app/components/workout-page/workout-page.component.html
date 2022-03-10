@@ -1,0 +1,8 @@
+<h2>Here you will see all the workouts you can choose from</h2>
+<ul>
+  <!-- loops over fetched workouts and displays each. click function sets selected workout so selected-workout will be displayed -->
+  <li *ngFor="let workout of workouts" (click)="onWorkoutClicked(workout)">
+    <h4>{{ workout.name }}</h4>
+    <p> {{workout.type}} </p>
+  </li>
+</ul>

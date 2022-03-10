@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { ExercisePageComponent } from './components/exercise-page/exercise-page.component';
+import { WorkoutPageComponent } from './components/workout-page/workout-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'register', component: RegistrationPageComponent, pathMatch: 'full' },
 
   { path: 'exercises', component: ExercisePageComponent, pathMatch: 'full' },
+  
+  { path: 'workouts', component: WorkoutPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
