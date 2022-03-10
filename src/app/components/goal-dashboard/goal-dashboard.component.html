@@ -10,6 +10,7 @@
                 <span>
                     {{date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()}}
                 </span>
+                <button id="commit" (click)="commitFinish()">Commit finishes!</button>
                 <span>
                     <h3>Morning</h3>
                     <span>
@@ -27,7 +28,7 @@
                         <ul class="ExFinishdisplay1">
                             <li *ngFor="let finish of ex_finish_list; let i = index" >
                               {{finish}}
-                              <button id="i" (click)="updateExPlaned(this.i)">Not finished!</button>
+                              <button class="NotFinish" id="i" (click)="updateExPlaned(this.i)">Not finished!</button>
                             </li>>
                         </ul>
                     </span>
@@ -61,7 +62,7 @@
                         <ul class="ExFinishdisplay2">
                             <li *ngFor="let finish of ex_finish_list2; let i = index" >
                               {{finish}}
-                              <button id="i" (click)="updateExPlaned2(this.i)">Not finished!</button>
+                              <button class="NotFinish" id="i" (click)="updateExPlaned2(this.i)">Not finished!</button>
                             </li>>
                         </ul>
                     </span>
@@ -80,7 +81,6 @@
 
                 <span>
                     <h3>Evening</h3>
-
                     <span>
                         <h4>Planned!</h4>
                         <ul class="Excersizedisplay3">
@@ -96,7 +96,7 @@
                         <ul class="ExFinishdisplay3">
                             <li *ngFor="let finish of ex_finish_list3; let i = index" >
                               {{finish}}
-                              <button id="i" (click)="updateExPlaned3(this.i)">Not finished!</button>
+                              <button class="NotFinish" id="i" (click)="updateExPlaned3(this.i)">Not finished!</button>
                             </li>>
                         </ul>
                     </span>
@@ -140,6 +140,7 @@
                 {{item.value}}
             </li>    
         </ul>
+        <h3>{{this.progress}} percent finished of total goal for week!</h3>
     </div>
     </div>
 <footer>By Experis Academy</footer>

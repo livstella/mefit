@@ -32,6 +32,13 @@ export class GoalDashboardComponent implements OnInit {
   
   mapCount = new Map();
   mapCountCommit = new Map();
+  mapCountInitial = new Map();
+  InCommit_keys: string[]|any = [];
+  InCommit_values: string[]|any = [];
+
+  total_finish_list: string[]=[];
+
+  progress: number | string | undefined;
 
   constructor() { }
 
@@ -68,8 +75,8 @@ export class GoalDashboardComponent implements OnInit {
   //---when picking excersize from dropdown-list display 
   onChangeEx(){
     let choiceEx = $("select[name='select1.1'] option:selected").index();
-    if (this.ex_choice_list.length<5 && this.ex_finish_list.length == 0 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-    this.ex_choice_list.push(this.excersize_options[choiceEx]);
+    if((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
+      this.ex_choice_list.push(this.excersize_options[choiceEx]);
     }
   }
 
@@ -107,8 +114,8 @@ export class GoalDashboardComponent implements OnInit {
   //---when picking excersize from dropdown-list display 
   onChangeEx2(){
     let choiceEx = $("select[name='select2.1'] option:selected").index();
-    if (this.ex_choice_list2.length<5 && this.ex_finish_list2.length == 0 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-    this.ex_choice_list2.push(this.excersize_options[choiceEx]);
+    if ((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
+      this.ex_choice_list2.push(this.excersize_options[choiceEx]);
     }
   }
 
@@ -144,7 +151,7 @@ export class GoalDashboardComponent implements OnInit {
   //---when picking excersize from dropdown-list display 
   onChangeEx3(){
     let choiceEx = $("select[name='select3.1'] option:selected").index();
-    if (this.ex_choice_list3.length<5 && this.ex_finish_list3.length == 0 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
+    if ((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
     this.ex_choice_list3.push(this.excersize_options[choiceEx]);
     }
   }
@@ -205,10 +212,44 @@ export class GoalDashboardComponent implements OnInit {
   //---remove program
   commitProgram(){
     if (this.mapCountCommit.size == 0){
+      this.mapCountInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
       this.mapCountCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
+
+      for (let key of this.mapCountInitial.keys()){
+        this.InCommit_keys.push(key);
+      }
+      for (let value of this.mapCountInitial.values()){
+        this.InCommit_values.push(value);
+      }
     }else{
       alert("You can only be commited to one program per week!")
     }
     
+  }
+
+  //---Commit finished excersizes
+  commitFinish(){
+       this.total_finish_list = this.ex_finish_list.concat(this.ex_finish_list2);
+       this.total_finish_list = this.total_finish_list.concat(this.ex_finish_list3);
+    
+       if(this.total_finish_list.length == 5 && this.ex_choice_list.length == 0 && this.ex_choice_list2.length == 0 && this.ex_choice_list3.length == 0){
+
+          for (let i = 0; i < this.total_finish_list.length;i++){
+            let InValue = this.mapCountInitial.get(this.total_finish_list[i]) 
+            let newValue = this.mapCountCommit.get(this.total_finish_list[i])-1;
+            this.mapCountCommit.set(this.total_finish_list[i], [newValue, " ("+((1-(newValue/InValue))*100).toFixed(2)+") Percent finished"])
+            if(this.mapCountCommit.get(this.total_finish_list[i][0])==NaN){
+              this.mapCountCommit.set(this.total_finish_list[i], [0,"Finished"]);
+            }
+          }  
+
+          $('#commit').attr('disabled','disabled');
+          $('.NotFinish').attr('disabled','disabled');
+
+          this.progress = Number((1-(this.total_finish_list.length/this.InCommit_keys.length))*100).toFixed(2);
+
+       }else{
+          alert("only commit finished when workout is finished! Choose all allowed excersizes")
+    }
   }
 }
