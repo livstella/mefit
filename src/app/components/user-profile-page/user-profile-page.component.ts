@@ -15,6 +15,6 @@ export class UserProfilePageComponent implements OnInit {
   }
 
   get user(): User[] {
-    return this.userProfileService.User();
+    return this.userProfileService.user();
   }
 }

@@ -1,1 +1,8 @@
-<p>exercise-page works!</p>
+<h2>Here you will see all the exercises you can choose from</h2>
+<ul>
+<li *ngFor=" let exercise of exercises ">
+    <h4>{{exercise.name}}</h4> 
+    <p> targets the follow musclegroup {{exercise.musclegroup}} </p>
+</li>
+
+</ul>

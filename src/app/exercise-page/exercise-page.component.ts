@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Exercise } from '../models/exercise.model';
+import { exercisePageService } from '../services/exercise-page.service';
 
 @Component({
   selector: 'app-exercise-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExercisePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly exercisePageService: exercisePageService) { }
 
   ngOnInit(): void {
+    this.exercisePageService.fetchExercise();
   }
-
+get exercises():Exercise[]{
+  return this.exercisePageService.exercise();
+}
 }

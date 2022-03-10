@@ -6,7 +6,7 @@ import { Exercise } from '../models/exercise.model';
   providedIn: 'root',
 })
 export class exercisePageService {
-  private _exercise: Exercise[] = [];
+  private _exercises: Exercise[] = [];
   private _error: string = '';
 
   constructor(private readonly http: HttpClient) {}
@@ -14,11 +14,11 @@ export class exercisePageService {
   public fetchExercise(): void {
     this.http
       .get<Exercise[]>(
-        'https://mefitbackend-ajlm.herokuapp.com/getAllExercises'
+        'https://mefitbackend-ajlm.herokuapp.com/exercise'
       )
       .subscribe(
         (exercise) => {
-          this._exercise = exercise;
+          this._exercises = exercise;
         },
         (error: HttpErrorResponse) => {
           this._error = error.message;
@@ -27,7 +27,7 @@ export class exercisePageService {
   }
 
   public exercise():Exercise[]{
-      return this._exercise;
+      return this._exercises;
   }
   public error(): string {
     return this._error;
