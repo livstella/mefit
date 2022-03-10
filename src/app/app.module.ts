@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { ExercisePageComponent } from './exercise-page/exercise-page.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     AppComponent,
     LoginPageComponent,
     RegistrationPageComponent,
-    UserProfilePageComponent
+    UserProfilePageComponent,
+    ExercisePageComponent
   ],
   imports: [
     HttpClientModule,

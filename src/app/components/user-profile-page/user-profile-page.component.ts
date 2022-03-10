@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
-import { userProfileService } from '../../services/user-profile-page-service';
+import { userProfileService } from '../../services/user-profile-page.service';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -16,7 +16,7 @@ export class UserProfilePageComponent implements OnInit {
   }
 
   get user(): User[] {
-    return this.userProfileService.User();
+    return this.userProfileService.user();
   }
 
   toDashBoard(){
