@@ -18,6 +18,7 @@
                             <li *ngFor="let choise of ex_choice_list; let i = index" >
                               {{choise}}
                               <button id="i" (click)="updateExFinish(this.i)">Finished!</button>
+                              <button id="i" (click)="remove(this.i)">Remove!</button>
                             </li>>
                         </ul>
                     </span>
@@ -51,6 +52,7 @@
                             <li *ngFor="let choise of ex_choice_list2; let i = index" >
                               {{choise}}
                               <button id="i" (click)="updateExFinish2(this.i)">Finished!</button>
+                              <button id="i" (click)="remove2(this.i)">Remove!</button>
                             </li>>
                         </ul>
                     </span>
@@ -85,6 +87,7 @@
                             <li *ngFor="let choise of ex_choice_list3; let i = index" >
                               {{choise}}
                               <button id="i" (click)="updateExFinish3(this.i)">Finished!</button>
+                              <button id="i" (click)="remove3(this.i)">Remove!</button>
                             </li>>
                         </ul>
                     </span>

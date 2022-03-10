@@ -80,6 +80,11 @@ export class GoalDashboardComponent implements OnInit {
     this.ex_finish_list.splice(id,1);
   }
 
+  //---remove excersize
+  remove(id:number){
+    this.ex_choice_list.splice(id,1);
+  }
+
 
   //---noon
   //---when picking excersize from dropdown-list display 
@@ -113,6 +118,11 @@ export class GoalDashboardComponent implements OnInit {
     this.ex_finish_list2.splice(id,1);
   }
 
+  //---remove excersize
+  remove2(id:number){
+    this.ex_choice_list2.splice(id,1);
+  }
+
   //---Evening
   //---when picking excersize from dropdown-list display 
   onChangeEx3(){
@@ -133,7 +143,6 @@ export class GoalDashboardComponent implements OnInit {
     }
   }
 
-
   //---add excersize to finish list
   updateExFinish3(id:number){
     this.ex_finish_list3.push(this.ex_choice_list3[id]);
@@ -144,6 +153,11 @@ export class GoalDashboardComponent implements OnInit {
   updateExPlaned3(id:number){
     this.ex_choice_list3.push(this.ex_finish_list3[id]);
     this.ex_finish_list3.splice(id,1);
+  }
+
+  //---remove excersize
+  remove3(id:number){
+    this.ex_choice_list3.splice(id,1);
   }
 
 }
