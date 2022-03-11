@@ -31,14 +31,14 @@ export class GoalDashboardComponent implements OnInit {
   program_ex: string[] = [];
   
   mapCount = new Map();
-  mapCountCommit = new Map();
-  mapCountInitial = new Map();
+  mapCountWeekCommit = new Map();
+  mapCountWeekInitial = new Map();
   InCommit_keys: string[]|any = [];
   InCommit_values: string[]|any = [];
 
   total_finish_list: string[]=[];
 
-  progress: number | string | undefined = "";
+  progress: number | string | undefined = 0;
 
   mapCountKeys: string[]|any = [];
 
@@ -213,14 +213,14 @@ export class GoalDashboardComponent implements OnInit {
   }
   //---remove program
   commitProgram(){
-    if (this.mapCountCommit.size == 0){
-      this.mapCountInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
-      this.mapCountCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
+    if (this.mapCountWeekCommit.size == 0){
+      this.mapCountWeekInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
+      this.mapCountWeekCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
 
-      for (let key of this.mapCountInitial.keys()){
+      for (let key of this.mapCountWeekInitial.keys()){
         this.InCommit_keys.push(key);
       }
-      for (let value of this.mapCountInitial.values()){
+      for (let value of this.mapCountWeekInitial.values()){
         this.InCommit_values.push(value);
       }
     }else{
@@ -239,24 +239,23 @@ export class GoalDashboardComponent implements OnInit {
        if(this.total_finish_list.length == 5 && this.ex_choice_list.length == 0 && this.ex_choice_list2.length == 0 && this.ex_choice_list3.length == 0){
 
           for (let i = 0; i < this.total_finish_list.length;i++){
-            let newValue = this.mapCountCommit.get(this.total_finish_list[i])-1;
+            let newValue = this.mapCountWeekCommit.get(this.total_finish_list[i])-1;
             if(newValue==NaN||newValue==0){
-              this.mapCountCommit.set(this.total_finish_list[i], [0,"Finished"]);
+              this.mapCountWeekCommit.set(this.total_finish_list[i], [0,"Finished"]);
             }else{
-              this.mapCountCommit.set(this.total_finish_list[i], newValue)
+              this.mapCountWeekCommit.set(this.total_finish_list[i], newValue)
               }
           }
 
-          for (let key of this.mapCountCommit.keys()){
+          for (let key of this.mapCountWeekCommit.keys()){
             this.mapCountKeys.push(key);
           }
 
-        //  for(let i = 0; i<this.mapCountKeys.length;i++){
-         //   let InValue = this.mapCountInitial.get(this.mapCountKeys[i]) 
-         //   let newValue2 = this.mapCountCommit.get(this.mapCountKeys[i])
-          //  this.mapCountCommit.set(this.total_finish_list[i], [newValue2+": routines left ", " ("+((1-(newValue2/InValue))*100).toFixed(2)+") Percent finished"])
-          
-         // }
+          for(let i = 0; i<this.mapCountKeys.length;i++){
+            let InValue = this.mapCountWeekInitial.get(this.mapCountKeys[i]) 
+            let newValue2 = this.mapCountWeekCommit.get(this.mapCountKeys[i])
+            this.mapCountWeekCommit.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+((1-(newValue2/InValue))*100).toFixed(2)+") Percent finished"])
+          }
               
 
           $('#commit').attr('disabled','disabled');
