@@ -122,7 +122,6 @@
               {{program}}
             </option>     
         </select>
-
     </div>
     <div>
         <ul class="WeeklyGoal">
@@ -135,12 +134,15 @@
     <div>
         <h2>Choosen program!</h2>
         <ul class="WeeklyGoalcommit">
-            <li *ngFor="let item of mapCountWeekCommit | keyvalue" >
+            <li *ngFor="let item of mapCountWeekCommitDisplay | keyvalue" >
                 {{item.key}}
                 {{item.value}}
             </li>    
         </ul>
-        <h3>{{[progress]}} percent finished of total goal for week!</h3>
+        <h3>{{[progress_display]}}</h3>
+        <h3>Time left to complete following program!</h3>
+        <p>{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds, </p>
+        <p>{{message}}</p>
     </div>
     </div>
 <footer>By Experis Academy</footer>

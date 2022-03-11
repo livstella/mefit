@@ -1,4 +1,5 @@
 import { getLocaleDateFormat } from '@angular/common';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
@@ -32,15 +33,26 @@ export class GoalDashboardComponent implements OnInit {
   
   mapCount = new Map();
   mapCountWeekCommit = new Map();
+  mapCountWeekCommitDisplay = new Map();
   mapCountWeekInitial = new Map();
   InCommit_keys: string[]|any = [];
   InCommit_values: string[]|any = [];
 
   total_finish_list: string[]=[];
+  finishHistory: string[]=[];
 
   progress: number | string | undefined = 0;
+  progress_display: number | string | undefined = 0;
 
-  mapCountKeys: string[]|any = [];
+  mapCountKeys: string[]|any = []; 
+
+  message: string | undefined;
+  
+  days: number = 0;
+  hours: number = 0;
+  minutes: number = 0;
+  seconds: number = 0;
+
 
   constructor() { }
 
@@ -214,8 +226,11 @@ export class GoalDashboardComponent implements OnInit {
   //---remove program
   commitProgram(){
     if (this.mapCountWeekCommit.size == 0){
+
+      //---Copy maps of excersizes for further processing
       this.mapCountWeekInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
       this.mapCountWeekCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
+      this.mapCountWeekCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
 
       for (let key of this.mapCountWeekInitial.keys()){
         this.InCommit_keys.push(key);
@@ -223,8 +238,43 @@ export class GoalDashboardComponent implements OnInit {
       for (let value of this.mapCountWeekInitial.values()){
         this.InCommit_values.push(value);
       }
-    }else{
-      alert("You can only be commited to one program per week!")
+
+      //---start timer
+     const countDownDate = new Date().setDate(new Date().getDate()+7);
+
+     //---Update the count down every 1 second
+     const x = setInterval(() => {
+
+       //---Get today's date and time
+       let now = new Date().getTime();
+
+       //---Find the distance between now and the count down date
+       let difference = countDownDate - now;
+
+       //---Calculations for days, hours, minutes and seconds
+       this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
+       this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+       this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+       this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+       //---Open goal dashboard every time cycle
+       if (this.seconds==30){
+          $('#commit').removeAttr('disabled');
+          $('.NotFinish').removeAttr('disabled');
+          this.ex_finish_list = [];
+          this.ex_finish_list2 = [];
+          this.ex_finish_list3 = [];
+          this.total_finish_list = [];         
+       }
+
+       //---Display message when count down is finished
+       if (difference == 0) {
+        const message = "Deadline expired";
+        }
+       }, 1000);
+
+      }else{
+        alert("You can only be commited to one program per week!")
     }
     
   }
@@ -234,35 +284,49 @@ export class GoalDashboardComponent implements OnInit {
        this.total_finish_list = this.ex_finish_list.concat(this.ex_finish_list2);
        this.total_finish_list = this.total_finish_list.concat(this.ex_finish_list3);
       
-       this.progress = ((this.total_finish_list.length/this.program_ex.length)*100).toFixed(2);
+       this.finishHistory = this.finishHistory.concat(this.total_finish_list);
 
-       if(this.total_finish_list.length == 5 && this.ex_choice_list.length == 0 && this.ex_choice_list2.length == 0 && this.ex_choice_list3.length == 0){
+       this.progress = ((this.finishHistory.length/this.program_ex.length)*100).toFixed(2);
 
-          for (let i = 0; i < this.total_finish_list.length;i++){
-            let newValue = this.mapCountWeekCommit.get(this.total_finish_list[i])-1;
-            if(newValue==NaN||newValue==0){
-              this.mapCountWeekCommit.set(this.total_finish_list[i], [0,"Finished"]);
-            }else{
-              this.mapCountWeekCommit.set(this.total_finish_list[i], newValue)
+       if (Number(this.progress) <= 100){
+          this.progress_display = this.progress +" percent finished of you weekly goal!";
+
+          //---update goals based on finish commits
+          if(this.total_finish_list.length == 5 && this.ex_choice_list.length == 0 && this.ex_choice_list2.length == 0 && this.ex_choice_list3.length == 0){
+
+            for (let i = 0; i < this.total_finish_list.length;i++){
+              let newValue = this.mapCountWeekCommit.get(this.total_finish_list[i])-1;
+                this.mapCountWeekCommit.set(this.total_finish_list[i], newValue)
+                
+            }
+  
+            for (let key of this.mapCountWeekCommit.keys()){
+              this.mapCountKeys.push(key);
+            }
+  
+            for(let i = 0; i<this.mapCountKeys.length;i++){
+              let InValue = this.mapCountWeekInitial.get(this.mapCountKeys[i]) 
+              let newValue2 = this.mapCountWeekCommit.get(this.mapCountKeys[i])
+              if(Number(newValue2)==NaN||Number(newValue2)==0){
+                this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) All routines Finished"])
+              }else{
+                this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+((1-(newValue2/InValue))*100).toFixed(2)+") Percent finished"])
               }
-          }
+            }
+                
+  
+            $('#commit').attr('disabled','disabled');
+            $('.NotFinish').attr('disabled','disabled');
+  
+         }else{
+            alert("only commit finished when workout is finished! Choose all allowed excersizes")
+      }
 
-          for (let key of this.mapCountWeekCommit.keys()){
-            this.mapCountKeys.push(key);
-          }
-
-          for(let i = 0; i<this.mapCountKeys.length;i++){
-            let InValue = this.mapCountWeekInitial.get(this.mapCountKeys[i]) 
-            let newValue2 = this.mapCountWeekCommit.get(this.mapCountKeys[i])
-            this.mapCountWeekCommit.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+((1-(newValue2/InValue))*100).toFixed(2)+") Percent finished"])
-          }
-              
-
-          $('#commit').attr('disabled','disabled');
-          $('.NotFinish').attr('disabled','disabled');
 
        }else{
-          alert("only commit finished when workout is finished! Choose all allowed excersizes")
-    }
-  }
+          this.progress_display = "You finished your weekly goal!"
+       }
+  } 
 }
+
+
