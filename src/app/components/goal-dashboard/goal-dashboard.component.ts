@@ -243,7 +243,7 @@ export class GoalDashboardComponent implements OnInit {
      const countDownDate = new Date().setDate(new Date().getDate()+7);
 
      //---Update the count down every 1 second
-     const x = setInterval(() => {
+     const sevenDayTimer = setInterval(() => {
 
        //---Get today's date and time
        let now = new Date().getTime();
