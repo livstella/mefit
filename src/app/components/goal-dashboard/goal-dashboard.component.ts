@@ -66,6 +66,8 @@ export class GoalDashboardComponent implements OnInit {
     this.excersize_options.push("upper back");
     this.excersize_options.push("stomach");
     this.excersize_options.push("chest");
+    this.excersize_options.push("hips");
+    this.excersize_options.push("shoulders");
 
     this.workout_options.set(["Choose a workout"],null);
     this.workout_options.set("legs",["lower legs","upper legs","lower back","upper back", "hips"]);
