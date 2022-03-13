@@ -301,6 +301,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---Commit finished excersizes
   commitFinish(){
+    if(this.mapCountWeekCommit.size != 0){
        this.total_finish_list = this.ex_finish_list.concat(this.ex_finish_list2);
        this.total_finish_list = this.total_finish_list.concat(this.ex_finish_list3);
       
@@ -388,7 +389,11 @@ export class GoalDashboardComponent implements OnInit {
        }else{
           this.progress_display = "You finished your weekly goal!"
        }
+      }else{
+          alert("Choose a weekly goal first!")
+       }
   }
+  
   toGoalDetails(){
     this.router.navigateByUrl('/goaldetails');
   }
