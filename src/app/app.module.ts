@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
+import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboa
     LoginPageComponent,
     RegistrationPageComponent,
     UserProfilePageComponent,
-    GoalDashboardComponent
+    GoalDashboardComponent,
+    GoalDetailsComponent
   ],
   imports: [
     HttpClientModule,

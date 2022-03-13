@@ -1,6 +1,7 @@
 import { getLocaleDateFormat } from '@angular/common';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -53,8 +54,21 @@ export class GoalDashboardComponent implements OnInit {
   minutes: number = 0;
   seconds: number = 0;
 
+  currentGoal: any = new Map();
+  finishedGoals: any = new Map(); 
+  unfinishedGoals: any = new Map();
+  newMap: any;
+  newObj: any;
+  newMap2: any;
+  newObj2: any;
 
-  constructor() { }
+  body: any|undefined;
+  timeStamp: any|undefined;
+  response: any;
+  responseProgram: any;
+
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.excersize_options.push("Choose an excerize");
@@ -79,8 +93,8 @@ export class GoalDashboardComponent implements OnInit {
     
     this.program_options.set(["Choose a program"],null);
     this.program_options.set("Balance",["legs","arms","legs","arms", "legs","arms"]);
-    this.program_options.set("Only arms",["arms","arms","arms"]);
-    this.program_options.set("Only legs",["legs","legs","legs"]);
+    this.program_options.set("Arms week",["arms","arms","arms"]);
+    this.program_options.set("Legs week",["legs","legs","legs"]);
    
     for (let key of this.program_options.keys()){
       this.program_keys.push(key);
@@ -316,9 +330,51 @@ export class GoalDashboardComponent implements OnInit {
               }
             }
                 
+            if (Number(this.progress) == 100){
+                  this.body = {
+                               timeStamp: new Date().getFullYear()+"-"+new Date().getMonth()+"-"+new Date().getDate(),
+                               program: this.program_key, 
+                               ex: JSON.stringify(Object.fromEntries(this.mapCountWeekInitial)),
+                              };
+              
+                  let index = 'first';
+                  this.finishedGoals.set(index, this.body);
+
+                  localStorage.setItem("finished-goals", JSON.stringify(Object.fromEntries(this.finishedGoals)))
+                 
+                  //this.response = localStorage.getItem('finished-goals')||'{}'
+
+                  // alert("code 1")
+                  
+                  
+                  // alert(this.response) //---works
+
+                  // this.newObj = JSON.parse(this.response)
+                 
+                  // alert("code 2")
+
+                  // alert(this.newObj)
+
+                  // //this.newMap = new Map(this.newObj.map((entry: { timeStamp: any; program: any; }) => [entry.timeStamp, entry.program]))   
+                  // this.newMap = new Map(Object.entries(this.newObj))
+
+                  // alert("code 3")
+                  // alert(this.newMap)
+
+                  // alert(this.newMap.get('first').ex) //--works
+
+                  // alert("code 4")
+                  // //let responseEx = this.newMap.get('first').ex
+
+                  // //---alert an exercise
+                  // //this.newObj2 = JSON.parse(responseEx)
+                  // //this.newMap2 = new Map(Object.entries(this.newObj2))
+
+                  // //alert(this.newMap2.get("upper arms"))
+            }
   
-            $('#commit').attr('disabled','disabled');
-            $('.NotFinish').attr('disabled','disabled');
+           // $('#commit').attr('disabled','disabled');
+           // $('.NotFinish').attr('disabled','disabled');
   
          }else{
             alert("only commit finished when workout is finished! Choose all allowed excersizes")
@@ -328,7 +384,10 @@ export class GoalDashboardComponent implements OnInit {
        }else{
           this.progress_display = "You finished your weekly goal!"
        }
-  } 
+  }
+  toGoalDetails(){
+    this.router.navigateByUrl('/goaldetails');
+  }
 }
 
 

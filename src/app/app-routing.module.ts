@@ -4,6 +4,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { UserProfilePageComponent } from './components/user-profile-page/user-profile-page.component';
 import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
+import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 
 const routes: Routes = [
 {path:'', redirectTo:'login', pathMatch:'full'},
@@ -15,6 +16,8 @@ const routes: Routes = [
 {path: 'profile', component: UserProfilePageComponent ,pathMatch:'full'},
 
 {path: 'dashboard', component: GoalDashboardComponent ,pathMatch:'full'},
+
+{path: 'goaldetails', component: GoalDetailsComponent ,pathMatch:'full'},
 
 ];
 
