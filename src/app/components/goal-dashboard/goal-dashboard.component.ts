@@ -14,6 +14,7 @@ export class GoalDashboardComponent implements OnInit {
 
   username: string = "Michel"; //placeholder for username
   date = new Date();
+  excersize: string = '';
   excersize_options: string[] = [];
   ex_choice_list: string[] = [];
   ex_finish_list: string[] = [];
@@ -26,6 +27,7 @@ export class GoalDashboardComponent implements OnInit {
   workout_keys: string[]|any = [] ;
   workout_key: string | undefined;
   workout_ex: string[] = [];
+  workout_ex_commit: string[] = [];
   
   program_options = new Map();
   program_keys: string[]|any = [] ;
@@ -37,8 +39,6 @@ export class GoalDashboardComponent implements OnInit {
   mapCountWeekCommit = new Map();
   mapCountWeekCommitDisplay = new Map();
   mapCountWeekInitial = new Map();
-  InCommit_keys: string[]|any = [];
-  InCommit_values: string[]|any = [];
 
   total_finish_list: string[]=[];
   finishHistory: string[]=[];
@@ -72,7 +72,7 @@ export class GoalDashboardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.excersize_options.push("Choose an excerize");
+    this.excersize_options.push("Choose an excersize");
     this.excersize_options.push("lower legs");
     this.excersize_options.push("upper legs");
     this.excersize_options.push("lower arms");
@@ -218,9 +218,6 @@ export class GoalDashboardComponent implements OnInit {
   //---Weekly goals
   onChangeProgram(){
 
-    this.mapCount.clear();
-    this.program_ex.length = 0; 
-
     let choiceProgram = $("select[name='selectProgram'] option:selected").index();
     this.program_key = this.program_keys[choiceProgram];
     this.program_work = this.program_options.get(this.program_key); //---have a list of workouts
@@ -239,22 +236,49 @@ export class GoalDashboardComponent implements OnInit {
             }
         }
   }
-  //---remove program
+
+  onChangeWorkout(){
+    let choiceworkout = $("select[name='selectWorkout'] option:selected").index();
+    this.workout_key = this.workout_keys[choiceworkout];
+    this.workout_ex_commit = this.workout_options.get(this.workout_key);
+
+    for (let i = 0; i < this.workout_ex_commit.length; i++) {
+      if (this.mapCount.has(this.workout_ex_commit[i])) {
+          this.mapCount.set(this.workout_ex_commit[i], this.mapCount.get(this.workout_ex_commit[i]) + 1);
+      }
+      else {
+          this.mapCount.set(this.workout_ex_commit[i],1); // Map to capture Count of elements
+      }
+  }
+  }
+
+  onChangeExcersize(){
+    let choiceEx = $("select[name='selectEx'] option:selected").index();
+    this.excersize = this.excersize_options[choiceEx];
+    
+    if (this.mapCount.has(this.excersize)) {
+        this.mapCount.set(this.excersize, this.mapCount.get(this.excersize) + 1);
+      }
+      else {
+        this.mapCount.set(this.excersize,1); // Map to capture Count of elements
+      }
+  }
+
+  //---clear program
+  clearProgram(){
+    this.mapCount.clear();
+    this.program_ex.length = 0;
+  } 
+  
+  //---commit program
   commitProgram(){
     if (this.mapCountWeekCommit.size == 0){
 
-      if( this.program_ex.length!=0){
+      if( this.mapCount != null){
       //---Copy maps of excersizes for further processing
       this.mapCountWeekInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
       this.mapCountWeekCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
       this.mapCountWeekCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
-
-      for (let key of this.mapCountWeekInitial.keys()){
-        this.InCommit_keys.push(key);
-      }
-      for (let value of this.mapCountWeekInitial.values()){
-        this.InCommit_values.push(value);
-      }
 
       //---start timer
      const countDownDate = new Date().setDate(new Date().getDate()+7);
@@ -307,7 +331,7 @@ export class GoalDashboardComponent implements OnInit {
       
        this.finishHistory = this.finishHistory.concat(this.total_finish_list);
 
-       this.progress = ((this.finishHistory.length/this.program_ex.length)*100).toFixed(2);
+       this.progress = ((this.finishHistory.length/this.mapCount.size)*100).toFixed(2);
 
        if (Number(this.progress) <= 100){
           this.progress_display = this.progress +" percent finished of you weekly goal!";
