@@ -1,4 +1,5 @@
 import { getLocaleDateFormat } from '@angular/common';
+import { SelectorMatcher } from '@angular/compiler';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -229,7 +230,6 @@ export class GoalDashboardComponent implements OnInit {
     }
     this.program_ex = this.program_ex.flat();
 
-    this.mapCount.clear();
     for (let i = 0; i < this.program_ex.length; i++) {
             if (this.mapCount.has(this.program_ex[i])) {
                 this.mapCount.set(this.program_ex[i], this.mapCount.get(this.program_ex[i]) + 1);
@@ -243,6 +243,7 @@ export class GoalDashboardComponent implements OnInit {
   commitProgram(){
     if (this.mapCountWeekCommit.size == 0){
 
+      if( this.program_ex.length!=0){
       //---Copy maps of excersizes for further processing
       this.mapCountWeekInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
       this.mapCountWeekCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
@@ -289,6 +290,9 @@ export class GoalDashboardComponent implements OnInit {
         }
        }, 1000);
 
+      }else{
+        alert("Please pick a program!")
+      }
       }else{
         alert("You can only be commited to one program per week!")
     }
