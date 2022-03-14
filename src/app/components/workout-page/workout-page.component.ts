@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { SelectedExerciseService } from 'src/app/services/selected-exercise.service';
+import { SelectedWorkoutService } from 'src/app/services/selected-workout.service';
 import { Workout } from '../../models/workout.model';
 import { WorkoutPageService } from '../../services/workout-page.service';
 
@@ -12,7 +12,7 @@ export class WorkoutPageComponent implements OnInit {
   //Injects the services needed
   constructor(
     private readonly workoutPageService: WorkoutPageService,
-   // private readonly selectedworkoutService: SelectedworkoutService
+    private readonly selectedWorkoutService: SelectedWorkoutService
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +25,6 @@ export class WorkoutPageComponent implements OnInit {
 
   onWorkoutClicked(workout:Workout):void{
 
-    //this.selectedworkoutService.setworkout(workout);
+    this.selectedWorkoutService.setWorkout(workout);
   }
 }
