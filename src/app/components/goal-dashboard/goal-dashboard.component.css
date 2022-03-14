@@ -63,10 +63,41 @@ h1 {
 
 }
 
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+.progressbar {
+    width: 700px;
+    height: 1.5em;
+    background-color: darkgray;
+    color: black;
+    border-radius: 1.5em;
+    position: relative;
+    left: 5%; 
+}
+
+.progressbar::before{
+    content: attr(data-label);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    bottom: 0%;
+    width: calc(var(--widthbar, 0)*1%);
+    min-width: 1%;
+    max-width: calc(100%-1%);
+    background-color: lightgreen;
+    border-radius: 1.5em;
+    padding: 1%;
+
+}
+
 .time {
     background-color: blanchedalmond;
     position: absolute;
-    width: 80px;
+    width: 110px;
     top: 80px;
     left: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -108,7 +139,7 @@ h1 {
 .morning {
     background-color: beige;
     width: 400px;
-    height: 245px;
+    height: 246px;
     text-align: center;
     border-style: solid;
     border-color : black;
@@ -121,7 +152,7 @@ h1 {
 .noon {
     background-color: beige;
     width: 400px;
-    height: 245px;
+    height: 246px;
     text-align: center;
     border-style: solid;
     border-color : black;
@@ -134,7 +165,7 @@ h1 {
 .evening {
     background-color: beige;
     width: 400px;
-    height: 245px;
+    height: 246px;
     text-align: center;
     border-style: solid;
     border-color : black;
