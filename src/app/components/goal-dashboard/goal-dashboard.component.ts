@@ -274,7 +274,7 @@ export class GoalDashboardComponent implements OnInit {
   commitProgram(){
     if (this.mapCountWeekCommit.size == 0){
 
-      if( this.mapCount != null){
+    if(this.mapCount.size != 0){
       //---Copy maps of excersizes for further processing
       this.mapCountWeekInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
       this.mapCountWeekCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
@@ -331,7 +331,13 @@ export class GoalDashboardComponent implements OnInit {
       
        this.finishHistory = this.finishHistory.concat(this.total_finish_list);
 
-       this.progress = ((this.finishHistory.length/this.mapCount.size)*100).toFixed(2);
+       let sumEx = 0;
+
+       this.mapCountWeekInitial.forEach(value => {
+          sumEx += value;
+       });
+
+       this.progress = ((this.finishHistory.length/sumEx)*100).toFixed(2);
 
        if (Number(this.progress) <= 100){
           this.progress_display = this.progress +" percent finished of you weekly goal!";

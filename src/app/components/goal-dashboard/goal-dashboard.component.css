@@ -1,0 +1,222 @@
+.main {
+    background: url(src\assets\images\running.jpg) center;
+    background-repeat: repeat-y;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+h1 {
+    color: black;
+    background-color: lightgoldenrodyellow;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 30px;
+    display:inline-block;
+    width:100%;
+}
+.info {
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    text-align: center;
+}
+
+.timer {
+    background-color: beige;
+    text-align: center;
+    align-items: center;
+    font-size: 13px;
+    position: absolute;
+    height: 75px;
+    width: 440px;
+    top: 150px;
+    left: 9%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: auto;
+    border-style: solid;
+    border-color : black;
+    margin: auto;
+}
+
+
+.progress {
+    background-color: beige;
+    text-align: center;
+    align-items: center;
+    font-size: 13px;
+    position: absolute;
+    height: 75px;
+    width: 787px;
+    top: 150px;
+    left: 39.5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: auto;
+    border-style: solid;
+    border-color : black;
+    margin: auto;
+
+}
+
+.time {
+    background-color: blanchedalmond;
+    position: absolute;
+    width: 80px;
+    top: 80px;
+    left: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1%;
+    border-style: solid;
+    border-color : black;
+}
+
+.btn-details {
+    background-color: lightgoldenrodyellow;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    border-radius: 50px;
+    height: 55px;
+    position: absolute;
+    top: 80px;
+    left: 170px;
+}
+
+.commitfinish {
+    background-color: lightgoldenrodyellow;
+    margin: 5px;
+    position: absolute;
+    left: 40%;
+    top: 70%;
+    width: 300px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.fin, .remove, .NotFinish {
+    background-color: lightgoldenrodyellow;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    border-radius: 50px;
+} 
+
+.morning {
+    background-color: beige;
+    width: 400px;
+    height: 245px;
+    text-align: center;
+    border-style: solid;
+    border-color : black;
+    position: absolute;
+    top: 240px;
+    left: 9%;
+    overflow: auto;
+}
+
+.noon {
+    background-color: beige;
+    width: 400px;
+    height: 245px;
+    text-align: center;
+    border-style: solid;
+    border-color : black;
+    position: absolute;
+    top: 240px;
+    left: 37%;
+    overflow: auto;
+}
+
+.evening {
+    background-color: beige;
+    width: 400px;
+    height: 245px;
+    text-align: center;
+    border-style: solid;
+    border-color : black;
+    position: absolute;
+    top: 240px;
+    left: 65%;
+    overflow: auto;
+}
+
+.panes {
+    margin: 2%;
+}
+
+.ExcerciseOptions, .WorkoutOptions {
+    background-color: lightgoldenrodyellow;
+}
+
+.weekgoal {
+    background-color: beige;
+    text-align: center;
+    border-style: solid;
+    border-color : black;
+    position: absolute;
+    top: 77%;
+    left: 9%;
+    display:inline-block;
+    width:82%;
+}
+
+.panebuttons {
+    margin: 1%;
+}
+
+.commitprogram, .clearprogram {
+    background-color: lightgoldenrodyellow;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.ProgramOption, .WorkoutOption, .ExcersizeOption {
+    background-color: lightgoldenrodyellow;
+}
+
+.weekgoaldisplay {
+    background-color: beige;
+    text-align: center;
+    border-style: solid;
+    border-color : black;
+    position: absolute;
+    top: 660px;
+    left: 9%;
+    width: 400px;
+    height: 245px;
+    overflow:auto;
+}
+
+.choosen {
+    background-color: beige;
+    text-align: center;
+    border-style: solid;
+    border-color : black;
+    position: absolute;
+    top: 660px;
+    left: 37%;
+    width: 820px;
+    height: 245px;
+    overflow:auto;
+}
+ 
+
+footer {
+    color: black;
+    background-color: lightgoldenrodyellow;
+    font-family: monospace;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    font-size: 15px;
+    display:inline-block;
+    width:100%;
+    position: absolute;
+    top: 950px;
+    left:0px;
+}
