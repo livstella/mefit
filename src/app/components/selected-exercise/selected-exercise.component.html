@@ -1,5 +1,7 @@
-<section *ngIf=" exercise !==null">
+<section *ngIf=" exercise !==null" class="selected-content">
     <h1>Details on the exercise you have clicked</h1>
-    {{exercise.description}}
+    <img src="{{exercise.image}}" alt="exercise">
+    <p>{{exercise.description}}</p>
+    
 <!-- More details to follow -->
 </section>
