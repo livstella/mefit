@@ -9,6 +9,8 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
+import { ExercisePageComponent } from './exercise-page/exercise-page.component';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { GoalDetailsComponent } from './components/goal-details/goal-details.com
     UserProfilePageComponent,
     GoalDashboardComponent,
     GoalDetailsComponent
+    ExercisePageComponent
   ],
   imports: [
     HttpClientModule,

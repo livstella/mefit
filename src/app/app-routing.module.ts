@@ -5,13 +5,20 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { UserProfilePageComponent } from './components/user-profile-page/user-profile-page.component';
 import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
+import { ExercisePageComponent } from './exercise-page/exercise-page.component';
+import { UserProfilePageComponent } from './components/user-profile-page/user-profile-page.component';
+
 
 const routes: Routes = [
-{path:'', redirectTo:'login', pathMatch:'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
-{path: 'login', component: LoginPageComponent ,pathMatch:'full'},
+  { path: 'login', component: LoginPageComponent, pathMatch: 'full' },
 
-{path: 'register', component: RegistrationPageComponent ,pathMatch:'full'},
+  { path: 'register', component: RegistrationPageComponent, pathMatch: 'full' },
+
+  { path: 'exercises', component: ExercisePageComponent, pathMatch: 'full' },
+
+  { path: 'profile', component: UserProfilePageComponent ,pathMatch:'full'},
 
 {path: 'profile', component: UserProfilePageComponent ,pathMatch:'full'},
 
@@ -26,4 +33,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
