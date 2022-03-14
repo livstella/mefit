@@ -1,8 +1,9 @@
 export interface Exercise {
     id: number;
+    set:number;
     name: string;
-    targetMuscleGroup: string;
     description: string;
+    targetMuscleGroup: string;
     image: string;
     videoLink:string;
   }
