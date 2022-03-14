@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
-import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
-import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 import { ExercisePageComponent } from './exercise-page/exercise-page.component';
 
 
@@ -18,8 +16,6 @@ import { ExercisePageComponent } from './exercise-page/exercise-page.component';
     LoginPageComponent,
     RegistrationPageComponent,
     UserProfilePageComponent,
-    GoalDashboardComponent,
-    GoalDetailsComponent
     ExercisePageComponent
   ],
   imports: [
