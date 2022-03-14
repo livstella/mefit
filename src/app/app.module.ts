@@ -12,6 +12,8 @@ import { SelectedExerciseComponent } from './components/selected-exercise/select
 import { WorkoutPageComponent } from './components/workout-page/workout-page.component';
 import { ProgrammePageComponent } from './components/programme-page/programme-page.component';
 import { SelectedWorkoutComponent } from './components/selected-workout/selected-workout.component';
+import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
+import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { SelectedWorkoutComponent } from './components/selected-workout/selected
     AppComponent,
     LoginPageComponent,
     RegistrationPageComponent,
+    GoalDashboardComponent,
+    GoalDetailsComponent,
     UserProfilePageComponent,
     ExercisePageComponent,
     SelectedExerciseComponent,
