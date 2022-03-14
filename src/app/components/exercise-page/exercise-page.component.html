@@ -1,0 +1,21 @@
+<section class="exercise-content">
+  <div class="all-exercises">
+    <h2>Here you see all the exercises you can choose from</h2>
+    <h3>Click the name of an exercise to see more details</h3>
+    <ul>
+      <!-- loops over fetched exercises and displays each. click function sets selected exercise so selected-exercise will be displayed -->
+      <li
+        *ngFor="let exercise of exercises"
+        (click)="onExerciseClicked(exercise)"
+      >
+        <h4>{{ exercise.name }}</h4>
+        <p>targets the follow musclegroup {{ exercise.targetMuscleGroup }}</p>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="selected-exercises">
+    <app-selected-exercise></app-selected-exercise>
+  </div>
+
+</section>

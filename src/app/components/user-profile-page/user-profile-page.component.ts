@@ -19,7 +19,7 @@ export class UserProfilePageComponent implements OnInit {
     this.userProfileService.fetchUser();
   }
 
-  get user(): User[] {
+  get user(): User|null {
     return this.userProfileService.user();
   }
 

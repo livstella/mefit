@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { User } from '../models/user.model';
+import { Programme } from '../models/programme.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class userProfileService {
-  private _user: User| null = null;
+export class ProgrammePageService {
+  private _programmes: Programme[] = [];
   private _error: string = '';
 
   constructor(private readonly http: HttpClient) {}
 
-  //Get request on /user
-  //Should be updated to fetch one user where id=sessionStorage.getItem(currentUser)
-  public fetchUser(): void {
+  public fetchProgramme(): void {
     this.http
-      .get<User>('https://mefitbackend-ajlm.herokuapp.com/user')
+      .get<Programme[]>(
+        'https://mefitbackend-ajlm.herokuapp.com/programme'
+      )
       .subscribe(
-        (user) => {
-          this._user = user;
+        (programme) => {
+          this._programmes = programme;
         },
         (error: HttpErrorResponse) => {
           this._error = error.message;
@@ -26,11 +26,12 @@ export class userProfileService {
       );
   }
 
-  public user(): User| null {
-    return this._user;
+  public programme():Programme[]{
+      return this._programmes;
   }
-
   public error(): string {
     return this._error;
   }
+
+
 }

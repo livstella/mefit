@@ -1,0 +1,11 @@
+<h2>Here you will see all the programmes you can choose from</h2>
+<ul>
+  <!-- loops over fetched programmes and displays each. click function sets selected programme so selected-programme will be displayed -->
+  <li
+    *ngFor="let programme of programmes"
+    (click)="onProgrammeClicked(programme)"
+  >
+    <h4>{{ programme.name }}</h4>
+    <p>{{ programme.category }}</p>
+  </li>
+</ul>

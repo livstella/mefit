@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { User } from '../models/user.model';
+import { Workout } from '../models/workout.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class userProfileService {
-  private _user: User| null = null;
+export class WorkoutPageService {
+  private _workouts: Workout[] = [];
   private _error: string = '';
 
   constructor(private readonly http: HttpClient) {}
 
-  //Get request on /user
-  //Should be updated to fetch one user where id=sessionStorage.getItem(currentUser)
-  public fetchUser(): void {
+  public fetchWorkout(): void {
     this.http
-      .get<User>('https://mefitbackend-ajlm.herokuapp.com/user')
+      .get<Workout[]>(
+        'https://mefitbackend-ajlm.herokuapp.com/workout'
+      )
       .subscribe(
-        (user) => {
-          this._user = user;
+        (workouts) => {
+          this._workouts = workouts;
         },
         (error: HttpErrorResponse) => {
           this._error = error.message;
@@ -26,11 +26,12 @@ export class userProfileService {
       );
   }
 
-  public user(): User| null {
-    return this._user;
+  public workout():Workout[]{
+      return this._workouts;
   }
-
   public error(): string {
     return this._error;
   }
+
+
 }
