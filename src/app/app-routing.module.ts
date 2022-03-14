@@ -6,7 +6,7 @@ import { UserProfilePageComponent } from './components/user-profile-page/user-pr
 import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 import { ExercisePageComponent } from './exercise-page/exercise-page.component';
-import { UserProfilePageComponent } from './components/user-profile-page/user-profile-page.component';
+
 
 
 const routes: Routes = [

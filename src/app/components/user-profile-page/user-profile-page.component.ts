@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
-import { userProfileService } from '../../services/user-profile-page-service';
-import { Router } from '@angular/router';
+import { userProfileService } from 'src/app/services/user-profile-page.service';
+
 
 
 @Component({
@@ -27,7 +27,4 @@ export class UserProfilePageComponent implements OnInit {
     this.router.navigateByUrl('/dashboard');
   }
 
-  toDashBoard(){
-    this.router.navigateByUrl('/dashboard');
-  }
 }

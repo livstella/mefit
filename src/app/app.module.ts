@@ -17,9 +17,9 @@ import { ExercisePageComponent } from './exercise-page/exercise-page.component';
     AppComponent,
     LoginPageComponent,
     RegistrationPageComponent,
-    UserProfilePageComponent,
     GoalDashboardComponent,
-    GoalDetailsComponent
+    GoalDetailsComponent,
+    UserProfilePageComponent,
     ExercisePageComponent
   ],
   imports: [
