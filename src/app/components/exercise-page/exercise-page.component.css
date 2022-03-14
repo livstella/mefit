@@ -1,4 +1,5 @@
 .exercise-content{
     display: grid;
-    grid-template-columns: 4fr 8frS;
+    grid-template-columns: 8fr 8fr;
+    
 }
