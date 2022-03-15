@@ -1,24 +1,33 @@
 <div class="main">
     <h1>{{username}}'s Goal details page!</h1>
-    <div class = "textbutton">
-      <h2>Current goal!</h2>
-      <h2>Previous goals!</h2>
-      <h3>Finished goals!</h3>
+    
+    <div class="time">
       <span>
-        <ul class="finishGoals">
+          {{date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()}}
+      </span>
+    </div>
+
+    <div class="current-goal">
+      <h2>Current goal!</h2>
+    </div>
+    <div class="previous-goals">
+      <h2>Previous goals!</h2>
+    </div>  
+    <div class="finished-goals">
+      <h3>Finished goals!</h3>
+        <ul class="finish-goals-list">
             <li *ngFor="Goal of GoalMap | keyvalue" >
               {{Goal.timeStamp}}
               {{Goal.program}}
               {{Goal.ex}}
             </li>
         </ul>
-    </span> 
+    </div> 
+    <div class="unfinished-goals">
       <h3>Unfinished goals!</h3>
-      
-   
     </div>
-    <div>
-      <button id="btn-dashboard" type="form-control" (click)="toGoalDashbord()" class="btn">Goal dashboard</button>
-    </div>
+
+    <button id="btn-dashboard" type="form-control" (click)="toGoalDashbord()" class="btn">Goal dashboard</button>
+    
 <footer>By Experis Academy</footer>
 </div>

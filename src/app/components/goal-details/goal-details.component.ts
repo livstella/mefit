@@ -18,13 +18,14 @@ export class GoalDetailsComponent implements OnInit {
   GoalObj: any;
   ExMap: any;
   ExObj: any;
+  date = new Date();
   
   GoalItems: any;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-
+    
     //---load finished goals
     this.finishedGoals = localStorage.getItem('finished-goals')||'{}'
 
