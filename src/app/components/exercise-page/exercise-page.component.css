@@ -1,5 +1,62 @@
+.main {
+    background: url(src\assets\images\running.jpg) center;
+    background-repeat: repeat-y;
+    position: fixed; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
 .exercise-content{
     display: grid;
     grid-template-columns: 8fr 8fr;
     
+}
+
+h1 {
+    color: black;
+    background-color: lightgoldenrodyellow;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 30px;
+    display:inline-block;
+    width:100%;
+}
+
+.all-exercises {
+    background-color: beige;
+    text-align: center;
+    align-items: center;
+    font-size: 13px;
+    position: absolute;
+    height: 600px;
+    width: 500px;
+    top: 15%;
+    left: 25%;
+    padding: auto;
+    border-style: solid;
+    border-color : black;
+    margin: auto;
+    overflow: auto;
+}
+
+.selected-exercises{
+    background-color: beige;
+    text-align: center;
+    align-items: center;
+    font-size: 13px;
+    position: absolute;
+    height: 600px;
+    width: 500px;
+    top: 15%;
+    left: 60%;
+    padding: auto;
+    border-style: solid;
+    border-color : black;
+    margin: auto;
+    overflow: auto;
 }

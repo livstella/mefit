@@ -132,6 +132,8 @@ h1 {
     background-color: lightgoldenrodyellow;
     text-align: center;
     border-radius: 50px;
+    font-size: 15px;
+    width: 200px;
     height: 55px;
     position: absolute;
     top: 80px;
