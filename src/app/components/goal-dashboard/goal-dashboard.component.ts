@@ -4,6 +4,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { GoalDashbordService } from 'src/app/services/goal-dashbord.service';
 import { exercisePageService } from 'src/app/services/exercise-page.service';
 import { Exercise } from 'src/app/models/exercise.model';
 
@@ -17,8 +18,8 @@ export class GoalDashboardComponent implements OnInit {
 
   username: string = "Michel"; //placeholder for username
   date = new Date();
-  excersize: string = '';
-  excersize_options: string[] = [];
+  ex: string = '';
+  ex_options: string[] = [];
   ex_choice_list: string[] = [];
   ex_finish_list: string[] = [];
   ex_choice_list2: string[] = [];
@@ -70,12 +71,15 @@ export class GoalDashboardComponent implements OnInit {
   timeStamp: any|undefined;
   response: any;
   responseProgram: any;
+  exerciselist: Exercise[] | undefined;
 
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private readonly exercisepageservice :exercisePageService, ) { }
 
   ngOnInit(): void {
-    // this.excersize_options.push("Choose an excersize");
+    //Fetches all exercises
+    this.exercisepageservice.fetchExercise();
+    
+    //this.excersize_options.push("Choose an exercise");
     // this.excersize_options.push("lower legs");
     // this.excersize_options.push("upper legs");
     // this.excersize_options.push("lower arms");
@@ -105,12 +109,18 @@ export class GoalDashboardComponent implements OnInit {
     }
 
   }
+  
+  get exercises(): Exercise[] {
+    return this.exercisepageservice.exercise();
+  }
+
+
   //---Morning
   //---when picking excersize from dropdown-list display 
   onChangeEx(){
     let choiceEx = $("select[name='select1.1'] option:selected").index();
     if((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      this.ex_choice_list.push(this.excersize_options[choiceEx]);
+      this.ex_choice_list.push(this.exercises[choiceEx-1].name);
     }
   }
 
@@ -149,7 +159,7 @@ export class GoalDashboardComponent implements OnInit {
   onChangeEx2(){
     let choiceEx = $("select[name='select2.1'] option:selected").index();
     if ((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      this.ex_choice_list2.push(this.excersize_options[choiceEx]);
+      this.ex_choice_list2.push(this.exercises[choiceEx-1].name);
     }
   }
 
@@ -186,7 +196,7 @@ export class GoalDashboardComponent implements OnInit {
   onChangeEx3(){
     let choiceEx = $("select[name='select3.1'] option:selected").index();
     if ((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-    this.ex_choice_list3.push(this.excersize_options[choiceEx]);
+    this.ex_choice_list3.push(this.exercises[choiceEx-1].name);
     }
   }
 
@@ -257,13 +267,13 @@ export class GoalDashboardComponent implements OnInit {
 
   onChangeExcersize(){
     let choiceEx = $("select[name='selectEx'] option:selected").index();
-    this.excersize = this.excersize_options[choiceEx];
+    this.ex = this.ex_options[choiceEx];
     
-    if (this.mapCount.has(this.excersize)) {
-        this.mapCount.set(this.excersize, this.mapCount.get(this.excersize) + 1);
+    if (this.mapCount.has(this.ex)) {
+        this.mapCount.set(this.ex, this.mapCount.get(this.ex) + 1);
       }
       else {
-        this.mapCount.set(this.excersize,1); // Map to capture Count of elements
+        this.mapCount.set(this.ex,1); // Map to capture Count of elements
       }
   }
 

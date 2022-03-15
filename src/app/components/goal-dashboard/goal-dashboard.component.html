@@ -33,8 +33,9 @@
                         </ul>
                     </span>
                     <select class = "ExcerciseOptions1" name="select1.1" (change)="onChangeEx()">
-                        <option *ngFor="let excersize of excersize_options ; let i = index" >
-                          {{excersize}}
+                        <option>Choose an exercise</option>
+                        <option *ngFor="let ex of exercises ; let i = index" >
+                          {{ex.name}}
                         </option>
                     </select>
 
@@ -67,8 +68,9 @@
                         </ul>
                     </span>
                     <select class = "ExcerciseOptions2" name="select2.1" (change)="onChangeEx2()">
-                        <option *ngFor="let excersize of excersize_options ; let i = index" >
-                          {{excersize}}
+                        <option>Choose an exercise</option>
+                        <option *ngFor="let ex of exercises ; let i = index" >
+                          {{ex.name}}
                         </option>
                     </select>
 
@@ -101,8 +103,9 @@
                         </ul>
                     </span>
                     <select class = "ExcerciseOptions3" name="select3.1" (change)="onChangeEx3()">
-                        <option *ngFor="let excersize of excersize_options ; let i = index" >
-                          {{excersize}}
+                        <option>Choose an exercise</option>
+                        <option *ngFor="let ex of exercises ; let i = index" >
+                          {{ex.name}}
                         </option>
                     </select>
 
@@ -128,9 +131,10 @@
             </option>     
         </select>
         <select class = "ExcersizeOption" name="selectEx" (change)="onChangeExcersize()">
-            <option *ngFor="let Ex of excersize_options ; let i = index" >
-              {{Ex}}
-            </option>     
+            <option>Choose an exercise</option>
+            <option *ngFor="let ex of ex_options ; let i = index" >
+                {{ex}}
+            </option>    
         </select>
         <button id="clearProgram" (click)="clearProgram()">Clear program!</button>
     </div>
