@@ -1,0 +1,17 @@
+.navbar{
+    background-color: lightgoldenrodyellow;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display:inline-block;
+    width:100%;
+    
+}
+
+.nav-link{
+    text-align: center;
+    align-items: center;
+    font-size: 17px;
+    padding: 10px;
+
+}

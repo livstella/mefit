@@ -16,6 +16,24 @@
     
 }
 
+.navbar{
+    background-color: lightgoldenrodyellow;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display:inline-block;
+    width:100%;
+    
+}
+
+.nav-link{
+    text-align: center;
+    align-items: center;
+    font-size: 17px;
+    padding: 10px;
+
+}
+
 h1 {
     color: black;
     background-color: lightgoldenrodyellow;
@@ -36,7 +54,7 @@ h1 {
     height: 600px;
     width: 500px;
     top: 15%;
-    left: 25%;
+    left: 17%;
     padding: auto;
     border-style: solid;
     border-color : black;
@@ -53,10 +71,25 @@ h1 {
     height: 600px;
     width: 500px;
     top: 15%;
-    left: 60%;
+    left: 50%;
     padding: auto;
     border-style: solid;
     border-color : black;
     margin: auto;
     overflow: auto;
+}
+
+footer {
+    color: black;
+    background-color: lightgoldenrodyellow;
+    font-family: monospace;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    font-size: 15px;
+    display:inline-block;
+    width:100%;
+    position: absolute;
+    top: 820px;
+    left:0px;
 }
