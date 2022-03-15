@@ -90,7 +90,7 @@ h1 {
     padding: 1%;
 
 }
-.progressbarsmall {
+.progressbar-small {
     width: 600px;
     height: 1em;
     background-color: darkgray;
@@ -100,7 +100,7 @@ h1 {
     left: 5%; 
 }
 
-.progressbarsmall::before{
+.progressbar-small::before{
     content: attr(data-label);
     display: flex;
     align-items: center;
@@ -138,7 +138,7 @@ h1 {
     left: 170px;
 }
 
-.commitfinish {
+.commit-finish {
     background-color: lightgoldenrodyellow;
     margin: 5px;
     position: absolute;
@@ -149,7 +149,7 @@ h1 {
     border-radius: 50px;
 }
 
-.fin, .remove, .NotFinish {
+.fin, .remove, .notFinish {
     background-color: lightgoldenrodyellow;
     text-align: center;
     border-radius: 50px;
@@ -198,7 +198,7 @@ h1 {
     margin: 2%;
 }
 
-.ExcerciseOptions, .WorkoutOptions {
+.exercise-options, .workout-options {
     background-color: lightgoldenrodyellow;
 }
 
@@ -218,17 +218,17 @@ h1 {
     margin: 1%;
 }
 
-.commitprogram, .clearprogram {
+.commit-program, .clear-program {
     background-color: lightgoldenrodyellow;
     text-align: center;
     border-radius: 50px;
 }
 
-.ProgramOption, .WorkoutOption, .ExcersizeOption {
+.program-option, .workout-option, .excersize-option {
     background-color: lightgoldenrodyellow;
 }
 
-.weekgoaldisplay {
+.weekgoal-display {
     background-color: beige;
     text-align: center;
     border-style: solid;
