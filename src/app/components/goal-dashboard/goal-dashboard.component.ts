@@ -67,6 +67,7 @@ export class GoalDashboardComponent implements OnInit {
   timeStamp: any|undefined;
   response: any;
   responseProgram: any;
+  progress_small: Number | undefined;
 
 
   constructor(private router: Router) { }
@@ -338,6 +339,7 @@ export class GoalDashboardComponent implements OnInit {
        });
 
        this.progress = ((this.finishHistory.length/sumEx)*100).toFixed(2);
+      
 
        if (Number(this.progress) <= 100){
           this.progress_display = this.progress +" percent finished of you weekly goal!";
@@ -358,10 +360,11 @@ export class GoalDashboardComponent implements OnInit {
             for(let i = 0; i<this.mapCountKeys.length;i++){
               let InValue = this.mapCountWeekInitial.get(this.mapCountKeys[i]) 
               let newValue2 = this.mapCountWeekCommit.get(this.mapCountKeys[i])
+              this.progress_small = Number(((1-(newValue2/InValue))*100).toFixed(2))
               if(Number(newValue2)==NaN||Number(newValue2)==0){
                 this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) All routines Finished"])
               }else{
-                this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+((1-(newValue2/InValue))*100).toFixed(2)+") Percent finished"])
+                this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+this.progress_small+") Percent finished"])
               }
             }
                 
@@ -408,8 +411,8 @@ export class GoalDashboardComponent implements OnInit {
                   // //alert(this.newMap2.get("upper arms"))
             }
   
-           // $('#commit').attr('disabled','disabled');
-           // $('.NotFinish').attr('disabled','disabled');
+            //$('#commit').attr('disabled','disabled');
+            //$('.NotFinish').attr('disabled','disabled');
   
          }else{
             alert("only commit finished when workout is finished! Choose all allowed excersizes")
