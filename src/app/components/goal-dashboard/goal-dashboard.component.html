@@ -16,7 +16,7 @@
             <h3>Morning</h3>
             <span>
             <h4>Planned!</h4>
-                <ul class="ExerciseDisplay">
+                <ul class="exerciseDisplay">
                     <li *ngFor="let choise of ex_choice_list; let i = index" >
                         {{choise}}
                         <button id="i" class="fin" (click)="updateExFinish(this.i)">Finished!</button>
@@ -26,21 +26,21 @@
             </span>
             <span>
             <h4>Finished!</h4>
-                <ul class="ExFinishDisplay">
+                <ul class="exFinishDisplay">
                     <li *ngFor="let finish of ex_finish_list; let i = index" >
                         {{finish}}
-                        <button class="NotFinish" id="i" (click)="updateExPlaned(this.i)">Not finished!</button>
+                        <button class="notFinish" id="i" (click)="updateExPlaned(this.i)">Not finished!</button>
                     </li>>
                 </ul>
             </span>
             <div class="panes">
-            <select class = "ExerciseOptions" name="select1.1" (change)="onChangeEx()">
+            <select class = "exerciseOptions" name="select1.1" (change)="onChangeEx()">
                 <option *ngFor="let excersize of excersize_options ; let i = index" >
                     {{excersize}}
                 </option>
             </select>
 
-            <select class = "WorkoutOptions" name="select1.2" (change)="onChangeWork()">
+            <select class = "workoutOptions" name="select1.2" (change)="onChangeWork()">
                 <option *ngFor="let workout of workout_keys ; let i = index" >
                     {{workout}}
                 </option>
@@ -52,7 +52,7 @@
             <h3>Noon</h3>
             <span>
             <h4>Planned!</h4>
-            <ul class="ExerciseDisplay">
+            <ul class="exerciseDisplay">
                 <li *ngFor="let choise of ex_choice_list2; let i = index" >
                     {{choise}}
                     <button id="i" class="fin" (click)="updateExFinish2(this.i)">Finished!</button>
@@ -62,21 +62,21 @@
             </span>
             <span>
             <h4>Finished!</h4>
-            <ul class="ExFinishdisplay">
+            <ul class="exFinishdisplay">
                 <li *ngFor="let finish of ex_finish_list2; let i = index" >
                     {{finish}}
-                    <button class="NotFinish" id="i" (click)="updateExPlaned2(this.i)">Not finished!</button>
+                    <button class="notFinish" id="i" (click)="updateExPlaned2(this.i)">Not finished!</button>
                 </li>>
             </ul>
             </span>
             <div class="panes">
-            <select class = "ExerciseOptions" name="select2.1" (change)="onChangeEx2()">
+            <select class = "exerciseOptions" name="select2.1" (change)="onChangeEx2()">
                 <option *ngFor="let excersize of excersize_options ; let i = index" >
                     {{excersize}}
                 </option>
             </select>
 
-            <select class = "WorkoutOptions" name="select2.2" (change)="onChangeWork2()">
+            <select class = "workoutOptions" name="select2.2" (change)="onChangeWork2()">
                 <option *ngFor="let workout of workout_keys ; let i = index" >
                     {{workout}}
                 </option>
@@ -88,7 +88,7 @@
             <h3>Evening</h3>
             <span>
             <h4>Planned!</h4>
-            <ul class="ExerciseDisplay">
+            <ul class="exerciseDisplay">
                 <li *ngFor="let choise of ex_choice_list3; let i = index" >
                     {{choise}}
                     <button id="i" class = "fin" (click)="updateExFinish3(this.i)">Finished!</button>
@@ -98,21 +98,21 @@
             </span>
             <span>
             <h4>Finished!</h4>
-            <ul class="ExFinishdisplay">
+            <ul class="exFinishdisplay">
                 <li *ngFor="let finish of ex_finish_list3; let i = index" >
                     {{finish}}
-                    <button class="NotFinish" id="i" (click)="updateExPlaned3(this.i)">Not finished!</button>
+                    <button class="notFinish" id="i" (click)="updateExPlaned3(this.i)">Not finished!</button>
                 </li>>
             </ul>
             </span>
                 <div class="panes">
-                <select class = "ExerciseOptions" name="select3.1" (change)="onChangeEx3()">
+                <select class = "exerciseOptions" name="select3.1" (change)="onChangeEx3()">
                     <option *ngFor="let excersize of excersize_options ; let i = index" >
                         {{excersize}}
                     </option>
                 </select>
 
-                <select class = "WorkoutOptions" name="select3.2" (change)="onChangeWork3()">
+                <select class = "workoutOptions" name="select3.2" (change)="onChangeWork3()">
                     <option *ngFor="let workout of workout_keys ; let i = index" >
                         {{workout}}
                     </option>
@@ -126,17 +126,17 @@
         <h2>Weekly Goal!</h2>
         <div class="panebuttons">
         <button id="i" class ="commitprogram" (click)="commitProgram()">Commit program!</button>
-        <select class = "ProgramOption" name="selectProgram" (change)="onChangeProgram()">
+        <select class = "programOption" name="selectProgram" (change)="onChangeProgram()">
             <option *ngFor="let program of program_keys ; let i = index" >
               {{program}}
             </option>     
         </select>
-        <select class = "WorkoutOption" name="selectWorkout" (change)="onChangeWorkout()">
+        <select class = "workoutOption" name="selectWorkout" (change)="onChangeWorkout()">
             <option *ngFor="let workout of workout_keys ; let i = index" >
               {{workout}}
             </option>     
         </select>
-        <select class = "ExcersizeOption" name="selectEx" (change)="onChangeExcersize()">
+        <select class = "excersizeOption" name="selectEx" (change)="onChangeExcersize()">
             <option *ngFor="let Ex of excersize_options ; let i = index" >
               {{Ex}}
             </option>     
@@ -147,7 +147,7 @@
 
     <div class = "weekgoaldisplay">
         <h3>Workout build</h3>
-        <ul class="WeeklyGoal">
+        <ul class="weeklyGoal">
             <li *ngFor="let item of mapCount | keyvalue" >
                 {{item.key}}
                 {{item.value}}
@@ -157,7 +157,7 @@
     
     <div class = "choosen">
         <h3>Choosen program</h3>
-        <ul class="WeeklyGoalcommit">
+        <ul class="weeklyGoalcommit">
             <li *ngFor="let item of mapCountWeekCommitDisplay | keyvalue" >
                 {{item.key}}
                 {{item.value}}

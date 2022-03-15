@@ -2,6 +2,7 @@
     background: url(src\assets\images\running.jpg) center;
     background-repeat: repeat-y;
     position: fixed; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     top: 0; 
     left: 0; 
     width: 100%;
@@ -12,7 +13,6 @@
 h1 {
     color: black;
     background-color: lightgoldenrodyellow;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -22,7 +22,6 @@ h1 {
 }
 .info {
     color: black;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 15px;
     text-align: center;
 }
@@ -37,7 +36,6 @@ h1 {
     width: 440px;
     top: 150px;
     left: 9%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: auto;
     border-style: solid;
     border-color : black;
@@ -55,7 +53,6 @@ h1 {
     width: 787px;
     top: 150px;
     left: 39.5%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: auto;
     border-style: solid;
     border-color : black;
@@ -126,7 +123,6 @@ h1 {
     width: 110px;
     top: 80px;
     left: 40px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 1%;
     border-style: solid;
     border-color : black;
@@ -134,7 +130,6 @@ h1 {
 
 .btn-details {
     background-color: lightgoldenrodyellow;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     border-radius: 50px;
     height: 55px;
@@ -150,14 +145,12 @@ h1 {
     left: 40%;
     top: 70%;
     width: 300px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     border-radius: 50px;
 }
 
 .fin, .remove, .NotFinish {
     background-color: lightgoldenrodyellow;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     border-radius: 50px;
 } 
@@ -227,7 +220,6 @@ h1 {
 
 .commitprogram, .clearprogram {
     background-color: lightgoldenrodyellow;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     border-radius: 50px;
 }
