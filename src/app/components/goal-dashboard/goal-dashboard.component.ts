@@ -78,18 +78,6 @@ export class GoalDashboardComponent implements OnInit {
   ngOnInit(): void {
     //Fetches all exercises
     this.exercisepageservice.fetchExercise();
-    
-    //this.excersize_options.push("Choose an exercise");
-    // this.excersize_options.push("lower legs");
-    // this.excersize_options.push("upper legs");
-    // this.excersize_options.push("lower arms");
-    // this.excersize_options.push("upper arms");
-    // this.excersize_options.push("lower back");
-    // this.excersize_options.push("upper back");
-    // this.excersize_options.push("stomach");
-    // this.excersize_options.push("chest");
-    // this.excersize_options.push("hips");
-    // this.excersize_options.push("shoulders");
 
     this.workout_options.set(["Choose a workout"],null);
     this.workout_options.set("legs",["lower legs","upper legs","lower back","upper back", "hips"]);
