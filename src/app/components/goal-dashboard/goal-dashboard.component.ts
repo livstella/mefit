@@ -4,6 +4,9 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { exercisePageService } from 'src/app/services/exercise-page.service';
+import { Exercise } from 'src/app/models/exercise.model';
+
 
 @Component({
   selector: 'app-goal-dashboard',
@@ -72,17 +75,17 @@ export class GoalDashboardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.excersize_options.push("Choose an excersize");
-    this.excersize_options.push("lower legs");
-    this.excersize_options.push("upper legs");
-    this.excersize_options.push("lower arms");
-    this.excersize_options.push("upper arms");
-    this.excersize_options.push("lower back");
-    this.excersize_options.push("upper back");
-    this.excersize_options.push("stomach");
-    this.excersize_options.push("chest");
-    this.excersize_options.push("hips");
-    this.excersize_options.push("shoulders");
+    // this.excersize_options.push("Choose an excersize");
+    // this.excersize_options.push("lower legs");
+    // this.excersize_options.push("upper legs");
+    // this.excersize_options.push("lower arms");
+    // this.excersize_options.push("upper arms");
+    // this.excersize_options.push("lower back");
+    // this.excersize_options.push("upper back");
+    // this.excersize_options.push("stomach");
+    // this.excersize_options.push("chest");
+    // this.excersize_options.push("hips");
+    // this.excersize_options.push("shoulders");
 
     this.workout_options.set(["Choose a workout"],null);
     this.workout_options.set("legs",["lower legs","upper legs","lower back","upper back", "hips"]);
