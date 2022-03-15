@@ -26,23 +26,31 @@
     
 }
 
-.nav-link{
-    text-align: center;
-    align-items: center;
-    font-size: 17px;
-    padding: 10px;
-
-}
-
-h1 {
+.navbar a {
+    float: left;
     color: black;
-    background-color: lightgoldenrodyellow;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    font-size: 30px;
-    display:inline-block;
-    width:100%;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+.navbar a.active {
+    background-color: #04AA6D;
+    color: black;
+  }
+
+  h1 {
+    color: black;
+    text-align: center;
+    font-size: 17px;
+    float: right;
+    padding-right: 10px;
 }
 
 .all-exercises {

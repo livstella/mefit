@@ -1,11 +1,10 @@
 <div class="main">
-    <h1>{{username}}'s Goal details page!</h1>
     
-    <div class="time">
-      <span>
-          {{date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()}}
-      </span>
-    </div>
+  <div class="time">
+    <span>
+        {{date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()}}
+    </span>
+  </div>
 
     <div class="current-goal">
       <h2>Current goal!</h2>
@@ -28,11 +27,12 @@
     </div>
 
     <div class="navbar">
-      <a class="nav-link" href="/login">Login</a>
-      <a class="nav-link" href="/dashboard">Goal Dashboard</a>
-      <a class="nav-link" href="/goaldetails">Goal Details</a>
-      <a class="nav-link" href="/exercises">Exercises</a>
+      <a href="/login">Login</a>
+      <a href="/dashboard">Goal Dashboard</a>
+      <a class="active" href="/goaldetails">Goal Details</a>
+      <a href="/exercises">Exercises</a>
+      <span><h1>{{username}}'s Goal details page!</h1></span>
     </div>
-    
+
 <footer>By Experis Academy</footer>
 </div>
