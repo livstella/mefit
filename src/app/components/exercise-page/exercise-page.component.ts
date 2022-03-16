@@ -14,8 +14,6 @@ import {
   styleUrls: ['./exercise-page.component.css'],
 })
 export class ExercisePageComponent implements OnInit {
-
-
   //Injects the services needed
   constructor(
     private readonly exercisePageService: exercisePageService,
@@ -34,6 +32,7 @@ export class ExercisePageComponent implements OnInit {
   onExerciseClicked(exercise: Exercise): void {
     this.selectedExerciseService.setExercise(exercise);
 
+    //sanitizes the resourceURL and safes it to selected-exercise.service
     this.selectedExerciseService.setSafeVideo(
       this.sanitizer.bypassSecurityTrustResourceUrl(exercise.videoLink)
     );
