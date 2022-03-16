@@ -47,7 +47,8 @@ export class LoginPageComponent implements OnInit {
         if (res == null) {
             this.router.navigateByUrl('/register');
           }
-        //---if found -> register in local storage
+        //---if found -> register in session storage
+        //---navigate to dashboard
         else if(res != null && (JSON.parse(JSON.stringify(res)).password==this.password)) {
           this.users = res
           sessionStorage.setItem("current-user", JSON.stringify(this.users))
