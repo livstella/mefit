@@ -14,7 +14,7 @@ import {
   styleUrls: ['./exercise-page.component.css'],
 })
 export class ExercisePageComponent implements OnInit {
-  public sanitizedUrl: SafeResourceUrl | null = null;
+
 
   //Injects the services needed
   constructor(
