@@ -3,12 +3,12 @@
     <form class="form-control" (ngSubmit)= "onSubmit()">
     <label class="label">Welcome, please login to continue!</label>
     <div class = "text">
-      <input type ="text" id = "login-form" name = "username" [(ngModel)] = "email" placeholder ="Type in your username" />
+      <input type ="text" id = "login-form" name = "username" [(ngModel)] = "email" placeholder ="Type in your email" />
       <input type ="password" id = "login-form" name = "password" [(ngModel)] = "password" placeholder ="Type in your password" />
     </div>
     <div class = "buttons">
-      <button id="btn-login" type="form-control"  class="btn">Login!</button>
-      <button id="btn-register" type="form-control" (click)="toRegister()" class="btn">Register!</button>
+      <button id="btn-login" type="form-control" class="btn">Login!</button>
+      <button id="btn-register" (click)="toRegister()" class="btn">Register!</button>
     </div>
     </form>
 <footer>By Experis Academy</footer>

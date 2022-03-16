@@ -40,18 +40,21 @@ export class LoginPageComponent implements OnInit {
       }
     }
 
-    onNavigate() {
+  onNavigate() {
       //---search for user
       //---if none is found -> redirect to registration page
       this.loginService.queryUser(this.email).subscribe((res: Login[]) => {
-        if (res.length == 0) {
+        if (res == null) {
             this.router.navigateByUrl('/register');
           }
-        else {
-          //---if found -> register in local storage
+        //---if found -> register in local storage
+        else if(res != null && (JSON.parse(JSON.stringify(res)).password==this.password)) {
           this.users = res
           sessionStorage.setItem("current-user", JSON.stringify(this.users))
           this.router.navigateByUrl('/dashboard');
+        }
+        else{
+          alert("Password is incorrect!")
         }
       })
     }

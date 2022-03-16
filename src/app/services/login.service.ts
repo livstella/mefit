@@ -20,7 +20,7 @@ export class LoginService {
 
   //---check for user
   public queryUser(email:string): Observable<Login[]> {
-    return this.http.get<Login[]>(`${this.apiURL}/user?email=${email}`)
+    return this.http.get<Login[]>(`${this.apiURL}/user/email/${email}`)
   }
 
   //---register users
