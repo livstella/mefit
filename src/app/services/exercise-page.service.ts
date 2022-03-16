@@ -13,9 +13,7 @@ export class exercisePageService {
 
   public fetchExercise(): void {
     this.http
-      .get<Exercise[]>(
-        'https://mefitbackend-ajlm.herokuapp.com/exercise'
-      )
+      .get<Exercise[]>('https://mefitbackend-ajlm.herokuapp.com/exercise')
       .subscribe(
         (exercise) => {
           this._exercises = exercise;
@@ -26,12 +24,10 @@ export class exercisePageService {
       );
   }
 
-  public exercise():Exercise[]{
-      return this._exercises;
+  public exercise(): Exercise[] {
+    return this._exercises;
   }
   public error(): string {
     return this._error;
   }
-
-
 }
