@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  username: string = "";
+  email: string = "";
   password: string = "";
 
   @Input() login: Login | undefined;
@@ -27,8 +27,8 @@ export class LoginPageComponent implements OnInit {
 
   //---when button is clicked, username is checked
   onSubmit() {
-    if (this.username == "") {
-      alert("Please enter a username to continue...")
+    if (this.email == "") {
+      alert("Please enter an email to continue...")
       return
     }
     else if(this.password == ""){
@@ -43,7 +43,7 @@ export class LoginPageComponent implements OnInit {
     onNavigate() {
       //---search for user
       //---if none is found -> redirect to registration page
-      this.loginService.queryUser(this.username).subscribe((res: Login[]) => {
+      this.loginService.queryUser(this.email).subscribe((res: Login[]) => {
         if (res.length == 0) {
             this.router.navigateByUrl('/register');
           }

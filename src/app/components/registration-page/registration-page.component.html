@@ -3,7 +3,9 @@
     <form class="form-control" (ngSubmit)= "onSubmit()">
       <label class="label">Welcome, please register to continue!</label>
     <div class = "text">
-      <input type ="text" id = "login-form" name = "username" [(ngModel)] = "username" placeholder ="Type in your username" />
+      <input type ="text" id = "login-form" name = "email" [(ngModel)] = "email" placeholder ="Type in your email" />
+      <input type ="text" id = "login-form" name = "firstname" [(ngModel)] = "firstname" placeholder ="Type in your first name" />
+      <input type ="text" id = "login-form" name = "lastname" [(ngModel)] = "lastname" placeholder ="Type in your last name" />
       <input type ="password" id = "login-form" name = "password" [(ngModel)] = "password1" placeholder ="Type in your password" />
       <input type ="password" id = "login-form" name = "password" [(ngModel)] = "password2" placeholder ="Repeat password" />
     </div> 
