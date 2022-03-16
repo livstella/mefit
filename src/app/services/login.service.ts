@@ -26,7 +26,7 @@ export class LoginService {
   //---register users
   public setUserToApi(email:string, firstname:string, lastname:string, password:string): Observable<Login[]> {
     const headers = {'Content-Type': 'application/json' };
-    const body = {email: email, firstname: firstname, lastname: lastname, password: password};
+    const body = {email: email, firstName: firstname, lastName: lastname, password: password};
     let data = this.http.post<Login[]>(`${this.apiURL}/user`, JSON.stringify(body), {'headers':headers})
     return data
   }
