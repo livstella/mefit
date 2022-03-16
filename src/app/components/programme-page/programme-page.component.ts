@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectedProgrammeService } from 'src/app/services/selected-programme.service';
 import { Programme } from '../../models/programme.model';
 import { ProgrammePageService } from '../../services/programme-page.service';
 
@@ -12,7 +13,7 @@ export class ProgrammePageComponent implements OnInit {
 
   constructor(
     private readonly programmePageService: ProgrammePageService,
-   // private readonly selectedProgrammeService: SelectedProgrammeService
+    private readonly selectedProgrammeService: SelectedProgrammeService
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +25,8 @@ export class ProgrammePageComponent implements OnInit {
   }
 
   onProgrammeClicked(programme:Programme):void{
+    console.log(programme)
 
-    //this.selectedProgrammeService.setProgramme(programme);
+    this.selectedProgrammeService.setProgramme(programme);
   }
 }
