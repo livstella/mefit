@@ -1,7 +1,16 @@
-<section *ngIf=" exercise !==null" class="selected-content">
-    <h1>Details on the exercise you have clicked</h1>
-    <img src="{{exercise.image}}" alt="exercise">
-    <p>{{exercise.description}}</p>
-    <iframe width="300"  src="{{exercise.videoLink}}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
-<!-- More details to follow -->
+<section *ngIf="exercise !== null" class="selected-content">
+  <h1>Details on the exercise you have clicked</h1>
+  <img src="{{ exercise.image }}" alt="exercise" />
+
+  <p>{{ exercise.description }}</p>
+
+    <!-- In the src property binding is used to access the safeUrlResource that is accesed from selected-exercise.service-->
+  <iframe
+    width="300"
+    [src]="safeVideo"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
 </section>
