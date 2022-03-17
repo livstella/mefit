@@ -35,14 +35,16 @@
             </span>
             <div class="panes">
             <select class = "exercise-options" name="select1.1" (change)="onChangeEx()">
-                <option *ngFor="let excersize of excersize_options ; let i = index" >
-                    {{excersize}}
+                <option>Choose an exercise</option>
+                <option *ngFor="let ex of exercises ; let i = index" >
+                    {{ex.name}}
                 </option>
             </select>
 
             <select class = "workout-options" name="select1.2" (change)="onChangeWork()">
-                <option *ngFor="let workout of workout_keys ; let i = index" >
-                    {{workout}}
+                <option>Choose a workout</option>
+                <option *ngFor="let work of workouts ; let i = index" >
+                    {{work.name}}
                 </option>
             </select>
             </div>
@@ -71,8 +73,9 @@
             </span>
             <div class="panes">
             <select class = "exercise-options" name="select2.1" (change)="onChangeEx2()">
-                <option *ngFor="let excersize of excersize_options ; let i = index" >
-                    {{excersize}}
+                <option>Choose an exercise</option>
+                <option *ngFor="let ex of exercises ; let i = index" >
+                    {{ex.name}}
                 </option>
             </select>
 
@@ -107,8 +110,9 @@
             </span>
                 <div class="panes">
                 <select class = "exercise-options" name="select3.1" (change)="onChangeEx3()">
-                    <option *ngFor="let excersize of excersize_options ; let i = index" >
-                        {{excersize}}
+                    <option>Choose an exercise</option>
+                     <option *ngFor="let ex of exercises ; let i = index" >
+                        {{ex.name}}
                     </option>
                 </select>
 
@@ -137,8 +141,9 @@
             </option>     
         </select>
         <select class = "excersize-option" name="selectEx" (change)="onChangeExcersize()">
-            <option *ngFor="let Ex of excersize_options ; let i = index" >
-              {{Ex}}
+            <option>Choose an exercise</option>
+            <option *ngFor="let ex of exercises ; let i = index" >
+              {{ex.name}}
             </option>     
         </select>
         <button id="clear-program" class="clear-program" (click)="clearProgram()">Clear program!</button>

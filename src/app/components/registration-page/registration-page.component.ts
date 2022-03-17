@@ -10,7 +10,9 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class RegistrationPageComponent implements OnInit {
 
-  username: string = "";
+  email: string = "";
+  firstname: string = "";
+  lastname: string = "";
   password1: string = "";
   password2: string = "";
   
@@ -26,8 +28,16 @@ export class RegistrationPageComponent implements OnInit {
 
   //---when button is clicked, username is checked
   onSubmit() {
-    if (this.username == "") {
+    if (this.email == "") {
       alert("Please enter a username to continue...")
+      return
+    }
+    else if(this.firstname == ""){
+      alert("Please enter a first name to continue...")
+      return
+    }
+    else if(this.password1 == ""){
+      alert("Please enter a last name to continue...")
       return
     }
     else if(this.password1 == ""){
@@ -48,7 +58,7 @@ export class RegistrationPageComponent implements OnInit {
   }
   
   onNavigate(){
-      this.loginService.setUserToApi(this.username, this.password1).subscribe((res: Login[]) => {
+      this.loginService.setUserToApi(this.email, this.firstname, this.lastname, this.password1).subscribe((res: Login[]) => {
         sessionStorage.setItem("current-user", JSON.stringify([res]))
         this.router.navigateByUrl('/profile');
         })
