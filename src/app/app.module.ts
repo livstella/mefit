@@ -16,6 +16,15 @@ import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboa
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
+import { exercisePageService } from './services/exercise-page.service';
+import { LoginService } from './services/login.service';
+import { MefitGuardService } from './services/mefit-guard.service';
+import { ProgrammePageService } from './services/programme-page.service';
+import { SelectedExerciseService } from './services/selected-exercise.service';
+import { SelectedWorkoutService } from './services/selected-workout.service';
+import { userProfileService } from './services/user-profile-page.service';
+import { WorkoutPageService } from './services/workout-page.service';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +48,7 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
     AppRoutingModule
 
   ],
-  providers: [],
+  providers: [exercisePageService, LoginService, ProgrammePageService, SelectedExerciseService, SelectedWorkoutService, userProfileService, WorkoutPageService, MefitGuardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
