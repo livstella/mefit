@@ -21,8 +21,12 @@ export class UserProfilePageComponent implements OnInit {
   get user(): User | null {
     return this.userProfileService.user();
   }
+  get userId(): number | null {
+    return this.userProfileService.userId();
+  }
 
   toDashBoard() {
-    this.router.navigateByUrl('/dashboard');
+    //this.router.navigateByUrl('/dashboard');
+    console.log(this.user)
   }
 }
