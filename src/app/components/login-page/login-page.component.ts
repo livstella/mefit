@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  username: string = "";
+  email: string = "";
   password: string = "";
 
   @Input() login: Login | undefined;
@@ -27,8 +27,8 @@ export class LoginPageComponent implements OnInit {
 
   //---when button is clicked, username is checked
   onSubmit() {
-    if (this.username == "") {
-      alert("Please enter a username to continue...")
+    if (this.email == "") {
+      alert("Please enter an email to continue...")
       return
     }
     else if(this.password == ""){
@@ -40,18 +40,22 @@ export class LoginPageComponent implements OnInit {
       }
     }
 
-    onNavigate() {
+  onNavigate() {
       //---search for user
       //---if none is found -> redirect to registration page
-      this.loginService.queryUser(this.username).subscribe((res: Login[]) => {
-        if (res.length == 0) {
+      this.loginService.queryUser(this.email).subscribe((res: Login[]) => {
+        if (res == null) {
             this.router.navigateByUrl('/register');
           }
-        else {
-          //---if found -> register in local storage
+        //---if found -> register in session storage
+        //---navigate to dashboard
+        else if(res != null && (JSON.parse(JSON.stringify(res)).password==this.password)) {
           this.users = res
           sessionStorage.setItem("current-user", JSON.stringify(this.users))
           this.router.navigateByUrl('/dashboard');
+        }
+        else{
+          alert("Password is incorrect!")
         }
       })
     }

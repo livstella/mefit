@@ -4,6 +4,10 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { Exercise } from 'src/app/models/exercise.model';
+import { Workout } from 'src/app/models/workout.model';
+import { exercisePageService } from 'src/app/services/exercise-page.service';
+import { WorkoutPageService } from 'src/app/services/workout-page.service';
 
 @Component({
   selector: 'app-goal-dashboard',
@@ -70,24 +74,17 @@ export class GoalDashboardComponent implements OnInit {
   progress_small: Number | undefined;
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private readonly exercisepageservice :exercisePageService, private readonly workoutpageservice: WorkoutPageService) { }
 
   ngOnInit(): void {
-    this.excersize_options.push("Choose an excersize");
-    this.excersize_options.push("lower legs");
-    this.excersize_options.push("upper legs");
-    this.excersize_options.push("lower arms");
-    this.excersize_options.push("upper arms");
-    this.excersize_options.push("lower back");
-    this.excersize_options.push("upper back");
-    this.excersize_options.push("stomach");
-    this.excersize_options.push("chest");
-    this.excersize_options.push("hips");
-    this.excersize_options.push("shoulders");
+    
+    //---Fetch all exercises
+    this.exercisepageservice.fetchExercise();
 
-    this.workout_options.set(["Choose a workout"],null);
-    this.workout_options.set("legs",["lower legs","upper legs","lower back","upper back", "hips"]);
-    this.workout_options.set("arms",["lower arms","upper arms","stomach","chest", "shoulders"]);
+    //---Fetch all workouts
+    this.workoutpageservice.fetchWorkout();
+
+  
 
     for (let key of this.workout_options.keys()){
       this.workout_keys.push(key);
@@ -103,25 +100,42 @@ export class GoalDashboardComponent implements OnInit {
     }
 
   }
+
+  get exercises(): Exercise[] {
+    return this.exercisepageservice.exercise();
+  }
+
+  get workouts(): Workout[] {
+    return this.workoutpageservice.workout();
+  }
+
+
   //---Morning
   //---when picking excersize from dropdown-list display 
   onChangeEx(){
     let choiceEx = $("select[name='select1.1'] option:selected").index();
     if((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      this.ex_choice_list.push(this.excersize_options[choiceEx]);
+      this.ex_choice_list.push(this.exercises[choiceEx-1].name);
     }
   }
 
   //---when picking workout from dropdown-list display 
   onChangeWork(){
     let choiceWork = $("select[name='select1.2'] option:selected").index();
-    this.workout_key = this.workout_keys[choiceWork];
-    this.workout_ex = this.workout_options.get(this.workout_key);
-    if (this.ex_choice_list.length == 0 && this.ex_finish_list.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      for (let i = 0; i<this.workout_ex.length; i++){
-        this.ex_choice_list.push(this.workout_ex[i]);}
+    if((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
+      this.ex_choice_list.push(this.workouts[choiceWork-1].name);
     }
   }
+
+  // onChangeWork(){
+  //   let choiceWork = $("select[name='select1.2'] option:selected").index();
+  //   this.workout_key = this.workout_keys[choiceWork];
+  //   this.workout_ex = this.workout_options.get(this.workout_key);
+  //   if (this.ex_choice_list.length == 0 && this.ex_finish_list.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
+  //     for (let i = 0; i<this.workout_ex.length; i++){
+  //       this.ex_choice_list.push(this.workout_ex[i]);}
+  //   }
+  // }
 
 
   //---add excersize to finish list
@@ -147,7 +161,7 @@ export class GoalDashboardComponent implements OnInit {
   onChangeEx2(){
     let choiceEx = $("select[name='select2.1'] option:selected").index();
     if ((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      this.ex_choice_list2.push(this.excersize_options[choiceEx]);
+      this.ex_choice_list2.push(this.exercises[choiceEx-1].name);
     }
   }
 
@@ -184,7 +198,7 @@ export class GoalDashboardComponent implements OnInit {
   onChangeEx3(){
     let choiceEx = $("select[name='select3.1'] option:selected").index();
     if ((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-    this.ex_choice_list3.push(this.excersize_options[choiceEx]);
+    this.ex_choice_list3.push(this.exercises[choiceEx-1].name);
     }
   }
 
