@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SelectedExerciseService } from 'src/app/services/selected-exercise.service';
 import { Exercise } from '../../models/exercise.model';
 import { exercisePageService } from '../../services/exercise-page.service';
+import {
+  DomSanitizer,
+  SafeResourceUrl,
+  SafeUrl,
+} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-exercise-page',
@@ -12,7 +17,8 @@ export class ExercisePageComponent implements OnInit {
   //Injects the services needed
   constructor(
     private readonly exercisePageService: exercisePageService,
-    private readonly selectedExerciseService: SelectedExerciseService
+    private readonly selectedExerciseService: SelectedExerciseService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -23,8 +29,13 @@ export class ExercisePageComponent implements OnInit {
     return this.exercisePageService.exercise();
   }
 
-  onExerciseClicked(exercise:Exercise):void{
-
+  onExerciseClicked(exercise: Exercise): void {
     this.selectedExerciseService.setExercise(exercise);
+
+    //sanitizes the resourceURL and safes it to selected-exercise.service
+    this.selectedExerciseService.setSafeVideo(
+      this.sanitizer.bypassSecurityTrustResourceUrl(exercise.videoLink)
+    );
+    console.log(exercise);
   }
 }

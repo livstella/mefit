@@ -6,16 +6,17 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class userProfileService {
-  private _user: User| null = null;
+  private _user: User | null = null;
   private _error: string = '';
 
   constructor(private readonly http: HttpClient) {}
 
-  //Get request on /user
+  //Get request on /user/1
   //Should be updated to fetch one user where id=sessionStorage.getItem(currentUser)
+  //Maybe email..?
   public fetchUser(): void {
     this.http
-      .get<User>('https://mefitbackend-ajlm.herokuapp.com/user')
+      .get<User>('https://mefitbackend-ajlm.herokuapp.com/user/1')
       .subscribe(
         (user) => {
           this._user = user;
@@ -26,7 +27,7 @@ export class userProfileService {
       );
   }
 
-  public user(): User| null {
+  public user(): User | null {
     return this._user;
   }
 
