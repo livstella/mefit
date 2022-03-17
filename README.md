@@ -7,7 +7,11 @@ The deployed version of this app can be [found here](https://naughty-kowalevski-
 
 
 ## Purpose
-This app allows the user to set workout goals and track the progress for these. 
+This app allows the user to register and log in to see the following features:
+- An overview of all available exercises with desciption and video
+- An overview of workouts and programme available - put together of the available exercises
+- A dashboard where the user can set goals and see the progress for set goals
+- A page to see details for the current set goal and previously accomplished goals
 
 ## Development
 
