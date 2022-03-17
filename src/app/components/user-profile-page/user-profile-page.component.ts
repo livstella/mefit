@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 import { userProfileService } from 'src/app/services/user-profile-page.service';
+import { Profile } from 'src/app/models/profile.model';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -16,17 +17,21 @@ export class UserProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.userProfileService.fetchUser();
+    this.userProfileService.fetchProfile();
   }
 
   get user(): User | null {
-    return this.userProfileService.user();
+    return this.userProfileService.userData();
   }
   get userId(): number | null {
     return this.userProfileService.userId();
   }
 
+  get profile(): Profile | null {
+    return this.userProfileService.profileData();
+  }
+
   toDashBoard() {
-    //this.router.navigateByUrl('/dashboard');
-    console.log(this.user)
+    this.router.navigateByUrl('/dashboard');
   }
 }
