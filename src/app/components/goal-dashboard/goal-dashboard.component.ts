@@ -26,6 +26,9 @@ export class GoalDashboardComponent implements OnInit {
   ex_options_names: string[] = [];
   ex_choice_list: string[] = [];
   ex_finish_list: string[] = [];
+  ex_choice_map = new Map();
+  ex_finish_map = new Map();
+
   ex_choice_list2: string[] = [];
   ex_finish_list2: string[] = [];
   ex_choice_list3: string[] = [];
@@ -93,19 +96,6 @@ export class GoalDashboardComponent implements OnInit {
     //---Fetch all programs
     this.programPageService.fetchProgramme();
 
-    for (let key of this.workout_options.keys()){
-      this.workout_keys.push(key);
-    }
-    
-    this.program_options.set(["Choose a program"],null);
-    this.program_options.set("Balance",["legs","arms","legs","arms", "legs","arms"]);
-    this.program_options.set("Arms week",["arms","arms","arms"]);
-    this.program_options.set("Legs week",["legs","legs","legs"]);
-   
-    for (let key of this.program_options.keys()){
-      this.program_keys.push(key);
-    }
-
   }
 
   get exercises(): Exercise[] {
@@ -118,14 +108,21 @@ export class GoalDashboardComponent implements OnInit {
     return this.programPageService.programme();
   }
 
-  //---Morning
+  //---Workouts of the day
   //---when picking excersize from dropdown-list display 
   onChangeEx(){
+    this.exercises.forEach(ex => this.ex_options_names.push(ex.name))
+
     let choiceEx = $("select[name='select1.1'] option:selected").index();
-    if((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      this.ex_choice_list.push(this.exercises[choiceEx-1].name);
+    this.ex = this.ex_options_names[choiceEx-1];
+    if (this.ex_choice_map.has(this.ex)) {
+         this.ex_choice_map.set(this.ex, this.ex_choice_map.get(this.ex) + 1);
+    } else {
+         this.ex_choice_map.set(this.ex,1); // Map to capture Count of elements
     }
+    
   }
+  
 
   //---when picking workout from dropdown-list display 
   onChangeWork(){
@@ -147,20 +144,38 @@ export class GoalDashboardComponent implements OnInit {
 
 
   //---add excersize to finish list
-  updateExFinish(id:number){
-    this.ex_finish_list.push(this.ex_choice_list[id]);
-    this.ex_choice_list.splice(id,1);
+  updateExFinish(name:string){
+    if (this.ex_finish_map.has(name)) {
+      this.ex_finish_map.set(name, this.ex_finish_map.get(name) + 1);
+    }else {
+      this.ex_finish_map.set(name,1); // Map to capture Count of elements
+    }
+    this.ex_choice_map.set(name, this.ex_choice_map.get(name)-1);
+    if(this.ex_choice_map.get(name)==0){
+      this.ex_choice_map.delete(name);
+    }
   }
 
   //---add excersize to planed list
-  updateExPlaned(id:number){
-    this.ex_choice_list.push(this.ex_finish_list[id]);
-    this.ex_finish_list.splice(id,1);
+  updateExPlaned(name:string){
+    if (this.ex_choice_map.has(name)) {
+      this.ex_choice_map.set(name, this.ex_choice_map.get(name) + 1);
+    }else {
+      this.ex_choice_map.set(name,1); // Map to capture Count of elements
+    }
+    this.ex_finish_map.set(name, this.ex_finish_map.get(name)-1);
+    if(this.ex_finish_map.get(name)==0){
+      this.ex_finish_map.delete(name);
+    }
   }
 
   //---remove excersize
-  remove(id:number){
-    this.ex_choice_list.splice(id,1);
+  remove(name:string){
+    this.ex_choice_map.set(name, this.ex_choice_map.get(name)-1);
+    if(this.ex_choice_map.get(name)==0){
+      this.ex_choice_map.delete(name);
+
+    }
   }
 
 
