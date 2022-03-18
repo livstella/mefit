@@ -21,10 +21,11 @@ export class userProfileService {
   //Setting the profileId commented out until update on backend
   public fetchUser(): void {
     this.http
-      .get<User>(`https://mefitbackend-ajlm.herokuapp.com/user/${this._userId}`)
+      .get<User>(`https://mefitbackend-ajlm.herokuapp.com/user/11`)
       .subscribe(
         (user) => {
           this._userData = user;
+          console.log(this._userId)
           //this._profileId=user.profile.id
         },
         (error: HttpErrorResponse) => {
