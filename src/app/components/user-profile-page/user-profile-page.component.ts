@@ -32,7 +32,6 @@ export class UserProfilePageComponent implements OnInit {
   }
 
   toDashBoard() {
-    //this.router.navigateByUrl('/dashboard');
-    console.log(this.userId)
+    this.router.navigateByUrl('/dashboard');
   }
 }
