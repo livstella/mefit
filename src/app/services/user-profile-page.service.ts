@@ -21,7 +21,7 @@ export class userProfileService {
   //Setting the profileId commented out until update on backend
   public fetchUser(): void {
     this.http
-      .get<User>(`https://mefitbackend-ajlm.herokuapp.com/user/11`)
+      .get<User>(`https://mefitbackend-ajlm.herokuapp.com/user/${this._userId}`)
       .subscribe(
         (user) => {
           this._userData = user;
