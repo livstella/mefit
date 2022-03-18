@@ -14,7 +14,7 @@ export class ProgrammePageService {
   public fetchProgramme(): void {
     this.http
       .get<Programme[]>(
-        'https://mefitbackend-ajlm.herokuapp.com/programme'
+        'https://mefitbackend-ajlm.herokuapp.com/program'
       )
       .subscribe(
         (programme) => {
