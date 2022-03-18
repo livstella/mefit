@@ -1,5 +1,10 @@
 export interface Login{
     id:number,
-    username:string,
+    profile:{}, 
+    email:string,
+    firstName:string;
+    lastName:string;
     password:string,
+    contributer: boolean,
+    admin:boolean,
   }

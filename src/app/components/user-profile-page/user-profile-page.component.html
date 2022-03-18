@@ -1,5 +1,16 @@
-<h2>Welcome to to profile for </h2>
+<section *ngIf="user">
+  <h2>Welcome to {{ user.firstName }}'s profile</h2>
 
-<button id="btn-dash" type="form-control" (click)="toDashBoard()" class="btn">Goal dashboard!</button>
-    
-<p>Current fitness level: </p>
+  <p *ngIf="profile?.height">Height {{ profile?.height }}cm</p>
+  <p *ngIf="profile?.weight">Weight {{ profile?.weight }}kg</p>
+  <p *ngIf="profile?.medicalConditions">
+    You have the following medical conditions: {{ profile?.medicalConditions }}
+  </p>
+  <p *ngIf="profile?.disabilities">
+    You have the following medical conditions: {{ profile?.disabilities }}
+  </p>
+</section>
+
+<button id="btn-dash" type="form-control" (click)="toDashBoard()" class="btn">
+  Goal dashboard!
+</button>

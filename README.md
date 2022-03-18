@@ -1,26 +1,35 @@
 # MeFit
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.
+## Background
 
-## Development server
+This project is the frontend for the MeFit assignemt for the experiss academy full stack training. The corresponding backend application can be found in [this GitHub repo](https://github.com/Epiko1994/MeFitBackend)
+The deployed version of this app can be [found here](https://naughty-kowalevski-13870d.netlify.app/login)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Purpose
+This app allows the user to register and log in to see the following features:
+- An overview of all available exercises with desciption and video
+- An overview of workouts and programme available - put together of the available exercises
+- A dashboard where the user can set goals and see the progress for set goals
+- A page to see details for the current set goal and previously accomplished goals
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Development
+
+Steps to work on this project
+1. Clone this rep
+2. Run the command npm install.
+3. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Contributors
+- [Allan Carlsen (@AllanTC)](https://github.com/AllanTC)
+- [Joshua Johansen (@Epiko1994)](https://github.com/Epiko1994)
+- [Liv Reinhold (@livstella)](https://github.com/livstella)
+- [Michel Saremi (@MichelSaremi)](https://github.com/MichelSaremi)
+
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 

@@ -8,33 +8,37 @@ import { ProgrammePageComponent } from './components/programme-page/programme-pa
 import { UserProfilePageComponent } from './components/user-profile-page/user-profile-page.component';
 import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { MefitGuardService } from './services/mefit-guard.service';
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
-  { path: 'login', component: LoginPageComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginPageComponent, pathMatch: 'full'},
 
   { path: 'register', component: RegistrationPageComponent, pathMatch: 'full' },
 
-  { path: 'exercises', component: ExercisePageComponent, pathMatch: 'full' },
+  { path: 'exercises', component: ExercisePageComponent, pathMatch: 'full', canActivate: [MefitGuardService] },
   
-  { path: 'workouts', component: WorkoutPageComponent, pathMatch: 'full' },
+  { path: 'workouts', component: WorkoutPageComponent, pathMatch: 'full', canActivate: [MefitGuardService] },
 
-  { path: 'programmes', component: ProgrammePageComponent, pathMatch: 'full' },
+  { path: 'programmes', component: ProgrammePageComponent, pathMatch: 'full', canActivate: [MefitGuardService] },
 
-  { path: 'profile', component: UserProfilePageComponent ,pathMatch:'full'},
+  { path: 'profile', component: UserProfilePageComponent ,pathMatch:'full', canActivate: [MefitGuardService]},
 
   {path: 'dashboard', component: GoalDashboardComponent ,pathMatch:'full'},
 
-  {path: 'goaldetails', component: GoalDetailsComponent ,pathMatch:'full'},
+  {path: 'goaldetails', component: GoalDetailsComponent ,pathMatch:'full', canActivate: [MefitGuardService]},
+
+  {path: 'notFound', component: NotFoundPageComponent },
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [],
+  providers: [MefitGuardService],
 })
 export class AppRoutingModule {}

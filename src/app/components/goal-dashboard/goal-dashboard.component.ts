@@ -7,6 +7,8 @@ import * as $ from 'jquery';
 import { GoalDashbordService } from 'src/app/services/goal-dashbord.service';
 import { exercisePageService } from 'src/app/services/exercise-page.service';
 import { Exercise } from 'src/app/models/exercise.model';
+import { Workout } from 'src/app/models/workout.model';
+import { WorkoutPageService } from 'src/app/services/workout-page.service';
 
 
 @Component({
@@ -72,16 +74,20 @@ export class GoalDashboardComponent implements OnInit {
   response: any;
   responseProgram: any;
   exerciselist: Exercise[] | undefined;
+  progress_small: Number | undefined;
 
-  constructor(private router: Router, private readonly exercisepageservice :exercisePageService, ) { }
+
+  constructor(private router: Router, private readonly exercisepageservice :exercisePageService, private readonly workoutpageservice: WorkoutPageService) { }
 
   ngOnInit(): void {
-    //Fetches all exercises
+    
+    //---Fetch all exercises
     this.exercisepageservice.fetchExercise();
 
-    this.workout_options.set(["Choose a workout"],null);
-    this.workout_options.set("legs",["lower legs","upper legs","lower back","upper back", "hips"]);
-    this.workout_options.set("arms",["lower arms","upper arms","stomach","chest", "shoulders"]);
+    //---Fetch all workouts
+    this.workoutpageservice.fetchWorkout();
+
+  
 
     for (let key of this.workout_options.keys()){
       this.workout_keys.push(key);
@@ -97,11 +103,13 @@ export class GoalDashboardComponent implements OnInit {
     }
 
   }
-  
+
   get exercises(): Exercise[] {
     return this.exercisepageservice.exercise();
   }
-
+  get workouts(): Workout[] {
+    return this.workoutpageservice.workout();
+  }
 
   //---Morning
   //---when picking excersize from dropdown-list display 
@@ -115,13 +123,20 @@ export class GoalDashboardComponent implements OnInit {
   //---when picking workout from dropdown-list display 
   onChangeWork(){
     let choiceWork = $("select[name='select1.2'] option:selected").index();
-    this.workout_key = this.workout_keys[choiceWork];
-    this.workout_ex = this.workout_options.get(this.workout_key);
-    if (this.ex_choice_list.length == 0 && this.ex_finish_list.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      for (let i = 0; i<this.workout_ex.length; i++){
-        this.ex_choice_list.push(this.workout_ex[i]);}
+    if((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
+      this.ex_choice_list.push(this.workouts[choiceWork-1].name);
     }
   }
+
+  // onChangeWork(){
+  //   let choiceWork = $("select[name='select1.2'] option:selected").index();
+  //   this.workout_key = this.workout_keys[choiceWork];
+  //   this.workout_ex = this.workout_options.get(this.workout_key);
+  //   if (this.ex_choice_list.length == 0 && this.ex_finish_list.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
+  //     for (let i = 0; i<this.workout_ex.length; i++){
+  //       this.ex_choice_list.push(this.workout_ex[i]);}
+  //   }
+  // }
 
 
   //---add excersize to finish list
@@ -275,7 +290,7 @@ export class GoalDashboardComponent implements OnInit {
   commitProgram(){
     if (this.mapCountWeekCommit.size == 0){
 
-      if( this.mapCount != null){
+    if(this.mapCount.size != 0){
       //---Copy maps of excersizes for further processing
       this.mapCountWeekInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
       this.mapCountWeekCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
@@ -332,7 +347,14 @@ export class GoalDashboardComponent implements OnInit {
       
        this.finishHistory = this.finishHistory.concat(this.total_finish_list);
 
-       this.progress = ((this.finishHistory.length/this.mapCount.size)*100).toFixed(2);
+       let sumEx = 0;
+
+       this.mapCountWeekInitial.forEach(value => {
+          sumEx += value;
+       });
+
+       this.progress = ((this.finishHistory.length/sumEx)*100).toFixed(2);
+      
 
        if (Number(this.progress) <= 100){
           this.progress_display = this.progress +" percent finished of you weekly goal!";
@@ -353,10 +375,11 @@ export class GoalDashboardComponent implements OnInit {
             for(let i = 0; i<this.mapCountKeys.length;i++){
               let InValue = this.mapCountWeekInitial.get(this.mapCountKeys[i]) 
               let newValue2 = this.mapCountWeekCommit.get(this.mapCountKeys[i])
+              this.progress_small = Number(((1-(newValue2/InValue))*100).toFixed(2))
               if(Number(newValue2)==NaN||Number(newValue2)==0){
                 this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) All routines Finished"])
               }else{
-                this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+((1-(newValue2/InValue))*100).toFixed(2)+") Percent finished"])
+                this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+this.progress_small+") Percent finished"])
               }
             }
                 
@@ -403,8 +426,8 @@ export class GoalDashboardComponent implements OnInit {
                   // //alert(this.newMap2.get("upper arms"))
             }
   
-           // $('#commit').attr('disabled','disabled');
-           // $('.NotFinish').attr('disabled','disabled');
+            //$('#commit').attr('disabled','disabled');
+            //$('.NotFinish').attr('disabled','disabled');
   
          }else{
             alert("only commit finished when workout is finished! Choose all allowed excersizes")
