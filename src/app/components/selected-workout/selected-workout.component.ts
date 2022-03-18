@@ -14,4 +14,8 @@ export class SelectedWorkoutComponent  {
  get workout(): Workout|null{
    return this.selectedWorkoutService.workout()
  }
+
+ get workoutSets():any|null{
+   return this.selectedWorkoutService.workoutSets()
+ }
 }
