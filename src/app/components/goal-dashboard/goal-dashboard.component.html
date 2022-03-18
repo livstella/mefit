@@ -5,12 +5,14 @@
             One workout has five excersizes!
         </p>
 
-        <div>
-                <span>
-                    {{date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()}}
-                </span>
-                <button id="commit" (click)="commitFinish()">Commit finishes!</button>
-                <span>
+        
+        <span>
+             {{date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()}}
+        </span>
+        <button id="commit" class="commit-finish" (click)="commitFinish()">Commit finishes!</button>
+            
+        <div class="day">
+                    <span>
                     <h3>Workouts of the day</h3>
                     <span>
                         <h4>Planned</h4>
@@ -55,13 +57,15 @@
         <div class="panebuttons">
         <button id="i" class ="commit-program" (click)="commitProgram()">Commit program!</button>
         <select class = "program-option" name="selectProgram" (change)="onChangeProgram()">
-            <option *ngFor="let program of program_keys ; let i = index" >
-              {{program}}
+            <option>Choose a programme</option>
+            <option *ngFor="let program of programmes ; let i = index" >
+              {{program.name}}
             </option>     
         </select>
         <select class = "workout-option" name="selectWorkout" (change)="onChangeWorkout()">
-            <option *ngFor="let workout of workout_keys ; let i = index" >
-              {{workout}}
+            <option>Choose a workout</option>
+            <option *ngFor="let workout of workouts ; let i = index" >
+              {{workout.name}}
             </option>     
         </select>
 

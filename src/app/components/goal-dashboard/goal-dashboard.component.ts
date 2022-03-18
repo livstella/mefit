@@ -9,6 +9,8 @@ import { exercisePageService } from 'src/app/services/exercise-page.service';
 import { Exercise } from 'src/app/models/exercise.model';
 import { Workout } from 'src/app/models/workout.model';
 import { WorkoutPageService } from 'src/app/services/workout-page.service';
+import { ProgrammePageService } from 'src/app/services/programme-page.service';
+import { Programme } from 'src/app/models/programme.model';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class GoalDashboardComponent implements OnInit {
   username: string = "Michel"; //placeholder for username
   date = new Date();
   ex: string = '';
-  ex_options: string[] = [];
+  ex_options_names: string[] = [];
   ex_choice_list: string[] = [];
   ex_finish_list: string[] = [];
   ex_choice_list2: string[] = [];
@@ -36,6 +38,7 @@ export class GoalDashboardComponent implements OnInit {
   workout_ex_commit: string[] = [];
   
   program_options = new Map();
+  program_options_names: string[] =[];
   program_keys: string[]|any = [] ;
   program_key: string | undefined;
   program_work: string[] = [];
@@ -77,17 +80,18 @@ export class GoalDashboardComponent implements OnInit {
   progress_small: Number | undefined;
 
 
-  constructor(private router: Router, private readonly exercisepageservice :exercisePageService, private readonly workoutpageservice: WorkoutPageService) { }
+  constructor(private router: Router, private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
 
   ngOnInit(): void {
     
     //---Fetch all exercises
-    this.exercisepageservice.fetchExercise();
+    this.exercisePageService.fetchExercise();
 
     //---Fetch all workouts
-    this.workoutpageservice.fetchWorkout();
+    this.workoutPageService.fetchWorkout();
 
-  
+    //---Fetch all programs
+    this.programPageService.fetchProgramme();
 
     for (let key of this.workout_options.keys()){
       this.workout_keys.push(key);
@@ -105,10 +109,13 @@ export class GoalDashboardComponent implements OnInit {
   }
 
   get exercises(): Exercise[] {
-    return this.exercisepageservice.exercise();
+    return this.exercisePageService.exercise();
   }
   get workouts(): Workout[] {
-    return this.workoutpageservice.workout();
+    return this.workoutPageService.workout();
+  }
+  get programmes(): Programme[] {
+    return this.programPageService.programme();
   }
 
   //---Morning
@@ -157,80 +164,6 @@ export class GoalDashboardComponent implements OnInit {
   }
 
 
-  //---noon
-  //---when picking excersize from dropdown-list display 
-  onChangeEx2(){
-    let choiceEx = $("select[name='select2.1'] option:selected").index();
-    if ((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      this.ex_choice_list2.push(this.exercises[choiceEx-1].name);
-    }
-  }
-
-  //---when picking workout from dropdown-list display 
-  onChangeWork2(){
-    let choiceWork = $("select[name='select2.2'] option:selected").index();
-    this.workout_key = this.workout_keys[choiceWork];
-    this.workout_ex = this.workout_options.get(this.workout_key);
-    if (this.ex_choice_list2.length == 0 && this.ex_finish_list2.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      for (let i = 0; i<this.workout_ex.length; i++){
-        this.ex_choice_list2.push(this.workout_ex[i]);}
-    }
-  }
-
-  //---add excersize to finish list
-  updateExFinish2(id:number){
-    this.ex_finish_list2.push(this.ex_choice_list2[id]);
-    this.ex_choice_list2.splice(id,1);
-  }
-
-  //---add excersize to planed list
-  updateExPlaned2(id:number){
-    this.ex_choice_list2.push(this.ex_finish_list2[id]);
-    this.ex_finish_list2.splice(id,1);
-  }
-
-  //---remove excersize
-  remove2(id:number){
-    this.ex_choice_list2.splice(id,1);
-  }
-
-  //---Evening
-  //---when picking excersize from dropdown-list display 
-  onChangeEx3(){
-    let choiceEx = $("select[name='select3.1'] option:selected").index();
-    if ((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceEx != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-    this.ex_choice_list3.push(this.exercises[choiceEx-1].name);
-    }
-  }
-
-  //---when picking workout from dropdown-list display 
-  onChangeWork3(){
-    let choiceWork = $("select[name='select3.2'] option:selected").index();
-    this.workout_key = this.workout_keys[choiceWork];
-    this.workout_ex = this.workout_options.get(this.workout_key);
-    if (this.ex_choice_list3.length == 0 && this.ex_finish_list3.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      for (let i = 0; i<this.workout_ex.length; i++){
-        this.ex_choice_list3.push(this.workout_ex[i]);}
-    }
-  }
-
-  //---add excersize to finish list
-  updateExFinish3(id:number){
-    this.ex_finish_list3.push(this.ex_choice_list3[id]);
-    this.ex_choice_list3.splice(id,1);
-  }
-
-  //---add excersize to planed list
-  updateExPlaned3(id:number){
-    this.ex_choice_list3.push(this.ex_finish_list3[id]);
-    this.ex_finish_list3.splice(id,1);
-  }
-
-  //---remove excersize
-  remove3(id:number){
-    this.ex_choice_list3.splice(id,1);
-  }
-
   //---Weekly goals
   onChangeProgram(){
 
@@ -269,8 +202,11 @@ export class GoalDashboardComponent implements OnInit {
   }
 
   onChangeExcersize(){
+
+    this.exercises.forEach(ex => this.ex_options_names.push(ex.name))
+
     let choiceEx = $("select[name='selectEx'] option:selected").index();
-    this.ex = this.ex_options[choiceEx];
+    this.ex = this.ex_options_names[choiceEx-1];
     
     if (this.mapCount.has(this.ex)) {
         this.mapCount.set(this.ex, this.mapCount.get(this.ex) + 1);
