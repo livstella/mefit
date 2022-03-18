@@ -1,10 +1,16 @@
-<section *ngIf="user != null">
-  <h2 *ngIf="2 == 2">Welcome to {{ user.firstName }}'s profile</h2>
+<section *ngIf="user">
+  <h2>Welcome to {{ user.firstName }}'s profile</h2>
 
-  <button id="btn-dash" type="form-control" (click)="toDashBoard()" class="btn">
-    Goal dashboard!
-  </button>
-
-  <p>Current fitness level: {{ user.id }}</p>
-  <p>This will be updated with updates to profile</p>
+  <p *ngIf="profile?.height">Height {{ profile?.height }}cm</p>
+  <p *ngIf="profile?.weight">Weight {{ profile?.weight }}kg</p>
+  <p *ngIf="profile?.medicalConditions">
+    You have the following medical conditions: {{ profile?.medicalConditions }}
+  </p>
+  <p *ngIf="profile?.disabilities">
+    You have the following medical conditions: {{ profile?.disabilities }}
+  </p>
 </section>
+
+<button id="btn-dash" type="form-control" (click)="toDashBoard()" class="btn">
+  Goal dashboard!
+</button>
