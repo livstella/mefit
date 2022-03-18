@@ -33,6 +33,8 @@ export class GoalDashboardComponent implements OnInit {
 
   ex: string = '';
   ex_options_names: string[] = [];
+  ex_ids: number[] = [];
+  ex_id: number | undefined;
   ex_choice_list: string[] = [];
   ex_finish_list: string[] = [];
   ex_choice_map = new Map();
@@ -140,16 +142,19 @@ export class GoalDashboardComponent implements OnInit {
   //---Workouts of the day
   //---when picking excersize from dropdown-list display 
   onChangeEx(){
-    this.exercises.forEach(ex => this.ex_options_names.push(ex.name))
+    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='select1.1'] option:selected").index();
-    this.ex = this.ex_options_names[choiceEx-1];
-    if (this.ex_choice_map.has(this.ex)) {
-         this.ex_choice_map.set(this.ex, this.ex_choice_map.get(this.ex) + 1);
-    } else {
-         this.ex_choice_map.set(this.ex,1); // Map to capture Count of elements
-    }
-    
+    this.ex_id = this.ex_ids[choiceEx-1];
+
+    this.goalDashBoardService.fetchExById(this.ex_id).subscribe((exercise: Exercise[]) =>
+    {
+      if (this.ex_choice_map.has(exercise)) {
+        this.ex_choice_map.set(exercise, this.ex_choice_map.get(exercise) + 10);
+      } else {
+        this.ex_choice_map.set(exercise,10); // Map to capture Count of elements
+      }
+    })
   }
   
 
@@ -169,56 +174,78 @@ export class GoalDashboardComponent implements OnInit {
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
       console.log(this.exercises_choosen)
 
-      this.exercises_choosen.forEach((exercise: Exercise[]) => this.exercises_choosen_total.set(exercise,this.repititions))
+      this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
+      if (this.ex_choice_map.has(exercise)) {
+        this.ex_choice_map.set(exercise, this.ex_choice_map.get(exercise) + this.repititions);
+      } else {
+        this.ex_choice_map.set(exercise,this.repititions); // Map to capture Count of elements
+      }
     });
 
+    })
   }
-
-  // onChangeWork(){
-  //   let choiceWork = $("select[name='select1.2'] option:selected").index();
-  //   this.workout_key = this.workout_keys[choiceWork];
-  //   this.workout_ex = this.workout_options.get(this.workout_key);
-  //   if (this.ex_choice_list.length == 0 && this.ex_finish_list.length == 0 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-  //     for (let i = 0; i<this.workout_ex.length; i++){
-  //       this.ex_choice_list.push(this.workout_ex[i]);}
-  //   }
-  // }
 
 
   //---add excersize to finish list
-  updateExFinish(name:string){
-    if (this.ex_finish_map.has(name)) {
-      this.ex_finish_map.set(name, this.ex_finish_map.get(name) + 1);
-    }else {
-      this.ex_finish_map.set(name,1); // Map to capture Count of elements
+  updateExFinish(name: string){
+    if(this.ex_finish_map.size!=0){
+    for(let[k,v] of this.ex_finish_map){
+        if (k.name === name) {
+          this.ex_finish_map.set(k, v + this.ex_choice_map.get(k));
+          this.ex_choice_map.delete(k);
+        }else {
+          for(let[k,v] of this.ex_choice_map){
+          if(k.name === name){
+            this.ex_finish_map.set(k,v);
+            this.ex_choice_map.delete(k);
+          }
+          }
+        }
     }
-    this.ex_choice_map.set(name, this.ex_choice_map.get(name)-1);
-    if(this.ex_choice_map.get(name)==0){
-      this.ex_choice_map.delete(name);
+    }else{
+      for(let[k,v] of this.ex_choice_map){
+        if(k.name === name){
+          this.ex_finish_map.set(k,v);
+          this.ex_choice_map.delete(k);
+      }
     }
   }
+}
 
   //---add excersize to planed list
-  updateExPlaned(name:string){
-    if (this.ex_choice_map.has(name)) {
-      this.ex_choice_map.set(name, this.ex_choice_map.get(name) + 1);
-    }else {
-      this.ex_choice_map.set(name,1); // Map to capture Count of elements
-    }
-    this.ex_finish_map.set(name, this.ex_finish_map.get(name)-1);
-    if(this.ex_finish_map.get(name)==0){
-      this.ex_finish_map.delete(name);
+  updateExPlaned(name: string){
+    if(this.ex_choice_map.size!=0){
+      for(let[k,v] of this.ex_choice_map){
+          if (k.name === name) {
+            this.ex_choice_map.set(k, v + this.ex_finish_map.get(k));
+            this.ex_finish_map.delete(k);
+          }else {
+            for(let[k,v] of this.ex_finish_map){
+            if(k.name === name){
+              this.ex_choice_map.set(k,v);
+              this.ex_finish_map.delete(k);
+            }
+            }
+          }
+      }
+      }else{
+        for(let[k,v] of this.ex_finish_map){
+          if(k.name === name){
+            this.ex_choice_map.set(k,v);
+            this.ex_finish_map.delete(k);
+        }
+      }
     }
   }
 
-  //---remove excersize
-  remove(name:string){
-    this.ex_choice_map.set(name, this.ex_choice_map.get(name)-1);
-    if(this.ex_choice_map.get(name)==0){
-      this.ex_choice_map.delete(name);
 
-    }
+  //---remove excersize
+  remove(name: string){
+    for(let[k,v] of this.ex_choice_map){
+      if(k.name=== name){
+        this.ex_choice_map.delete(k);
+      }} 
   }
 
 
