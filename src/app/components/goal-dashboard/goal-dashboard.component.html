@@ -7,7 +7,7 @@
 
         
         <span>
-             {{date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()}}
+             {{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+oneDate.getDate()}}
         </span>
         <button id="commit" class="commit-finish" (click)="commitFinish()">Commit finishes!</button>
             
@@ -81,7 +81,8 @@
         </div>
     </div>
 
-    <div class = "weekgoal-display">
+
+   <!-- <div class = "weekgoal-display">
         <h3>Workout build</h3>
         <ul class="weekly-goal">
             <li *ngFor="let item of mapCount | keyvalue" >
@@ -89,7 +90,49 @@
                 {{item.value}}
             </li>    
         </ul>
+    </div> -->
+
+    <div class = "weekgoal-display">
+        <h3>Workout build</h3>
+        <ul class="weekly-goal">
+            <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+oneDate.getDate()}}</h4>
+            <li *ngFor="let item of mapCount | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li> 
+            <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+twoDate.getDate()}}</h4>
+            <li *ngFor="let item of mapCount | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li> 
+            <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+threeDate.getDate()}}</h4>
+            <li *ngFor="let item of mapCount | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li> 
+            <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+fourDate.getDate()}}</h4>
+            <li *ngFor="let item of mapCount | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li>
+            <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+fiveDate.getDate()}}</h4>
+            <li *ngFor="let item of mapCount | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li> 
+            <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+sixDate.getDate()}}</h4>
+            <li *ngFor="let item of mapCount | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li> 
+            <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+sevenDate.getDate()}}</h4>
+            <li *ngFor="let item of mapCount | keyvalue" >
+                {{item.key}}
+                {{item.value}}
+            </li>  
+        </ul>
     </div>
+    
     
     <div class = "choosen">
         <h3>Choosen program</h3>

@@ -21,7 +21,15 @@ import { Programme } from 'src/app/models/programme.model';
 export class GoalDashboardComponent implements OnInit {
 
   username: string = "Michel"; //placeholder for username
-  date = new Date();
+  
+  oneDate = new Date();
+  twoDate = new Date();
+  threeDate = new Date();
+  fourDate = new Date();
+  fiveDate = new Date();
+  sixDate = new Date();
+  sevenDate = new Date();
+
   ex: string = '';
   ex_options_names: string[] = [];
   ex_choice_list: string[] = [];
@@ -87,6 +95,13 @@ export class GoalDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     
+    this.twoDate.setDate(this.oneDate.getDate()+1);
+    this.threeDate.setDate(this.oneDate.getDate()+2);
+    this.fourDate.setDate(this.oneDate.getDate()+3);
+    this.fiveDate.setDate(this.oneDate.getDate()+4);
+    this.sixDate.setDate(this.oneDate.getDate()+5);
+    this.sevenDate.setDate(this.oneDate.getDate()+6);
+
     //---Fetch all exercises
     this.exercisePageService.fetchExercise();
 
