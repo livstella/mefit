@@ -13,7 +13,9 @@ export class userProfileService {
   private _userId: number = JSON.parse(
     sessionStorage.getItem('current-user') || '{}'
   ).id;
-  private _profileId: number | null = null;
+  private _profileId: number = JSON.parse(
+    sessionStorage.getItem('current-user') || '{}'
+  ).profile.id;
 
   constructor(private readonly http: HttpClient) {}
 
@@ -25,7 +27,6 @@ export class userProfileService {
       .subscribe(
         (user) => {
           this._userData = user;
-          //this._profileId=user.profile.id
         },
         (error: HttpErrorResponse) => {
           this._error = error.message;
@@ -34,10 +35,11 @@ export class userProfileService {
   }
 
   //Gets profile with the id of the profileId from "current-user"
-  // Should be updated to "${this._profileId}" rather than "1" when backend updated
   public fetchProfile(): void {
     this.http
-      .get<Profile>(`https://mefitbackend-ajlm.herokuapp.com/profile/1`)
+      .get<Profile>(
+        `https://mefitbackend-ajlm.herokuapp.com/profile/${this._profileId}`
+      )
       .subscribe(
         (profile) => {
           this._profileData = profile;

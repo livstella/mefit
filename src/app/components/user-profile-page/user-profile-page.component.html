@@ -1,14 +1,26 @@
 <section *ngIf="user">
   <h2>Welcome to {{ user.firstName }}'s profile</h2>
 
-  <p *ngIf="profile?.height">Height {{ profile?.height }}cm</p>
-  <p *ngIf="profile?.weight">Weight {{ profile?.weight }}kg</p>
-  <p *ngIf="profile?.medicalConditions">
-    You have the following medical conditions: {{ profile?.medicalConditions }}
-  </p>
-  <p *ngIf="profile?.disabilities">
-    You have the following medical conditions: {{ profile?.disabilities }}
-  </p>
+  <!--If the profile details are present, they are shown. Otherwise a text is shown. Text could potentially be improved -->
+  <div *ngIf="profile?.height; then height; else no_height"></div>
+      <ng-template #height>Height {{ profile?.height }}cm</ng-template>
+      <ng-template #no_height>NOOOO height</ng-template>
+  <br>
+
+  <div *ngIf="profile?.weight; then weight; else no_weight"></div>
+      <ng-template #weight>Weight {{ profile?.height }}kg</ng-template>
+      <ng-template #no_weight>You no weight</ng-template>
+  <br>
+
+  <div *ngIf="profile?.medicalConditions; then medicalConditions; else no_medicalConditions"></div>
+      <ng-template #medicalConditions>You have the following medical conditions: {{ profile?.medicalConditions }}</ng-template>
+      <ng-template #no_medicalConditions>You healthy</ng-template>
+  <br>
+  
+  <div *ngIf="profile?.disabilities; then disabilities; else no_disabilities"></div>
+      <ng-template #disabilities>You have the following disabilities: {{ profile?.disabilities }}</ng-template>
+      <ng-template #no_disabilities>Such healthy</ng-template>
+
 </section>
 
 <button id="btn-dash" type="form-control" (click)="toDashBoard()" class="btn">
