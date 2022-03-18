@@ -11,6 +11,7 @@ import { Workout } from 'src/app/models/workout.model';
 import { WorkoutPageService } from 'src/app/services/workout-page.service';
 import { ProgrammePageService } from 'src/app/services/programme-page.service';
 import { Programme } from 'src/app/models/programme.model';
+import { Sets } from 'src/app/models/sets.model';
 
 
 @Component({
@@ -37,12 +38,24 @@ export class GoalDashboardComponent implements OnInit {
   ex_choice_map = new Map();
   ex_finish_map = new Map();
 
-  ex_choice_list2: string[] = [];
-  ex_finish_list2: string[] = [];
-  ex_choice_list3: string[] = [];
-  ex_finish_list3: string[] = [];
+  // ex_choice_list2: string[] = [];
+  // ex_finish_list2: string[] = [];
+  // ex_choice_list3: string[] = [];
+  // ex_finish_list3: string[] = [];
   
+  sets = [{}];
+  workout_ids: number[] = [];
+  workout_sets: Sets[] | undefined ;
+
+  ex_fromWorkout_map = new Map();
+  repititions: number | undefined;
+  exercises_choosen: Exercise[] | undefined | any;
+  exercises_choosen_total= new Map();
+
   workout_options = new Map();
+  workout_options_names: string[] =[];
+  workout_id: number | undefined;
+
   workout_keys: string[]|any = [] ;
   workout_key: string | undefined;
   workout_ex: string[] = [];
@@ -50,6 +63,7 @@ export class GoalDashboardComponent implements OnInit {
   
   program_options = new Map();
   program_options_names: string[] =[];
+
   program_keys: string[]|any = [] ;
   program_key: string | undefined;
   program_work: string[] = [];
@@ -89,9 +103,9 @@ export class GoalDashboardComponent implements OnInit {
   responseProgram: any;
   exerciselist: Exercise[] | undefined;
   progress_small: Number | undefined;
+  
 
-
-  constructor(private router: Router, private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
+  constructor(private router: Router, private readonly goalDashBoardService: GoalDashbordService ,private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
 
   ngOnInit(): void {
     
@@ -141,10 +155,24 @@ export class GoalDashboardComponent implements OnInit {
 
   //---when picking workout from dropdown-list display 
   onChangeWork(){
-    let choiceWork = $("select[name='select1.2'] option:selected").index();
-    if((this.ex_finish_list.length+this.ex_finish_list2.length+this.ex_finish_list3.length)<5 && choiceWork != 0 && (this.ex_choice_list.length+this.ex_choice_list2.length+this.ex_choice_list3.length)<5){
-      this.ex_choice_list.push(this.workouts[choiceWork-1].name);
-    }
+
+    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+
+    let choiceWork = $("select[name='select1.2'] option:selected").index(); 
+    this.workout_id = this.workout_ids[choiceWork-1];
+
+    this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
+    { 
+      this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+      console.log(this.repititions)
+
+      this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+      console.log(this.exercises_choosen)
+
+      this.exercises_choosen.forEach((exercise: Exercise[]) => this.exercises_choosen_total.set(exercise,this.repititions))
+      
+    });
+
   }
 
   // onChangeWork(){
@@ -197,9 +225,10 @@ export class GoalDashboardComponent implements OnInit {
   //---Weekly goals
   onChangeProgram(){
 
+    this.programmes.forEach(program => this.program_options_names.push(program.name))
+
     let choiceProgram = $("select[name='selectProgram'] option:selected").index();
-    this.program_key = this.program_keys[choiceProgram];
-    this.program_work = this.program_options.get(this.program_key); //---have a list of workouts
+    this.program_key = this.program_options_names[choiceProgram];
 
     for(let i = 0; i <this.program_work.length;i++){
       this.program_ex.push(this.workout_options.get(this.program_work[i]));
@@ -285,8 +314,8 @@ export class GoalDashboardComponent implements OnInit {
           $('#commit').removeAttr('disabled');
           $('.NotFinish').removeAttr('disabled');
           this.ex_finish_list = [];
-          this.ex_finish_list2 = [];
-          this.ex_finish_list3 = [];
+          // this.ex_finish_list2 = [];
+          // this.ex_finish_list3 = [];
           this.total_finish_list = [];         
        }
 
@@ -308,8 +337,7 @@ export class GoalDashboardComponent implements OnInit {
   //---Commit finished excersizes
   commitFinish(){
     if(this.mapCountWeekCommit.size != 0){
-       this.total_finish_list = this.ex_finish_list.concat(this.ex_finish_list2);
-       this.total_finish_list = this.total_finish_list.concat(this.ex_finish_list3);
+       this.total_finish_list
       
        this.finishHistory = this.finishHistory.concat(this.total_finish_list);
 
@@ -326,7 +354,7 @@ export class GoalDashboardComponent implements OnInit {
           this.progress_display = this.progress +" percent finished of you weekly goal!";
 
           //---update goals based on finish commits
-          if(this.total_finish_list.length == 5 && this.ex_choice_list.length == 0 && this.ex_choice_list2.length == 0 && this.ex_choice_list3.length == 0){
+          if(this.total_finish_list.length == 5 && this.ex_choice_list.length == 0){
 
             for (let i = 0; i < this.total_finish_list.length;i++){
               let newValue = this.mapCountWeekCommit.get(this.total_finish_list[i])-1;

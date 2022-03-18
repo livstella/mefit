@@ -96,9 +96,9 @@
         <h3>Workout build</h3>
         <ul class="weekly-goal">
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+oneDate.getDate()}}</h4>
-            <li *ngFor="let item of mapCount | keyvalue" >
-                {{item.key}}
-                {{item.value}}
+            <li *ngFor="let item of exercises_choosen_total | keyvalue" >
+                {{item.key.name}}
+                {{item.value}} repititions
             </li> 
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+twoDate.getDate()}}</h4>
             <li *ngFor="let item of mapCount | keyvalue" >
