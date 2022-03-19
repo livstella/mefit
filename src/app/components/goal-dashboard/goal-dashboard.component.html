@@ -97,6 +97,7 @@
     <div class = "weekgoal-display">
         <h3>Workout build</h3>
         <ul class="weekly-goal">
+            <!--First day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+oneDate.getDate()}}</h4>
 
             <select class = "program-workout-option" name="selectProgramWorkout" (change)="onChangeProgramWorkout()">
@@ -126,11 +127,37 @@
                 {{item.value}} repititions
             </li> 
 
+             <!--Second day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+twoDate.getDate()}}</h4>
-            <li *ngFor="let item of mapCount | keyvalue" >
+
+            <select class = "program-workout-option" name="selectProgramWorkout2" (change)="onChangeProgramWorkout2()">
+                <option>Programme workouts</option>
+                <option *ngFor="let work of workouts_choosen ; let i = index" >
+                    {{work.name}}
+                </option>
+            </select>
+
+            <select class = "ExcerciseOptions1" name="selectGoalEx2" (change)="onChangeGoalEx2()">
+                <option>Choose an exercise</option>
+                <option *ngFor="let ex of exercises ; let i = index" >
+                  {{ex.name}}
+                </option>
+            </select>
+
+
+             <select class = "workout-options" name="selectGoalWork2" (change)="onChangeGoalWork2()">
+                <option>Choose a workout</option>
+                <option *ngFor="let work of workouts ; let i = index" >
+                 {{work.name}}
+                </option>
+            </select>
+            
+            <li *ngFor="let item of program_ex_map_name2 | keyvalue" >
                 {{item.key}}
-                {{item.value}}
-            </li> 
+                {{item.value}} repititions
+            </li>
+
+             <!--Third day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+threeDate.getDate()}}</h4>
             <li *ngFor="let item of mapCount | keyvalue" >
                 {{item.key}}

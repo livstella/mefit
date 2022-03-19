@@ -41,6 +41,7 @@ export class GoalDashboardComponent implements OnInit {
   ex_finish_map = new Map();
 
   program_ex_map_name = new Map();
+  program_ex_map_name2 = new Map();
   // ex_choice_list2: string[] = [];
   // ex_finish_list2: string[] = [];
   // ex_choice_list3: string[] = [];
@@ -357,6 +358,85 @@ export class GoalDashboardComponent implements OnInit {
   })
   }
 
+  //---second day
+  onChangeProgramWorkout2(){
+
+    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+
+    let choiceWork = $("select[name='selectProgramWorkout2'] option:selected").index(); 
+    this.workout_id = this.workout_ids[choiceWork-1];
+
+    this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
+    { 
+      this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+      console.log(this.repititions)
+
+      this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+      console.log(this.program_exercises_choosen)
+
+      this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
+      
+      let ex_name = JSON.parse(JSON.stringify(exercise)).name
+      
+      if(!this.program_ex_map_name2.has(ex_name)){
+        this.program_ex_map_name2.set(ex_name, this.repititions);
+      }else{
+        this.program_ex_map_name2.set(ex_name, (this.program_ex_map_name2.get(ex_name) +this.repititions))
+     }
+     this.workouts_choosen.splice(choiceWork-1,1)
+
+    })
+  })}
+
+  //---add an exercise to weekly goal
+  onChangeGoalEx2(){
+
+    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+
+    let choiceEx = $("select[name='selectGoalEx2'] option:selected").index();
+    this.ex_id = this.ex_ids[choiceEx-1];
+
+    this.goalDashBoardService.fetchExById(this.ex_id).subscribe((exercise: Exercise[]) =>
+    {
+        let ex_name = JSON.parse(JSON.stringify(exercise)).name
+
+        console.log(ex_name)
+        if(!this.program_ex_map_name2.has(ex_name)){
+          this.program_ex_map_name2.set(ex_name,10);
+        }else{
+          this.program_ex_map_name2.set(ex_name, (this.program_ex_map_name2.get(ex_name) +10))
+       }  
+      })
+  }
+
+  //---add a workout to weekly goal
+  onChangeGoalWork2(){
+    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+
+    let choiceWork = $("select[name='selectGoalWork2'] option:selected").index(); 
+    this.workout_id = this.workout_ids[choiceWork-1];
+
+    this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
+    { 
+      this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+      console.log(this.repititions)
+
+      this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+      console.log(this.exercises_choosen)
+
+      this.exercises_choosen.forEach((exercise: Exercise[]) => {
+      
+      let ex_name = JSON.parse(JSON.stringify(exercise)).name
+      
+      if(!this.program_ex_map_name.has(ex_name)){
+        this.program_ex_map_name2.set(ex_name, this.repititions);
+      }else{
+        this.program_ex_map_name2.set(ex_name, (this.program_ex_map_name2.get(ex_name) +this.repititions))
+     }
+
+    })
+  })
+  }
 
   
 
