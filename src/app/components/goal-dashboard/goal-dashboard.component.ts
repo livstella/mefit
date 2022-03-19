@@ -234,6 +234,25 @@ export class GoalDashboardComponent implements OnInit {
     })
   })}
 
+  //---increment exercise choice
+  increment(name:string){
+    for(let[k,v] of this.ex_choice_map_name){
+      if(k === name){
+        this.ex_choice_map_name.set(k,v+10);
+    }}
+  }
+
+  //---increment exercise choice
+  decrement(name:string){
+    for(let[k,v] of this.ex_choice_map_name){
+      if(k === name){
+        this.ex_choice_map_name.set(k,v-10);
+        if((v-10)<=0){
+          this.ex_choice_map_name.delete(k);
+        }
+    }}
+  }
+
 
   //---add excersize to finish list
   updateExFinish(name: string){
