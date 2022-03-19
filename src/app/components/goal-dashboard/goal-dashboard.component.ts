@@ -35,8 +35,8 @@ export class GoalDashboardComponent implements OnInit {
   ex_options_names: string[] = [];
   ex_ids: number[] = [];
   ex_id: number | undefined;
-  ex_choice_list: string[] = [];
-  ex_finish_list: string[] = [];
+  ex_choice_map_name = new Map();
+  ex_finish_map_name = new Map();
   ex_choice_map = new Map();
   ex_finish_map = new Map();
 
@@ -149,13 +149,17 @@ export class GoalDashboardComponent implements OnInit {
 
     this.goalDashBoardService.fetchExById(this.ex_id).subscribe((exercise: Exercise[]) =>
     {
-      if (this.ex_choice_map.has(exercise)) {
-        this.ex_choice_map.set(exercise, this.ex_choice_map.get(exercise) + 10);
-      } else {
-        this.ex_choice_map.set(exercise,10); // Map to capture Count of elements
-      }
-    })
-  }
+        let ex_name = JSON.parse(JSON.stringify(exercise)).name
+
+        console.log(ex_name)
+        if(!this.ex_choice_map_name.has(ex_name)){
+          this.ex_choice_map_name.set(ex_name,10);
+        }else{
+          this.ex_choice_map_name.set(ex_name, (this.ex_choice_map_name.get(ex_name) +10))
+       }  
+      })
+    }
+  
   
 
   //---when picking workout from dropdown-list display 
@@ -176,38 +180,39 @@ export class GoalDashboardComponent implements OnInit {
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
-      if (this.ex_choice_map.has(exercise)) {
-        this.ex_choice_map.set(exercise, this.ex_choice_map.get(exercise) + this.repititions);
-      } else {
-        this.ex_choice_map.set(exercise,this.repititions); // Map to capture Count of elements
-      }
-    });
+      let ex_name = JSON.parse(JSON.stringify(exercise)).name
+      
+      if(!this.ex_choice_map_name.has(ex_name)){
+        this.ex_choice_map_name.set(ex_name, this.repititions);
+      }else{
+        this.ex_choice_map_name.set(ex_name, (this.ex_choice_map_name.get(ex_name) +this.repititions))
+     }
 
     })
-  }
+  })}
 
 
   //---add excersize to finish list
   updateExFinish(name: string){
-    if(this.ex_finish_map.size!=0){
-    for(let[k,v] of this.ex_finish_map){
-        if (k.name === name) {
-          this.ex_finish_map.set(k, v + this.ex_choice_map.get(k));
-          this.ex_choice_map.delete(k);
+    if(this.ex_finish_map_name.size!=0){
+    for(let[k,v] of this.ex_finish_map_name){
+        if (k === name) {
+          this.ex_finish_map_name.set(k, v + this.ex_choice_map_name.get(k));
+          this.ex_choice_map_name.delete(k);
         }else {
-          for(let[k,v] of this.ex_choice_map){
-          if(k.name === name){
-            this.ex_finish_map.set(k,v);
-            this.ex_choice_map.delete(k);
+          for(let[k,v] of this.ex_choice_map_name){
+          if(k === name){
+            this.ex_finish_map_name.set(k,v);
+            this.ex_choice_map_name.delete(k);
           }
           }
         }
     }
     }else{
-      for(let[k,v] of this.ex_choice_map){
-        if(k.name === name){
-          this.ex_finish_map.set(k,v);
-          this.ex_choice_map.delete(k);
+      for(let[k,v] of this.ex_choice_map_name){
+        if(k === name){
+          this.ex_finish_map_name.set(k,v);
+          this.ex_choice_map_name.delete(k);
       }
     }
   }
@@ -215,25 +220,25 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add excersize to planed list
   updateExPlaned(name: string){
-    if(this.ex_choice_map.size!=0){
-      for(let[k,v] of this.ex_choice_map){
-          if (k.name === name) {
-            this.ex_choice_map.set(k, v + this.ex_finish_map.get(k));
-            this.ex_finish_map.delete(k);
+    if(this.ex_choice_map_name.size!=0){
+      for(let[k,v] of this.ex_choice_map_name){
+          if (k === name) {
+            this.ex_choice_map_name.set(k, v + this.ex_finish_map_name.get(k));
+            this.ex_finish_map_name.delete(k);
           }else {
-            for(let[k,v] of this.ex_finish_map){
-            if(k.name === name){
-              this.ex_choice_map.set(k,v);
-              this.ex_finish_map.delete(k);
+            for(let[k,v] of this.ex_finish_map_name){
+            if(k === name){
+              this.ex_choice_map_name.set(k,v);
+              this.ex_finish_map_name.delete(k);
             }
             }
           }
       }
       }else{
-        for(let[k,v] of this.ex_finish_map){
-          if(k.name === name){
-            this.ex_choice_map.set(k,v);
-            this.ex_finish_map.delete(k);
+        for(let[k,v] of this.ex_finish_map_name){
+          if(k === name){
+            this.ex_choice_map_name.set(k,v);
+            this.ex_finish_map_name.delete(k);
         }
       }
     }
@@ -242,9 +247,9 @@ export class GoalDashboardComponent implements OnInit {
 
   //---remove excersize
   remove(name: string){
-    for(let[k,v] of this.ex_choice_map){
-      if(k.name=== name){
-        this.ex_choice_map.delete(k);
+    for(let[k,v] of this.ex_choice_map_name){
+      if(k=== name){
+        this.ex_choice_map_name.delete(k);
       }} 
   }
 
@@ -340,7 +345,7 @@ export class GoalDashboardComponent implements OnInit {
        if (this.seconds==30){
           $('#commit').removeAttr('disabled');
           $('.NotFinish').removeAttr('disabled');
-          this.ex_finish_list = [];
+          //this.ex_finish_list = [];
           // this.ex_finish_list2 = [];
           // this.ex_finish_list3 = [];
           this.total_finish_list = [];         
@@ -381,8 +386,8 @@ export class GoalDashboardComponent implements OnInit {
           this.progress_display = this.progress +" percent finished of you weekly goal!";
 
           //---update goals based on finish commits
-          if(this.total_finish_list.length == 5 && this.ex_choice_list.length == 0){
-
+          if(this.total_finish_list.length == 5 ){    //&& this.ex_choice_list.length == 0
+ 
             for (let i = 0; i < this.total_finish_list.length;i++){
               let newValue = this.mapCountWeekCommit.get(this.total_finish_list[i])-1;
                 this.mapCountWeekCommit.set(this.total_finish_list[i], newValue)
