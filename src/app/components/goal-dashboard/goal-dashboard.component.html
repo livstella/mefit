@@ -96,6 +96,7 @@
 
     <div class = "weekgoal-display">
         <h3>Workout build</h3>
+        <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
         <ul class="weekly-goal">
 
             <!--First day-->
@@ -116,6 +117,8 @@
                 </option>
             </select>
             
+            <button id="clear" class="clear" (click)="clear1()">Clear day</button>
+
             <li *ngFor="let item of program_ex_map_name | keyvalue" >
                 {{item.key}}
                 {{item.value}} repititions
@@ -138,6 +141,8 @@
                  {{work.name}}
                 </option>
             </select>
+
+            <button id="clear" class="clear" (click)="clear2()">Clear day</button>
             
             <li *ngFor="let item of program_ex_map_name2 | keyvalue" >
                 {{item.key}}
@@ -162,6 +167,8 @@
                 </option>
             </select>
 
+            <button id="clear" class="clear" (click)="clear3()">Clear day</button>
+
             <li *ngFor="let item of program_ex_map_name3  | keyvalue" >
                 {{item.key}}
                 {{item.value}} repititions
@@ -184,6 +191,8 @@
                  {{work.name}}
                 </option>
             </select>
+
+            <button id="clear" class="clear" (click)="clear4()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name4 | keyvalue" >
                 {{item.key}}
@@ -208,6 +217,7 @@
                 </option>
             </select>
 
+            <button id="clear" class="clear" (click)="clear5()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name5 | keyvalue" >
                 {{item.key}}
@@ -232,6 +242,8 @@
                 </option>
             </select>
 
+            <button id="clear" class="clear" (click)="clear6()">Clear day</button>
+
             <li *ngFor="let item of program_ex_map_name6 | keyvalue" >
                 {{item.key}}
                 {{item.value}}
@@ -254,6 +266,8 @@
                  {{work.name}}
                 </option>
             </select>
+
+            <button id="clear" class="clear" (click)="clear7()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name7 | keyvalue" >
                 {{item.key}}

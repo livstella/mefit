@@ -375,6 +375,23 @@ export class GoalDashboardComponent implements OnInit {
   //   })
   // })}
 
+  //---Button to clear week
+  clearweek(){
+    this.program_ex_map_name.clear();
+    this.program_ex_map_name2.clear();
+    this.program_ex_map_name3.clear();
+    this.program_ex_map_name4.clear();
+    this.program_ex_map_name5.clear();
+    this.program_ex_map_name6.clear();
+    this.program_ex_map_name7.clear();
+  }
+
+
+  //---first day
+  //---clear button
+  clear1(){
+    this.program_ex_map_name.clear();
+  }
   //---add an exercise to weekly goal
   onChangeGoalEx1(){
 
@@ -426,7 +443,10 @@ export class GoalDashboardComponent implements OnInit {
   }
 
   //---second day
-
+  //---clear button
+  clear2(){
+    this.program_ex_map_name2.clear();
+  }
   //---add an exercise to weekly goal
   onChangeGoalEx2(){
 
@@ -478,6 +498,12 @@ export class GoalDashboardComponent implements OnInit {
   }
   
   //---Third day
+  //---clear button
+  clear3(){
+    this.program_ex_map_name3.clear();
+  }
+
+  //---add exercise to weakly goal
   onChangeGoalEx3(){
 
     this.exercises.forEach(ex => this.ex_ids.push(ex.id))
@@ -528,6 +554,12 @@ export class GoalDashboardComponent implements OnInit {
   }
 
   //---Fourth day
+  //---clear button
+  clear4(){
+    this.program_ex_map_name4.clear();
+  }
+
+  //---add exercise to weakly goal
   onChangeGoalEx4(){
 
     this.exercises.forEach(ex => this.ex_ids.push(ex.id))
@@ -578,6 +610,12 @@ export class GoalDashboardComponent implements OnInit {
   }
 
   //---Fifth day
+  //---clear button
+  clear5(){
+    this.program_ex_map_name5.clear();
+  }
+
+  //---add exercise to weakly goal
   onChangeGoalEx5(){
 
     this.exercises.forEach(ex => this.ex_ids.push(ex.id))
@@ -628,6 +666,12 @@ export class GoalDashboardComponent implements OnInit {
   }
 
   //---Sixth day
+  //---clear button
+  clear6(){
+    this.program_ex_map_name6.clear();
+  }
+
+  //---add exercise to weakly goal
   onChangeGoalEx6(){
 
     this.exercises.forEach(ex => this.ex_ids.push(ex.id))
@@ -678,6 +722,12 @@ export class GoalDashboardComponent implements OnInit {
   }
 
   //---Seventh day
+  //---clear button
+  clear7(){
+    this.program_ex_map_name7.clear();
+  }
+
+  //---add exercise to weakly goal
   onChangeGoalEx7(){
 
     this.exercises.forEach(ex => this.ex_ids.push(ex.id))
