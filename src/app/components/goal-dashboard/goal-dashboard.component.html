@@ -60,12 +60,12 @@
         <h2>Weekly Goal!</h2>
         <div class="panebuttons">
         <button id="i" class ="commit-program" (click)="commitProgram()">Commit program!</button>
-        <select class = "program-option" name="selectProgram" (change)="onChangeProgram()">
+        <!--<select class = "program-option" name="selectProgram" (change)="onChangeProgram()">
             <option>Choose a programme</option>
             <option *ngFor="let program of programmes ; let i = index" >
               {{program.name}}
             </option>     
-        </select>
+        </select>-->
         <select class = "workout-option" name="selectWorkout" (change)="onChangeWorkout()">
             <option>Choose a workout</option>
             <option *ngFor="let workout of workouts ; let i = index" >
@@ -95,14 +95,23 @@
     </div> -->
 
     <div class = "weekgoal-display">
-        <h3>Workout build</h3>
+        <h3>Exercise build for the week</h3>
+
+        <button id="i" class ="commit-program" (click)="commitGoal()">Commit Goal</button>
+
+        <select class = "program-options" name="selectProgram" (change)="onChangeProgram()">
+            <option>Choose a programme</option>
+            <option *ngFor="let program of programmes ; let i = index" >
+              {{program.name}}
+            </option>     
+        </select>
         <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
         <ul class="weekly-goal">
 
             <!--First day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+oneDate.getDate()}}</h4>
 
-            <select class = "ExcerciseOptions1" name="selectGoalEx1" (change)="onChangeGoalEx1()">
+            <select class = "exercise-options" name="selectGoalEx1" (change)="onChangeGoalEx1()">
                 <option>Choose an exercise</option>
                 <option *ngFor="let ex of exercises ; let i = index" >
                   {{ex.name}}
@@ -127,7 +136,7 @@
              <!--Second day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+twoDate.getDate()}}</h4>
 
-            <select class = "ExcerciseOptions1" name="selectGoalEx2" (change)="onChangeGoalEx2()">
+            <select class = "exercise-options" name="selectGoalEx2" (change)="onChangeGoalEx2()">
                 <option>Choose an exercise</option>
                 <option *ngFor="let ex of exercises ; let i = index" >
                   {{ex.name}}
@@ -152,7 +161,7 @@
              <!--Third day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+threeDate.getDate()}}</h4>
 
-            <select class = "ExcerciseOptions1" name="selectGoalEx3" (change)="onChangeGoalEx3()">
+            <select class = "exercise-options" name="selectGoalEx3" (change)="onChangeGoalEx3()">
                 <option>Choose an exercise</option>
                 <option *ngFor="let ex of exercises ; let i = index" >
                   {{ex.name}}
@@ -177,7 +186,7 @@
             <!--Fouth day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+fourDate.getDate()}}</h4>
 
-            <select class = "ExcerciseOptions1" name="selectGoalEx4" (change)="onChangeGoalEx4()">
+            <select class = "exercise-options" name="selectGoalEx4" (change)="onChangeGoalEx4()">
                 <option>Choose an exercise</option>
                 <option *ngFor="let ex of exercises ; let i = index" >
                   {{ex.name}}
@@ -202,7 +211,7 @@
             <!--Fifth day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+fiveDate.getDate()}}</h4>
 
-            <select class = "ExcerciseOptions1" name="selectGoalEx5" (change)="onChangeGoalEx5()">
+            <select class = "exercise-options" name="selectGoalEx5" (change)="onChangeGoalEx5()">
                 <option>Choose an exercise</option>
                 <option *ngFor="let ex of exercises ; let i = index" >
                   {{ex.name}}
@@ -227,7 +236,7 @@
             <!--Sixth day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+sixDate.getDate()}}</h4>
 
-            <select class = "ExcerciseOptions1" name="selectGoalEx6" (change)="onChangeGoalEx6()">
+            <select class = "exercise-options" name="selectGoalEx6" (change)="onChangeGoalEx6()">
                 <option>Choose an exercise</option>
                 <option *ngFor="let ex of exercises ; let i = index" >
                   {{ex.name}}
@@ -252,7 +261,7 @@
             <!--Seventh day-->
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+sevenDate.getDate()}}</h4>
 
-            <select class = "ExcerciseOptions1" name="selectGoalEx7" (change)="onChangeGoalEx7()">
+            <select class = "exercise-options" name="selectGoalEx7" (change)="onChangeGoalEx7()">
                 <option>Choose an exercise</option>
                 <option *ngFor="let ex of exercises ; let i = index" >
                   {{ex.name}}

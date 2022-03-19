@@ -47,6 +47,34 @@ export class GoalDashboardComponent implements OnInit {
   program_ex_map_name5 = new Map();
   program_ex_map_name6 = new Map();
   program_ex_map_name7 = new Map();
+
+  dayCommit = new Map();
+  dayCommitDisplay = new Map();
+  dayCommitInitial = new Map();
+
+  day2Commit = new Map();
+  day2CommitDisplay = new Map();
+  day2CommitInitial = new Map();
+
+  day3Commit = new Map();
+  day3CommitDisplay = new Map();
+  day3CommitInitial = new Map();
+
+  day4Commit = new Map();
+  day4CommitDisplay = new Map();
+  day4CommitInitial = new Map();
+
+  day5Commit = new Map();
+  day5CommitDisplay = new Map();
+  day5CommitInitial = new Map();
+
+  day6Commit = new Map();
+  day6CommitDisplay = new Map();
+  day6CommitInitial = new Map();
+
+  day7Commit = new Map();
+  day7CommitDisplay = new Map();
+  day7CommitInitial = new Map();
   // ex_choice_list2: string[] = [];
   // ex_finish_list2: string[] = [];
   // ex_choice_list3: string[] = [];
@@ -313,37 +341,6 @@ export class GoalDashboardComponent implements OnInit {
   }})
 }
 
-
-  //---When a workout from dropdown list is chosen, is exercises are displayed
-  //---the workout is removed from the list.
-  //onChangeProgramWorkout(){
-
-  //   this.workouts.forEach(workout => this.workout_ids.push(workout.id))
-
-  //   let choiceWork = $("select[name='selectProgramWorkout'] option:selected").index(); 
-  //   this.workout_id = this.workout_ids[choiceWork-1];
-
-  //   this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
-  //   { 
-  //     this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-  //     console.log(this.repititions)
-
-  //     this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-  //     console.log(this.program_exercises_choosen)
-
-  //     this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
-      
-  //     let ex_name = JSON.parse(JSON.stringify(exercise)).name
-      
-  //     if(!this.program_ex_map_name.has(ex_name)){
-  //       this.program_ex_map_name.set(ex_name, this.repititions);
-  //     }else{
-  //       this.program_ex_map_name.set(ex_name, (this.program_ex_map_name.get(ex_name) +this.repititions))
-  //    }
-  //    this.workouts_choosen.splice(choiceWork-1,1)
-
-  //   })
-  // })}
 
   //---Button to clear week
   clearweek(){
@@ -745,6 +742,80 @@ export class GoalDashboardComponent implements OnInit {
 
     })
   })
+  }
+
+  //---commit to build
+  commitGoal(){
+
+    // $('#commit').removeAttr('disabled');
+    // $('.NotFinish').removeAttr('disabled');
+
+    $('.program-options').attr('disabled','disabled');
+    $('.workout-options').attr('disabled','disabled');
+    $('.exercise-options').attr('disabled','disabled');
+    $('.clear').attr('disabled','disabled');
+    $('.commit-program').attr('disabled','disabled');
+
+     //---start timer
+     const countDownDate = new Date().setDate(new Date().getDate()+7);
+
+     //---Update the count down every 1 second
+     const sevenDayTimer = setInterval(() => {
+
+       //---Get today's date and time
+       let now = new Date().getTime();
+
+       //---Find the distance between now and the count down date
+       let difference = countDownDate - now;
+
+       //---Calculations for days, hours, minutes and seconds
+       this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
+       this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+       this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+       this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+       //---Switch to different day commits ever day
+       if (this.days===6 && this.hours>0){
+        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name))))
+        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name))))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name))))
+             
+       }else if(this.days===6 && this.hours===0){
+        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name2))))
+        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name2))))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name2))))
+      
+       }else if(this.days===5){
+        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name3))))
+        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name3))))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name3))))
+       
+       }else if(this.days===4){
+        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name4))))
+        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name4))))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name4))))
+       
+       }else if(this.days===3){
+        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name5))))
+        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name5))))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name5))))
+       
+      }else if(this.days===2){
+        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name6))))
+        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name6))))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name6))))
+       
+      }else if(this.days===1){
+        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name7))))
+        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name7))))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name7))))
+      
+      }
+       //---Display message when count down is finished
+       else if(difference === 0) {
+        const message = "Deadline expired";
+        }
+       }, 1000);
   }
   
 
