@@ -52,29 +52,29 @@ export class GoalDashboardComponent implements OnInit {
   dayCommitDisplay = new Map();
   dayCommitInitial = new Map();
 
-  day2Commit = new Map();
-  day2CommitDisplay = new Map();
-  day2CommitInitial = new Map();
+  // day2Commit = new Map();
+  // day2CommitDisplay = new Map();
+  // day2CommitInitial = new Map();
 
-  day3Commit = new Map();
-  day3CommitDisplay = new Map();
-  day3CommitInitial = new Map();
+  // day3Commit = new Map();
+  // day3CommitDisplay = new Map();
+  // day3CommitInitial = new Map();
 
-  day4Commit = new Map();
-  day4CommitDisplay = new Map();
-  day4CommitInitial = new Map();
+  // day4Commit = new Map();
+  // day4CommitDisplay = new Map();
+  // day4CommitInitial = new Map();
 
-  day5Commit = new Map();
-  day5CommitDisplay = new Map();
-  day5CommitInitial = new Map();
+  // day5Commit = new Map();
+  // day5CommitDisplay = new Map();
+  // day5CommitInitial = new Map();
 
-  day6Commit = new Map();
-  day6CommitDisplay = new Map();
-  day6CommitInitial = new Map();
+  // day6Commit = new Map();
+  // day6CommitDisplay = new Map();
+  // day6CommitInitial = new Map();
 
-  day7Commit = new Map();
-  day7CommitDisplay = new Map();
-  day7CommitInitial = new Map();
+  // day7Commit = new Map();
+  // day7CommitDisplay = new Map();
+  // day7CommitInitial = new Map();
   // ex_choice_list2: string[] = [];
   // ex_finish_list2: string[] = [];
   // ex_choice_list3: string[] = [];
@@ -118,10 +118,12 @@ export class GoalDashboardComponent implements OnInit {
   mapCountWeekInitial = new Map();
 
   total_finish_list: string[]=[];
-  finishHistory: string[]=[];
+  finishHistory = new Map();
 
-  progress: number | string | undefined = 0;
-  progress_display: number | string | undefined = 0;
+  overallProgress: number | string | undefined = 0;
+  dailyProgress: number | string | undefined = 0;
+  overallProgress_display: number | string | undefined = 0;
+  dailyProgress_display: number | string | undefined = 0;
 
   mapCountKeys: string[]|any = []; 
 
@@ -776,39 +778,39 @@ export class GoalDashboardComponent implements OnInit {
 
        //---Switch to different day commits ever day
        if (this.days===6 && this.hours>0){
-        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name))))
-        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name))))
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name))))
+        this.dayCommit = this.program_ex_map_name
+        this.dayCommitDisplay = this.program_ex_map_name
+        this.dayCommitInitial = this.program_ex_map_name
              
        }else if(this.days===6 && this.hours===0){
-        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name2))))
-        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name2))))
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name2))))
+        this.dayCommit = this.program_ex_map_name2
+        this.dayCommitDisplay = this.program_ex_map_name2
+        this.dayCommitInitial = this.program_ex_map_name2
       
        }else if(this.days===5){
-        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name3))))
-        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name3))))
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name3))))
+        this.dayCommit = this.program_ex_map_name3
+        this.dayCommitDisplay = this.program_ex_map_name3
+        this.dayCommitInitial = this.program_ex_map_name3
        
        }else if(this.days===4){
-        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name4))))
-        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name4))))
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name4))))
+        this.dayCommit = this.program_ex_map_name4
+        this.dayCommitDisplay = this.program_ex_map_name4
+        this.dayCommitInitial = this.program_ex_map_name4
        
        }else if(this.days===3){
-        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name5))))
-        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name5))))
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name5))))
+        this.dayCommit = this.program_ex_map_name5
+        this.dayCommitDisplay = this.program_ex_map_name5
+        this.dayCommitInitial = this.program_ex_map_name5
        
       }else if(this.days===2){
-        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name6))))
-        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name6))))
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name6))))
+        this.dayCommit = this.program_ex_map_name6
+        this.dayCommitDisplay = this.program_ex_map_name6
+        this.dayCommitInitial = this.program_ex_map_name6
        
       }else if(this.days===1){
-        this.dayCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name7))))
-        this.dayCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name7))))
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name7))))
+        this.dayCommit = this.program_ex_map_name7
+        this.dayCommitDisplay = this.program_ex_map_name7
+        this.dayCommitInitial = this.program_ex_map_name7
       
       }
        //---Display message when count down is finished
@@ -817,202 +819,242 @@ export class GoalDashboardComponent implements OnInit {
         }
        }, 1000);
   }
-  
-
-  onChangeWorkout(){
-    let choiceworkout = $("select[name='selectWorkout'] option:selected").index();
-    this.workout_key = this.workout_keys[choiceworkout];
-    this.workout_ex_commit = this.workout_options.get(this.workout_key);
-
-    for (let i = 0; i < this.workout_ex_commit.length; i++) {
-      if (this.mapCount.has(this.workout_ex_commit[i])) {
-          this.mapCount.set(this.workout_ex_commit[i], this.mapCount.get(this.workout_ex_commit[i]) + 1);
-      }
-      else {
-          this.mapCount.set(this.workout_ex_commit[i],1); // Map to capture Count of elements
-      }
-  }
-  }
-
-  onChangeExcersize(){
-
-    this.exercises.forEach(ex => this.ex_options_names.push(ex.name))
-
-    let choiceEx = $("select[name='selectEx'] option:selected").index();
-    this.ex = this.ex_options_names[choiceEx-1];
-    
-    if (this.mapCount.has(this.ex)) {
-        this.mapCount.set(this.ex, this.mapCount.get(this.ex) + 1);
-      }
-      else {
-        this.mapCount.set(this.ex,1); // Map to capture Count of elements
-      }
-  }
-
-  //---clear program
-  clearProgram(){
-    this.mapCount.clear();
-    this.program_ex.length = 0;
-  } 
-  
-  //---commit program
-  commitProgram(){
-    if (this.mapCountWeekCommit.size == 0){
-
-    if(this.mapCount.size != 0){
-      //---Copy maps of excersizes for further processing
-      this.mapCountWeekInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
-      this.mapCountWeekCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
-      this.mapCountWeekCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
-
-      //---start timer
-     const countDownDate = new Date().setDate(new Date().getDate()+7);
-
-     //---Update the count down every 1 second
-     const sevenDayTimer = setInterval(() => {
-
-       //---Get today's date and time
-       let now = new Date().getTime();
-
-       //---Find the distance between now and the count down date
-       let difference = countDownDate - now;
-
-       //---Calculations for days, hours, minutes and seconds
-       this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
-       this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-       this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-       this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-       //---Open goal dashboard every time cycle
-       if (this.seconds==30){
-          $('#commit').removeAttr('disabled');
-          $('.NotFinish').removeAttr('disabled');
-          //this.ex_finish_list = [];
-          // this.ex_finish_list2 = [];
-          // this.ex_finish_list3 = [];
-          this.total_finish_list = [];         
-       }
-
-       //---Display message when count down is finished
-       if (difference == 0) {
-        const message = "Deadline expired";
-        }
-       }, 1000);
-
-      }else{
-        alert("Please pick a program!")
-      }
-      }else{
-        alert("You can only be commited to one program per week!")
-    }
-    
-  }
 
   //---Commit finished excersizes
   commitFinish(){
-    if(this.mapCountWeekCommit.size != 0){
-       this.total_finish_list
-      
-       this.finishHistory = this.finishHistory.concat(this.total_finish_list);
 
-       let sumEx = 0;
+      this.finishHistory = new Map(JSON.parse(JSON.stringify(Array.from(this.ex_finish_map_name))))   
+    
+       let sumExCommited = 0;
+       this.finishHistory.forEach(value=> {
+          sumExCommited += value;
+       });
+     
 
-       this.mapCountWeekInitial.forEach(value => {
-          sumEx += value;
+       let sumExInitial = 0;
+
+       this.dayCommitInitial.forEach(value => {
+          sumExInitial += value;
        });
 
-       this.progress = ((this.finishHistory.length/sumEx)*100).toFixed(2);
+       this.dailyProgress = ((sumExCommited/sumExInitial)*100).toFixed(2);
       
 
-       if (Number(this.progress) <= 100){
-          this.progress_display = this.progress +" percent finished of you weekly goal!";
+       if (Number(this.dailyProgress) <= 100){
+          this.dailyProgress_display = this.dailyProgress +" percent finished of you daily goal!";
 
-          //---update goals based on finish commits
-          if(this.total_finish_list.length == 5 ){    //&& this.ex_choice_list.length == 0
- 
-            for (let i = 0; i < this.total_finish_list.length;i++){
-              let newValue = this.mapCountWeekCommit.get(this.total_finish_list[i])-1;
-                this.mapCountWeekCommit.set(this.total_finish_list[i], newValue)
-                
-            }
-  
-            for (let key of this.mapCountWeekCommit.keys()){
-              this.mapCountKeys.push(key);
-            }
-  
-            for(let i = 0; i<this.mapCountKeys.length;i++){
-              let InValue = this.mapCountWeekInitial.get(this.mapCountKeys[i]) 
-              let newValue2 = this.mapCountWeekCommit.get(this.mapCountKeys[i])
-              this.progress_small = Number(((1-(newValue2/InValue))*100).toFixed(2))
-              if(Number(newValue2)==NaN||Number(newValue2)==0){
-                this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) All routines Finished"])
-              }else{
-                this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+this.progress_small+") Percent finished"])
+      //---substract finished repititions from goal
+       for(let[k1,v1] of this.ex_finish_map_name){
+           for(let[k2,v2] of this.dayCommit){
+              if(k1===k2){
+                this.dayCommit.set(k1,v2-v1)
+                if((v2-v1)<=0){
+                  this.dayCommit.set(k1,"Completed all ")
+                }
               }
             }
-                
-            if (Number(this.progress) == 100){
-                  this.body = {
-                               timeStamp: new Date().getFullYear()+"-"+new Date().getMonth()+"-"+new Date().getDate(),
-                               program: this.program_key, 
-                               ex: JSON.stringify(Object.fromEntries(this.mapCountWeekInitial)),
-                              };
-              
-                  let index = 'first';
-                  this.finishedGoals.set(index, this.body);
-
-                  localStorage.setItem("finished-goals", JSON.stringify(Object.fromEntries(this.finishedGoals)))
-                 
-                  //this.response = localStorage.getItem('finished-goals')||'{}'
-
-                  // alert("code 1")
-                  
-                  
-                  // alert(this.response) //---works
-
-                  // this.newObj = JSON.parse(this.response)
-                 
-                  // alert("code 2")
-
-                  // alert(this.newObj)
-
-                  // //this.newMap = new Map(this.newObj.map((entry: { timeStamp: any; program: any; }) => [entry.timeStamp, entry.program]))   
-                  // this.newMap = new Map(Object.entries(this.newObj))
-
-                  // alert("code 3")
-                  // alert(this.newMap)
-
-                  // alert(this.newMap.get('first').ex) //--works
-
-                  // alert("code 4")
-                  // //let responseEx = this.newMap.get('first').ex
-
-                  // //---alert an exercise
-                  // //this.newObj2 = JSON.parse(responseEx)
-                  // //this.newMap2 = new Map(Object.entries(this.newObj2))
-
-                  // //alert(this.newMap2.get("upper arms"))
-            }
-  
-            //$('#commit').attr('disabled','disabled');
-            //$('.NotFinish').attr('disabled','disabled');
-  
-         }else{
-            alert("only commit finished when workout is finished! Choose all allowed excersizes")
+        }
+       }
+       this.ex_finish_map_name.clear()
       }
-
-
-       }else{
-          this.progress_display = "You finished your weekly goal!"
-       }
-      }else{
-          alert("Choose a weekly goal first!")
-       }
-  }
   
-  toGoalDetails(){
+
+  // onChangeWorkout(){
+  //   let choiceworkout = $("select[name='selectWorkout'] option:selected").index();
+  //   this.workout_key = this.workout_keys[choiceworkout];
+  //   this.workout_ex_commit = this.workout_options.get(this.workout_key);
+
+  //   for (let i = 0; i < this.workout_ex_commit.length; i++) {
+  //     if (this.mapCount.has(this.workout_ex_commit[i])) {
+  //         this.mapCount.set(this.workout_ex_commit[i], this.mapCount.get(this.workout_ex_commit[i]) + 1);
+  //     }
+  //     else {
+  //         this.mapCount.set(this.workout_ex_commit[i],1); // Map to capture Count of elements
+  //     }
+  // }
+  // }
+
+  // onChangeExcersize(){
+
+  //   this.exercises.forEach(ex => this.ex_options_names.push(ex.name))
+
+  //   let choiceEx = $("select[name='selectEx'] option:selected").index();
+  //   this.ex = this.ex_options_names[choiceEx-1];
+    
+  //   if (this.mapCount.has(this.ex)) {
+  //       this.mapCount.set(this.ex, this.mapCount.get(this.ex) + 1);
+  //     }
+  //     else {
+  //       this.mapCount.set(this.ex,1); // Map to capture Count of elements
+  //     }
+  // }
+
+  // //---clear program
+  // clearProgram(){
+  //   this.mapCount.clear();
+  //   this.program_ex.length = 0;
+  // } 
+  
+  // //---commit program
+  // commitProgram(){
+  //   if (this.mapCountWeekCommit.size == 0){
+
+  //   if(this.mapCount.size != 0){
+  //     //---Copy maps of excersizes for further processing
+  //     this.mapCountWeekInitial = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
+  //     this.mapCountWeekCommit = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
+  //     this.mapCountWeekCommitDisplay = new Map(JSON.parse(JSON.stringify(Array.from(this.mapCount))));
+
+  //     //---start timer
+  //    const countDownDate = new Date().setDate(new Date().getDate()+7);
+
+  //    //---Update the count down every 1 second
+  //    const sevenDayTimer = setInterval(() => {
+
+  //      //---Get today's date and time
+  //      let now = new Date().getTime();
+
+  //      //---Find the distance between now and the count down date
+  //      let difference = countDownDate - now;
+
+  //      //---Calculations for days, hours, minutes and seconds
+  //      this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  //      this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  //      this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  //      this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  //      //---Open goal dashboard every time cycle
+  //      if (this.seconds==30){
+  //         $('#commit').removeAttr('disabled');
+  //         $('.NotFinish').removeAttr('disabled');
+  //         //this.ex_finish_list = [];
+  //         // this.ex_finish_list2 = [];
+  //         // this.ex_finish_list3 = [];
+  //         this.total_finish_list = [];         
+  //      }
+
+  //      //---Display message when count down is finished
+  //      if (difference == 0) {
+  //       const message = "Deadline expired";
+  //       }
+  //      }, 1000);
+
+  //     }else{
+  //       alert("Please pick a program!")
+  //     }
+  //     }else{
+  //       alert("You can only be commited to one program per week!")
+  //   }
+    
+  // }
+
+  // //---Commit finished excersizes
+  // commitFinish(){
+  //   if(this.mapCountWeekCommit.size != 0){
+  //      this.total_finish_list
+      
+  //      this.finishHistory = this.finishHistory.concat(this.total_finish_list);
+
+  //      let sumEx = 0;
+
+  //      this.mapCountWeekInitial.forEach(value => {
+  //         sumEx += value;
+  //      });
+
+  //      this.progress = ((this.finishHistory.length/sumEx)*100).toFixed(2);
+      
+
+  //      if (Number(this.progress) <= 100){
+  //         this.progress_display = this.progress +" percent finished of you weekly goal!";
+
+  //         //---update goals based on finish commits
+  //         if(this.total_finish_list.length == 5 ){    //&& this.ex_choice_list.length == 0
+ 
+  //           for (let i = 0; i < this.total_finish_list.length;i++){
+  //             let newValue = this.mapCountWeekCommit.get(this.total_finish_list[i])-1;
+  //               this.mapCountWeekCommit.set(this.total_finish_list[i], newValue)
+                
+  //           }
+  
+  //           for (let key of this.mapCountWeekCommit.keys()){
+  //             this.mapCountKeys.push(key);
+  //           }
+  
+  //           for(let i = 0; i<this.mapCountKeys.length;i++){
+  //             let InValue = this.mapCountWeekInitial.get(this.mapCountKeys[i]) 
+  //             let newValue2 = this.mapCountWeekCommit.get(this.mapCountKeys[i])
+  //             this.progress_small = Number(((1-(newValue2/InValue))*100).toFixed(2))
+  //             if(Number(newValue2)==NaN||Number(newValue2)==0){
+  //               this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) All routines Finished"])
+  //             }else{
+  //               this.mapCountWeekCommitDisplay.set(this.mapCountKeys[i], ["(Initially "+InValue+" routines) "+newValue2+": routines left ", " ("+this.progress_small+") Percent finished"])
+  //             }
+  //           }
+                
+  //           if (Number(this.progress) == 100){
+  //                 this.body = {
+  //                              timeStamp: new Date().getFullYear()+"-"+new Date().getMonth()+"-"+new Date().getDate(),
+  //                              program: this.program_key, 
+  //                              ex: JSON.stringify(Object.fromEntries(this.mapCountWeekInitial)),
+  //                             };
+              
+  //                 let index = 'first';
+  //                 this.finishedGoals.set(index, this.body);
+
+  //                 localStorage.setItem("finished-goals", JSON.stringify(Object.fromEntries(this.finishedGoals)))
+                 
+  //                 //this.response = localStorage.getItem('finished-goals')||'{}'
+
+  //                 // alert("code 1")
+                  
+                  
+  //                 // alert(this.response) //---works
+
+  //                 // this.newObj = JSON.parse(this.response)
+                 
+  //                 // alert("code 2")
+
+  //                 // alert(this.newObj)
+
+  //                 // //this.newMap = new Map(this.newObj.map((entry: { timeStamp: any; program: any; }) => [entry.timeStamp, entry.program]))   
+  //                 // this.newMap = new Map(Object.entries(this.newObj))
+
+  //                 // alert("code 3")
+  //                 // alert(this.newMap)
+
+  //                 // alert(this.newMap.get('first').ex) //--works
+
+  //                 // alert("code 4")
+  //                 // //let responseEx = this.newMap.get('first').ex
+
+  //                 // //---alert an exercise
+  //                 // //this.newObj2 = JSON.parse(responseEx)
+  //                 // //this.newMap2 = new Map(Object.entries(this.newObj2))
+
+  //                 // //alert(this.newMap2.get("upper arms"))
+  //           }
+  
+  //           //$('#commit').attr('disabled','disabled');
+  //           //$('.NotFinish').attr('disabled','disabled');
+  
+  //        }else{
+  //           alert("only commit finished when workout is finished! Choose all allowed excersizes")
+  //     }
+
+
+  //      }else{
+  //         this.progress_display = "You finished your weekly goal!"
+  //      }
+  //     }else{
+  //         alert("Choose a weekly goal first!")
+  //      }
+  // }
+  
+ toGoalDetails(){
     this.router.navigateByUrl('/goaldetails');
   }
 }
+
+
 
 

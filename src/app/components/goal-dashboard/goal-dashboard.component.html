@@ -37,7 +37,7 @@
                     </span>
 
 
-                    <select class = "ExcerciseOptions1" name="select1.1" (change)="onChangeEx()">
+                    <select class = "exercise-options-do" name="select1.1" (change)="onChangeEx()">
                         <option>Choose an exercise</option>
                         <option *ngFor="let ex of exercises ; let i = index" >
                           {{ex.name}}
@@ -45,7 +45,7 @@
                     </select>
 
 
-                     <select class = "workout-options" name="select1.2" (change)="onChangeWork()">
+                     <select class = "workout-options-do" name="select1.2" (change)="onChangeWork()">
                         <option>Choose a workout</option>
                         <option *ngFor="let work of workouts ; let i = index" >
                          {{work.name}}
@@ -56,16 +56,16 @@
                     
  
 
-    <div class = "weekgoal">
+   <!-- <div class = "weekgoal">
         <h2>Weekly Goal!</h2>
         <div class="panebuttons">
         <button id="i" class ="commit-program" (click)="commitProgram()">Commit program!</button>
-        <!--<select class = "program-option" name="selectProgram" (change)="onChangeProgram()">
+        <select class = "program-option" name="selectProgram" (change)="onChangeProgram()">
             <option>Choose a programme</option>
             <option *ngFor="let program of programmes ; let i = index" >
               {{program.name}}
             </option>     
-        </select>-->
+        </select>
         <select class = "workout-option" name="selectWorkout" (change)="onChangeWorkout()">
             <option>Choose a workout</option>
             <option *ngFor="let workout of workouts ; let i = index" >
@@ -81,7 +81,7 @@
         </select>
         <button id="clear-program" class="clear-program" (click)="clearProgram()">Clear program!</button>
         </div>
-    </div>
+    </div> -->
 
 
    <!-- <div class = "weekgoal-display">
@@ -298,8 +298,8 @@
     </div>
 
     <div class = "progress">
-        <h3>{{[progress_display]}}</h3>
-        <div class="progressbar" style="--widthbar:{{progress}}" data-label="progress..."></div>
+        <h3>{{[dailyProgress_display]}}</h3>
+        <div class="progressbar" style="--widthbar:{{dailyProgress}}" data-label="progress..."></div>
     </div>
     <div class="timer">
         <h3>Time left to complete following program!</h3>
