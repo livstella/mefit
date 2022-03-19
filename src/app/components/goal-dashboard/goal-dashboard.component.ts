@@ -861,19 +861,23 @@ export class GoalDashboardComponent implements OnInit {
 
        if (Number(this.dailyProgress) <= 100){
           this.dailyProgress_display = this.dailyProgress +" percent finished of you daily goal!";
+       }else if(Number(this.dailyProgress) >= 100){
+          this.dailyProgress_display = "You finished of your daily goal!";
+       }
+
 
       //---substract finished repititions from goal
        for(let[k1,v1] of this.ex_finish_map_name){
            for(let[k2,v2] of this.dayCommit){
               if(k1===k2){
-                this.dayCommit.set(k1,v2-v1)
+                this.dayCommit.set(k2,v2-v1)
                 if((v2-v1)<=0){
-                  this.dayCommit.set(k1,"Completed all ")
+                  this.dayCommit.set(k2,"Completed all ")
                 }
               }
             }
         }
-       }
+       
        this.ex_finish_map_name.clear()
       }
   
