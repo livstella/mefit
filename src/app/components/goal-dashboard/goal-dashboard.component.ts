@@ -40,6 +40,7 @@ export class GoalDashboardComponent implements OnInit {
   ex_choice_map = new Map();
   ex_finish_map = new Map();
 
+  program_ex_map_name = new Map();
   // ex_choice_list2: string[] = [];
   // ex_finish_list2: string[] = [];
   // ex_choice_list3: string[] = [];
@@ -47,16 +48,22 @@ export class GoalDashboardComponent implements OnInit {
   
   sets = [{}];
   workout_ids: number[] = [];
+  workout_id: number | undefined;
   workout_sets: Sets[] | undefined ;
+
+  program_ids: number[] = [];
+  program_id: number | undefined;
 
   ex_fromWorkout_map = new Map();
   repititions: number | undefined;
   exercises_choosen: Exercise[] | undefined | any;
+  program_exercises_choosen: Exercise[] | undefined | any;
+  workouts_choosen: Workout[] | undefined | any;
   exercises_choosen_total= new Map();
 
   workout_options = new Map();
   workout_options_names: string[] =[];
-  workout_id: number | undefined;
+  
 
   workout_keys: string[]|any = [] ;
   workout_key: string | undefined;
@@ -255,27 +262,52 @@ export class GoalDashboardComponent implements OnInit {
 
 
   //---Weekly goals
+  //---when a program is chosen its workouts are shown in dropdown list
   onChangeProgram(){
 
-    this.programmes.forEach(program => this.program_options_names.push(program.name))
-
+    this.programmes.forEach(program => this.program_ids.push(program.id))
+    
     let choiceProgram = $("select[name='selectProgram'] option:selected").index();
-    this.program_key = this.program_options_names[choiceProgram];
+    this.program_id = this.program_ids[choiceProgram-1];
 
-    for(let i = 0; i <this.program_work.length;i++){
-      this.program_ex.push(this.workout_options.get(this.program_work[i]));
-    }
-    this.program_ex = this.program_ex.flat();
+    this.goalDashBoardService.fetchProgramById(this.program_id).subscribe((program: Programme[]) =>
+    { 
+      this.workouts_choosen = JSON.parse(JSON.stringify(program)).workouts;
+      console.log(this.workouts_choosen)
+  })}
 
-    for (let i = 0; i < this.program_ex.length; i++) {
-            if (this.mapCount.has(this.program_ex[i])) {
-                this.mapCount.set(this.program_ex[i], this.mapCount.get(this.program_ex[i]) + 1);
-            }
-            else {
-                this.mapCount.set(this.program_ex[i],1); // Map to capture Count of elements
-            }
-        }
-  }
+  //---When a workout from dropdown list is chosen, is exercises are displayed
+  //---the workout is removed from the list.
+  onChangeProgramWorkout(){
+
+    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+
+    let choiceWork = $("select[name='selectProgramWorkout'] option:selected").index(); 
+    this.workout_id = this.workout_ids[choiceWork-1];
+
+    this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
+    { 
+      this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+      console.log(this.repititions)
+
+      this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+      console.log(this.program_exercises_choosen)
+
+      this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
+      
+      let ex_name = JSON.parse(JSON.stringify(exercise)).name
+      
+      if(!this.program_ex_map_name.has(ex_name)){
+        this.program_ex_map_name.set(ex_name, this.repititions);
+      }else{
+        this.program_ex_map_name.set(ex_name, (this.program_ex_map_name.get(ex_name) +this.repititions))
+     }
+     this.workouts_choosen.splice(choiceWork-1,1)
+
+    })
+  })}
+
+  
 
   onChangeWorkout(){
     let choiceworkout = $("select[name='selectWorkout'] option:selected").index();

@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Exercise } from '../models/exercise.model';
+import { Programme } from '../models/programme.model';
 import { Sets } from '../models/sets.model';
 import { Workout } from '../models/workout.model';
 
@@ -26,7 +27,10 @@ export class GoalDashbordService {
     return this.http.get<Workout[]>(`https://mefitbackend-ajlm.herokuapp.com/workout/${id}`)
   }
 
-  //---get programs
+  //---get program by id
+  public fetchProgramById(id:number): Observable<Programme[]>  {
+    return this.http.get<Programme[]>(`https://mefitbackend-ajlm.herokuapp.com/program/${id}`)
+  }
 
   //---get exercise by id 
   public fetchExById(id:number): Observable<Exercise[]>  {

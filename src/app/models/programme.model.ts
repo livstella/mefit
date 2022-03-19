@@ -1,6 +1,6 @@
 export interface Programme {
     id: number;
+    workouts: [{}];
     name: string;
     category:string;
-    //Skal vi have workouts med?
 }

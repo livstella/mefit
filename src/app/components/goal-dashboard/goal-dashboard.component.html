@@ -98,10 +98,19 @@
         <h3>Workout build</h3>
         <ul class="weekly-goal">
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+oneDate.getDate()}}</h4>
-            <li *ngFor="let item of exercises_choosen_total | keyvalue" >
-                {{item.key.name}}
+
+            <select class = "program-workout-option" name="selectProgramWorkout" (change)="onChangeProgramWorkout()">
+                <option>Programme workouts</option>
+                <option *ngFor="let work of workouts_choosen ; let i = index" >
+                    {{work.name}}
+                </option>
+            </select>
+            
+            <li *ngFor="let item of program_ex_map_name | keyvalue" >
+                {{item.key}}
                 {{item.value}} repititions
             </li> 
+            
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+twoDate.getDate()}}</h4>
             <li *ngFor="let item of mapCount | keyvalue" >
                 {{item.key}}
