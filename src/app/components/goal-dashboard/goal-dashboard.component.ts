@@ -207,52 +207,22 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add excersize to finish list
   updateExFinish(name: string){
-    if(this.ex_finish_map_name.size!=0){
-    for(let[k,v] of this.ex_finish_map_name){
-        if (k === name) {
-          this.ex_finish_map_name.set(k, v + this.ex_choice_map_name.get(k));
-          this.ex_choice_map_name.delete(k);
-        }else {
-          for(let[k,v] of this.ex_choice_map_name){
-          if(k === name){
-            this.ex_finish_map_name.set(k,v);
-            this.ex_choice_map_name.delete(k);
-          }
-          }
-        }
-    }
-    }else{
-      for(let[k,v] of this.ex_choice_map_name){
-        if(k === name){
-          this.ex_finish_map_name.set(k,v);
-          this.ex_choice_map_name.delete(k);
-      }
+
+    for(let[k,v] of this.ex_choice_map_name){
+      if(k === name){
+        this.ex_finish_map_name.set(k,v);
+        this.ex_choice_map_name.delete(k);
     }
   }
 }
 
   //---add excersize to planed list
   updateExPlaned(name: string){
-    if(this.ex_choice_map_name.size!=0){
-      for(let[k,v] of this.ex_choice_map_name){
-          if (k === name) {
-            this.ex_choice_map_name.set(k, v + this.ex_finish_map_name.get(k));
-            this.ex_finish_map_name.delete(k);
-          }else {
-            for(let[k,v] of this.ex_finish_map_name){
-            if(k === name){
-              this.ex_choice_map_name.set(k,v);
-              this.ex_finish_map_name.delete(k);
-            }
-            }
-          }
-      }
-      }else{
-        for(let[k,v] of this.ex_finish_map_name){
-          if(k === name){
-            this.ex_choice_map_name.set(k,v);
-            this.ex_finish_map_name.delete(k);
-        }
+
+    for(let[k,v] of this.ex_finish_map_name){
+      if(k === name){
+        this.ex_choice_map_name.set(k,v);
+        this.ex_finish_map_name.delete(k);
       }
     }
   }
