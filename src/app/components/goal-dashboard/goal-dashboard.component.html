@@ -105,12 +105,27 @@
                     {{work.name}}
                 </option>
             </select>
+
+            <select class = "ExcerciseOptions1" name="selectGoalEx1" (change)="onChangeGoalEx1()">
+                <option>Choose an exercise</option>
+                <option *ngFor="let ex of exercises ; let i = index" >
+                  {{ex.name}}
+                </option>
+            </select>
+
+
+             <select class = "workout-options" name="selectGoalWork1" (change)="onChangeGoalWork1()">
+                <option>Choose a workout</option>
+                <option *ngFor="let work of workouts ; let i = index" >
+                 {{work.name}}
+                </option>
+            </select>
             
             <li *ngFor="let item of program_ex_map_name | keyvalue" >
                 {{item.key}}
                 {{item.value}} repititions
             </li> 
-            
+
             <h4>{{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+twoDate.getDate()}}</h4>
             <li *ngFor="let item of mapCount | keyvalue" >
                 {{item.key}}

@@ -236,7 +236,7 @@ h1 {
     position: absolute;
     top: 670px;
     left: 9%;
-    width: 400px;
+    width: 800px;
     height: 245px;
     overflow:auto;
 }
@@ -248,8 +248,8 @@ h1 {
     border-color : black;
     position: absolute;
     top: 670px;
-    left: 37%;
-    width: 820px;
+    left: 80%;
+    width: 200px;
     height: 245px;
     overflow:auto;
 }
