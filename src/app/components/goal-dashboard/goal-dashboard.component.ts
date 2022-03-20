@@ -153,7 +153,7 @@ export class GoalDashboardComponent implements OnInit {
   constructor(private router: Router, private readonly goalDashBoardService: GoalDashbordService ,private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
 
   ngOnInit(): void {
-    
+
     this.twoDate.setDate(this.oneDate.getDate()+1);
     this.threeDate.setDate(this.oneDate.getDate()+2);
     this.fourDate.setDate(this.oneDate.getDate()+3);
@@ -169,6 +169,32 @@ export class GoalDashboardComponent implements OnInit {
 
     //---Fetch all programs
     this.programPageService.fetchProgramme();
+ 
+    alert(new Map(Object.entries(JSON.parse(localStorage.getItem('day1commit')||'{}'))).get('Crunches'))
+
+    if(localStorage.getItem('day1commit')!=null){
+      const day1 = new Map(JSON.parse(localStorage.getItem("day1commit")||'{}'));
+      const day2 = new Map(JSON.parse(localStorage.getItem("day2commit")||'{}'));
+      const day3 = new Map(JSON.parse(localStorage.getItem("day3commit")||'{}'));
+      const day4 = new Map(JSON.parse(localStorage.getItem("day4commit")||'{}'));
+      const day5 = new Map(JSON.parse(localStorage.getItem("day5commit")||'{}'));
+      const day6 = new Map(JSON.parse(localStorage.getItem("day6commit")||'{}'));
+      const day7 = new Map(JSON.parse(localStorage.getItem("day7commit")||'{}'));
+      this.program_ex_map_name = day1
+      this.program_ex_map_name2 = day2
+      this.program_ex_map_name3 = day3
+      this.program_ex_map_name4 = day4
+      this.program_ex_map_name5 = day5
+      this.program_ex_map_name6 = day6
+      this.program_ex_map_name7 = day7
+      $('.program-options').attr('disabled','disabled');
+      $('.workout-options').attr('disabled','disabled');
+      $('.exercise-options').attr('disabled','disabled');
+      $('.clear').attr('disabled','disabled');
+      $('.commit-program').attr('disabled','disabled');
+    }
+
+    localStorage.getItem("countdown-timer")
 
   }
 
@@ -771,12 +797,22 @@ export class GoalDashboardComponent implements OnInit {
     // $('#commit').removeAttr('disabled');
     // $('.NotFinish').removeAttr('disabled');
 
+
     $('.program-options').attr('disabled','disabled');
     $('.workout-options').attr('disabled','disabled');
     $('.exercise-options').attr('disabled','disabled');
     $('.clear').attr('disabled','disabled');
     $('.commit-program').attr('disabled','disabled');
 
+    
+    localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))
+    localStorage.setItem("day2commit", JSON.stringify(Array.from(this.program_ex_map_name2.entries())))
+    localStorage.setItem("day3commit", JSON.stringify(Array.from(this.program_ex_map_name3.entries())))
+    localStorage.setItem("day4commit", JSON.stringify(Array.from(this.program_ex_map_name4.entries())))
+    localStorage.setItem("day5commit", JSON.stringify(Array.from(this.program_ex_map_name5.entries())))
+    localStorage.setItem("day6commit", JSON.stringify(Array.from(this.program_ex_map_name6.entries())))
+    localStorage.setItem("day7commit", JSON.stringify(Array.from(this.program_ex_map_name7.entries())))
+    
      //---start timer
      const countDownDate = new Date().setDate(new Date().getDate()+7);
 
@@ -786,20 +822,20 @@ export class GoalDashboardComponent implements OnInit {
        //---Get today's date and time
        let now = new Date().getTime();
 
-       //---Find the distance between now and the count down date
-       let difference = countDownDate - now;
-
-       //---Calculations for days, hours, minutes and seconds
+       const difference = countDownDate - now;
+        //---Calculations for days, hours, minutes and seconds
        this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
        this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
        this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
        this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
+      localStorage.setItem("countdown_timer", JSON.stringify(difference))
+
        //---Switch to different day commits ever day
        if (this.days===6 && this.hours>0){
         this.dayCommit = this.program_ex_map_name
         this.dayCommitDisplay = this.program_ex_map_name
-        this.dayCommitInitial = this.program_ex_map_name
+        this.dayCommitInitial = this.program_ex_map_name//new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
              
        }else if(this.days===6 && this.hours===0){
         this.dayCommit = this.program_ex_map_name2
@@ -835,14 +871,23 @@ export class GoalDashboardComponent implements OnInit {
        //---Display message when count down is finished
        else if(difference === 0) {
         const message = "Deadline expired";
+        // localStorage.removeItem("day1commit")
+        // localStorage.removeItem("day2commit")
+        // localStorage.removeItem("day3commit")
+        // localStorage.removeItem("day4commit")
+        // localStorage.removeItem("day5commit")
+        // localStorage.removeItem("day6commit")
+        // localStorage.removeItem("day7commit")
+        // localStorage.removeItem("countdown_timer");
         }
-       }, 1000);
+      }, 1000);
   }
+ 
 
   //---Commit finished excersizes
   commitFinish(){
 
-      this.finishHistory = new Map(JSON.parse(JSON.stringify(Array.from(this.ex_finish_map_name))))   
+      this.finishHistory = new Map([...this.finishHistory,...this.ex_finish_map_name])   
     
        let sumExCommited = 0;
        this.finishHistory.forEach(value=> {
@@ -859,7 +904,7 @@ export class GoalDashboardComponent implements OnInit {
        this.dailyProgress = ((sumExCommited/sumExInitial)*100).toFixed(2);
       
 
-       if (Number(this.dailyProgress) <= 100){
+       if (Number(this.dailyProgress) < 100){
           this.dailyProgress_display = this.dailyProgress +" percent finished of you daily goal!";
        }else if(Number(this.dailyProgress) >= 100){
           this.dailyProgress_display = "You finished of your daily goal!";
@@ -879,6 +924,15 @@ export class GoalDashboardComponent implements OnInit {
         }
        
        this.ex_finish_map_name.clear()
+
+       
+    localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))
+    localStorage.setItem("day2commit", JSON.stringify(Array.from(this.program_ex_map_name2.entries())))
+    localStorage.setItem("day3commit", JSON.stringify(Array.from(this.program_ex_map_name3.entries())))
+    localStorage.setItem("day4commit", JSON.stringify(Array.from(this.program_ex_map_name4.entries())))
+    localStorage.setItem("day5commit", JSON.stringify(Array.from(this.program_ex_map_name5.entries())))
+    localStorage.setItem("day6commit", JSON.stringify(Array.from(this.program_ex_map_name6.entries())))
+    localStorage.setItem("day7commit", JSON.stringify(Array.from(this.program_ex_map_name7.entries())))
       }
   
 
@@ -1077,7 +1131,4 @@ export class GoalDashboardComponent implements OnInit {
     this.router.navigateByUrl('/goaldetails');
   }
 }
-
-
-
 
