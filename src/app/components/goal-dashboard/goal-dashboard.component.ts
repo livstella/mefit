@@ -156,6 +156,34 @@ export class GoalDashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //---Stores daily submitted history to local storage
+    if(localStorage.getItem("daily_finish_history")){
+      const dayfinish = new Map(JSON.parse(localStorage.getItem("daily_finish_history")||'{}'));
+      this.finishHistory = dayfinish
+    
+      const initialcommit = new Map(JSON.parse(localStorage.getItem("daily_initial_commit")||'{}'));
+      this.dayCommitInitial = initialcommit
+    
+
+    let sumExCommited = 0;
+    this.finishHistory.forEach(value=> {
+          sumExCommited += value;
+    });
+
+    let sumExInitial = 0;
+    this.dayCommitInitial.forEach(value => {
+          sumExInitial += value;
+    });
+       
+    this.dailyProgress = ((sumExCommited/sumExInitial)*100).toFixed(2);
+
+    if (Number(this.dailyProgress) < 100){
+      this.dailyProgress_display = this.dailyProgress +" percent finished of you daily goal!";
+    }else if(Number(this.dailyProgress) >= 100){
+      this.dailyProgress_display = "You finished of your daily goal!";
+    }
+  }
+
     this.twoDate.setDate(this.oneDate.getDate()+1);
     this.threeDate.setDate(this.oneDate.getDate()+2);
     this.fourDate.setDate(this.oneDate.getDate()+3);
@@ -189,8 +217,6 @@ export class GoalDashboardComponent implements OnInit {
       this.program_ex_map_name5 = day5
       this.program_ex_map_name6 = day6
       this.program_ex_map_name7 = day7
-
-      console.log("program_ex_crunches: "+this.program_ex_map_name.get("Crunches"))
       
       $('.program-options').attr('disabled','disabled');
       $('.workout-options').attr('disabled','disabled');
@@ -198,7 +224,7 @@ export class GoalDashboardComponent implements OnInit {
       $('.clear').attr('disabled','disabled');
       $('.commit-program').attr('disabled','disabled');
 
-      //---start timer
+      // //---start timer
       this.countDownDate = Number(localStorage.getItem("countdown_timer"))
        
       //---Update the count down every 1 second
@@ -271,6 +297,7 @@ export class GoalDashboardComponent implements OnInit {
         }
       }, 1000);
   }
+    
 }   
 
   get exercises(): Exercise[] {
@@ -912,37 +939,37 @@ export class GoalDashboardComponent implements OnInit {
 
         this.dayCommit = this.program_ex_map_name
         this.dayCommitDisplay = this.program_ex_map_name
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = this.program_ex_map_name
              
        }else if(this.days===6 && this.hours===0){
         this.dayCommit = this.program_ex_map_name2
         this.dayCommitDisplay = this.program_ex_map_name2
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = this.program_ex_map_name2
       
        }else if(this.days===5){
         this.dayCommit = this.program_ex_map_name3
         this.dayCommitDisplay = this.program_ex_map_name3
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = this.program_ex_map_name3
        
        }else if(this.days===4){
         this.dayCommit = this.program_ex_map_name4
         this.dayCommitDisplay = this.program_ex_map_name4
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = this.program_ex_map_name4
        
        }else if(this.days===3){
         this.dayCommit = this.program_ex_map_name5
         this.dayCommitDisplay = this.program_ex_map_name5
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = this.program_ex_map_name5
        
       }else if(this.days===2){
         this.dayCommit = this.program_ex_map_name6
         this.dayCommitDisplay = this.program_ex_map_name6
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = this.program_ex_map_name6
        
       }else if(this.days===1){
         this.dayCommit = this.program_ex_map_name7
         this.dayCommitDisplay = this.program_ex_map_name7
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = this.program_ex_map_name7
       
       }
        //---Display message when count down is finished
@@ -965,15 +992,19 @@ export class GoalDashboardComponent implements OnInit {
 
   //---Commit finished excersizes
   commitFinish(){
-
-      console.log("commmit pressed")
-      //---calcualting progress
-      this.finishHistory = new Map([...this.finishHistory,...this.ex_finish_map_name])   
     
+      //---calcualting progress
+      this.finishHistory = new Map([...this.finishHistory,...this.ex_finish_map_name])
+      
+      localStorage.setItem("daily_finish_history", JSON.stringify(Array.from(this.finishHistory.entries())))
+      localStorage.setItem("daily_initial_commit", JSON.stringify(Array.from(this.dayCommitInitial.entries())))
+      
        let sumExCommited = 0;
        this.finishHistory.forEach(value=> {
           sumExCommited += value;
        });
+
+       console.log("total finished repititions "+sumExCommited)
      
 
        let sumExInitial = 0;
@@ -982,11 +1013,13 @@ export class GoalDashboardComponent implements OnInit {
           sumExInitial += value;
        });
 
+       console.log("total initial repititions "+sumExInitial)
+
        this.dailyProgress = ((sumExCommited/sumExInitial)*100).toFixed(2);
       
 
        if (Number(this.dailyProgress) < 100){
-          this.dailyProgress_display = this.dailyProgress +" percent finished of you daily goal!";
+          this.dailyProgress_display = this.dailyProgress +" percent finished of your daily goal!";
        }else if(Number(this.dailyProgress) >= 100){
           this.dailyProgress_display = "You finished of your daily goal!";
        }
