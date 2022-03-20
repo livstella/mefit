@@ -362,20 +362,39 @@ export class GoalDashboardComponent implements OnInit {
     })
   })}
 
-  //---increment exercise choice
-  increment(name:string){
+  //---increment exercise choice by 10
+  increment10(name:string){
     for(let[k,v] of this.ex_choice_map_name){
       if(k === name){
         this.ex_choice_map_name.set(k,v+10);
     }}
   }
 
-  //---increment exercise choice
-  decrement(name:string){
+  //---increment exercise choice by 10
+  decrement10(name:string){
     for(let[k,v] of this.ex_choice_map_name){
       if(k === name){
         this.ex_choice_map_name.set(k,v-10);
         if((v-10)<=0){
+          this.ex_choice_map_name.delete(k);
+        }
+    }}
+  }
+
+  //---increment exercise choice by 1
+  increment1(name:string){
+    for(let[k,v] of this.ex_choice_map_name){
+      if(k === name){
+        this.ex_choice_map_name.set(k,v+1);
+    }}
+  }
+
+  //---increment exercise choice by 1
+  decrement1(name:string){
+    for(let[k,v] of this.ex_choice_map_name){
+      if(k === name){
+        this.ex_choice_map_name.set(k,v-1);
+        if((v-1)<=0){
           this.ex_choice_map_name.delete(k);
         }
     }}
@@ -386,12 +405,20 @@ export class GoalDashboardComponent implements OnInit {
   updateExFinish(name: string){
 
     for(let[k,v] of this.ex_choice_map_name){
-      if(k === name){
-        this.ex_finish_map_name.set(k,v);
-        this.ex_choice_map_name.delete(k);
+      for(let[k2,v2] of this.dayCommit)
+        if(k === name && k2 ===name){
+          if(v<=v2){
+            this.ex_finish_map_name.set(k,v);
+            this.ex_choice_map_name.delete(k);
+          }else{
+            alert("you picked to many repititions.")
+          }
+        }else if(k != name && k2 !=name){
+            alert("You did not sign up for this exercise.")
+        }
     }
   }
-}
+
 
   //---add excersize to planed list
   updateExPlaned(name: string){
@@ -992,7 +1019,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---Commit finished excersizes
   commitFinish(){
-    
+
       //---calcualting progress
       this.finishHistory = new Map([...this.finishHistory,...this.ex_finish_map_name])
       

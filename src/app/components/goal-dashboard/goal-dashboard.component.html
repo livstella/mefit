@@ -18,8 +18,10 @@
                         <h4>Planned</h4>
                         <ul class="Excersizedisplay1">
                             <li *ngFor="let item of ex_choice_map_name | keyvalue" >
-                              <button id="i" (click)="increment(item.key)">+</button> 
-                              <button id="i" (click)="decrement(item.key)">-</button>   
+                              <button id="i" (click)="increment10(item.key)">+10</button> 
+                              <button id="i" (click)="decrement10(item.key)">-10</button>
+                              <button id="i" (click)="increment1(item.key)">+1</button> 
+                              <button id="i" (click)="decrement1(item.key)">-1</button>   
                                 {{item.key}}
                                 ({{item.value}} repititions)
                               <button id="i" (click)="updateExFinish(item.key)">Finished!</button>
