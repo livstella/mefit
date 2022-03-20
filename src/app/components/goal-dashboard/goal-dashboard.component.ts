@@ -151,23 +151,21 @@ export class GoalDashboardComponent implements OnInit {
   exerciselist: Exercise[] | undefined;
   progress_small: Number | undefined;
   
+  sumExCommited: number = 0;
 
   constructor(private router: Router, private readonly goalDashBoardService: GoalDashbordService ,private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
 
   ngOnInit(): void {
 
     //---Stores daily submitted history to local storage
-    if(localStorage.getItem("daily_finish_history")){
-      const dayfinish = new Map(JSON.parse(localStorage.getItem("daily_finish_history")||'{}'));
-      this.finishHistory = dayfinish
+    if(localStorage.getItem("daily_finish")){
+      this.sumExCommited = Number(localStorage.getItem("daily_finish"))
     
       const initialcommit = new Map(JSON.parse(localStorage.getItem("daily_initial_commit")||'{}'));
       this.dayCommitInitial = initialcommit
     
-
-    let sumExCommited = 0;
     this.finishHistory.forEach(value=> {
-          sumExCommited += value;
+          this.sumExCommited += value;
     });
 
     let sumExInitial = 0;
@@ -175,7 +173,7 @@ export class GoalDashboardComponent implements OnInit {
           sumExInitial += value;
     });
        
-    this.dailyProgress = ((sumExCommited/sumExInitial)*100).toFixed(2);
+    this.dailyProgress = Number((this.sumExCommited/sumExInitial)*100).toFixed(2);
 
     if (Number(this.dailyProgress) < 100){
       this.dailyProgress_display = this.dailyProgress +" percent finished of you daily goal!";
@@ -1021,17 +1019,23 @@ export class GoalDashboardComponent implements OnInit {
   commitFinish(){
 
       //---calcualting progress
-      this.finishHistory = new Map([...this.finishHistory,...this.ex_finish_map_name])
+      if(localStorage.getItem("daily_finish")){
+        this.sumExCommited = Number(localStorage.getItem("daily_finish"));
+      }else{
+        this.sumExCommited = 0;
+      }
+     
+     // this.finishHistory = new Map([...this.finishHistory, ...])
       
-      localStorage.setItem("daily_finish_history", JSON.stringify(Array.from(this.finishHistory.entries())))
       localStorage.setItem("daily_initial_commit", JSON.stringify(Array.from(this.dayCommitInitial.entries())))
       
-       let sumExCommited = 0;
-       this.finishHistory.forEach(value=> {
-          sumExCommited += value;
+       this.ex_finish_map_name.forEach(value=> {
+          this.sumExCommited += value;
        });
 
-       console.log("total finished repititions "+sumExCommited)
+       localStorage.setItem("daily_finish", this.sumExCommited.toString())
+
+       console.log("total finished repititions "+this.sumExCommited)
      
 
        let sumExInitial = 0;
@@ -1042,7 +1046,7 @@ export class GoalDashboardComponent implements OnInit {
 
        console.log("total initial repititions "+sumExInitial)
 
-       this.dailyProgress = ((sumExCommited/sumExInitial)*100).toFixed(2);
+       this.dailyProgress = Number((this.sumExCommited/sumExInitial)*100).toFixed(2);
       
 
        if (Number(this.dailyProgress) < 100){

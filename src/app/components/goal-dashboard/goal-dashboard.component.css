@@ -144,7 +144,7 @@ h1 {
     position: absolute;
     left: 40%;
     top: 70%;
-    width: 300px;
+    width: 600px;
     text-align: center;
     border-radius: 50px;
 }
@@ -157,7 +157,7 @@ h1 {
 
 .day {
     background-color: beige;
-    width: 400px;
+    width: 800px;
     height: 246px;
     text-align: center;
     border-style: solid;
@@ -208,10 +208,11 @@ h1 {
     border-style: solid;
     border-color : black;
     position: absolute;
-    top: 77%;
+    top: 50%;
     left: 9%;
     display:inline-block;
-    width:82%;
+    height: 700px;
+    width:700px;
 }
 
 .panebuttons {
@@ -234,10 +235,10 @@ h1 {
     border-style: solid;
     border-color : black;
     position: absolute;
-    top: 670px;
+    top: 530px;
     left: 9%;
     width: 800px;
-    height: 245px;
+    height: 500px;
     overflow:auto;
 }
 
