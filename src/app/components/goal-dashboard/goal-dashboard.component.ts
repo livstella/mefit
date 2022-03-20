@@ -79,6 +79,7 @@ export class GoalDashboardComponent implements OnInit {
   // ex_finish_list2: string[] = [];
   // ex_choice_list3: string[] = [];
   // ex_finish_list3: string[] = [];
+
   
   sets = [{}];
   workout_ids: number[] = [];
@@ -133,6 +134,7 @@ export class GoalDashboardComponent implements OnInit {
   hours: number = 0;
   minutes: number = 0;
   seconds: number = 0;
+  countDownDate: number = 0;
 
   currentGoal: any = new Map();
   finishedGoals: any = new Map(); 
@@ -170,8 +172,7 @@ export class GoalDashboardComponent implements OnInit {
     //---Fetch all programs
     this.programPageService.fetchProgramme();
  
-    alert(new Map(Object.entries(JSON.parse(localStorage.getItem('day1commit')||'{}'))).get('Crunches'))
-
+    //---If a goal has allready been commited too.
     if(localStorage.getItem('day1commit')!=null){
       const day1 = new Map(JSON.parse(localStorage.getItem("day1commit")||'{}'));
       const day2 = new Map(JSON.parse(localStorage.getItem("day2commit")||'{}'));
@@ -180,6 +181,7 @@ export class GoalDashboardComponent implements OnInit {
       const day5 = new Map(JSON.parse(localStorage.getItem("day5commit")||'{}'));
       const day6 = new Map(JSON.parse(localStorage.getItem("day6commit")||'{}'));
       const day7 = new Map(JSON.parse(localStorage.getItem("day7commit")||'{}'));
+
       this.program_ex_map_name = day1
       this.program_ex_map_name2 = day2
       this.program_ex_map_name3 = day3
@@ -187,14 +189,33 @@ export class GoalDashboardComponent implements OnInit {
       this.program_ex_map_name5 = day5
       this.program_ex_map_name6 = day6
       this.program_ex_map_name7 = day7
+      
       $('.program-options').attr('disabled','disabled');
       $('.workout-options').attr('disabled','disabled');
       $('.exercise-options').attr('disabled','disabled');
       $('.clear').attr('disabled','disabled');
       $('.commit-program').attr('disabled','disabled');
-    }
 
-    localStorage.getItem("countdown-timer")
+      //---start timer
+      this.countDownDate = Number(localStorage.getItem("countdown_timer"))
+       
+      //---Update the count down every 1 second
+      const sevenDayTimer = setInterval(() => {
+
+       //---Get today's date and time
+       let now = new Date().getTime();
+       
+       let difference = this.countDownDate - now;
+
+        //---Calculations for days, hours, minutes and seconds
+       this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
+       this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+       this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+       this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      localStorage.setItem("countdown_timer", JSON.stringify(this.countDownDate))
+     })
+    }
 
   }
 
@@ -794,10 +815,6 @@ export class GoalDashboardComponent implements OnInit {
   //---commit to build
   commitGoal(){
 
-    // $('#commit').removeAttr('disabled');
-    // $('.NotFinish').removeAttr('disabled');
-
-
     $('.program-options').attr('disabled','disabled');
     $('.workout-options').attr('disabled','disabled');
     $('.exercise-options').attr('disabled','disabled');
@@ -814,63 +831,70 @@ export class GoalDashboardComponent implements OnInit {
     localStorage.setItem("day7commit", JSON.stringify(Array.from(this.program_ex_map_name7.entries())))
     
      //---start timer
-     const countDownDate = new Date().setDate(new Date().getDate()+7);
+     if(localStorage.getItem("countdown_timer")){
+      this.countDownDate = Number(localStorage.getItem("countdown_timer"))
+     }else{
+      this.countDownDate = new Date().setDate(new Date().getDate()+7);
+     }
 
      //---Update the count down every 1 second
      const sevenDayTimer = setInterval(() => {
 
        //---Get today's date and time
        let now = new Date().getTime();
+       
+       let difference = this.countDownDate - now;
 
-       const difference = countDownDate - now;
         //---Calculations for days, hours, minutes and seconds
        this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
        this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
        this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
        this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      localStorage.setItem("countdown_timer", JSON.stringify(difference))
-
+       localStorage.setItem("countdown_timer", JSON.stringify(this.countDownDate))
+       
        //---Switch to different day commits ever day
        if (this.days===6 && this.hours>0){
         this.dayCommit = this.program_ex_map_name
         this.dayCommitDisplay = this.program_ex_map_name
-        this.dayCommitInitial = this.program_ex_map_name//new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
              
        }else if(this.days===6 && this.hours===0){
         this.dayCommit = this.program_ex_map_name2
         this.dayCommitDisplay = this.program_ex_map_name2
-        this.dayCommitInitial = this.program_ex_map_name2
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
       
        }else if(this.days===5){
         this.dayCommit = this.program_ex_map_name3
         this.dayCommitDisplay = this.program_ex_map_name3
-        this.dayCommitInitial = this.program_ex_map_name3
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
        
        }else if(this.days===4){
         this.dayCommit = this.program_ex_map_name4
         this.dayCommitDisplay = this.program_ex_map_name4
-        this.dayCommitInitial = this.program_ex_map_name4
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
        
        }else if(this.days===3){
         this.dayCommit = this.program_ex_map_name5
         this.dayCommitDisplay = this.program_ex_map_name5
-        this.dayCommitInitial = this.program_ex_map_name5
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
        
       }else if(this.days===2){
         this.dayCommit = this.program_ex_map_name6
         this.dayCommitDisplay = this.program_ex_map_name6
-        this.dayCommitInitial = this.program_ex_map_name6
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
        
       }else if(this.days===1){
         this.dayCommit = this.program_ex_map_name7
         this.dayCommitDisplay = this.program_ex_map_name7
-        this.dayCommitInitial = this.program_ex_map_name7
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
       
       }
        //---Display message when count down is finished
        else if(difference === 0) {
         const message = "Deadline expired";
+         $('#commit').removeAttr('disabled');
+         $('.NotFinish').removeAttr('disabled');
         // localStorage.removeItem("day1commit")
         // localStorage.removeItem("day2commit")
         // localStorage.removeItem("day3commit")
