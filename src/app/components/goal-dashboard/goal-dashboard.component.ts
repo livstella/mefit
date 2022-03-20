@@ -23,6 +23,22 @@ export class GoalDashboardComponent implements OnInit {
 
   username: string = "Michel"; //placeholder for username
   
+  dayOne: string = ''; 
+  dayTwo: string ='';
+  dayThree: string ='';
+  dayFour: string ='';
+  dayFive: string ='';
+  daySix: string ='';
+  daySeven: string ='';
+
+  
+  
+  mtwoDate = new Date();
+  mthreeDate = new Date();
+  mfourDate = new Date();
+  mfiveDate = new Date();
+  msixDate = new Date();
+  msevenDate = new Date();
   oneDate = new Date();
   twoDate = new Date();
   threeDate = new Date();
@@ -181,6 +197,13 @@ export class GoalDashboardComponent implements OnInit {
       this.dailyProgress_display = "You finished of your daily goal!";
     }
   }
+  
+    this.mtwoDate.setDate(this.oneDate.getDate()-1);
+    this.mthreeDate.setDate(this.oneDate.getDate()-2);
+    this.mfourDate.setDate(this.oneDate.getDate()-3);
+    this.mfiveDate.setDate(this.oneDate.getDate()-4);
+    this.msixDate.setDate(this.oneDate.getDate()-5);
+    this.msevenDate.setDate(this.oneDate.getDate()-6);
 
     this.twoDate.setDate(this.oneDate.getDate()+1);
     this.threeDate.setDate(this.oneDate.getDate()+2);
@@ -188,6 +211,15 @@ export class GoalDashboardComponent implements OnInit {
     this.fiveDate.setDate(this.oneDate.getDate()+4);
     this.sixDate.setDate(this.oneDate.getDate()+5);
     this.sevenDate.setDate(this.oneDate.getDate()+6);
+
+    //---display dates
+    this.dayOne = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+    this.dayTwo = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+    this.dayThree = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+    this.dayFour = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
+    this.dayFive = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
+    this.daySix = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
+    this.daySeven = this.sevenDate.getFullYear()+"-"+this.sevenDate.getMonth()+"-"+this.sevenDate.getDate()
 
     //---Fetch all exercises
     this.exercisePageService.fetchExercise();
@@ -247,36 +279,93 @@ export class GoalDashboardComponent implements OnInit {
         this.dayCommit = this.program_ex_map_name
         this.dayCommitDisplay = this.program_ex_map_name
         this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+
+        this.dayOne = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.dayTwo = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.dayThree = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+        this.dayFour = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
+        this.dayFive = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
+        this.daySix = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
+        this.daySeven = this.sevenDate.getFullYear()+"-"+this.sevenDate.getMonth()+"-"+this.sevenDate.getDate()
              
        }else if(this.days===6 && this.hours===0){
         this.dayCommit = this.program_ex_map_name2
         this.dayCommitDisplay = this.program_ex_map_name2
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name2)))
+
+        this.dayOne = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.dayTwo = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.dayThree = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.dayFour = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+        this.dayFive = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
+        this.daySix = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
+        this.daySeven = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
       
        }else if(this.days===5){
         this.dayCommit = this.program_ex_map_name3
         this.dayCommitDisplay = this.program_ex_map_name3
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name3)))
+
+        this.dayOne = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.dayTwo = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.dayThree = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.dayFour = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.dayFive = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+        this.daySix = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
+        this.daySeven = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
        
        }else if(this.days===4){
         this.dayCommit = this.program_ex_map_name4
         this.dayCommitDisplay = this.program_ex_map_name4
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name4)))
+
+        this.dayOne = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
+        this.dayTwo = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.dayThree = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.dayFour = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.dayFive = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.daySix = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+        this.daySeven = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
        
        }else if(this.days===3){
         this.dayCommit = this.program_ex_map_name5
         this.dayCommitDisplay = this.program_ex_map_name5
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name5)))
        
+        this.dayOne = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
+        this.dayTwo = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
+        this.dayThree = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.dayFour = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.dayFive = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.daySix = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.daySeven = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+
+
       }else if(this.days===2){
         this.dayCommit = this.program_ex_map_name6
         this.dayCommitDisplay = this.program_ex_map_name6
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name6)))
        
+        this.dayOne = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
+        this.dayTwo = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
+        this.dayThree = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
+        this.dayFour = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.dayFive = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.daySix = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.daySeven = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+
       }else if(this.days===1){
         this.dayCommit = this.program_ex_map_name7
         this.dayCommitDisplay = this.program_ex_map_name7
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
+        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name7)))
+
+        this.dayOne = this.msevenDate.getFullYear()+"-"+this.msevenDate.getMonth()+"-"+this.msevenDate.getDate()
+        this.dayTwo = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
+        this.dayThree = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
+        this.dayFour = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
+        this.dayFive = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.daySix = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.daySeven = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
       
       }
        //---Display message when count down is finished
@@ -961,40 +1050,97 @@ export class GoalDashboardComponent implements OnInit {
        
        //---Switch to different day commits every daily cycle
        if (this.days===6 && this.hours>0){
-
+         
         this.dayCommit = this.program_ex_map_name
         this.dayCommitDisplay = this.program_ex_map_name
         this.dayCommitInitial = this.program_ex_map_name
+
+        this.dayOne = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.dayTwo = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.dayThree = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+        this.dayFour = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
+        this.dayFive = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
+        this.daySix = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
+        this.daySeven = this.sevenDate.getFullYear()+"-"+this.sevenDate.getMonth()+"-"+this.sevenDate.getDate()
              
        }else if(this.days===6 && this.hours===0){
         this.dayCommit = this.program_ex_map_name2
         this.dayCommitDisplay = this.program_ex_map_name2
         this.dayCommitInitial = this.program_ex_map_name2
+
+        this.dayOne = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.dayTwo = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.dayThree = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.dayFour = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+        this.dayFive = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
+        this.daySix = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
+        this.daySeven = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
       
        }else if(this.days===5){
         this.dayCommit = this.program_ex_map_name3
         this.dayCommitDisplay = this.program_ex_map_name3
         this.dayCommitInitial = this.program_ex_map_name3
+
+        this.dayOne = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.dayTwo = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.dayThree = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.dayFour = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.dayFive = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+        this.daySix = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
+        this.daySeven = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
        
        }else if(this.days===4){
         this.dayCommit = this.program_ex_map_name4
         this.dayCommitDisplay = this.program_ex_map_name4
         this.dayCommitInitial = this.program_ex_map_name4
+
+        this.dayOne = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
+        this.dayTwo = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.dayThree = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.dayFour = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.dayFive = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.daySix = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+        this.daySeven = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
        
        }else if(this.days===3){
         this.dayCommit = this.program_ex_map_name5
         this.dayCommitDisplay = this.program_ex_map_name5
         this.dayCommitInitial = this.program_ex_map_name5
        
+        this.dayOne = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
+        this.dayTwo = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
+        this.dayThree = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.dayFour = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.dayFive = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.daySix = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+        this.daySeven = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+
+
       }else if(this.days===2){
         this.dayCommit = this.program_ex_map_name6
         this.dayCommitDisplay = this.program_ex_map_name6
         this.dayCommitInitial = this.program_ex_map_name6
        
+        this.dayOne = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
+        this.dayTwo = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
+        this.dayThree = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
+        this.dayFour = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.dayFive = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.daySix = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+        this.daySeven = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+
       }else if(this.days===1){
         this.dayCommit = this.program_ex_map_name7
         this.dayCommitDisplay = this.program_ex_map_name7
         this.dayCommitInitial = this.program_ex_map_name7
+
+        this.dayOne = this.msevenDate.getFullYear()+"-"+this.msevenDate.getMonth()+"-"+this.msevenDate.getDate()
+        this.dayTwo = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
+        this.dayThree = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
+        this.dayFour = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
+        this.dayFive = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
+        this.daySix = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
+        this.daySeven = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
       
       }
        //---Display message when count down is finished
