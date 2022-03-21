@@ -148,7 +148,7 @@ export class GoalDashboardComponent implements OnInit {
   progress_small: Number | undefined;
   
   sumExCommited: number = 0;
-
+  sumExInitial = 0;
   weeklyFinish: number | string | undefined;
   weeklyGoal = 0;
 
@@ -1239,6 +1239,7 @@ export class GoalDashboardComponent implements OnInit {
           this.sumExCommited += value;
           this.weeklyFinish += value;
        });
+       
 
        console.log("weekly finish after log "+this.weeklyFinish)
 
@@ -1248,18 +1249,19 @@ export class GoalDashboardComponent implements OnInit {
        console.log("daily- total finished repititions "+this.sumExCommited)
      
       //---Read through exercises goals
-       let sumExInitial = 0;
+      if(this.sumExInitial===0){ 
+        this.sumExInitial = 0;
 
        this.dayCommitInitial.forEach(value => {
-          sumExInitial += value;
-       });
+          this.sumExInitial += value;
+       });}
 
        localStorage.setItem("daily_initial_commit", JSON.stringify(Array.from(this.dayCommitInitial.entries())))
       
 
-       console.log("daily- total initial repititions "+sumExInitial)
+       console.log("daily- total initial repititions "+this.sumExInitial)
 
-       this.dailyProgress = Number((this.sumExCommited/sumExInitial)*100).toFixed(2);
+       this.dailyProgress = Number((this.sumExCommited/this.sumExInitial)*100).toFixed(2);
        
        console.log("daily- progress "+this.dailyProgress)
 
@@ -1354,6 +1356,8 @@ export class GoalDashboardComponent implements OnInit {
        
        this.ex_finish_map_name.clear()
        console.log("weekly goal after "+this.weeklyGoal)
+
+       console.log("---------------------------------------------")
 
        
     localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))
