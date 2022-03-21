@@ -3,18 +3,16 @@ import { SelectedProgrammeService } from 'src/app/services/selected-programme.se
 import { Programme } from '../../models/programme.model';
 import { ProgrammePageService } from '../../services/programme-page.service';
 
-
 @Component({
   selector: 'app-programme-page',
   templateUrl: './programme-page.component.html',
-  styleUrls: ['./programme-page.component.css']
+  styleUrls: ['./programme-page.component.css'],
 })
 export class ProgrammePageComponent implements OnInit {
-
   constructor(
     private readonly programmePageService: ProgrammePageService,
     private readonly selectedProgrammeService: SelectedProgrammeService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     //Fetches all Programmes
@@ -24,9 +22,8 @@ export class ProgrammePageComponent implements OnInit {
     return this.programmePageService.programme();
   }
 
-  onProgrammeClicked(programme:Programme):void{
-    console.log(programme)
-
+  onProgrammeClicked(programme: Programme): void {
     this.selectedProgrammeService.setProgramme(programme);
+    this.selectedProgrammeService.setprogrammeWorkouts(programme.workouts);
   }
 }
