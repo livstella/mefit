@@ -1,6 +1,6 @@
 <section *ngIf="workout !== null" class="selected-workout-content">
   <h1>Details on the workout with the name: {{ workout.name }}</h1>
-  <h3>It contans the following exercises</h3>
+  <h3>It contains the following exercises</h3>
 
   <!-- loops over fetched workouts and displays each. click function sets selected workout so selected-workout will be displayed -->
   <div *ngFor="let set of workoutSets">
