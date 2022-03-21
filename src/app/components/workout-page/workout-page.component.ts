@@ -23,8 +23,8 @@ export class WorkoutPageComponent implements OnInit {
     return this.workoutPageService.workout();
   }
 
-  onWorkoutClicked(workout:Workout):void{
-
+  onWorkoutClicked(workout: Workout): void {
     this.selectedWorkoutService.setWorkout(workout);
+    this.selectedWorkoutService.setWorkoutSets(workout.sets);
   }
 }
