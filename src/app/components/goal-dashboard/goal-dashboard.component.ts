@@ -12,6 +12,7 @@ import { WorkoutPageService } from 'src/app/services/workout-page.service';
 import { ProgrammePageService } from 'src/app/services/programme-page.service';
 import { Programme } from 'src/app/models/programme.model';
 import { Sets } from 'src/app/models/sets.model';
+import deepCloneMap from 'deep-clone-map'
 
 
 @Component({
@@ -63,6 +64,14 @@ export class GoalDashboardComponent implements OnInit {
   program_ex_map_name5 = new Map();
   program_ex_map_name6 = new Map();
   program_ex_map_name7 = new Map();
+
+  program_ex_map_name_in = new Map();
+  program_ex_map_name_in2 = new Map();
+  program_ex_map_name_in3 = new Map();
+  program_ex_map_name_in4 = new Map();
+  program_ex_map_name_in5 = new Map();
+  program_ex_map_name_in6 = new Map();
+  program_ex_map_name_in7 = new Map();
 
   dayCommit = new Map();
   dayCommitDisplay = new Map();
@@ -169,7 +178,8 @@ export class GoalDashboardComponent implements OnInit {
   
   sumExCommited: number = 0;
 
-  weeklyFinish: number | string | undefined = 0;
+  weeklyFinish: number | string | undefined;
+  weeklyGoal = 0;
 
   constructor(private router: Router, private readonly goalDashBoardService: GoalDashbordService ,private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
 
@@ -179,18 +189,16 @@ export class GoalDashboardComponent implements OnInit {
    
     if(localStorage.getItem("weekly_finish")){
     
-    this.weeklyFinish = Number(localStorage.getItem("weekly_finish"))
-    let weeklyGoal = Number(localStorage.getItem("weekly_goal"))
+      this.weeklyFinish = Number(localStorage.getItem("weekly_finish"))
+      this.weeklyGoal = Number(localStorage.getItem("weekly_goal"))
       
-    this.weeklyProgress = Number((this.weeklyFinish/weeklyGoal)*100).toFixed(2);
+      this.weeklyProgress = Number((this.weeklyFinish/this.weeklyGoal)*100).toFixed(2);
       
-    
-
-       if (Number(this.weeklyProgress) < 100){
+      if (Number(this.weeklyProgress) < 100){
           this.weeklyProgress_display = this.weeklyProgress +" percent finished of your weekly goal!";
-       }else if(Number(this.weeklyProgress) >= 100){
+      }else if(Number(this.weeklyProgress) >= 100){
           this.weeklyProgress_display = "You finished of your weekly goal!";
-       }
+      }
     }
 
     //---get daily submitted progress from local storage
@@ -218,6 +226,7 @@ export class GoalDashboardComponent implements OnInit {
     }
   }
   
+  //---set dates
     this.mtwoDate.setDate(this.oneDate.getDate()-1);
     this.mthreeDate.setDate(this.oneDate.getDate()-2);
     this.mfourDate.setDate(this.oneDate.getDate()-3);
@@ -252,6 +261,7 @@ export class GoalDashboardComponent implements OnInit {
  
     //---If a goal has allready been commited too.
     if(localStorage.getItem('day1commit')!=null){
+      //---get all daily goals of the week
       const day1 = new Map(JSON.parse(localStorage.getItem("day1commit")||'{}'));
       const day2 = new Map(JSON.parse(localStorage.getItem("day2commit")||'{}'));
       const day3 = new Map(JSON.parse(localStorage.getItem("day3commit")||'{}'));
@@ -268,6 +278,8 @@ export class GoalDashboardComponent implements OnInit {
       this.program_ex_map_name6 = day6
       this.program_ex_map_name7 = day7
       
+
+      //---disable menues
       $('.program-options').attr('disabled','disabled');
       $('.workout-options').attr('disabled','disabled');
       $('.exercise-options').attr('disabled','disabled');
@@ -293,13 +305,22 @@ export class GoalDashboardComponent implements OnInit {
 
       //localStorage.setItem("countdown_timer", JSON.stringify(this.countDownDate))
 
+      //---Get initial goals
+      this.program_ex_map_name_in = new Map(JSON.parse(localStorage.getItem("day1commitInitial")||'{}'));
+      this.program_ex_map_name_in2 = new Map(JSON.parse(localStorage.getItem("day2commitInitial")||'{}'));
+      this.program_ex_map_name_in3 = new Map(JSON.parse(localStorage.getItem("day3commitInitial")||'{}'));
+      this.program_ex_map_name_in4 = new Map(JSON.parse(localStorage.getItem("day4commitInitial")||'{}'));
+      this.program_ex_map_name_in5 = new Map(JSON.parse(localStorage.getItem("day5commitInitial")||'{}'));
+      this.program_ex_map_name_in6 = new Map(JSON.parse(localStorage.getItem("day6commitInitial")||'{}'));
+      this.program_ex_map_name_in7 = new Map(JSON.parse(localStorage.getItem("day7commitInitial")||'{}'));
+       
       //---Switch to different day commits every daily cycle
-      if (this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==58){
+       if (this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==58){
          
         this.dayCommit = this.program_ex_map_name
-        this.dayCommitDisplay = this.program_ex_map_name
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name)))
-
+        //this.dayCommitDisplay = this.program_ex_map_name
+        this.dayCommitInitial = this.program_ex_map_name_in
+        
         this.dayOne = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
         this.dayTwo = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
         this.dayThree = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
@@ -308,11 +329,11 @@ export class GoalDashboardComponent implements OnInit {
         this.daySix = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
         this.daySeven = this.sevenDate.getFullYear()+"-"+this.sevenDate.getMonth()+"-"+this.sevenDate.getDate()
              
-       }else if(this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==30){
+       }else if(this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==20){
 
         this.dayCommit = this.program_ex_map_name2
         this.dayCommitDisplay = this.program_ex_map_name2
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name2)))
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in2)
 
         localStorage.removeItem("daily_finish")
         this.dailyProgress = 0;
@@ -329,7 +350,7 @@ export class GoalDashboardComponent implements OnInit {
        }else if(this.days===5){
         this.dayCommit = this.program_ex_map_name3
         this.dayCommitDisplay = this.program_ex_map_name3
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name3)))
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in3)
 
         this.dayOne = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
         this.dayTwo = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
@@ -342,7 +363,7 @@ export class GoalDashboardComponent implements OnInit {
        }else if(this.days===4){
         this.dayCommit = this.program_ex_map_name4
         this.dayCommitDisplay = this.program_ex_map_name4
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name4)))
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in4)
 
         this.dayOne = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
         this.dayTwo = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
@@ -355,7 +376,7 @@ export class GoalDashboardComponent implements OnInit {
        }else if(this.days===3){
         this.dayCommit = this.program_ex_map_name5
         this.dayCommitDisplay = this.program_ex_map_name5
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name5)))
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in5)
        
         this.dayOne = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
         this.dayTwo = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
@@ -369,7 +390,7 @@ export class GoalDashboardComponent implements OnInit {
       }else if(this.days===2){
         this.dayCommit = this.program_ex_map_name6
         this.dayCommitDisplay = this.program_ex_map_name6
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name6)))
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in6)
        
         this.dayOne = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
         this.dayTwo = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
@@ -382,7 +403,7 @@ export class GoalDashboardComponent implements OnInit {
       }else if(this.days===1){
         this.dayCommit = this.program_ex_map_name7
         this.dayCommitDisplay = this.program_ex_map_name7
-        this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name7)))
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in7)
 
         this.dayOne = this.msevenDate.getFullYear()+"-"+this.msevenDate.getMonth()+"-"+this.msevenDate.getDate()
         this.dayTwo = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
@@ -1073,13 +1094,32 @@ export class GoalDashboardComponent implements OnInit {
 
        localStorage.setItem("countdown_timer", JSON.stringify(this.countDownDate))
        
+
+       //---weekly initials
+       this.program_ex_map_name_in = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name))))
+       this.program_ex_map_name_in2 = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name2))))
+       this.program_ex_map_name_in3 = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name3))))
+       this.program_ex_map_name_in4 = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name4))))
+       this.program_ex_map_name_in5 = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name5))))
+       this.program_ex_map_name_in6 = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name6))))
+       this.program_ex_map_name_in7 = new Map(JSON.parse(JSON.stringify(Array.from(this.program_ex_map_name7))))
+
+       localStorage.setItem("day1commitInitial", JSON.stringify(Array.from(this.program_ex_map_name_in.entries())))
+       localStorage.setItem("day2commitInintal", JSON.stringify(Array.from(this.program_ex_map_name_in2.entries())))
+       localStorage.setItem("day3commitInitial", JSON.stringify(Array.from(this.program_ex_map_name_in3.entries())))
+       localStorage.setItem("day4commitInitial", JSON.stringify(Array.from(this.program_ex_map_name_in4.entries())))
+       localStorage.setItem("day5commitInitial", JSON.stringify(Array.from(this.program_ex_map_name_in5.entries())))
+       localStorage.setItem("day6commitInitial", JSON.stringify(Array.from(this.program_ex_map_name_in6.entries())))
+       localStorage.setItem("day7commitInitial", JSON.stringify(Array.from(this.program_ex_map_name_in7.entries())))
+
+
        //---Switch to different day commits every daily cycle
        if (this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==58){
          
         this.dayCommit = this.program_ex_map_name
-        this.dayCommitDisplay = this.program_ex_map_name
-        this.dayCommitInitial = this.program_ex_map_name
-
+        //this.dayCommitDisplay = this.program_ex_map_name
+        this.dayCommitInitial = this.program_ex_map_name_in
+        
         this.dayOne = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
         this.dayTwo = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
         this.dayThree = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
@@ -1088,11 +1128,11 @@ export class GoalDashboardComponent implements OnInit {
         this.daySix = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
         this.daySeven = this.sevenDate.getFullYear()+"-"+this.sevenDate.getMonth()+"-"+this.sevenDate.getDate()
              
-       }else if(this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==30){
+       }else if(this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==20){
 
         this.dayCommit = this.program_ex_map_name2
         this.dayCommitDisplay = this.program_ex_map_name2
-        this.dayCommitInitial = this.program_ex_map_name2
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in2)
 
         localStorage.removeItem("daily_finish")
         this.dailyProgress = 0;
@@ -1109,7 +1149,7 @@ export class GoalDashboardComponent implements OnInit {
        }else if(this.days===5){
         this.dayCommit = this.program_ex_map_name3
         this.dayCommitDisplay = this.program_ex_map_name3
-        this.dayCommitInitial = this.program_ex_map_name3
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in3)
 
         this.dayOne = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
         this.dayTwo = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
@@ -1122,7 +1162,7 @@ export class GoalDashboardComponent implements OnInit {
        }else if(this.days===4){
         this.dayCommit = this.program_ex_map_name4
         this.dayCommitDisplay = this.program_ex_map_name4
-        this.dayCommitInitial = this.program_ex_map_name4
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in4)
 
         this.dayOne = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
         this.dayTwo = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
@@ -1135,7 +1175,7 @@ export class GoalDashboardComponent implements OnInit {
        }else if(this.days===3){
         this.dayCommit = this.program_ex_map_name5
         this.dayCommitDisplay = this.program_ex_map_name5
-        this.dayCommitInitial = this.program_ex_map_name5
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in5)
        
         this.dayOne = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
         this.dayTwo = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
@@ -1149,7 +1189,7 @@ export class GoalDashboardComponent implements OnInit {
       }else if(this.days===2){
         this.dayCommit = this.program_ex_map_name6
         this.dayCommitDisplay = this.program_ex_map_name6
-        this.dayCommitInitial = this.program_ex_map_name6
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in6)
        
         this.dayOne = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
         this.dayTwo = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
@@ -1162,7 +1202,7 @@ export class GoalDashboardComponent implements OnInit {
       }else if(this.days===1){
         this.dayCommit = this.program_ex_map_name7
         this.dayCommitDisplay = this.program_ex_map_name7
-        this.dayCommitInitial = this.program_ex_map_name7
+        this.dayCommitInitial = new Map(this.program_ex_map_name_in7)
 
         this.dayOne = this.msevenDate.getFullYear()+"-"+this.msevenDate.getMonth()+"-"+this.msevenDate.getDate()
         this.dayTwo = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
@@ -1194,45 +1234,56 @@ export class GoalDashboardComponent implements OnInit {
   //---Commit finished excersizes
   commitFinish(){
 
+    //---if week already initialized
+    //---get finished repititions 
     if(localStorage.getItem("weekly_finish")){
       this.weeklyFinish = Number(localStorage.getItem("weekly_finish"));
     }else{
       this.weeklyFinish=0;
     }
 
+    console.log("weekly finish start "+this.weeklyFinish)
       
-      //---calcualting daily progress
-      if(localStorage.getItem("daily_finish")){
-        this.sumExCommited = Number(localStorage.getItem("daily_finish"));
-      }else{
-        this.sumExCommited = 0;
-      }
+    //---If day already initialized
+    //---get get finished repititions 
+    if(localStorage.getItem("daily_finish")){
+      this.sumExCommited = Number(localStorage.getItem("daily_finish"));
+      console.log("get from local storage total finished repititions "+this.sumExCommited)
+    }else{
+      this.sumExCommited = 0;
+    }
      
      // this.finishHistory = new Map([...this.finishHistory, ...])
       
-      localStorage.setItem("daily_initial_commit", JSON.stringify(Array.from(this.dayCommitInitial.entries())))
-      
+     //---Read through finished exercises
        this.ex_finish_map_name.forEach(value=> {
+         console.log("each value of finish map "+value)
           this.sumExCommited += value;
           this.weeklyFinish += value;
        });
 
+       console.log("weekly finish after log "+this.weeklyFinish)
+
 
        localStorage.setItem("daily_finish", this.sumExCommited.toString())
 
-       console.log("total finished repititions "+this.sumExCommited)
+       console.log("daily- total finished repititions "+this.sumExCommited)
      
-
+      //---Read through exercises goals
        let sumExInitial = 0;
 
        this.dayCommitInitial.forEach(value => {
           sumExInitial += value;
        });
 
-       console.log("total initial repititions "+sumExInitial)
+       localStorage.setItem("daily_initial_commit", JSON.stringify(Array.from(this.dayCommitInitial.entries())))
+      
+
+       console.log("daily- total initial repititions "+sumExInitial)
 
        this.dailyProgress = Number((this.sumExCommited/sumExInitial)*100).toFixed(2);
-      
+       
+       console.log("daily- progress "+this.dailyProgress)
 
        if (Number(this.dailyProgress) < 100){
           this.dailyProgress_display = this.dailyProgress +" percent finished of your daily goal!";
@@ -1241,38 +1292,62 @@ export class GoalDashboardComponent implements OnInit {
        }
 
        //---calculating weekly progress
-       let weeklyGoal = 0;
+       if (this.weeklyGoal === 0){
 
-       this.program_ex_map_name.forEach(value=> {
-        weeklyGoal += value;
-       })
+       if(this.program_ex_map_name_in.size!=0){
+        this.program_ex_map_name_in.forEach(value=> {
+        this.weeklyGoal += value;
+       })}
+       console.log("weekly goal 1 crunches "+this.program_ex_map_name_in.get("Crunches"))
+       console.log("weekly goal 1 size "+this.program_ex_map_name_in.size)
+       console.log("weekly goal 1 "+this.weeklyGoal)
 
-       this.program_ex_map_name2.forEach(value=> {
-        weeklyGoal += value;
-       });
+       if(this.program_ex_map_name_in2.size!=0){
+       this.program_ex_map_name_in2.forEach(value=> {
+        this.weeklyGoal += value;
+       });}
 
-       this.program_ex_map_name3.forEach(value=> {
-        weeklyGoal += value;
-       });
+       console.log("weekly goal 2 "+this.weeklyGoal)
 
-       this.program_ex_map_name4.forEach(value=> {
-        weeklyGoal += value;
-       });
+       if(this.program_ex_map_name_in3.size!=0){
+       this.program_ex_map_name_in3.forEach(value=> {
+        this.weeklyGoal += value;
+       });}
 
-       this.program_ex_map_name5.forEach(value=> {
-        weeklyGoal += value;
-       });
+       console.log("weekly goal 3 "+this.weeklyGoal)
 
-       this.program_ex_map_name6.forEach(value=> {
-        weeklyGoal += value;
-       });
+       if(this.program_ex_map_name_in4.size!=0){
+       this.program_ex_map_name_in4.forEach(value=> {
+        this.weeklyGoal += value;
+       });}
 
-       this.program_ex_map_name7.forEach(value=> {
-        weeklyGoal += value;
-       });
+       console.log("weekly goal 4 "+this.weeklyGoal)
 
+       if(this.program_ex_map_name_in5.size!=0){
+       this.program_ex_map_name_in5.forEach(value=> {
+        this.weeklyGoal += value;
+       });}
+
+       console.log("weekly goal 5 "+this.weeklyGoal)
+
+       if(this.program_ex_map_name_in6.size!=0){
+       this.program_ex_map_name_in6.forEach(value=> {
+        this.weeklyGoal += value;
+       });}
+
+       console.log("weekly goal 6 "+this.weeklyGoal)
+
+       if(this.program_ex_map_name_in7.size!=0){
+       this.program_ex_map_name_in7.forEach(value=> {
+        this.weeklyGoal += value;
+       });}
+
+      }
+    
+       console.log("weekly- commited "+this.weeklyFinish)
+       console.log("weekly goal 7 "+this.weeklyGoal)
        
-       this.weeklyProgress = Number((this.weeklyFinish/weeklyGoal)*100).toFixed(2);
+       this.weeklyProgress = Number((this.weeklyFinish/this.weeklyGoal)*100).toFixed(2);
       
 
        if (Number(this.weeklyProgress) < 100){
@@ -1282,7 +1357,7 @@ export class GoalDashboardComponent implements OnInit {
        }
 
        localStorage.setItem("weekly_finish", this.weeklyFinish.toString())
-       localStorage.setItem("weekly_goal", weeklyGoal.toString())
+       localStorage.setItem("weekly_goal", this.weeklyGoal.toString())
 
       //---substract finished repititions from goal
        for(let[k1,v1] of this.ex_finish_map_name){
@@ -1293,13 +1368,14 @@ export class GoalDashboardComponent implements OnInit {
               if(k1===k2){
                 this.dayCommit.set(k2,v2-v1)
                 if((v2-v1)<=0){
-                  this.dayCommit.set(k2,"Completed all ")
+                  this.dayCommit.set(k2, 0)
                 }
               }
             }
         }
        
        this.ex_finish_map_name.clear()
+       console.log("weekly goal after "+this.weeklyGoal)
 
        
     localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))

@@ -74,7 +74,34 @@ h1 {
     left: 5%; 
 }
 
+.progressbarWeek {
+    width: 700px;
+    height: 1.5em;
+    background-color: darkgray;
+    color: black;
+    border-radius: 1.5em;
+    position: relative;
+    left: 5%; 
+}
+
 .progressbar::before{
+    content: attr(data-label);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    bottom: 0%;
+    width: calc(var(--widthbar, 0)*1%);
+    min-width: 0%;
+    max-width: 100%;
+    background-color: lightgreen;
+    border-radius: 1.5em;
+    padding: 1%;
+
+}
+
+.progressbarWeek::before{
     content: attr(data-label);
     display: flex;
     align-items: center;
