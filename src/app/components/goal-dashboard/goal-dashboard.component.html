@@ -58,45 +58,7 @@
                 </span>
         </div>
                     
- 
 
-   <!-- <div class = "weekgoal">
-        <h2>Weekly Goal!</h2>
-        <div class="panebuttons">
-        <button id="i" class ="commit-program" (click)="commitProgram()">Commit program!</button>
-        <select class = "program-option" name="selectProgram" (change)="onChangeProgram()">
-            <option>Choose a programme</option>
-            <option *ngFor="let program of programmes ; let i = index" >
-              {{program.name}}
-            </option>     
-        </select>
-        <select class = "workout-option" name="selectWorkout" (change)="onChangeWorkout()">
-            <option>Choose a workout</option>
-            <option *ngFor="let workout of workouts ; let i = index" >
-              {{workout.name}}
-            </option>     
-        </select>
-
-        <select class = "excersize-option" name="selectEx" (change)="onChangeExcersize()">
-            <option>Choose an exercise</option>
-            <option *ngFor="let ex of exercises ; let i = index" >
-              {{ex.name}}
-            </option>     
-        </select>
-        <button id="clear-program" class="clear-program" (click)="clearProgram()">Clear program!</button>
-        </div>
-    </div> -->
-
-
-   <!-- <div class = "weekgoal-display">
-        <h3>Workout build</h3>
-        <ul class="weekly-goal">
-            <li *ngFor="let item of mapCount | keyvalue" >
-                {{item.key}}
-                {{item.value}}
-            </li>    
-        </ul>
-    </div> -->
 
     <div class = "weekgoal-display">
         <h3>Exercise build for the week</h3>
@@ -110,6 +72,7 @@
             </option>     
         </select>
         <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
+        <button id="i" class ="uncommit-program" (click)="uncommitGoal()">Uncommit Goal</button>
         <ul class="weekly-goal">
 
             <!--First day-->

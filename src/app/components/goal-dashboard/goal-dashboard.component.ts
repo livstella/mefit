@@ -378,16 +378,17 @@ export class GoalDashboardComponent implements OnInit {
       //---Display message when count down is finished
       else if(difference === 0) {
         const message = "Deadline expired";
-         $('#commit').removeAttr('disabled');
-         $('.NotFinish').removeAttr('disabled');
-        localStorage.removeItem("day1commit")
-        localStorage.removeItem("day2commit")
-        localStorage.removeItem("day3commit")
-        localStorage.removeItem("day4commit")
-        localStorage.removeItem("day5commit")
-        localStorage.removeItem("day6commit")
-        localStorage.removeItem("day7commit")
-        localStorage.removeItem("countdown_timer");
+        //  $('#commit').removeAttr('disabled');
+        //  $('.NotFinish').removeAttr('disabled');
+        // localStorage.removeItem("day1commit")
+        // localStorage.removeItem("day2commit")
+        // localStorage.removeItem("day3commit")
+        // localStorage.removeItem("day4commit")
+        // localStorage.removeItem("day5commit")
+        // localStorage.removeItem("day6commit")
+        // localStorage.removeItem("day7commit")
+        // localStorage.removeItem("countdown_timer");
+        this.uncommitGoal()
         }
       }, 1000);
   }
@@ -1173,16 +1174,17 @@ export class GoalDashboardComponent implements OnInit {
        //---Display message when count down is finished
        else if(difference === 0) {
         const message = "Deadline expired";
-         $('#commit').removeAttr('disabled');
-         $('.NotFinish').removeAttr('disabled');
-        localStorage.removeItem("day1commit")
-        localStorage.removeItem("day2commit")
-        localStorage.removeItem("day3commit")
-        localStorage.removeItem("day4commit")
-        localStorage.removeItem("day5commit")
-        localStorage.removeItem("day6commit")
-        localStorage.removeItem("day7commit")
-        localStorage.removeItem("countdown_timer");
+        //  $('#commit').removeAttr('disabled');
+        //  $('.NotFinish').removeAttr('disabled');
+        // localStorage.removeItem("day1commit")
+        // localStorage.removeItem("day2commit")
+        // localStorage.removeItem("day3commit")
+        // localStorage.removeItem("day4commit")
+        // localStorage.removeItem("day5commit")
+        // localStorage.removeItem("day6commit")
+        // localStorage.removeItem("day7commit")
+        // localStorage.removeItem("countdown_timer");
+        this.uncommitGoal()
         }
       }, 1000);
   }
@@ -1349,6 +1351,60 @@ export class GoalDashboardComponent implements OnInit {
 
  toGoalDetails(){
     this.router.navigateByUrl('/goaldetails');
+  }
+
+  uncommitGoal(){
+
+    //---clear localstorage
+    localStorage.removeItem("day1commit");
+    localStorage.removeItem("day2commit");
+    localStorage.removeItem("day3commit");
+    localStorage.removeItem("day4commit");
+    localStorage.removeItem("day5commit");
+    localStorage.removeItem("day6commit");
+    localStorage.removeItem("day7commit");
+    localStorage.removeItem("day1commitInitial");
+    localStorage.removeItem("day2commitInitial");
+    localStorage.removeItem("day3commitInitial");
+    localStorage.removeItem("day4commitInitial");
+    localStorage.removeItem("day5commitInitial");
+    localStorage.removeItem("day6commitInitial");
+    localStorage.removeItem("day7commitInitial");
+
+    localStorage.removeItem("countdown_timer");
+    localStorage.removeItem("daily_finish");
+    localStorage.removeItem("daily_initial_commit");
+    localStorage.removeItem("weekly_finish");
+    localStorage.removeItem("weekly_goal");  
+
+    // //---clear the weeks daily exercises
+    // this.program_ex_map_name_in.clear();
+    // this.program_ex_map_name_in2.clear();
+    // this.program_ex_map_name_in3.clear();
+    // this.program_ex_map_name_in4.clear();
+    // this.program_ex_map_name_in5.clear();
+    // this.program_ex_map_name_in6.clear();
+    // this.program_ex_map_name_in7.clear();
+
+    // this.program_ex_map_name.clear();
+    // this.program_ex_map_name2.clear();
+    // this.program_ex_map_name3.clear();
+    // this.program_ex_map_name4.clear();
+    // this.program_ex_map_name5.clear();
+    // this.program_ex_map_name6.clear();
+    // this.program_ex_map_name7.clear();
+
+    // //---clear logged finishes
+    // this.ex_finish_map_name.clear();
+    
+    //---enable menus and buttons
+    // $('.program-options').removeAttr('disabled');
+    // $('.workout-options').removeAttr('disabled');
+    // $('.exercise-options').removeAttr('disabled');
+    // $('.clear').removeAttr('disabled');
+    // $('.commit-program').removeAttr('disabled');
+
+    location.reload();
   }
 }
 
