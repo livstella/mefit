@@ -83,7 +83,7 @@ h1 {
     top: 0%;
     bottom: 0%;
     width: calc(var(--widthbar, 0)*1%);
-    min-width: 1%;
+    min-width: 0%;
     max-width: 100%;
     background-color: lightgreen;
     border-radius: 1.5em;

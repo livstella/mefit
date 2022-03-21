@@ -271,10 +271,10 @@ export class GoalDashboardComponent implements OnInit {
        this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
        this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      localStorage.setItem("countdown_timer", JSON.stringify(this.countDownDate))
+      //localStorage.setItem("countdown_timer", JSON.stringify(this.countDownDate))
 
       //---Switch to different day commits every daily cycle
-      if (this.days===6 && this.hours>0){
+      if (this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==58){
          
         this.dayCommit = this.program_ex_map_name
         this.dayCommitDisplay = this.program_ex_map_name
@@ -288,10 +288,15 @@ export class GoalDashboardComponent implements OnInit {
         this.daySix = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
         this.daySeven = this.sevenDate.getFullYear()+"-"+this.sevenDate.getMonth()+"-"+this.sevenDate.getDate()
              
-       }else if(this.days===6 && this.hours===0){
+       }else if(this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==30){
+
         this.dayCommit = this.program_ex_map_name2
         this.dayCommitDisplay = this.program_ex_map_name2
         this.dayCommitInitial = new Map(JSON.parse(JSON.stringify(this.program_ex_map_name2)))
+
+        localStorage.removeItem("daily_finish")
+        this.dailyProgress = 0;
+        this.dailyProgress_display= '';
 
         this.dayOne = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
         this.dayTwo = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
@@ -1049,7 +1054,7 @@ export class GoalDashboardComponent implements OnInit {
        localStorage.setItem("countdown_timer", JSON.stringify(this.countDownDate))
        
        //---Switch to different day commits every daily cycle
-       if (this.days===6 && this.hours>0){
+       if (this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==58){
          
         this.dayCommit = this.program_ex_map_name
         this.dayCommitDisplay = this.program_ex_map_name
@@ -1063,10 +1068,15 @@ export class GoalDashboardComponent implements OnInit {
         this.daySix = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
         this.daySeven = this.sevenDate.getFullYear()+"-"+this.sevenDate.getMonth()+"-"+this.sevenDate.getDate()
              
-       }else if(this.days===6 && this.hours===0){
+       }else if(this.days==6 && this.hours==22 && this.minutes==59 && this.seconds==30){
+
         this.dayCommit = this.program_ex_map_name2
         this.dayCommitDisplay = this.program_ex_map_name2
         this.dayCommitInitial = this.program_ex_map_name2
+
+        localStorage.removeItem("daily_finish")
+        this.dailyProgress = 0;
+        this.dailyProgress_display= '';
 
         this.dayOne = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
         this.dayTwo = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
@@ -1179,6 +1189,7 @@ export class GoalDashboardComponent implements OnInit {
           this.sumExCommited += value;
        });
 
+
        localStorage.setItem("daily_finish", this.sumExCommited.toString())
 
        console.log("total finished repititions "+this.sumExCommited)
@@ -1218,6 +1229,7 @@ export class GoalDashboardComponent implements OnInit {
         }
        
        this.ex_finish_map_name.clear()
+      
 
        
     localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))
