@@ -137,9 +137,9 @@ export class GoalDashboardComponent implements OnInit {
   total_finish_list: string[]=[];
   finishHistory = new Map();
 
-  overallProgress: number | string | undefined = 0;
+  weeklyProgress: number | string | undefined = 0;
   dailyProgress: number | string | undefined = 0;
-  overallProgress_display: number | string | undefined = 0;
+  weeklyProgress_display: number | string | undefined = 0;
   dailyProgress_display: number | string | undefined = 0;
 
   mapCountKeys: string[]|any = []; 
@@ -169,20 +169,40 @@ export class GoalDashboardComponent implements OnInit {
   
   sumExCommited: number = 0;
 
+  weeklyFinish: number | string | undefined = 0;
+
   constructor(private router: Router, private readonly goalDashBoardService: GoalDashbordService ,private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
 
   ngOnInit(): void {
 
-    //---Stores daily submitted history to local storage
+    //---get weekly submitted progress from local storage
+   
+    if(localStorage.getItem("weekly_finish")){
+    
+    this.weeklyFinish = Number(localStorage.getItem("weekly_finish"))
+    let weeklyGoal = Number(localStorage.getItem("weekly_goal"))
+      
+    this.weeklyProgress = Number((this.weeklyFinish/weeklyGoal)*100).toFixed(2);
+      
+    
+
+       if (Number(this.weeklyProgress) < 100){
+          this.weeklyProgress_display = this.weeklyProgress +" percent finished of your weekly goal!";
+       }else if(Number(this.weeklyProgress) >= 100){
+          this.weeklyProgress_display = "You finished of your weekly goal!";
+       }
+    }
+
+    //---get daily submitted progress from local storage
     if(localStorage.getItem("daily_finish")){
       this.sumExCommited = Number(localStorage.getItem("daily_finish"))
     
       const initialcommit = new Map(JSON.parse(localStorage.getItem("daily_initial_commit")||'{}'));
       this.dayCommitInitial = initialcommit
     
-    this.finishHistory.forEach(value=> {
-          this.sumExCommited += value;
-    });
+    // this.finishHistory.forEach(value=> {
+    //       this.sumExCommited += value;
+    // });
 
     let sumExInitial = 0;
     this.dayCommitInitial.forEach(value => {
@@ -1174,7 +1194,14 @@ export class GoalDashboardComponent implements OnInit {
   //---Commit finished excersizes
   commitFinish(){
 
-      //---calcualting progress
+    if(localStorage.getItem("weekly_finish")){
+      this.weeklyFinish = Number(localStorage.getItem("weekly_finish"));
+    }else{
+      this.weeklyFinish=0;
+    }
+
+      
+      //---calcualting daily progress
       if(localStorage.getItem("daily_finish")){
         this.sumExCommited = Number(localStorage.getItem("daily_finish"));
       }else{
@@ -1187,6 +1214,7 @@ export class GoalDashboardComponent implements OnInit {
       
        this.ex_finish_map_name.forEach(value=> {
           this.sumExCommited += value;
+          this.weeklyFinish += value;
        });
 
 
@@ -1212,6 +1240,49 @@ export class GoalDashboardComponent implements OnInit {
           this.dailyProgress_display = "You finished of your daily goal!";
        }
 
+       //---calculating weekly progress
+       let weeklyGoal = 0;
+
+       this.program_ex_map_name.forEach(value=> {
+        weeklyGoal += value;
+       })
+
+       this.program_ex_map_name2.forEach(value=> {
+        weeklyGoal += value;
+       });
+
+       this.program_ex_map_name3.forEach(value=> {
+        weeklyGoal += value;
+       });
+
+       this.program_ex_map_name4.forEach(value=> {
+        weeklyGoal += value;
+       });
+
+       this.program_ex_map_name5.forEach(value=> {
+        weeklyGoal += value;
+       });
+
+       this.program_ex_map_name6.forEach(value=> {
+        weeklyGoal += value;
+       });
+
+       this.program_ex_map_name7.forEach(value=> {
+        weeklyGoal += value;
+       });
+
+       
+       this.weeklyProgress = Number((this.weeklyFinish/weeklyGoal)*100).toFixed(2);
+      
+
+       if (Number(this.weeklyProgress) < 100){
+          this.weeklyProgress_display = this.weeklyProgress +" percent finished of your weekly goal!";
+       }else if(Number(this.weeklyProgress) >= 100){
+          this.weeklyProgress_display = "You finished of your weekly goal!";
+       }
+
+       localStorage.setItem("weekly_finish", this.weeklyFinish.toString())
+       localStorage.setItem("weekly_goal", weeklyGoal.toString())
 
       //---substract finished repititions from goal
        for(let[k1,v1] of this.ex_finish_map_name){
@@ -1229,7 +1300,6 @@ export class GoalDashboardComponent implements OnInit {
         }
        
        this.ex_finish_map_name.clear()
-      
 
        
     localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))
