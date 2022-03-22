@@ -18,7 +18,7 @@ import { Sets } from 'src/app/models/sets.model';
 })
 export class GoalDashboardComponent implements OnInit {
 
-  username: string = "Michel"; //placeholder for username
+  username: string = JSON.parse(sessionStorage.getItem("current-user")||'{}').firstName
   
   //---Strings to be displayed in html
   dayOne: string = ''; 
