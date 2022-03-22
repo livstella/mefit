@@ -10,12 +10,8 @@ export class userProfileService {
   private _userData: User | null = null;
   private _profileData: Profile | null = null;
   private _error: string = '';
-  private _userId: number = JSON.parse(
-    sessionStorage.getItem('current-user') || '{}'
-  ).id;
-  private _profileId: number = JSON.parse(
-    sessionStorage.getItem('current-user') || '{}'
-  ).profile.id;
+  private _userId: number = 1;
+  private _profileId: number = 1;
 
   constructor(private readonly http: HttpClient) {}
 
