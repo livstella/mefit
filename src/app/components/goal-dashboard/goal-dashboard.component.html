@@ -222,7 +222,7 @@
 
             <li *ngFor="let item of program_ex_map_name6 | keyvalue" >
                 {{item.key}}
-                ({{item.value} repititions left)}
+                ({{item.value}} repititions left)}
             </li> 
 
             <!--Seventh day-->
@@ -253,16 +253,7 @@
     </div>
     
     
-    <div class = "choosen">
-        <h3>Choosen program</h3>
-        <ul class="weeklygoal-commit">
-            <li *ngFor="let item of mapCountWeekCommitDisplay | keyvalue" >
-                {{item.key}}
-                {{item.value}}
-               <!-- <div class="progressbarsmall" style="--widthbarsmall:{{progress_small}}" data-label="progress..."></div> -->
-            </li>    
-        </ul>
-    </div>
+ 
 
     <div class = "progress">
         <h3>{{[dailyProgress_display]}}</h3>
