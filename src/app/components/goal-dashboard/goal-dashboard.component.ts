@@ -539,6 +539,335 @@ export class GoalDashboardComponent implements OnInit {
       }} 
   }
 
+  //---buttons for each day
+  //---day1
+   //---increment exercise choice by 10
+   increment_day1_10(name:string){
+    for(let[k,v] of this.program_ex_map_name){
+      if(k === name){
+        this.program_ex_map_name.set(k,v+10);
+    }}
+  }
+
+  //---decrement exercise choice by 10
+  decrement_day1_10(name:string){
+    for(let[k,v] of this.program_ex_map_name){
+      if(k === name){
+        this.program_ex_map_name.set(k,v-10);
+        if((v-10)<=0){
+          this.program_ex_map_name.delete(k);
+        }
+    }}
+  }
+
+  //---increment exercise choice by 1
+  increment_day1_1(name:string){
+    for(let[k,v] of this.program_ex_map_name){
+      if(k === name){
+        this.program_ex_map_name.set(k,v+1);
+    }}
+  }
+
+  //---decrement exercise choice by 1
+  decrement_day1_1(name:string){
+    for(let[k,v] of this.program_ex_map_name){
+      if(k === name){
+        this.program_ex_map_name.set(k,v-1);
+        if((v-1)<=0){
+          this.program_ex_map_name.delete(k);
+        }
+    }}
+  }
+  
+   //---remove excersize
+   remove_day1(name: string){
+    for(let[k,v] of this.program_ex_map_name){
+      if(k=== name){
+        this.program_ex_map_name.delete(k);
+      }} 
+  }
+
+  //---day2
+   //---increment exercise choice by 10
+   increment_day2_10(name:string){
+    for(let[k,v] of this.program_ex_map_name2){
+      if(k === name){
+        this.program_ex_map_name2.set(k,v+10);
+    }}
+  }
+
+  //---decrement exercise choice by 10
+  decrement_day2_10(name:string){
+    for(let[k,v] of this.program_ex_map_name2){
+      if(k === name){
+        this.program_ex_map_name2.set(k,v-10);
+        if((v-10)<=0){
+          this.program_ex_map_name2.delete(k);
+        }
+    }}
+  }
+
+  //---increment exercise choice by 1
+  increment_day2_1(name:string){
+    for(let[k,v] of this.program_ex_map_name2){
+      if(k === name){
+        this.program_ex_map_name2.set(k,v+1);
+    }}
+  }
+
+  //---decrement exercise choice by 1
+  decrement_day2_1(name:string){
+    for(let[k,v] of this.program_ex_map_name2){
+      if(k === name){
+        this.program_ex_map_name2.set(k,v-1);
+        if((v-1)<=0){
+          this.program_ex_map_name2.delete(k);
+        }
+    }}
+  }
+  
+   //---remove excersize
+   remove_day2(name: string){
+    for(let[k,v] of this.program_ex_map_name2){
+      if(k=== name){
+        this.program_ex_map_name2.delete(k);
+      }} 
+  }
+
+  //---day3
+   //---increment exercise choice by 10
+   increment_day3_10(name:string){
+    for(let[k,v] of this.program_ex_map_name3){
+      if(k === name){
+        this.program_ex_map_name3.set(k,v+10);
+    }}
+  }
+
+  //---decrement exercise choice by 10
+  decrement_day3_10(name:string){
+    for(let[k,v] of this.program_ex_map_name3){
+      if(k === name){
+        this.program_ex_map_name3.set(k,v-10);
+        if((v-10)<=0){
+          this.program_ex_map_name3.delete(k);
+        }
+    }}
+  }
+
+  //---increment exercise choice by 1
+  increment_day3_1(name:string){
+    for(let[k,v] of this.program_ex_map_name3){
+      if(k === name){
+        this.program_ex_map_name3.set(k,v+1);
+    }}
+  }
+
+  //---decrement exercise choice by 1
+  decrement_day3_1(name:string){
+    for(let[k,v] of this.program_ex_map_name3){
+      if(k === name){
+        this.program_ex_map_name3.set(k,v-1);
+        if((v-1)<=0){
+          this.program_ex_map_name3.delete(k);
+        }
+    }}
+  }
+  
+   //---remove excersize
+   remove_day3(name: string){
+    for(let[k,v] of this.program_ex_map_name3){
+      if(k=== name){
+        this.program_ex_map_name3.delete(k);
+      }} 
+  }
+
+  //---day4
+   //---increment exercise choice by 10
+   increment_day4_10(name:string){
+    for(let[k,v] of this.program_ex_map_name4){
+      if(k === name){
+        this.program_ex_map_name4.set(k,v+10);
+    }}
+  }
+
+  //---decrement exercise choice by 10
+  decrement_day4_10(name:string){
+    for(let[k,v] of this.program_ex_map_name4){
+      if(k === name){
+        this.program_ex_map_name4.set(k,v-10);
+        if((v-10)<=0){
+          this.program_ex_map_name4.delete(k);
+        }
+    }}
+  }
+
+  //---increment exercise choice by 1
+  increment_day4_1(name:string){
+    for(let[k,v] of this.program_ex_map_name4){
+      if(k === name){
+        this.program_ex_map_name4.set(k,v+1);
+    }}
+  }
+
+  //---decrement exercise choice by 1
+  decrement_day4_1(name:string){
+    for(let[k,v] of this.program_ex_map_name4){
+      if(k === name){
+        this.program_ex_map_name4.set(k,v-1);
+        if((v-1)<=0){
+          this.program_ex_map_name4.delete(k);
+        }
+    }}
+  }
+  
+   //---remove excersize
+   remove_day4(name: string){
+    for(let[k,v] of this.program_ex_map_name4){
+      if(k=== name){
+        this.program_ex_map_name4.delete(k);
+      }} 
+  }
+
+  //---day5
+   //---increment exercise choice by 10
+   increment_day5_10(name:string){
+    for(let[k,v] of this.program_ex_map_name5){
+      if(k === name){
+        this.program_ex_map_name5.set(k,v+10);
+    }}
+  }
+
+  //---decrement exercise choice by 10
+  decrement_day5_10(name:string){
+    for(let[k,v] of this.program_ex_map_name5){
+      if(k === name){
+        this.program_ex_map_name5.set(k,v-10);
+        if((v-10)<=0){
+          this.program_ex_map_name5.delete(k);
+        }
+    }}
+  }
+
+  //---increment exercise choice by 1
+  increment_day5_1(name:string){
+    for(let[k,v] of this.program_ex_map_name5){
+      if(k === name){
+        this.program_ex_map_name5.set(k,v+1);
+    }}
+  }
+
+  //---decrement exercise choice by 1
+  decrement_day5_1(name:string){
+    for(let[k,v] of this.program_ex_map_name5){
+      if(k === name){
+        this.program_ex_map_name5.set(k,v-1);
+        if((v-1)<=0){
+          this.program_ex_map_name5.delete(k);
+        }
+    }}
+  }
+  
+   //---remove excersize
+   remove_day5(name: string){
+    for(let[k,v] of this.program_ex_map_name5){
+      if(k=== name){
+        this.program_ex_map_name5.delete(k);
+      }} 
+  }
+
+  //---day6
+   //---increment exercise choice by 10
+   increment_day6_10(name:string){
+    for(let[k,v] of this.program_ex_map_name6){
+      if(k === name){
+        this.program_ex_map_name6.set(k,v+10);
+    }}
+  }
+
+  //---decrement exercise choice by 10
+  decrement_day6_10(name:string){
+    for(let[k,v] of this.program_ex_map_name6){
+      if(k === name){
+        this.program_ex_map_name6.set(k,v-10);
+        if((v-10)<=0){
+          this.program_ex_map_name6.delete(k);
+        }
+    }}
+  }
+
+  //---increment exercise choice by 1
+  increment_day6_1(name:string){
+    for(let[k,v] of this.program_ex_map_name6){
+      if(k === name){
+        this.program_ex_map_name6.set(k,v+1);
+    }}
+  }
+
+  //---decrement exercise choice by 1
+  decrement_day6_1(name:string){
+    for(let[k,v] of this.program_ex_map_name6){
+      if(k === name){
+        this.program_ex_map_name6.set(k,v-1);
+        if((v-1)<=0){
+          this.program_ex_map_name6.delete(k);
+        }
+    }}
+  }
+  
+   //---remove excersize
+   remove_day6(name: string){
+    for(let[k,v] of this.program_ex_map_name6){
+      if(k=== name){
+        this.program_ex_map_name6.delete(k);
+      }} 
+  }
+
+   //---day7
+   //---increment exercise choice by 10
+   increment_day7_10(name:string){
+    for(let[k,v] of this.program_ex_map_name7){
+      if(k === name){
+        this.program_ex_map_name7.set(k,v+10);
+    }}
+  }
+
+  //---decrement exercise choice by 10
+  decrement_day7_10(name:string){
+    for(let[k,v] of this.program_ex_map_name7){
+      if(k === name){
+        this.program_ex_map_name7.set(k,v-10);
+        if((v-10)<=0){
+          this.program_ex_map_name7.delete(k);
+        }
+    }}
+  }
+
+  //---increment exercise choice by 1
+  increment_day7_1(name:string){
+    for(let[k,v] of this.program_ex_map_name7){
+      if(k === name){
+        this.program_ex_map_name7.set(k,v+1);
+    }}
+  }
+
+  //---decrement exercise choice by 1
+  decrement_day7_1(name:string){
+    for(let[k,v] of this.program_ex_map_name7){
+      if(k === name){
+        this.program_ex_map_name7.set(k,v-1);
+        if((v-1)<=0){
+          this.program_ex_map_name7.delete(k);
+        }
+    }}
+  }
+  
+   //---remove excersize
+   remove_day7(name: string){
+    for(let[k,v] of this.program_ex_map_name7){
+      if(k=== name){
+        this.program_ex_map_name7.delete(k);
+      }} 
+  }
 
   //---Weekly goals
   //---when picking a programm from dropdown list
@@ -580,6 +909,8 @@ export class GoalDashboardComponent implements OnInit {
         }else{
           this.program_ex_map_name.set(ex_name, (this.program_ex_map_name.get(ex_name) +this.repititions))
    }})})}
+
+
         //---day2
         //---fetch exercises from workout
         else if(i==1){
@@ -1128,6 +1459,7 @@ export class GoalDashboardComponent implements OnInit {
     $('.exercise-options').attr('disabled','disabled');
     $('.clear').attr('disabled','disabled');
     $('.commit-program').attr('disabled','disabled');
+    $('.day-buttons').attr('disabled','disabled');
 
     //---commit weekly goal to localstorage
     localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))
