@@ -48,7 +48,6 @@ import { WorkoutPageService } from './services/workout-page.service';
     FormsModule,
     BrowserModule,
     AppRoutingModule
-
   ],
   providers: [exercisePageService, LoginService, ProgrammePageService, SelectedExerciseService, SelectedWorkoutService, userProfileService, WorkoutPageService, MefitGuardService ],
   bootstrap: [AppComponent]
