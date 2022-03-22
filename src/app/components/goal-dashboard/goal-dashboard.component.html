@@ -7,18 +7,56 @@
             <p>Hurry up, only x days left</p>
         </div>
     </div>
-    <div>
-        <div>
+    <div class="row text-center">
+        <div class="col">
             <h3>Monday</h3>
-            <span>
-            <h4>Planned!</h4>
+            <div class="progress blue">
+                <span class="progress-left">
+                    <span class="progress-bar">
+                    </span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar">
+
+                    </span>
+                </span>
+                <div class="progress-value">
+                    {{[progress_display]}}
+                </div>
+            </div>
+            <div class="progress-value"></div>
+            <div style="--widthbar:{{progress}}" data-label="progress..."></div>
                 <ul class="exerciseDisplay">
                     <li *ngFor="let choise of ex_choice_list; let i = index" >
                         {{choise}}
                         <button id="i" class="fin" (click)="updateExFinish(this.i)">Finished!</button>
                         <button id="i" class="remove" (click)="remove(this.i)">Remove!</button>
-                    </li>>
+                    </li>
                 </ul>
+        </div>
+        <div class="col">
+            <h3>Tuesday</h3>
+        </div>
+        <div class="col">
+            <h3>Wednesday</h3>
+        </div>
+        <div class="col">
+            <h3>Thursday</h3>
+        </div>
+        <div class="col">
+            <h3>Friday</h3>
+        </div>
+        <div class="col">
+            <h3>Saturday</h3>
+        </div>
+        <div class="col">
+            <h3>Sunday</h3>
+        </div>
+    </div>
+    <div>
+        <div>
+            <span>
+            
             </span>
             <span>
             <h4>Finished!</h4>
@@ -167,10 +205,7 @@
         </ul>
     </div>
 
-    <div class = "progress">
-        <h3>{{[progress_display]}}</h3>
-        <div class="progressbar" style="--widthbar:{{progress}}" data-label="progress..."></div>
-    </div>
+    
     <div class="timer">
         <h3>Time left to complete following program!</h3>
         <p>{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds, </p>
