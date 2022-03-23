@@ -185,9 +185,6 @@ export class GoalDashboardComponent implements OnInit {
     //---If a goal has allready been commited too.
     if(localStorage.getItem('day1commit')!=null){
 
-      //---disable menus and buttons
-      this.disable();
-
       //---get all daily goals of the week
       this.program_ex_map_name = new Map(JSON.parse(localStorage.getItem("day1commit")||'{}'));
       this.program_ex_map_name2 = new Map(JSON.parse(localStorage.getItem("day2commit")||'{}'));
@@ -1246,9 +1243,6 @@ export class GoalDashboardComponent implements OnInit {
   //---commit to build
   commitGoal(){
 
-    //---disable menus and buttons
-    this.disable();
-
     //---commit weekly goal to localstorage
     localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))
     localStorage.setItem("day2commit", JSON.stringify(Array.from(this.program_ex_map_name2.entries())))
@@ -1455,6 +1449,9 @@ export class GoalDashboardComponent implements OnInit {
   //---Update the count down every 1 second
   const sevenDayTimer = setInterval(() => {
 
+    //---disable buttons and menues
+    this.disable();
+
     //---Get today's date and time
     let now = new Date().getTime();
     
@@ -1638,6 +1635,6 @@ export class GoalDashboardComponent implements OnInit {
  $('.exercise-options').attr('disabled','disabled');
  $('.clear').attr('disabled','disabled');
  $('.commit-program').attr('disabled','disabled');
- $('.day-buttons').attr('disabled','disabled')
+ $('.day-buttons').attr('disabled','disabled');
 }}
 
