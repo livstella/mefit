@@ -1469,7 +1469,7 @@ export class GoalDashboardComponent implements OnInit {
 
     //---Switch to different day commits every daily cycle
    //---for day 1
-   if (this.days===6 && this.hours===23 && this.minutes===59 && this.seconds>0){
+   if (this.days===6 && this.hours>0 && this.minutes>0 && this.seconds>0){
      
      this.dayCommit = this.program_ex_map_name
      this.dayCommitInitial = new Map(this.program_ex_map_name_in)
@@ -1484,7 +1484,7 @@ export class GoalDashboardComponent implements OnInit {
           
     }
    //---for day 2
-   else if(this.days===5 && this.hours===23 && this.minutes===59 && this.seconds>0){
+   else if(this.days===5 && this.hours>0 && this.minutes>0 && this.seconds>0){
 
      if(this.days===5 && this.hours===23 && this.minutes===59 && this.seconds===59){
        localStorage.removeItem("daily_finish")
@@ -1506,7 +1506,7 @@ export class GoalDashboardComponent implements OnInit {
     }
 
     //---for day 3
-    else if(this.days===4 && this.hours===23 && this.minutes===59 && this.seconds>0){
+    else if(this.days===4 && this.hours>0 && this.minutes>0 && this.seconds>0){
 
      if(this.days===4 && this.hours===23 && this.minutes===59 && this.seconds===59){
        localStorage.removeItem("daily_finish")
@@ -1528,7 +1528,7 @@ export class GoalDashboardComponent implements OnInit {
     }
 
    //---for day 4
-   else if (this.days===3 && this.hours===23 && this.minutes===59 && this.seconds>0){
+   else if (this.days===3 && this.hours>0 && this.minutes>0 && this.seconds>0){
 
      if(this.days===3 && this.hours===23 && this.minutes===59 && this.seconds===59){
        localStorage.removeItem("daily_finish")
@@ -1551,7 +1551,7 @@ export class GoalDashboardComponent implements OnInit {
     }
 
    //---for day 5
-   else if(this.days===2 && this.hours===23 && this.minutes===59 && this.seconds>0){
+   else if(this.days===2 && this.hours>0 && this.minutes>0 && this.seconds>0){
 
      if(this.days===2 && this.hours===23 && this.minutes===59 && this.seconds===59){
        localStorage.removeItem("daily_finish")
@@ -1575,7 +1575,7 @@ export class GoalDashboardComponent implements OnInit {
    }
 
    //---for day 6
-   else if(this.days===1 && this.hours===23 && this.minutes===59 && this.seconds>0){
+   else if(this.days===1 && this.hours>0 && this.minutes>0 && this.seconds>0){
 
      if(this.days===1 && this.hours===23 && this.minutes===59 && this.seconds===59){
        localStorage.removeItem("daily_finish")
@@ -1598,7 +1598,7 @@ export class GoalDashboardComponent implements OnInit {
    }
 
    //---for day 7
-   else if(this.days===0 && this.hours===23 && this.minutes===59 && this.seconds>0){
+   else if(this.days===0 && this.hours>0 && this.minutes>0 && this.seconds>0){
 
      if(this.days===0 && this.hours===23 && this.minutes===59 && this.seconds===59){
        localStorage.removeItem("daily_finish")
