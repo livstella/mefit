@@ -4,4 +4,5 @@ export interface Workout {
   type: string;
   sets: [{}];
   complete: boolean;
+  sets:Array<object>
 }

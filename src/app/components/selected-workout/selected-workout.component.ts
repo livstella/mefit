@@ -5,13 +5,18 @@ import { SelectedWorkoutService } from 'src/app/services/selected-workout.servic
 @Component({
   selector: 'app-selected-workout',
   templateUrl: './selected-workout.component.html',
-  styleUrls: ['./selected-workout.component.css']
+  styleUrls: ['./selected-workout.component.css'],
 })
-export class SelectedWorkoutComponent  {
+export class SelectedWorkoutComponent {
+  constructor(
+    private readonly selectedWorkoutService: SelectedWorkoutService
+  ) {}
 
-  constructor(private readonly selectedWorkoutService:SelectedWorkoutService) { }
+  get workout(): Workout | null {
+    return this.selectedWorkoutService.workout();
+  }
 
- get workout(): Workout|null{
-   return this.selectedWorkoutService.workout()
- }
+  get workoutSets(): any | null {
+    return this.selectedWorkoutService.workoutSets();
+  }
 }

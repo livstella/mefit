@@ -121,6 +121,7 @@ export class GoalDashboardComponent implements OnInit {
    
     if(localStorage.getItem("weekly_finish")){
 
+
       this.weeklyFinish = Number(localStorage.getItem("weekly_finish"))
       this.weeklyGoal = Number(localStorage.getItem("weekly_goal"))
       

@@ -14,8 +14,8 @@ import { ProgrammePageComponent } from './components/programme-page/programme-pa
 import { SelectedWorkoutComponent } from './components/selected-workout/selected-workout.component';
 import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboard.component';
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
+import { SelectedProgrammeComponent } from './components/selected-programme/selected-programme.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
-
 import { exercisePageService } from './services/exercise-page.service';
 import { LoginService } from './services/login.service';
 import { MefitGuardService } from './services/mefit-guard.service';
@@ -24,6 +24,7 @@ import { SelectedExerciseService } from './services/selected-exercise.service';
 import { SelectedWorkoutService } from './services/selected-workout.service';
 import { userProfileService } from './services/user-profile-page.service';
 import { WorkoutPageService } from './services/workout-page.service';
+
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { WorkoutPageService } from './services/workout-page.service';
     WorkoutPageComponent,
     ProgrammePageComponent,
     SelectedWorkoutComponent,
+    SelectedProgrammeComponent,
     NotFoundPageComponent
   ],
   imports: [
@@ -46,7 +48,6 @@ import { WorkoutPageService } from './services/workout-page.service';
     FormsModule,
     BrowserModule,
     AppRoutingModule
-
   ],
   providers: [exercisePageService, LoginService, ProgrammePageService, SelectedExerciseService, SelectedWorkoutService, userProfileService, WorkoutPageService, MefitGuardService ],
   bootstrap: [AppComponent]
