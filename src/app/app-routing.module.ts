@@ -28,7 +28,7 @@ const routes: Routes = [
 
   { path: 'profile', component: UserProfilePageComponent ,pathMatch:'full', canActivate: [MefitGuardService]},
 
-  {path: 'dashboard', component: GoalDashboardComponent ,pathMatch:'full', },
+  {path: 'dashboard', component: GoalDashboardComponent ,pathMatch:'full', canActivate: [MefitGuardService] },
 
   {path: 'goaldetails', component: GoalDetailsComponent ,pathMatch:'full', canActivate: [MefitGuardService]},
 
