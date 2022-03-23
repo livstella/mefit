@@ -32,6 +32,7 @@ export class UserProfilePageComponent implements OnInit {
   }
 
   toDashBoard() {
-    this.router.navigateByUrl('/dashboard');
+    //this.router.navigateByUrl('/dashboard');
+    console.log(JSON.parse(sessionStorage.getItem('current-user') || '{}'))
   }
 }
