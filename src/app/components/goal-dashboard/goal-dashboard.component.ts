@@ -16,7 +16,7 @@ import { WorkoutPageService } from 'src/app/services/workout-page.service';
 })
 export class GoalDashboardComponent implements OnInit {
 
-  username: string = "Michel"; //placeholder for username
+  username: string = JSON.parse(sessionStorage.getItem("current-user")||'{}').firstName
   date = new Date();
   excersize: string = '';
   excersize_options: string[] = [];
@@ -84,7 +84,6 @@ export class GoalDashboardComponent implements OnInit {
     //---Fetch all workouts
     this.workoutpageservice.fetchWorkout();
 
-  
 
     for (let key of this.workout_options.keys()){
       this.workout_keys.push(key);
