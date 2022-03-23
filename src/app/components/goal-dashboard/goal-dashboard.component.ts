@@ -189,21 +189,13 @@ export class GoalDashboardComponent implements OnInit {
       this.disable();
 
       //---get all daily goals of the week
-      const day1 = new Map(JSON.parse(localStorage.getItem("day1commit")||'{}'));
-      const day2 = new Map(JSON.parse(localStorage.getItem("day2commit")||'{}'));
-      const day3 = new Map(JSON.parse(localStorage.getItem("day3commit")||'{}'));
-      const day4 = new Map(JSON.parse(localStorage.getItem("day4commit")||'{}'));
-      const day5 = new Map(JSON.parse(localStorage.getItem("day5commit")||'{}'));
-      const day6 = new Map(JSON.parse(localStorage.getItem("day6commit")||'{}'));
-      const day7 = new Map(JSON.parse(localStorage.getItem("day7commit")||'{}'));
-
-      this.program_ex_map_name = day1
-      this.program_ex_map_name2 = day2
-      this.program_ex_map_name3 = day3
-      this.program_ex_map_name4 = day4
-      this.program_ex_map_name5 = day5
-      this.program_ex_map_name6 = day6
-      this.program_ex_map_name7 = day7
+      this.program_ex_map_name = new Map(JSON.parse(localStorage.getItem("day1commit")||'{}'));
+      this.program_ex_map_name2 = new Map(JSON.parse(localStorage.getItem("day2commit")||'{}'));
+      this.program_ex_map_name3 = new Map(JSON.parse(localStorage.getItem("day3commit")||'{}'));
+      this.program_ex_map_name4 = new Map(JSON.parse(localStorage.getItem("day4commit")||'{}'));
+      this.program_ex_map_name5 = new Map(JSON.parse(localStorage.getItem("day5commit")||'{}'));
+      this.program_ex_map_name6 = new Map(JSON.parse(localStorage.getItem("day6commit")||'{}'));
+      this.program_ex_map_name7 = new Map(JSON.parse(localStorage.getItem("day7commit")||'{}'));
       
       //---Get initial goals
       this.program_ex_map_name_in = new Map(JSON.parse(localStorage.getItem("day1commitInitial")||'{}'));
@@ -1430,10 +1422,7 @@ export class GoalDashboardComponent implements OnInit {
 
       //---substract finished repititions from goal repititions
        for(let[k1,v1] of this.ex_finish_map_name){
-          console.log("day finish keys: "+k1)
-          console.log(this.dayCommit)
            for(let[k2,v2] of this.dayCommit){
-              console.log("day commit keys: "+k2)
               if(k1===k2){
                 this.dayCommit.set(k2,v2-v1)
                 if((v2-v1)<=0){
