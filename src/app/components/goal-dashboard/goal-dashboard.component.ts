@@ -120,7 +120,7 @@ export class GoalDashboardComponent implements OnInit {
     //---get weekly submitted progress from local storage
    
     if(localStorage.getItem("weekly_finish")){
-    
+
       this.weeklyFinish = Number(localStorage.getItem("weekly_finish"))
       this.weeklyGoal = Number(localStorage.getItem("weekly_goal"))
       
@@ -135,6 +135,7 @@ export class GoalDashboardComponent implements OnInit {
 
     //---get daily submitted progress from local storage
     if(localStorage.getItem("daily_finish")){
+
       this.sumExCommited = Number(localStorage.getItem("daily_finish"))
       this.sumExInitial = Number(localStorage.getItem("daily_initial_commit"))
    
@@ -182,6 +183,10 @@ export class GoalDashboardComponent implements OnInit {
  
     //---If a goal has allready been commited too.
     if(localStorage.getItem('day1commit')!=null){
+
+      //---disable menus and buttons
+      this.disable();
+
       //---get all daily goals of the week
       const day1 = new Map(JSON.parse(localStorage.getItem("day1commit")||'{}'));
       const day2 = new Map(JSON.parse(localStorage.getItem("day2commit")||'{}'));
@@ -207,15 +212,6 @@ export class GoalDashboardComponent implements OnInit {
       this.program_ex_map_name_in5 = new Map(JSON.parse(localStorage.getItem("day5commitInitial")||'{}'));
       this.program_ex_map_name_in6 = new Map(JSON.parse(localStorage.getItem("day6commitInitial")||'{}'));
       this.program_ex_map_name_in7 = new Map(JSON.parse(localStorage.getItem("day7commitInitial")||'{}'));
-       
-
-      //---disable menues
-      $('.program-options').attr('disabled','disabled');
-      $('.workout-options').attr('disabled','disabled');
-      $('.exercise-options').attr('disabled','disabled');
-      $('.clear').attr('disabled','disabled');
-      $('.commit-program').attr('disabled','disabled');
-      $('.day-buttons').attr('disabled','disabled');
 
       // //---start timer
       this.countDownDate = Number(localStorage.getItem("countdown_timer"))
@@ -1282,12 +1278,7 @@ export class GoalDashboardComponent implements OnInit {
   commitGoal(){
 
     //---disable menus and buttons
-    $('.program-options').attr('disabled','disabled');
-    $('.workout-options').attr('disabled','disabled');
-    $('.exercise-options').attr('disabled','disabled');
-    $('.clear').attr('disabled','disabled');
-    $('.commit-program').attr('disabled','disabled');
-    $('.day-buttons').attr('disabled','disabled');
+    this.disable();
 
     //---commit weekly goal to localstorage
     localStorage.setItem("day1commit", JSON.stringify(Array.from(this.program_ex_map_name.entries())))
@@ -1332,6 +1323,9 @@ export class GoalDashboardComponent implements OnInit {
 
   //---Commit finished excersizes
   commitFinish(){
+
+    //--disable menus and buttons
+    this.disable();
 
     //---if week already initialized
     //---get finished repititions 
@@ -1673,5 +1667,14 @@ export class GoalDashboardComponent implements OnInit {
      }
    }, 1000);
 }
-}
+
+ disable(){
+ //---disable menues and buttons
+ $('.program-options').attr('disabled','disabled');
+ $('.workout-options').attr('disabled','disabled');
+ $('.exercise-options').attr('disabled','disabled');
+ $('.clear').attr('disabled','disabled');
+ $('.commit-program').attr('disabled','disabled');
+ $('.day-buttons').attr('disabled','disabled');
+}}
 
