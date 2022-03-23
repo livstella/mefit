@@ -1317,9 +1317,6 @@ export class GoalDashboardComponent implements OnInit {
   //---Commit finished excersizes
   commitFinish(){
 
-    //--disable menus and buttons
-    this.disable();
-
     //---if week already initialized
     //---get finished repititions 
     if(localStorage.getItem("weekly_finish")){
@@ -1665,6 +1662,6 @@ export class GoalDashboardComponent implements OnInit {
  $('.exercise-options').attr('disabled','disabled');
  $('.clear').attr('disabled','disabled');
  $('.commit-program').attr('disabled','disabled');
- $('.day-buttons').attr('disabled','disabled');
+ $('.day-buttons').attr('disabled','disabled')
 }}
 
