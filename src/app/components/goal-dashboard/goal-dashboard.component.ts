@@ -240,7 +240,6 @@ export class GoalDashboardComponent implements OnInit {
     {
         let ex_name = JSON.parse(JSON.stringify(exercise)).name
 
-        console.log(ex_name)
         if(!this.ex_choice_map_name.has(ex_name)){
           this.ex_choice_map_name.set(ex_name,10);
         }else{
@@ -260,10 +259,8 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
     { 
       this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      console.log(this.repititions)
 
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      console.log(this.exercises_choosen)
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -714,7 +711,6 @@ export class GoalDashboardComponent implements OnInit {
         this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
 
         this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-        console.log(this.program_exercises_choosen)
 
         this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
     
@@ -736,7 +732,6 @@ export class GoalDashboardComponent implements OnInit {
           this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
 
           this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-          console.log(this.program_exercises_choosen)
 
           this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
 
@@ -757,7 +752,6 @@ export class GoalDashboardComponent implements OnInit {
           this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
 
           this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-          console.log(this.program_exercises_choosen)
 
           this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
 
@@ -778,7 +772,6 @@ export class GoalDashboardComponent implements OnInit {
             this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
   
             this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-            console.log(this.program_exercises_choosen)
   
             this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
   
@@ -799,7 +792,6 @@ export class GoalDashboardComponent implements OnInit {
               this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
     
               this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-              console.log(this.program_exercises_choosen)
     
               this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
     
@@ -820,7 +812,6 @@ export class GoalDashboardComponent implements OnInit {
                 this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
       
                 this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-                console.log(this.program_exercises_choosen)
       
                 this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -841,7 +832,6 @@ export class GoalDashboardComponent implements OnInit {
                   this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
         
                   this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-                  console.log(this.program_exercises_choosen)
         
                   this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
         
@@ -906,10 +896,8 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
     { 
       this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      console.log(this.repititions)
 
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      console.log(this.exercises_choosen)
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -962,10 +950,8 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
     { 
       this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      console.log(this.repititions)
 
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      console.log(this.exercises_choosen)
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -1019,10 +1005,8 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
     { 
       this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      console.log(this.repititions)
 
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      console.log(this.exercises_choosen)
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -1076,10 +1060,8 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
     { 
       this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      console.log(this.repititions)
 
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      console.log(this.exercises_choosen)
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -1133,10 +1115,8 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
     { 
       this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      console.log(this.repititions)
 
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      console.log(this.exercises_choosen)
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -1190,10 +1170,8 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
     { 
       this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      console.log(this.repititions)
 
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      console.log(this.exercises_choosen)
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -1247,10 +1225,8 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
     { 
       this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      console.log(this.repititions)
 
       this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      console.log(this.exercises_choosen)
 
       this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
