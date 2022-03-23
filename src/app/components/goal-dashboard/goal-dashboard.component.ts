@@ -1515,13 +1515,13 @@ export class GoalDashboardComponent implements OnInit {
      this.dayCommit = this.program_ex_map_name
      this.dayCommitInitial = new Map(this.program_ex_map_name_in)
      
-     this.dayOne = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
-     this.dayTwo = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
-     this.dayThree = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
-     this.dayFour = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
-     this.dayFive = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
-     this.daySix = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
-     this.daySeven = this.sevenDate.getFullYear()+"-"+this.sevenDate.getMonth()+"-"+this.sevenDate.getDate()
+     this.dayOne = this.oneDate.getFullYear()+"-"+(this.oneDate.getMonth()+1)+"-"+this.oneDate.getDate()
+     this.dayTwo = this.twoDate.getFullYear()+"-"+(this.twoDate.getMonth()+1)+"-"+this.twoDate.getDate()
+     this.dayThree = this.threeDate.getFullYear()+"-"+(this.threeDate.getMonth()+1)+"-"+this.threeDate.getDate()
+     this.dayFour = this.fourDate.getFullYear()+"-"+(this.fourDate.getMonth()+1)+"-"+this.fourDate.getDate()
+     this.dayFive = this.fiveDate.getFullYear()+"-"+(this.fiveDate.getMonth()+1)+"-"+this.fiveDate.getDate()
+     this.daySix = this.sixDate.getFullYear()+"-"+(this.sixDate.getMonth()+1)+"-"+this.sixDate.getDate()
+     this.daySeven = this.sevenDate.getFullYear()+"-"+(this.sevenDate.getMonth()+1)+"-"+this.sevenDate.getDate()
           
     }
    //---for day 2
@@ -1537,13 +1537,13 @@ export class GoalDashboardComponent implements OnInit {
      this.dayCommit = this.program_ex_map_name2
      this.dayCommitInitial = new Map(this.program_ex_map_name_in2)
 
-     this.dayOne = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
-     this.dayTwo = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
-     this.dayThree = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
-     this.dayFour = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
-     this.dayFive = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
-     this.daySix = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
-     this.daySeven = this.sixDate.getFullYear()+"-"+this.sixDate.getMonth()+"-"+this.sixDate.getDate()
+     this.dayOne = this.mtwoDate.getFullYear()+"-"+(this.mtwoDate.getMonth()+1)+"-"+this.mtwoDate.getDate()
+     this.dayTwo = this.oneDate.getFullYear()+"-"+(this.oneDate.getMonth()+1)+"-"+this.oneDate.getDate()
+     this.dayThree = this.twoDate.getFullYear()+"-"+(this.twoDate.getMonth()+1)+"-"+this.twoDate.getDate()
+     this.dayFour = this.threeDate.getFullYear()+"-"+(this.threeDate.getMonth()+1)+"-"+this.threeDate.getDate()
+     this.dayFive = this.fourDate.getFullYear()+"-"+(this.fourDate.getMonth()+1)+"-"+this.fourDate.getDate()
+     this.daySix = this.fiveDate.getFullYear()+"-"+(this.fiveDate.getMonth()+1)+"-"+this.fiveDate.getDate()
+     this.daySeven = this.sixDate.getFullYear()+"-"+(this.sixDate.getMonth()+1)+"-"+this.sixDate.getDate()
     }
 
     //---for day 3
@@ -1559,13 +1559,13 @@ export class GoalDashboardComponent implements OnInit {
      this.dayCommit = this.program_ex_map_name3
      this.dayCommitInitial = new Map(this.program_ex_map_name_in3)
 
-     this.dayOne = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
-     this.dayTwo = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
-     this.dayThree = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
-     this.dayFour = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
-     this.dayFive = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
-     this.daySix = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
-     this.daySeven = this.fiveDate.getFullYear()+"-"+this.fiveDate.getMonth()+"-"+this.fiveDate.getDate()
+     this.dayOne = this.mthreeDate.getFullYear()+"-"+(this.mthreeDate.getMonth()+1)+"-"+this.mthreeDate.getDate()
+     this.dayTwo = this.mtwoDate.getFullYear()+"-"+(this.mtwoDate.getMonth()+1)+"-"+this.mtwoDate.getDate()
+     this.dayThree = this.oneDate.getFullYear()+"-"+(this.oneDate.getMonth()+1)+"-"+this.oneDate.getDate()
+     this.dayFour = this.twoDate.getFullYear()+"-"+(this.twoDate.getMonth()+1)+"-"+this.twoDate.getDate()
+     this.dayFive = this.threeDate.getFullYear()+"-"+(this.threeDate.getMonth()+1)+"-"+this.threeDate.getDate()
+     this.daySix = this.fourDate.getFullYear()+"-"+(this.fourDate.getMonth()+1)+"-"+this.fourDate.getDate()
+     this.daySeven = this.fiveDate.getFullYear()+"-"+(this.fiveDate.getMonth()+1)+"-"+this.fiveDate.getDate()
     }
 
    //---for day 4
@@ -1581,13 +1581,13 @@ export class GoalDashboardComponent implements OnInit {
      this.dayCommit = this.program_ex_map_name4
      this.dayCommitInitial = new Map(this.program_ex_map_name_in4)
 
-     this.dayOne = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
-     this.dayTwo = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
-     this.dayThree = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
-     this.dayFour = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
-     this.dayFive = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
-     this.daySix = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
-     this.daySeven = this.fourDate.getFullYear()+"-"+this.fourDate.getMonth()+"-"+this.fourDate.getDate()
+     this.dayOne = this.mfourDate.getFullYear()+"-"+(this.mfourDate.getMonth()+1)+"-"+this.mfourDate.getDate()
+     this.dayTwo = this.mthreeDate.getFullYear()+"-"+(this.mthreeDate.getMonth()+1)+"-"+this.mthreeDate.getDate()
+     this.dayThree = this.mtwoDate.getFullYear()+"-"+(this.mtwoDate.getMonth()+1)+"-"+this.mtwoDate.getDate()
+     this.dayFour = this.oneDate.getFullYear()+"-"+(this.oneDate.getMonth()+1)+"-"+this.oneDate.getDate()
+     this.dayFive = this.twoDate.getFullYear()+"-"+(this.twoDate.getMonth()+1)+"-"+this.twoDate.getDate()
+     this.daySix = this.threeDate.getFullYear()+"-"+(this.threeDate.getMonth()+1)+"-"+this.threeDate.getDate()
+     this.daySeven = this.fourDate.getFullYear()+"-"+(this.fourDate.getMonth()+1)+"-"+this.fourDate.getDate()
     
     }
 
@@ -1604,13 +1604,13 @@ export class GoalDashboardComponent implements OnInit {
      this.dayCommit = this.program_ex_map_name5
      this.dayCommitInitial = new Map(this.program_ex_map_name_in5)
     
-     this.dayOne = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
-     this.dayTwo = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
-     this.dayThree = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
-     this.dayFour = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
-     this.dayFive = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
-     this.daySix = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
-     this.daySeven = this.threeDate.getFullYear()+"-"+this.threeDate.getMonth()+"-"+this.threeDate.getDate()
+     this.dayOne = this.mfiveDate.getFullYear()+"-"+(this.mfiveDate.getMonth()+1)+"-"+this.mfiveDate.getDate()
+     this.dayTwo = this.mfourDate.getFullYear()+"-"+(this.mfourDate.getMonth()+1)+"-"+this.mfourDate.getDate()
+     this.dayThree = this.mthreeDate.getFullYear()+"-"+(this.mthreeDate.getMonth()+1)+"-"+this.mthreeDate.getDate()
+     this.dayFour = this.mtwoDate.getFullYear()+"-"+(this.mtwoDate.getMonth()+1)+"-"+this.mtwoDate.getDate()
+     this.dayFive = this.oneDate.getFullYear()+"-"+(this.oneDate.getMonth()+1)+"-"+this.oneDate.getDate()
+     this.daySix = this.twoDate.getFullYear()+"-"+(this.twoDate.getMonth()+1)+"-"+this.twoDate.getDate()
+     this.daySeven = this.threeDate.getFullYear()+"-"+(this.threeDate.getMonth()+1)+"-"+this.threeDate.getDate()
 
 
    }
@@ -1628,13 +1628,13 @@ export class GoalDashboardComponent implements OnInit {
      this.dayCommit = this.program_ex_map_name6
      this.dayCommitInitial = new Map(this.program_ex_map_name_in6)
     
-     this.dayOne = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
-     this.dayTwo = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
-     this.dayThree = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
-     this.dayFour = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
-     this.dayFive = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
-     this.daySix = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
-     this.daySeven = this.twoDate.getFullYear()+"-"+this.twoDate.getMonth()+"-"+this.twoDate.getDate()
+     this.dayOne = this.msixDate.getFullYear()+"-"+(this.msixDate.getMonth()+1)+"-"+this.msixDate.getDate()
+     this.dayTwo = this.mfiveDate.getFullYear()+"-"+(this.mfiveDate.getMonth()+1)+"-"+this.mfiveDate.getDate()
+     this.dayThree = this.mfourDate.getFullYear()+"-"+(this.mfourDate.getMonth()+1)+"-"+this.mfourDate.getDate()
+     this.dayFour = this.mthreeDate.getFullYear()+"-"+(this.mthreeDate.getMonth()+1)+"-"+this.mthreeDate.getDate()
+     this.dayFive = this.mtwoDate.getFullYear()+"-"+(this.mtwoDate.getMonth()+1)+"-"+this.mtwoDate.getDate()
+     this.daySix = this.oneDate.getFullYear()+"-"+(this.oneDate.getMonth()+1)+"-"+this.oneDate.getDate()
+     this.daySeven = this.twoDate.getFullYear()+"-"+(this.twoDate.getMonth()+1)+"-"+this.twoDate.getDate()
 
    }
 
@@ -1651,13 +1651,13 @@ export class GoalDashboardComponent implements OnInit {
      this.dayCommit = this.program_ex_map_name7
      this.dayCommitInitial = new Map(this.program_ex_map_name_in7)
 
-     this.dayOne = this.msevenDate.getFullYear()+"-"+this.msevenDate.getMonth()+"-"+this.msevenDate.getDate()
-     this.dayTwo = this.msixDate.getFullYear()+"-"+this.msixDate.getMonth()+"-"+this.msixDate.getDate()
-     this.dayThree = this.mfiveDate.getFullYear()+"-"+this.mfiveDate.getMonth()+"-"+this.mfiveDate.getDate()
-     this.dayFour = this.mfourDate.getFullYear()+"-"+this.mfourDate.getMonth()+"-"+this.mfourDate.getDate()
-     this.dayFive = this.mthreeDate.getFullYear()+"-"+this.mthreeDate.getMonth()+"-"+this.mthreeDate.getDate()
-     this.daySix = this.mtwoDate.getFullYear()+"-"+this.mtwoDate.getMonth()+"-"+this.mtwoDate.getDate()
-     this.daySeven = this.oneDate.getFullYear()+"-"+this.oneDate.getMonth()+"-"+this.oneDate.getDate()
+     this.dayOne = this.msevenDate.getFullYear()+"-"+(this.msevenDate.getMonth()+1)+"-"+this.msevenDate.getDate()
+     this.dayTwo = this.msixDate.getFullYear()+"-"+(this.msixDate.getMonth()+1)+"-"+this.msixDate.getDate()
+     this.dayThree = this.mfiveDate.getFullYear()+"-"+(this.mfiveDate.getMonth()+1)+"-"+this.mfiveDate.getDate()
+     this.dayFour = this.mfourDate.getFullYear()+"-"+(this.mfourDate.getMonth()+1)+"-"+this.mfourDate.getDate()
+     this.dayFive = this.mthreeDate.getFullYear()+"-"+(this.mthreeDate.getMonth()+1)+"-"+this.mthreeDate.getDate()
+     this.daySix = this.mtwoDate.getFullYear()+"-"+(this.mtwoDate.getMonth()+1)+"-"+this.mtwoDate.getDate()
+     this.daySeven = this.oneDate.getFullYear()+"-"+(this.oneDate.getMonth()+1)+"-"+this.oneDate.getDate()
    
    }
    //---Display message when count down is finished
