@@ -1,7 +1,6 @@
 <div class="main">
     <h1>{{username}}'s' goal dashboard!</h1>
         <p class = "info">
-            
         </p>
 
         
@@ -71,7 +70,7 @@
             </option>     
         </select>
         <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
-        <button id="i" class ="uncommit-program" (click)="uncommitGoal()">Uncommit Goal</button>
+        <button class ="uncommit-program" (click)="uncommitGoal()">Uncommit Goal</button>
         <ul class="weekly-goal">
 
             <!--First day-->
@@ -95,13 +94,13 @@
             <button id="clear" class="clear" (click)="clear1()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day1_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day1_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day1_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day1_1(item.key)">-1</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day1_10(item.key)">+10</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day1_10(item.key)">-10</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day1_1(item.key)">+1</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day1_1(item.key)">-1</button>
                     {{item.key}}
                     ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day1(item.key)">Remove</button>
+                <button id="day-buttons" class="day-buttons" (click)="remove_day1(item.key)">Remove</button>
             </li> 
 
              <!--Second day-->
@@ -125,13 +124,13 @@
             <button id="clear" class="clear" (click)="clear2()">Clear day</button>
             
             <li *ngFor="let item of program_ex_map_name2 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day2_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day2_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day2_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day2_1(item.key)">-1</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day2_10(item.key)">+10</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day2_10(item.key)">-10</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day2_1(item.key)">+1</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day2_1(item.key)">-1</button>
                 {{item.key}}
                 ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day2(item.key)">Remove</button>
+                <button id="day-buttons" class="day-buttons" (click)="remove_day2(item.key)">Remove</button>
             </li>
 
              <!--Third day-->
@@ -155,13 +154,13 @@
             <button id="clear" class="clear" (click)="clear3()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name3  | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day3_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day3_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day3_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day3_1(item.key)">-1</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day3_10(item.key)">+10</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day3_10(item.key)">-10</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day3_1(item.key)">+1</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day3_1(item.key)">-1</button>
                 {{item.key}}
                 ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day3(item.key)">Remove</button>
+                <button id="day-buttons" class="day-buttons" (click)="remove_day3(item.key)">Remove</button>
             </li> 
 
             <!--Fouth day-->
@@ -185,13 +184,13 @@
             <button id="clear" class="clear" (click)="clear4()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name4 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day4_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day4_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day4_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day4_1(item.key)">-1</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day4_10(item.key)">+10</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day4_10(item.key)">-10</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day4_1(item.key)">+1</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day4_1(item.key)">-1</button>
                 {{item.key}}
                 ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day4(item.key)">Remove</button>
+                <button id="day-buttons" class="day-buttons" (click)="remove_day4(item.key)">Remove</button>
             </li>
 
             <!--Fifth day-->
@@ -215,13 +214,13 @@
             <button id="clear" class="clear" (click)="clear5()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name5 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day5_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day5_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day5_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day5_1(item.key)">-1</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day5_10(item.key)">+10</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day5_10(item.key)">-10</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day5_1(item.key)">+1</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day5_1(item.key)">-1</button>
                 {{item.key}}
                 ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day5(item.key)">Remove</button>
+                <button id="day-buttons" class="day-buttons" (click)="remove_day5(item.key)">Remove</button>
             </li> 
 
             <!--Sixth day-->
@@ -245,13 +244,13 @@
             <button id="clear" class="clear" (click)="clear6()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name6 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day6_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day6_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day6_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day6_1(item.key)">-1</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day6_10(item.key)">+10</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day6_10(item.key)">-10</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day6_1(item.key)">+1</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day6_1(item.key)">-1</button>
                 {{item.key}}
                 ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day6(item.key)">Remove</button>
+                <button id="day-buttons" class="day-buttons" (click)="remove_day6(item.key)">Remove</button>
             </li> 
 
             <!--Seventh day-->
@@ -275,13 +274,13 @@
             <button id="clear" class="clear" (click)="clear7()">Clear day</button>
 
             <li *ngFor="let item of program_ex_map_name7 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day7_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day7_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day7_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day7_1(item.key)">-1</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day7_10(item.key)">+10</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day7_10(item.key)">-10</button>
+                <button id="day-buttons" class="day-buttons" (click)="increment_day7_1(item.key)">+1</button> 
+                <button id="day-buttons" class="day-buttons" (click)="decrement_day7_1(item.key)">-1</button>
                 {{item.key}}
                 ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day7(item.key)">Remove</button>
+                <button id="day-buttons" class="day-buttons" (click)="remove_day7(item.key)">Remove</button>
             </li>  
         </ul>
     </div>
