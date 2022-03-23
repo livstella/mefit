@@ -24,6 +24,7 @@ import { SelectedExerciseService } from './services/selected-exercise.service';
 import { SelectedWorkoutService } from './services/selected-workout.service';
 import { userProfileService } from './services/user-profile-page.service';
 import { WorkoutPageService } from './services/workout-page.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
@@ -41,7 +42,8 @@ import { WorkoutPageService } from './services/workout-page.service';
     ProgrammePageComponent,
     SelectedWorkoutComponent,
     SelectedProgrammeComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    NavbarComponent
   ],
   imports: [
     HttpClientModule,
