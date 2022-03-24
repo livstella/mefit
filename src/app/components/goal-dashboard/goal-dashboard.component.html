@@ -22,26 +22,39 @@
                     <li *ngFor="let item of ex_choice_map_name | keyvalue" >
                         <button (click)="increment10(item.key)">
                             +10
-                        </button> 
+                        </button>
                         <button (click)="decrement10(item.key)">
                             -10
                         </button>
                         <button (click)="increment1(item.key)">
                             +1
-                        </button> 
+                        </button>
                         <button (click)="decrement1(item.key)">
                             -1
-                        </button>   
+                        </button>
                             {{item.key}}
                             ({{item.value}} repititions)
-                        <button (click)="updateExFinish(item.key)">
+                        <button class="btn btn-info" type="button" (click)="updateExFinish(item.key)">
                             Finished
                         </button>
-                        <button (click)="remove(item.key)">
+                        <button class="btn btn-danger" type="button" (click)="remove(item.key)">
                             Remove
                         </button>
                     </li>
                 </ul>
+            </div>
+            <div >
+                <h5>
+                    Please select the exercises you want to do
+                </h5>
+                <select class="form-select" name="select1.1" (change)="onChangeEx()">
+                    <option>
+                        Choose an exercise
+                    </option>
+                    <option *ngFor="let ex of exercises ; let i = index">
+                        {{ex.name}}
+                    </option>
+                </select>
             </div>
             <div>
                 <h5>
@@ -79,21 +92,13 @@
 
     
     <div class="col-10 card p-3 mb-2">
-        <span>
-        <h4>Planned</h4>
-            
-        </span>
+        <div>
+            <h4></h4>
+        </div>
 
-        <select class = "exercise-options-do" name="select1.1" (change)="onChangeEx()">
-            <option>
-                Choose an exercise
-            </option>
-            <option *ngFor="let ex of exercises ; let i = index" >
-                {{ex.name}}
-            </option>
-        </select>
+        
 
-        <select class = "workout-options-do" name="select1.2" (change)="onChangeWork()">
+        <select class="form-select" name="select1.2" (change)="onChangeWork()">
             <option>
                 Choose a workout
             </option>
@@ -107,7 +112,7 @@
 
         <button id="i" class ="commit-program" (click)="commitGoal()">Commit Goal</button>
 
-        <select class = "program-options" name="selectProgram" (change)="onChangeProgram()">
+        <select class="form-select" name="selectProgram" (change)="onChangeProgram()">
             <option>Choose a programme</option>
             <option *ngFor="let program of programmes ; let i = index" >
               {{program.name}}
