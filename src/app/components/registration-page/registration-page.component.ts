@@ -58,10 +58,19 @@ export class RegistrationPageComponent implements OnInit {
   }
   
   onNavigate(){
+
+    this.loginService.queryUser(this.email).subscribe((res: Login[]) => {
+      if (res != null) {
+        alert("This user allready exists!");
+        this.router.navigateByUrl('/login');
+
+      }else{
       this.loginService.setUserToApi(this.email, this.firstname, this.lastname, this.password1).subscribe((res: Login[]) => {
-        sessionStorage.setItem("current-user", JSON.stringify([res]))
+        sessionStorage.setItem("current-user", JSON.stringify(res))
         this.router.navigateByUrl('/profile');
         })
       }
-  }
+    })
+}
+}
 

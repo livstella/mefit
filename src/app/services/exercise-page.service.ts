@@ -6,6 +6,9 @@ import { Exercise } from '../models/exercise.model';
   providedIn: 'root',
 })
 export class exercisePageService {
+  static exercise(): any {
+    throw new Error('Method not implemented.');
+  }
   private _exercises: Exercise[] = [];
   private _error: string = '';
 
