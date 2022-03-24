@@ -34,6 +34,8 @@ const routes: Routes = [
 
   {path: 'notFound', component: NotFoundPageComponent },
 
+  {path: '**', redirectTo:'notFound'}
+
 ];
 
 @NgModule({
