@@ -10,6 +10,7 @@ import { GoalDashboardComponent } from './components/goal-dashboard/goal-dashboa
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { MefitGuardService } from './services/mefit-guard.service';
+import { NotAuthPageComponent } from './components/not-auth-page/not-auth-page.component';
 
 
 
@@ -33,6 +34,8 @@ const routes: Routes = [
   {path: 'goaldetails', component: GoalDetailsComponent ,pathMatch:'full', canActivate: [MefitGuardService]},
 
   {path: 'notFound', component: NotFoundPageComponent },
+
+  {path: 'notAuth', component: NotAuthPageComponent },
 
   {path: '**', redirectTo:'notFound'}
 
