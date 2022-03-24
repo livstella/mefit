@@ -1,28 +1,37 @@
+<div class="container col-4 col-xs-8 col-sm-6 col-lg-5 border top-buffer">
+<div class="p-3">
 <section *ngIf="user">
-  <h2>Welcome to {{ user.firstName }}'s profile</h2>
-
+  <h2 class="text-center">Welcome to {{ user.firstName }}'s profile</h2>
+  <div class="text-center">
+  <img src="assets\images\running.jpg" alt="profile pics" class="rounded-circle img-fluid">
+ </div>
   <!--If the profile details are present, they are shown. Otherwise a text is shown. Text could potentially be improved -->
-  <div *ngIf="profile?.height; then height; else no_height"></div>
+
+  <div class="row rounded bg-light p-3 top-buffer">     
+  <div class="form-label" *ngIf="profile?.height; then height; else no_height"></div>
       <ng-template #height>Height {{ profile?.height }}cm</ng-template>
       <ng-template #no_height>NOOOO height</ng-template>
   <br>
-
-  <div *ngIf="profile?.weight; then weight; else no_weight"></div>
+  </div>
+  <div class="row rounded bg-light p-3 top-buffer"> 
+  <div class="form-label" *ngIf="profile?.weight; then weight; else no_weight"></div>
       <ng-template #weight>Weight {{ profile?.height }}kg</ng-template>
       <ng-template #no_weight>You no weight</ng-template>
   <br>
-
-  <div *ngIf="profile?.medicalConditions; then medicalConditions; else no_medicalConditions"></div>
+  </div>
+  <div class="row rounded bg-light p-3 top-buffer"> 
+  <div class="form-label" *ngIf="profile?.medicalConditions; then medicalConditions; else no_medicalConditions"></div>
       <ng-template #medicalConditions>You have the following medical conditions: {{ profile?.medicalConditions }}</ng-template>
       <ng-template #no_medicalConditions>You healthy</ng-template>
   <br>
-  
-  <div *ngIf="profile?.disabilities; then disabilities; else no_disabilities"></div>
+  </div>
+  <div class="row rounded bg-light p-3 top-buffer"> 
+  <div class="form-label" *ngIf="profile?.disabilities; then disabilities; else no_disabilities"></div>
       <ng-template #disabilities>You have the following disabilities: {{ profile?.disabilities }}</ng-template>
       <ng-template #no_disabilities>Such healthy</ng-template>
-
+  </div>
+ 
 </section>
 
-<button id="btn-dash" type="form-control" (click)="toDashBoard()" class="btn">
-  Goal dashboard!
-</button>
+</div>
+</div>

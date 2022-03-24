@@ -31,7 +31,4 @@ export class UserProfilePageComponent implements OnInit {
     return this.userProfileService.profileData();
   }
 
-  toDashBoard() {
-    this.router.navigateByUrl('/dashboard');
-  }
 }
