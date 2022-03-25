@@ -27,10 +27,26 @@ Steps to work on this project
 - [Michel Saremi (@MichelSaremi)](https://github.com/MichelSaremi)
 
 
-## Build
+# Project approach
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Project management tools
+- The project is managed through Trello
 
-## Further help
+### MVP
+customer centric 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+### Workflow / Teamwork
+- The four memebers of the team are diveded with two memebers on backend and frontend respectively 
+- Daily stand-up at 9.00
+- Continuious communication by:
+    - Marking on Trello the task you are working on
+    - Moving the task to "In progress" when work starts
+    - Moving the task to "Done" when definition of done has been achieved 
+    - If a task cannot be marked as done, due to wait time on another task, it can be labelled with "needs more info"
+    - 
+
+
+
+
+
