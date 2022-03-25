@@ -75,7 +75,6 @@ export class GoalDashboardComponent implements OnInit {
   //---workout id
   workout_ids: number[] = [];
   workout_id: number | undefined;
-  //workout_sets: Sets[] | undefined ;
 
   //---program id
   program_ids: number[] = [];
@@ -225,53 +224,59 @@ export class GoalDashboardComponent implements OnInit {
     return this.programPageService.programme();
   }
 
-  //---Workouts of the day
-  //---when picking excersize from dropdown-list display 
-  onChangeEx(){
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+  newChoiceMap(map: any){
+    this.ex_choice_map_name = map;
+  }
 
-    let choiceEx = $("select[name='select1.1'] option:selected").index();
-    this.ex_id = this.ex_ids[choiceEx-1];
+  newFinishMap(map: any){
+    this.ex_finish_map_name = map;
+  }
+  // //---Workouts of the day
+  // //---when picking excersize from dropdown-list display 
+  // onChangeEx(){
+  //   this.exercises.forEach(ex => this.ex_ids.push(ex.id))
 
-    this.goalDashBoardService.fetchExById(this.ex_id).subscribe((exercise: Exercise[]) =>
-    {
-        let ex_name = JSON.parse(JSON.stringify(exercise)).name
+  //   let choiceEx = $("select[name='select1.1'] option:selected").index();
+  //   this.ex_id = this.ex_ids[choiceEx-1];
 
-        if(!this.ex_choice_map_name.has(ex_name)){
-          this.ex_choice_map_name.set(ex_name,10);
-        }else{
-          this.ex_choice_map_name.set(ex_name, (this.ex_choice_map_name.get(ex_name) +10))
-       }  
-      })
-    }
+  //   this.goalDashBoardService.fetchExById(this.ex_id).subscribe((exercise: Exercise[]) =>
+  //   {
+  //       let ex_name = JSON.parse(JSON.stringify(exercise)).name
 
-  //---when picking workout from dropdown-list display 
-  onChangeWork(){
+  //       if(!this.ex_choice_map_name.has(ex_name)){
+  //         this.ex_choice_map_name.set(ex_name,10);
+  //       }else{
+  //         this.ex_choice_map_name.set(ex_name, (this.ex_choice_map_name.get(ex_name) +10))
+  //      }  
+  //     })
+  //   }
 
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+  // //---when picking workout from dropdown-list display 
+  // onChangeWork(){
 
-    let choiceWork = $("select[name='select1.2'] option:selected").index(); 
-    this.workout_id = this.workout_ids[choiceWork-1];
+  //   this.workouts.forEach(workout => this.workout_ids.push(workout.id))
 
-    this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
-    { 
-      this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+  //   let choiceWork = $("select[name='select1.2'] option:selected").index(); 
+  //   this.workout_id = this.workout_ids[choiceWork-1];
 
-      this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+  //   this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
+  //   { 
+  //     this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
 
-      this.exercises_choosen.forEach((exercise: Exercise[]) => {
+  //     this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+
+  //     this.exercises_choosen.forEach((exercise: Exercise[]) => {
       
-      let ex_name = JSON.parse(JSON.stringify(exercise)).name
+  //     let ex_name = JSON.parse(JSON.stringify(exercise)).name
       
-      if(!this.ex_choice_map_name.has(ex_name)){
-        this.ex_choice_map_name.set(ex_name, this.repititions);
-      }else{
-        this.ex_choice_map_name.set(ex_name, (this.ex_choice_map_name.get(ex_name) +this.repititions))
-     }
+  //     if(!this.ex_choice_map_name.has(ex_name)){
+  //       this.ex_choice_map_name.set(ex_name, this.repititions);
+  //     }else{
+  //       this.ex_choice_map_name.set(ex_name, (this.ex_choice_map_name.get(ex_name) +this.repititions))
+  //    }
 
-    })
-  })}
-
+  //   })
+  // })}
   
 
   //---Weekly goals
@@ -287,7 +292,6 @@ export class GoalDashboardComponent implements OnInit {
     this.goalDashBoardService.fetchProgramById(this.program_id).subscribe((program: Programme[]) =>
     { 
       this.workouts_choosen = JSON.parse(JSON.stringify(program)).workouts;
-      console.log(this.workouts_choosen)
   
 
       //---list each exercise from workout on its seperate day
