@@ -9,81 +9,136 @@
                     Your daily progress
                 </h3>
             </div>
-            <div class="progress-bar rounded mb-3">
-                {{[dailyProgress_display]}}%
-            </div>
-            <div class="">
-                <h4>
-                    Your workouts for today
-                </h4>
-            </div>
-            <div>
-                <ul>
-                    <li *ngFor="let item of ex_choice_map_name | keyvalue" >
-                        <button (click)="increment10(item.key)">
-                            +10
-                        </button>
-                        <button (click)="decrement10(item.key)">
-                            -10
-                        </button>
-                        <button (click)="increment1(item.key)">
-                            +1
-                        </button>
-                        <button (click)="decrement1(item.key)">
-                            -1
-                        </button>
+            <div class="card-body">
+                <div class="progress-bar rounded mb-3">
+                    {{[dailyProgress_display]}}%
+                </div>
+                <div>
+                    <h4>
+                        Your workouts for today
+                    </h4>
+                </div>
+                <div class="col-12 text-center">
+                    <ul class="list-group list-group-flush float-center">
+                        <li class="list-group-item mt-2" *ngFor="let item of ex_choice_map_name | keyvalue" >
+                            <div class="col-10">
+                                <p class="font-weight-bold">
+                                    {{item.value}}
+                                    {{item.key}}
+                                </p>
+                                <button class="btn btn-info" type="button" (click)="updateExFinish(item.key)">
+                                    Finished
+                                </button>
+                                <button class="btn btn-danger" type="button" (click)="remove(item.key)">
+                                    Remove
+                                </button>
+                            </div>
+                            <div class="col-10 m-3">
+                                <p>
+                                    Add more or fewer repetitions below
+                                </p>
+                                <div>
+                                    <button class="btn btn-secondary m-1" (click)="increment10(item.key)">
+                                        +10
+                                    </button>
+                                    <button class="btn btn-secondary m-2" (click)="increment1(item.key)">
+                                        +1
+                                    </button>
+                                    <button class="btn btn-secondary m-2" (click)="decrement10(item.key)">
+                                        -10
+                                    </button>
+                                    <button class="btn btn-secondary m-1" (click)="decrement1(item.key)">
+                                        -1
+                                    </button>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="m-2">
+                    <h5>
+                        Please select a workout or exercises you would like to do
+                    </h5>
+                    <select class="form-select" name="select1.1" (change)="onChangeEx()">
+                        <option>
+                            Choose an exercise
+                        </option>
+                        <option *ngFor="let ex of exercises ; let i = index">
+                            {{ex.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="m-2">
+                    <select class="form-select" name="select1.2" (change)="onChangeWork()">
+                        <option>
+                            Choose a workout
+                        </option>
+                        <option *ngFor="let work of workouts ; let i = index" >
+                            {{work.name}}
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <h5>
+                        Finished Exercises
+                    </h5>
+                    <ul>
+                        <li *ngFor="let item of ex_finish_map_name | keyvalue" >
                             {{item.key}}
-                            ({{item.value}} repititions)
-                        <button class="btn btn-info" type="button" (click)="updateExFinish(item.key)">
-                            Finished
-                        </button>
-                        <button class="btn btn-danger" type="button" (click)="remove(item.key)">
-                            Remove
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div >
-                <h5>
-                    Please select the exercises you want to do
-                </h5>
-                <select class="form-select" name="select1.1" (change)="onChangeEx()">
-                    <option>
-                        Choose an exercise
-                    </option>
-                    <option *ngFor="let ex of exercises ; let i = index">
-                        {{ex.name}}
-                    </option>
-                </select>
-            </div>
-            <div>
-                <h5>
-                    Finished Exercises
-                </h5>
-                <ul>
-                    <li *ngFor="let item of ex_finish_map_name | keyvalue" >
-                        {{item.key}}
-                        ({{item.value}} repititions)
-                        <button class="NotFinish" id="i" (click)="updateExPlaned(item.key)">
-                            Undo
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <button type="button" class="btn btn-success" (click)="commitFinish()">
-                    Confirm
-                </button>
+                            ({{item.value}})
+                            <button class="NotFinish" id="i" (click)="updateExPlaned(item.key)">
+                                Undo
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-success" (click)="commitFinish()">
+                        Confirm
+                    </button>
+                </div>
             </div>
         </div>
+
+
         <div class="col-5 card p-3 mb-3 float-end">
             <div class="card-title">
                 <h4>
                     Your weekly progress
                 </h4>
             </div>
-            <div class="progress-bar rounded">
-                    {{[weeklyProgress_display]}}%
+            <div class="card-body">
+                <div class="progress-bar rounded">
+                        {{[weeklyProgress_display]}}%
+                </div>
+                <div class="m-3">
+                    <h5>
+                        Build your weekly workout program
+                    </h5>
+                    <select class="form-select" name="selectProgram" (change)="onChangeProgram()">
+                        <option>Choose a program</option>
+                        <option *ngFor="let program of programmes ; let i = index" >
+                          {{program.name}}
+                        </option>     
+                    </select>
+                    <div class="m-3">
+                        <button type="button" class="btn btn-success" (click)="commitGoal()">
+                            Confirm
+                        </button>
+                    </div>
+                    <div class="m-3">
+                        <p>
+                            In case you made a mistake
+                        </p>
+                        <button class="btn btn-warning m-1" (click)="clearweek()">
+                            Clear Week
+                        </button>
+                        <button class="btn btn-danger m-1" (click)="uncommitGoal()">
+                            Remove Goal
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -91,35 +146,8 @@
 <!-- The split between new and old -->
 
     
-    <div class="col-10 card p-3 mb-2">
-        <div>
-            <h4></h4>
-        </div>
-
-        
-
-        <select class="form-select" name="select1.2" (change)="onChangeWork()">
-            <option>
-                Choose a workout
-            </option>
-            <option *ngFor="let work of workouts ; let i = index" >
-                {{work.name}}
-            </option>
-        </select>
-    </div>
-    <div class="card">
-        <h3>Exercise build for the week</h3>
-
-        <button id="i" class ="commit-program" (click)="commitGoal()">Commit Goal</button>
-
-        <select class="form-select" name="selectProgram" (change)="onChangeProgram()">
-            <option>Choose a programme</option>
-            <option *ngFor="let program of programmes ; let i = index" >
-              {{program.name}}
-            </option>     
-        </select>
-        <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
-        <button id="i" class ="uncommit-program" (click)="uncommitGoal()">Uncommit Goal</button>
+    
+    <div class="col-12 card">
         <ul class="weekly-goal">
 
             <!--First day-->
