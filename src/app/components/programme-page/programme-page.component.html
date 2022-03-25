@@ -2,17 +2,18 @@
   <div class="all-programmes">
     <h2>Here you will see all the programmes you can choose from</h2>
 
-    <ngb-accordion [closeOthers]="true"
-    (click)="onProgrammeClicked(programme)"
-    *ngFor="let programme of programmes">
-      <ngb-panel       
-      title="{{ programme.name }}  {{ programme.category }}">
-        <ng-template ngbPanelContent>
-          <!--{{ programme.workouts }} -->
+    <ngb-accordion [closeOthers]="true">
+      <ngb-panel *ngFor="let programme of programmes" title="{{ programme.name }}  {{ programme.category }}" >
+        <ng-template ngbPanelHeader let-opened="opened" >
+          <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
+            <p class="m-0">First panel - {{ opened ? 'opened' : 'collapsed' }}</p>
+            <button ngbPanelToggle (click)="onProgrammeClicked(programme)" >Toggle first</button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent >
           <app-selected-programme></app-selected-programme>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>
-
   </div>    
 </section>
