@@ -24,6 +24,9 @@ import { SelectedExerciseService } from './services/selected-exercise.service';
 import { SelectedWorkoutService } from './services/selected-workout.service';
 import { userProfileService } from './services/user-profile-page.service';
 import { WorkoutPageService } from './services/workout-page.service';
+import { AccordionBasicComponent } from './components/accordion-basic/accordion-basic.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ProgrammeListComponent } from './components/programme-page/programme-list/programme-list.component';
 
 
 
@@ -41,13 +44,16 @@ import { WorkoutPageService } from './services/workout-page.service';
     ProgrammePageComponent,
     SelectedWorkoutComponent,
     SelectedProgrammeComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    AccordionBasicComponent,
+    ProgrammeListComponent
   ],
   imports: [
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [exercisePageService, LoginService, ProgrammePageService, SelectedExerciseService, SelectedWorkoutService, userProfileService, WorkoutPageService, MefitGuardService ],
   bootstrap: [AppComponent]

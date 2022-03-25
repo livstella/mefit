@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectedProgrammeService } from 'src/app/services/selected-programme.service';
 import { Programme } from '../../models/programme.model';
 import { ProgrammePageService } from '../../services/programme-page.service';
+import { AccordionBasicComponent } from '../accordion-basic/accordion-basic.component';
 
 @Component({
   selector: 'app-programme-page',

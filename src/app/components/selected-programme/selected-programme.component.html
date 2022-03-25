@@ -1,9 +1,4 @@
 <section *ngIf="programme !== null">
-  <h1>Details on the programme with the name: {{ programme.name }}</h1>
-
-  <h4 *ngIf="programmeWorkouts.length !== 0">
-    It contains the following workouts
-  </h4>
   <div *ngFor="let workout of programmeWorkouts">
     <p><b> name of workout:</b> {{ workout.name }}</p>
     <p><b> type of workout: </b> {{ workout.type }}</p>

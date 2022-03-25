@@ -1,18 +1,18 @@
 <section class="programme-content">
   <div class="all-programmes">
     <h2>Here you will see all the programmes you can choose from</h2>
-    <ul>
-      <!-- loops over fetched programmes and displays each. click function sets selected programme so selected-programme will be displayed -->
-      <li
-        *ngFor="let programme of programmes"
-        (click)="onProgrammeClicked(programme)"
-      >
-        <h4>name of this programme: {{ programme.name }}</h4>
-        <p>Category of this programme: {{ programme.category }}</p>
-      </li>
-    </ul>
-  </div>
-  <div class="selected-programme">
-    <app-selected-programme></app-selected-programme>
-  </div>
+
+    <ngb-accordion [closeOthers]="true"
+    (click)="onProgrammeClicked(programme)"
+    *ngFor="let programme of programmes">
+      <ngb-panel       
+      title="{{ programme.name }}  {{ programme.category }}">
+        <ng-template ngbPanelContent>
+          <!--{{ programme.workouts }} -->
+          <app-selected-programme></app-selected-programme>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+
+  </div>    
 </section>
