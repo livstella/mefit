@@ -24,6 +24,14 @@ import { SelectedExerciseService } from './services/selected-exercise.service';
 import { SelectedWorkoutService } from './services/selected-workout.service';
 import { userProfileService } from './services/user-profile-page.service';
 import { WorkoutPageService } from './services/workout-page.service';
+import { Day1ButtonsComponent } from './components/goal-dashboard-child-components/day1-buttons/day1-buttons.component';
+import { Day2ButtonsComponent } from './components/goal-dashboard-child-components/day2-buttons/day2-buttons.component';
+import { Day3ButtonsComponent } from './components/goal-dashboard-child-components/day3-buttons/day3-buttons.component';
+import { Day4ButtonsComponent } from './components/goal-dashboard-child-components/day4-buttons/day4-buttons.component';
+import { Day5ButtonsComponent } from './components/goal-dashboard-child-components/day5-buttons/day5-buttons.component';
+import { Day6ButtonsComponent } from './components/goal-dashboard-child-components/day6-buttons/day6-buttons.component';
+import { Day7ButtonsComponent } from './components/goal-dashboard-child-components/day7-buttons/day7-buttons.component';
+import { WorkoutOfTheDayButtonsComponent } from './components/goal-dashboard-child-components/workout-of-the-day-buttons/workout-of-the-day-buttons.component';
 
 
 
@@ -41,7 +49,16 @@ import { WorkoutPageService } from './services/workout-page.service';
     ProgrammePageComponent,
     SelectedWorkoutComponent,
     SelectedProgrammeComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    Day1ButtonsComponent,
+    Day2ButtonsComponent,
+    Day3ButtonsComponent,
+    Day4ButtonsComponent,
+    Day5ButtonsComponent,
+    Day6ButtonsComponent,
+    Day7ButtonsComponent,
+    WorkoutOfTheDayButtonsComponent,
+
   ],
   imports: [
     HttpClientModule,
