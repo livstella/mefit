@@ -36,4 +36,19 @@ export class GoalDashbordService {
   public fetchExById(id:number): Observable<Exercise[]>  {
     return this.http.get<Exercise[]>(`https://mefitbackend-ajlm.herokuapp.com/exercise/${id}`)
   }
+
+  //---get all exercises
+  public fetchEx(): Observable<Array<Exercise[]>>  {
+    return this.http.get<Array<Exercise[]>>(`https://mefitbackend-ajlm.herokuapp.com/exercise`)
+  }
+
+   //---get al workouts
+   public fetchWork(): Observable<Workout[]>  {
+    return this.http.get<Workout[]>(`https://mefitbackend-ajlm.herokuapp.com/workout`)
+  }
+
+   //---get all programs
+   public fetchProgram(): Observable<Programme[]>  {
+    return this.http.get<Programme[]>(`https://mefitbackend-ajlm.herokuapp.com/program`)
+  }
 }

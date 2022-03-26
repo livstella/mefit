@@ -29,34 +29,22 @@ export class WorkoutOfTheDayOptionsComponent implements OnInit {
 
   @Output() newChoice_Map = new EventEmitter();
   ex_choice_map_name = new Map();
- 
+
+  
+  @Input() exercises: Exercise[] | undefined |any;
+  @Input() workouts: Workout[] | undefined | any;
 
   constructor(private readonly goalDashBoardService: GoalDashbordService, private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService ) { }
 
 
   ngOnInit(): void {
-    //---Fetch all exercises
-    this.exercisePageService.fetchExercise();
-
-    //---Fetch all workouts
-    this.workoutPageService.fetchWorkout();
-
-  }
-
-  //---get exercises
-  get exercises(): Exercise[] {
-    return this.exercisePageService.exercise();
-  }
-
-  //---get workouts
-  get workouts(): Workout[] {
-    return this.workoutPageService.workout();
+  
   }
 
   //---Workouts of the day
   //---when picking excersize from dropdown-list display 
   onChangeEx(){
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+    this.exercises.forEach((ex: { id: number; }) => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='select1.1'] option:selected").index();
     this.ex_id = this.ex_ids[choiceEx-1];
@@ -77,7 +65,7 @@ export class WorkoutOfTheDayOptionsComponent implements OnInit {
   //---when picking workout from dropdown-list display 
   onChangeWork(){
 
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+    this.workouts.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
 
     let choiceWork = $("select[name='select1.2'] option:selected").index(); 
     this.workout_id = this.workout_ids[choiceWork-1];

@@ -115,6 +115,7 @@ export class GoalDashboardComponent implements OnInit {
   constructor(private router: Router, private readonly goalDashBoardService: GoalDashbordService ,private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
 
   ngOnInit(): void {
+  
 
     //---get weekly submitted progress from local storage
    
@@ -178,7 +179,7 @@ export class GoalDashboardComponent implements OnInit {
     //---Fetch all workouts
     this.workoutPageService.fetchWorkout();
 
-    //---Fetch all programs
+    // //---Fetch all programs
     this.programPageService.fetchProgramme();
  
     //---If a goal has allready been commited too.
@@ -219,7 +220,7 @@ export class GoalDashboardComponent implements OnInit {
     return this.workoutPageService.workout();
   }
 
-  //---get programmes
+  // //---get programmes
   get programmes(): Programme[] {
     return this.programPageService.programme();
   }
@@ -231,52 +232,6 @@ export class GoalDashboardComponent implements OnInit {
   newFinishMap(map: any){
     this.ex_finish_map_name = map;
   }
-  // //---Workouts of the day
-  // //---when picking excersize from dropdown-list display 
-  // onChangeEx(){
-  //   this.exercises.forEach(ex => this.ex_ids.push(ex.id))
-
-  //   let choiceEx = $("select[name='select1.1'] option:selected").index();
-  //   this.ex_id = this.ex_ids[choiceEx-1];
-
-  //   this.goalDashBoardService.fetchExById(this.ex_id).subscribe((exercise: Exercise[]) =>
-  //   {
-  //       let ex_name = JSON.parse(JSON.stringify(exercise)).name
-
-  //       if(!this.ex_choice_map_name.has(ex_name)){
-  //         this.ex_choice_map_name.set(ex_name,10);
-  //       }else{
-  //         this.ex_choice_map_name.set(ex_name, (this.ex_choice_map_name.get(ex_name) +10))
-  //      }  
-  //     })
-  //   }
-
-  // //---when picking workout from dropdown-list display 
-  // onChangeWork(){
-
-  //   this.workouts.forEach(workout => this.workout_ids.push(workout.id))
-
-  //   let choiceWork = $("select[name='select1.2'] option:selected").index(); 
-  //   this.workout_id = this.workout_ids[choiceWork-1];
-
-  //   this.goalDashBoardService.fetchWorkoutById(this.workout_id).subscribe((workout: Workout[]) =>
-  //   { 
-  //     this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-
-  //     this.exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-
-  //     this.exercises_choosen.forEach((exercise: Exercise[]) => {
-      
-  //     let ex_name = JSON.parse(JSON.stringify(exercise)).name
-      
-  //     if(!this.ex_choice_map_name.has(ex_name)){
-  //       this.ex_choice_map_name.set(ex_name, this.repititions);
-  //     }else{
-  //       this.ex_choice_map_name.set(ex_name, (this.ex_choice_map_name.get(ex_name) +this.repititions))
-  //    }
-
-  //   })
-  // })}
   
 
   //---Weekly goals
@@ -284,7 +239,7 @@ export class GoalDashboardComponent implements OnInit {
   onChangeProgram(){
 
     //---get program workouts
-    this.programmes.forEach(program => this.program_ids.push(program.id))
+    this.programmes.forEach((program: { id: number; }) => this.program_ids.push(program.id))
     
     let choiceProgram = $("select[name='selectProgram'] option:selected").index();
     this.program_id = this.program_ids[choiceProgram-1];
@@ -463,7 +418,7 @@ export class GoalDashboardComponent implements OnInit {
   //---add an exercise to weekly goal
   onChangeGoalEx1(){
 
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+    this.exercises.forEach((ex: { id: number; }) => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='selectGoalEx1'] option:selected").index();
     this.ex_id = this.ex_ids[choiceEx-1];
@@ -483,7 +438,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add a workout to weekly goal
   onChangeGoalWork1(){
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+    this.workouts.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
 
     let choiceWork = $("select[name='selectGoalWork1'] option:selected").index(); 
     this.workout_id = this.workout_ids[choiceWork-1];
@@ -517,7 +472,7 @@ export class GoalDashboardComponent implements OnInit {
   //---add an exercise to weekly goal
   onChangeGoalEx2(){
 
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+    this.exercises.forEach((ex: { id: number; }) => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='selectGoalEx2'] option:selected").index();
     this.ex_id = this.ex_ids[choiceEx-1];
@@ -537,7 +492,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add a workout to weekly goal
   onChangeGoalWork2(){
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+    this.workouts.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
 
     let choiceWork = $("select[name='selectGoalWork2'] option:selected").index(); 
     this.workout_id = this.workout_ids[choiceWork-1];
@@ -572,7 +527,7 @@ export class GoalDashboardComponent implements OnInit {
   //---add exercise to weakly goal
   onChangeGoalEx3(){
 
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+    this.exercises.forEach((ex: { id: number; }) => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='selectGoalEx3'] option:selected").index();
     this.ex_id = this.ex_ids[choiceEx-1];
@@ -592,7 +547,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add a workout to weekly goal
   onChangeGoalWork3(){
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+    this.workouts.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
 
     let choiceWork = $("select[name='selectGoalWork3'] option:selected").index(); 
     this.workout_id = this.workout_ids[choiceWork-1];
@@ -627,7 +582,7 @@ export class GoalDashboardComponent implements OnInit {
   //---add exercise to weakly goal
   onChangeGoalEx4(){
 
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+    this.exercises.forEach((ex: { id: number; }) => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='selectGoalEx4'] option:selected").index();
     this.ex_id = this.ex_ids[choiceEx-1];
@@ -647,7 +602,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add a workout to weekly goal
   onChangeGoalWork4(){
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+    this.workouts.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
 
     let choiceWork = $("select[name='selectGoalWork4'] option:selected").index(); 
     this.workout_id = this.workout_ids[choiceWork-1];
@@ -682,7 +637,7 @@ export class GoalDashboardComponent implements OnInit {
   //---add exercise to weakly goal
   onChangeGoalEx5(){
 
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+    this.exercises.forEach((ex: { id: number; }) => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='selectGoalEx5'] option:selected").index();
     this.ex_id = this.ex_ids[choiceEx-1];
@@ -702,7 +657,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add a workout to weekly goal
   onChangeGoalWork5(){
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+    this.workouts.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
 
     let choiceWork = $("select[name='selectGoalWork5'] option:selected").index(); 
     this.workout_id = this.workout_ids[choiceWork-1];
@@ -737,7 +692,7 @@ export class GoalDashboardComponent implements OnInit {
   //---add exercise to weakly goal
   onChangeGoalEx6(){
 
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+    this.exercises.forEach((ex: { id: number; }) => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='selectGoalEx6'] option:selected").index();
     this.ex_id = this.ex_ids[choiceEx-1];
@@ -757,7 +712,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add a workout to weekly goal
   onChangeGoalWork6(){
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+    this.workouts.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
 
     let choiceWork = $("select[name='selectGoalWork6'] option:selected").index(); 
     this.workout_id = this.workout_ids[choiceWork-1];
@@ -792,7 +747,7 @@ export class GoalDashboardComponent implements OnInit {
   //---add exercise to weakly goal
   onChangeGoalEx7(){
 
-    this.exercises.forEach(ex => this.ex_ids.push(ex.id))
+    this.exercises.forEach((ex: { id: number; }) => this.ex_ids.push(ex.id))
 
     let choiceEx = $("select[name='selectGoalEx7'] option:selected").index();
     this.ex_id = this.ex_ids[choiceEx-1];
@@ -812,7 +767,7 @@ export class GoalDashboardComponent implements OnInit {
 
   //---add a workout to weekly goal
   onChangeGoalWork7(){
-    this.workouts.forEach(workout => this.workout_ids.push(workout.id))
+    this.workouts.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
 
     let choiceWork = $("select[name='selectGoalWork7'] option:selected").index(); 
     this.workout_id = this.workout_ids[choiceWork-1];
