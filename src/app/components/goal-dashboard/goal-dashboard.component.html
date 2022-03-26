@@ -6,9 +6,6 @@
         <span>
              {{oneDate.getFullYear()+"-"+(oneDate.getMonth()+1)+"-"+oneDate.getDate()}}
         </span>
-
-        
-        <app-commit-finish (weekly_progress)="weekly_progress($event)" (daily_progress)="daily_progress($event)" [dayCommitInitial]="dayCommitInitial" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-commit-finish>
             
         <div class="day">
                     <span>
@@ -88,7 +85,8 @@
     </div>
     
     
- 
+    <app-commit-finish (weekly_progress)="weekly_progress($event.param)" (daily_progress)="daily_progress($event.param)" [dayCommitInitial]="dayCommitInitial" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-commit-finish>
+
 
     <div class = "progress">
         <h3>{{[dailyProgress_display]}}</h3>
@@ -100,6 +98,6 @@
     
     <app-start-timer (day_Commits_Initial)="dayCommitsInitial($event)" (day_Commits)="dayCommits($event)" (daily_progress)="daily_progress($event)" (daily_progress_display)="daily_progress_display($event)" (sum_ex_initial)="sumExerciseInitial($event)" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-start-timer>
  
-    <button id="btn-details" type="form-control" (click)="toGoalDetails()" class="btn-details">Goal details page</button>
+    <!--<button id="btn-details" type="form-control" (click)="toGoalDetails()" class="btn-details">Goal details page</button>--->
 <!--<footer>By Experis Academy</footer>-->
 </div>

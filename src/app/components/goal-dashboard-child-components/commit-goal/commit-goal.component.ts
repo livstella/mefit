@@ -76,6 +76,9 @@ export class CommitGoalComponent implements OnInit {
       this.countDownDate = new Date().setDate(new Date().getDate()+7);
      }
      this.callTimer.emit({param:this.countDownDate});
+
+     location.reload();
     }
+    
 
 }

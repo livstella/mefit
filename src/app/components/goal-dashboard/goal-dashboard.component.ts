@@ -101,8 +101,8 @@ export class GoalDashboardComponent implements OnInit {
   //---progress percentage for day and week
   weeklyProgress: number | string | undefined = 0;
   dailyProgress: number | string | undefined = 0;
-  weeklyProgress_display: number | string | undefined = 0;
-  dailyProgress_display: number | string | undefined = 0;
+  weeklyProgress_display: any;
+  dailyProgress_display: any;
 
   //---timer components
   days: number = 0;
@@ -266,7 +266,7 @@ export class GoalDashboardComponent implements OnInit {
   daily_progress(value: number){
     this.dailyProgress=value
   }
-  daily_progress_display(value: number){
+  daily_progress_display(value: any){
     this.dailyProgress_display=value
   }
   weekly_progress(value: number){

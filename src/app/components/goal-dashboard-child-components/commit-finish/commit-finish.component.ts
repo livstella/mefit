@@ -46,8 +46,8 @@ export class CommitFinishComponent implements OnInit {
   @Input() dayCommitInitial: any;
 
   //---progress
-  @Output() daily_progress = new EventEmitter();
-  @Output() weekly_progress = new EventEmitter();
+  @Output("daily_progress") daily_progress = new EventEmitter();
+  @Output("weekly_progress") weekly_progress = new EventEmitter();
 
 
   constructor() { }
@@ -182,7 +182,8 @@ export class CommitFinishComponent implements OnInit {
     localStorage.setItem("day6commit", JSON.stringify(Array.from(this.program_ex_map_name6.entries())))
     localStorage.setItem("day7commit", JSON.stringify(Array.from(this.program_ex_map_name7.entries())))
 
-    this.daily_progress.emit(this.dailyProgress)
-    this.weekly_progress.emit(this.weeklyProgress)
+    this.daily_progress.emit({param:this.dailyProgress})
+    this.weekly_progress.emit({param:this.weeklyProgress})
+    
   }
 }
