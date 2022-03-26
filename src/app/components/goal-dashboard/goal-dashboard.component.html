@@ -25,7 +25,7 @@
 
         <button id="i" class ="commit-program" (click)="commitGoal()">Commit Goal</button>
 
-        <app-picking-program [programmes]="programmes" (program_ex_Map7)="day7_program($event)" (program_ex_Map6)="day6_program($event)" (program_ex_Map5)="day5_program($event)" (program_ex_Map4)="day4_program($event)" (program_ex_Map3)="day3_program($event)" (program_ex_Map2)="day2_program($event)" (program_ex_Map)="day1_program($event)"></app-picking-program>
+        <app-picking-program [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name" [programmes]="programmes" (program_ex_Map7)="day7_program($event)" (program_ex_Map6)="day6_program($event)" (program_ex_Map5)="day5_program($event)" (program_ex_Map4)="day4_program($event)" (program_ex_Map3)="day3_program($event)" (program_ex_Map2)="day2_program($event)" (program_ex_Map)="day1_program($event)"></app-picking-program>
         
         <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
         <button class ="uncommit-program" (click)="uncommitGoal()">Uncommit Goal</button>
@@ -34,26 +34,11 @@
             <!--First day-->
             <h4>{{dayOne}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx1" (change)="onChangeGoalEx1()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day1-program [program_ex_map_name]="program_ex_map_name" (program_ex_Map)="day1_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day1-program>
 
-
-             <select class = "workout-options" name="selectGoalWork1" (change)="onChangeGoalWork1()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-            
-            <button id="clear" class="clear" (click)="clear1()">Clear day</button>
-
-    
             <app-day1-buttons [program_ex_map_name]="program_ex_map_name"></app-day1-buttons>
            
+            <button id="clear" class="clear" (click)="clear1()">Clear day</button>
 
              <!--Second day-->
             <h4>{{dayTwo}}</h4>

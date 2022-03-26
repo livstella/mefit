@@ -3,6 +3,7 @@ import { Exercise } from 'src/app/models/exercise.model';
 import { Programme } from 'src/app/models/programme.model';
 import { Workout } from 'src/app/models/workout.model';
 import { GoalDashbordService } from 'src/app/services/goal-dashbord.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-picking-program',
@@ -28,13 +29,13 @@ export class PickingProgramComponent implements OnInit {
 
   @Input() programmes: Programme[] | undefined |any;
 
-  program_ex_map_name = new Map();
-  program_ex_map_name2 = new Map();
-  program_ex_map_name3 = new Map();
-  program_ex_map_name4 = new Map();
-  program_ex_map_name5 = new Map();
-  program_ex_map_name6 = new Map();
-  program_ex_map_name7 = new Map();
+  @Input() program_ex_map_name: any;
+  @Input() program_ex_map_name2: any;
+  @Input() program_ex_map_name3: any;
+  @Input() program_ex_map_name4: any;
+  @Input() program_ex_map_name5: any;
+  @Input() program_ex_map_name6: any;
+  @Input() program_ex_map_name7: any;
 
   @Output() program_ex_Map = new EventEmitter();
   @Output() program_ex_Map2 = new EventEmitter();
@@ -85,9 +86,9 @@ export class PickingProgramComponent implements OnInit {
           this.program_ex_map_name.set(ex_name, this.repititions);
         }else{
           this.program_ex_map_name.set(ex_name, (this.program_ex_map_name.get(ex_name) +this.repititions))
-   }
-   this.program_ex_Map.emit(this.program_ex_map_name)
-  })})}
+   }})})
+
+  }
 
 
       //---day2
@@ -109,8 +110,8 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name2.set(ex_name, (this.program_ex_map_name2.get(ex_name) +this.repititions))
       }
-      this.program_ex_Map2.emit(this.program_ex_map_name2)
-    })})}
+    })})
+  }
 
       //---day3
       //---fetch exercises from workout
@@ -131,8 +132,8 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name3.set(ex_name, (this.program_ex_map_name3.get(ex_name) +this.repititions))
       }
-      this.program_ex_Map3.emit(this.program_ex_map_name3)
-    })})}
+    })})
+  }
 
       //---day4
       //---fetch exercises from workout
@@ -152,9 +153,8 @@ export class PickingProgramComponent implements OnInit {
           this.program_ex_map_name4.set(ex_name, this.repititions);
         }else{
           this.program_ex_map_name4.set(ex_name, (this.program_ex_map_name4.get(ex_name) +this.repititions))
-      }
-      this.program_ex_Map4.emit(this.program_ex_map_name4)
-    })})}
+      }})})
+    }
 
       //---day5
       //---fetch exercises from workout
@@ -175,8 +175,8 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name5.set(ex_name, (this.program_ex_map_name5.get(ex_name) +this.repititions))
         }
-        this.program_ex_Map5.emit(this.program_ex_map_name5)
-      })})}
+      })})
+    }
 
       //---day6
       //---fetch exercises from workout
@@ -197,8 +197,9 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name6.set(ex_name, (this.program_ex_map_name6.get(ex_name) +this.repititions))
         }
-        this.program_ex_Map6.emit(this.program_ex_map_name6)
-      })})}
+      })})
+
+    }
 
       //---day7
       //---fetch exercises from workout
@@ -219,12 +220,17 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name7.set(ex_name, (this.program_ex_map_name7.get(ex_name) +this.repititions))
       }
-      this.program_ex_Map7.emit(this.program_ex_map_name7)
-    })})}
+    })})
+  }
    
   }})
+  this.program_ex_Map.emit(this.program_ex_map_name)
+  this.program_ex_Map2.emit(this.program_ex_map_name2)
+  this.program_ex_Map3.emit(this.program_ex_map_name3)
+  this.program_ex_Map4.emit(this.program_ex_map_name4)
+  this.program_ex_Map5.emit(this.program_ex_map_name5)
+  this.program_ex_Map6.emit(this.program_ex_map_name6)
+  this.program_ex_Map7.emit(this.program_ex_map_name7)
+
 }
-
-
-
 }
