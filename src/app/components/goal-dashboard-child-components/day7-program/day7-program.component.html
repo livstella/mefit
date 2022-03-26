@@ -1,4 +1,4 @@
-<select class = "exercise-options" name="selectGoalEx1" (change)="onChangeGoalEx1()">
+<select class = "exercise-options" name="selectGoalEx7" (change)="onChangeGoalEx7()">
     <option>Choose an exercise</option>
     <option *ngFor="let ex of exercises ; let i = index" >
       {{ex.name}}
@@ -6,11 +6,11 @@
 </select>
 
 
- <select class = "workout-options" name="selectGoalWork1" (change)="onChangeGoalWork1()">
+ <select class = "workout-options" name="selectGoalWork7" (change)="onChangeGoalWork7()">
     <option>Choose a workout</option>
     <option *ngFor="let work of workouts ; let i = index" >
      {{work.name}}
     </option>
 </select>
 
-<button id="clear" class="clear" (click)="clear1()">Clear day</button>
+<button id="clear" class="clear" (click)="clear7()">Clear day</button>

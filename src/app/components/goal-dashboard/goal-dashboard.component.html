@@ -38,138 +38,47 @@
 
             <app-day1-buttons [program_ex_map_name]="program_ex_map_name"></app-day1-buttons>
            
-            <button id="clear" class="clear" (click)="clear1()">Clear day</button>
 
              <!--Second day-->
             <h4>{{dayTwo}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx2" (change)="onChangeGoalEx2()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
-
-
-             <select class = "workout-options" name="selectGoalWork2" (change)="onChangeGoalWork2()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear2()">Clear day</button>
+            <app-day2-program [program_ex_map_name2]="program_ex_map_name2" (program_ex_Map2)="day2_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day2-program>
             
             <app-day2-buttons [program_ex_map_name2]="program_ex_map_name2"></app-day2-buttons>
 
-             <!--Third day-->
+            <!--Third day-->
             <h4>{{dayThree}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx3" (change)="onChangeGoalEx3()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
-
-
-             <select class = "workout-options" name="selectGoalWork3" (change)="onChangeGoalWork3()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear3()">Clear day</button>
+            <app-day3-program [program_ex_map_name3]="program_ex_map_name3" (program_ex_Map3)="day3_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day3-program>
 
             <app-day3-buttons [program_ex_map_name3]="program_ex_map_name3"></app-day3-buttons>
 
             <!--Fouth day-->
             <h4>{{dayFour}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx4" (change)="onChangeGoalEx4()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
-
-
-             <select class = "workout-options" name="selectGoalWork4" (change)="onChangeGoalWork4()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear4()">Clear day</button>
+            <app-day4-program [program_ex_map_name4]="program_ex_map_name4" (program_ex_Map4)="day4_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day4-program>
 
             <app-day4-buttons [program_ex_map_name4]="program_ex_map_name4"></app-day4-buttons>
 
             <!--Fifth day-->
             <h4>{{dayFive}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx5" (change)="onChangeGoalEx5()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
-
-
-             <select class = "workout-options" name="selectGoalWork5" (change)="onChangeGoalWork5()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear5()">Clear day</button>
+            <app-day5-program [program_ex_map_name5]="program_ex_map_name5" (program_ex_Map5)="day5_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day5-program>
 
             <app-day5-buttons [program_ex_map_name5]="program_ex_map_name5"></app-day5-buttons>
 
             <!--Sixth day-->
             <h4>{{daySix}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx6" (change)="onChangeGoalEx6()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day6-program [program_ex_map_name6]="program_ex_map_name6" (program_ex_Map6)="day6_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day6-program>
 
-
-             <select class = "workout-options" name="selectGoalWork6" (change)="onChangeGoalWork6()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear6()">Clear day</button>
-
-            <app-day6-buttons [program_ex_map_name6]="program_ex_map_name"></app-day6-buttons>
+            <app-day6-buttons [program_ex_map_name6]="program_ex_map_name6"></app-day6-buttons>
            
 
             <!--Seventh day-->
             <h4>{{daySeven}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx7" (change)="onChangeGoalEx7()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
-
-
-             <select class = "workout-options" name="selectGoalWork7" (change)="onChangeGoalWork7()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear7()">Clear day</button>
+            <app-day7-program [program_ex_map_name7]="program_ex_map_name7" (program_ex_Map7)="day7_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day7-program>
 
             <app-day7-buttons [program_ex_map_name7]="program_ex_map_name7"></app-day7-buttons>
             
@@ -193,5 +102,5 @@
     </div>
  
     <button id="btn-details" type="form-control" (click)="toGoalDetails()" class="btn-details">Goal details page</button>
-<footer>By Experis Academy</footer>
+<!--<footer>By Experis Academy</footer>-->
 </div>

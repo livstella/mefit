@@ -35,6 +35,12 @@ import { WorkoutOfTheDayButtonsComponent } from './components/goal-dashboard-chi
 import { WorkoutOfTheDayOptionsComponent } from './components/goal-dashboard-child-components/workout-of-the-day-options/workout-of-the-day-options.component';
 import { PickingProgramComponent } from './components/goal-dashboard-child-components/picking-program/picking-program.component';
 import { Day1ProgramComponent } from './components/goal-dashboard-child-components/day1-program/day1-program.component';
+import { Day2ProgramComponent } from './components/goal-dashboard-child-components/day2-program/day2-program.component';
+import { Day3ProgramComponent } from './components/goal-dashboard-child-components/day3-program/day3-program.component';
+import { Day4ProgramComponent } from './components/goal-dashboard-child-components/day4-program/day4-program.component';
+import { Day5ProgramComponent } from './components/goal-dashboard-child-components/day5-program/day5-program.component';
+import { Day6ProgramComponent } from './components/goal-dashboard-child-components/day6-program/day6-program.component';
+import { Day7ProgramComponent } from './components/goal-dashboard-child-components/day7-program/day7-program.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +68,12 @@ import { Day1ProgramComponent } from './components/goal-dashboard-child-componen
     WorkoutOfTheDayOptionsComponent,
     PickingProgramComponent,
     Day1ProgramComponent,
+    Day2ProgramComponent,
+    Day3ProgramComponent,
+    Day4ProgramComponent,
+    Day5ProgramComponent,
+    Day6ProgramComponent,
+    Day7ProgramComponent,
 
   ],
   imports: [

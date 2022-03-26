@@ -1,0 +1,17 @@
+
+            <select class = "exercise-options" name="selectGoalEx4" (change)="onChangeGoalEx4()">
+                <option>Choose an exercise</option>
+                <option *ngFor="let ex of exercises ; let i = index" >
+                  {{ex.name}}
+                </option>
+            </select>
+
+
+             <select class = "workout-options" name="selectGoalWork4" (change)="onChangeGoalWork4()">
+                <option>Choose a workout</option>
+                <option *ngFor="let work of workouts ; let i = index" >
+                 {{work.name}}
+                </option>
+            </select>
+
+            <button id="clear" class="clear" (click)="clear4()">Clear day</button>
