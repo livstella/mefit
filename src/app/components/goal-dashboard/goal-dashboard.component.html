@@ -15,7 +15,7 @@
                     <span>
                     <h3>Workouts of the day</h3>
                     
-                    <app-workout-of-the-day-buttons (newFinish_Map)="newFinishMap($event)" [dayCommit]="dayCommit" [ex_choice_map_name]="ex_choice_map_name"></app-workout-of-the-day-buttons>
+                    <app-workout-of-the-day-buttons (newChoice_Map)="newChoiceMap($event)" (newFinish_Map)="newFinishMap($event)" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [ex_choice_map_name]="ex_choice_map_name"></app-workout-of-the-day-buttons>
 
                     <app-workout-of-the-day-options [workouts]="workouts" [exercises]="exercises" (newChoice_Map)="newChoiceMap($event)"></app-workout-of-the-day-options>
                 </span>

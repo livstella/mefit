@@ -8,10 +8,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class WorkoutOfTheDayButtonsComponent implements OnInit {
 
   @Input() ex_choice_map_name = new Map();
+  @Input() ex_finish_map_name = new Map();
+  @Output() newChoice_Map = new EventEmitter();
   @Output() newFinish_Map = new EventEmitter();
   @Input() dayCommit = new Map();
 
-  ex_finish_map_name = new Map();
 
   constructor() { }
 
@@ -73,6 +74,7 @@ export class WorkoutOfTheDayButtonsComponent implements OnInit {
             alert("You did not sign up for this exercise.")
         }
     }
+    this.newChoice_Map.emit(this.ex_choice_map_name)
     this.newFinish_Map.emit(this.ex_finish_map_name)
   }
 
@@ -86,6 +88,7 @@ export class WorkoutOfTheDayButtonsComponent implements OnInit {
         this.ex_finish_map_name.delete(k);
       }
     }
+    this.newChoice_Map.emit(this.ex_choice_map_name)
     this.newFinish_Map.emit(this.ex_finish_map_name)
   }
 
