@@ -345,7 +345,7 @@ export class GoalDashboardComponent implements OnInit {
   }
 
   //---clear goal and refresh page
-  uncommitGoal(){
+  unCommitGoal(){
 
     //---clear localstorage
     localStorage.removeItem("day1commit");

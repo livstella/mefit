@@ -7,7 +7,6 @@
              {{oneDate.getFullYear()+"-"+(oneDate.getMonth()+1)+"-"+oneDate.getDate()}}
         </span>
 
-        <app-start-timer (unCommit)=" uncommitGoal()"></app-start-timer>
         
         <app-commit-finish (weekly_progress)="weekly_progress($event)" (daily_progress)="daily_progress($event)" [dayCommitInitial]="dayCommitInitial" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-commit-finish>
             
@@ -31,7 +30,7 @@
         <app-picking-program [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name" [programmes]="programmes" (program_ex_Map7)="day7_program($event)" (program_ex_Map6)="day6_program($event)" (program_ex_Map5)="day5_program($event)" (program_ex_Map4)="day4_program($event)" (program_ex_Map3)="day3_program($event)" (program_ex_Map2)="day2_program($event)" (program_ex_Map)="day1_program($event)"></app-picking-program>
         
         <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
-        <button class ="uncommit-program" (click)="uncommitGoal()">Uncommit Goal</button>
+        <button class ="uncommit-program" (click)="unCommitGoal()">Uncommit Goal</button>
         <ul class="weekly-goal">
 
             <!--First day-->

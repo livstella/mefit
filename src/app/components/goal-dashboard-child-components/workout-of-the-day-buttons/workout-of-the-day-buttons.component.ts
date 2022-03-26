@@ -60,7 +60,6 @@ export class WorkoutOfTheDayButtonsComponent implements OnInit {
 
   //---add excersize to finish list
   updateExFinish(name: string){
-
     for(let[k,v] of this.ex_choice_map_name){
       for(let[k2,v2] of this.dayCommit)
         if(k === name && k2 ===name){
