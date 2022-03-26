@@ -220,182 +220,44 @@ export class GoalDashboardComponent implements OnInit {
     return this.workoutPageService.workout();
   }
 
-  // //---get programmes
+  //---get programmes
   get programmes(): Programme[] {
     return this.programPageService.programme();
   }
 
+  //---receive exercise choices from child
   newChoiceMap(map: any){
     this.ex_choice_map_name = map;
   }
 
+  //---receieved logged exercises from child
   newFinishMap(map: any){
     this.ex_finish_map_name = map;
   }
   
 
   //---Weekly goals
-  //---when picking a programm from dropdown list
-  onChangeProgram(){
-
-    //---get program workouts
-    this.programmes.forEach((program: { id: number; }) => this.program_ids.push(program.id))
-    
-    let choiceProgram = $("select[name='selectProgram'] option:selected").index();
-    this.program_id = this.program_ids[choiceProgram-1];
-
-    this.goalDashBoardService.fetchProgramById(this.program_id).subscribe((program: Programme[]) =>
-    { 
-      this.workouts_choosen = JSON.parse(JSON.stringify(program)).workouts;
-  
-
-      //---list each exercise from workout on its seperate day
-      this.workouts_choosen.forEach((workout: { id: number; }) => this.workout_ids.push(workout.id))
-
-      for(let i =0; i<this.workout_ids.length;i++){
-      //---day1
-      //---fetch exercises from workout
-      if(i==0){
-        this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
-        { 
-        this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-
-        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-
-        this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
-    
-        let ex_name = JSON.parse(JSON.stringify(exercise)).name
-    
-        //---populate program exercises map of the day
-        if(!this.program_ex_map_name.has(ex_name)){
-          this.program_ex_map_name.set(ex_name, this.repititions);
-        }else{
-          this.program_ex_map_name.set(ex_name, (this.program_ex_map_name.get(ex_name) +this.repititions))
-   }})})}
-
-
-        //---day2
-        //---fetch exercises from workout
-        else if(i==1){
-          this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
-        { 
-          this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-
-          this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-
-          this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
-
-          let ex_name = JSON.parse(JSON.stringify(exercise)).name
-
-          //---populate program exercises map of the day
-          if(!this.program_ex_map_name2.has(ex_name)){
-            this.program_ex_map_name2.set(ex_name, this.repititions);
-          }else{
-            this.program_ex_map_name2.set(ex_name, (this.program_ex_map_name2.get(ex_name) +this.repititions))
-          }})})}
-
-        //---day3
-        //---fetch exercises from workout
-        else if(i==2){
-          this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
-        { 
-          this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-
-          this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-
-          this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
-
-          let ex_name = JSON.parse(JSON.stringify(exercise)).name
-
-          //---populate program exercises map of the day
-          if(!this.program_ex_map_name3.has(ex_name)){
-            this.program_ex_map_name3.set(ex_name, this.repititions);
-          }else{
-            this.program_ex_map_name3.set(ex_name, (this.program_ex_map_name3.get(ex_name) +this.repititions))
-          }})})}
-
-        //---day4
-        //---fetch exercises from workout
-        else if(i==3){
-            this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
-          { 
-            this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-  
-            this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-  
-            this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
-  
-            let ex_name = JSON.parse(JSON.stringify(exercise)).name
-  
-            //---populate program exercises map of the day
-            if(!this.program_ex_map_name4.has(ex_name)){
-              this.program_ex_map_name4.set(ex_name, this.repititions);
-            }else{
-              this.program_ex_map_name4.set(ex_name, (this.program_ex_map_name4.get(ex_name) +this.repititions))
-            }})})}
-
-        //---day5
-        //---fetch exercises from workout
-        else if(i==4){
-              this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
-            { 
-              this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-    
-              this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-    
-              this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
-    
-              let ex_name = JSON.parse(JSON.stringify(exercise)).name
-                
-              //---populate program exercises map of the day
-              if(!this.program_ex_map_name5.has(ex_name)){
-                this.program_ex_map_name5.set(ex_name, this.repititions);
-              }else{
-                this.program_ex_map_name5.set(ex_name, (this.program_ex_map_name5.get(ex_name) +this.repititions))
-              }})})}
-
-        //---day6
-        //---fetch exercises from workout
-        else if(i==5){
-                this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
-              { 
-                this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-      
-                this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-      
-                this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
-      
-                let ex_name = JSON.parse(JSON.stringify(exercise)).name
-      
-                //---populate program exercises map of the day
-                if(!this.program_ex_map_name6.has(ex_name)){
-                  this.program_ex_map_name6.set(ex_name, this.repititions);
-                }else{
-                  this.program_ex_map_name6.set(ex_name, (this.program_ex_map_name6.get(ex_name) +this.repititions))
-                }})})}
-
-        //---day7
-        //---fetch exercises from workout
-        else if(i==6){
-                  this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
-                { 
-                  this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
-        
-                  this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
-        
-                  this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
-        
-                  let ex_name = JSON.parse(JSON.stringify(exercise)).name
-        
-                  //---populate program exercises map of the day
-                  if(!this.program_ex_map_name7.has(ex_name)){
-                    this.program_ex_map_name7.set(ex_name, this.repititions);
-                  }else{
-                    this.program_ex_map_name7.set(ex_name, (this.program_ex_map_name7.get(ex_name) +this.repititions))
-                  }})})}
-   
-  }})
-}
+  day1_program(map: any){
+    this.program_ex_map_name= map;
+  }
+  day2_program(map: any){
+    this.program_ex_map_name2= map;
+  }
+  day3_program(map: any){
+    this.program_ex_map_name3= map;
+  }
+  day4_program(map: any){
+    this.program_ex_map_name4= map;
+  }
+  day5_program(map: any){
+    this.program_ex_map_name5= map;
+  }
+  day6_program(map: any){
+    this.program_ex_map_name6= map;
+  }
+  day7_program(map: any){
+    this.program_ex_map_name7= map;
+  }
 
 
   //---Button to clear week

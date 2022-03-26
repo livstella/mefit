@@ -1,0 +1,6 @@
+<select class = "program-options" name="selectProgram" (change)="onChangeProgram()">
+    <option>Choose a programme</option>
+    <option *ngFor="let program of programmes ; let i = index" >
+      {{program.name}}
+    </option>     
+</select>

@@ -25,12 +25,8 @@
 
         <button id="i" class ="commit-program" (click)="commitGoal()">Commit Goal</button>
 
-        <select class = "program-options" name="selectProgram" (change)="onChangeProgram()">
-            <option>Choose a programme</option>
-            <option *ngFor="let program of programmes ; let i = index" >
-              {{program.name}}
-            </option>     
-        </select>
+        <app-picking-program [programmes]="programmes" (program_ex_Map7)="day7_program($event)" (program_ex_Map6)="day6_program($event)" (program_ex_Map5)="day5_program($event)" (program_ex_Map4)="day4_program($event)" (program_ex_Map3)="day3_program($event)" (program_ex_Map2)="day2_program($event)" (program_ex_Map)="day1_program($event)"></app-picking-program>
+        
         <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
         <button class ="uncommit-program" (click)="uncommitGoal()">Uncommit Goal</button>
         <ul class="weekly-goal">

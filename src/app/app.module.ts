@@ -33,6 +33,7 @@ import { Day6ButtonsComponent } from './components/goal-dashboard-child-componen
 import { Day7ButtonsComponent } from './components/goal-dashboard-child-components/day7-buttons/day7-buttons.component';
 import { WorkoutOfTheDayButtonsComponent } from './components/goal-dashboard-child-components/workout-of-the-day-buttons/workout-of-the-day-buttons.component';
 import { WorkoutOfTheDayOptionsComponent } from './components/goal-dashboard-child-components/workout-of-the-day-options/workout-of-the-day-options.component';
+import { PickingProgramComponent } from './components/goal-dashboard-child-components/picking-program/picking-program.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { WorkoutOfTheDayOptionsComponent } from './components/goal-dashboard-chi
     Day7ButtonsComponent,
     WorkoutOfTheDayButtonsComponent,
     WorkoutOfTheDayOptionsComponent,
+    PickingProgramComponent,
 
   ],
   imports: [
