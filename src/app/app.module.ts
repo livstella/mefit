@@ -43,6 +43,7 @@ import { Day6ProgramComponent } from './components/goal-dashboard-child-componen
 import { Day7ProgramComponent } from './components/goal-dashboard-child-components/day7-program/day7-program.component';
 import { CommitFinishComponent } from './components/goal-dashboard-child-components/commit-finish/commit-finish.component';
 import { StartTimerComponent } from './components/goal-dashboard-child-components/start-timer/start-timer.component';
+import { CommitGoalComponent } from './components/goal-dashboard-child-components/commit-goal/commit-goal.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { StartTimerComponent } from './components/goal-dashboard-child-component
     Day7ProgramComponent,
     CommitFinishComponent,
     StartTimerComponent,
+    CommitGoalComponent,
 
   ],
   imports: [
