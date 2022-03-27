@@ -135,6 +135,7 @@ export class GoalDashboardComponent implements OnInit {
       }else if(Number(this.weeklyProgress) >= 100){
           this.weeklyProgress_display = "You finished of your weekly goal!";
       }
+      $('#weeklyprogressbar').attr('aria-valuenow', this.weeklyProgress+"%").css('width', this.weeklyProgress+"%");
     }
 
     //---get daily submitted progress from local storage

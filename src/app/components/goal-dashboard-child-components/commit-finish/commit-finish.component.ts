@@ -149,6 +149,8 @@ export class CommitFinishComponent implements OnInit {
       }
        //---calculate weekly progress
        this.weeklyProgress = Number((this.weeklyFinish/this.weeklyGoal)*100).toFixed(2);
+
+       $('#weeklyprogressbar').attr('aria-valuenow', this.weeklyProgress+"%").css('width', this.weeklyProgress+"%");
       
       //---display weekly progress
        if (Number(this.weeklyProgress) < 100){

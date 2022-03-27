@@ -23,7 +23,7 @@
                   
             
 
-        <div class="col-5 mx-5 mt-2 border p-3">
+        <div class="col-5 mx-5 mt-2 border p-3 float-start">
             <div class="card-title"> 
                 <h4 class="text-center">Workouts of the day</h4>
                 <h6 class="text-center">{{[dailyProgress_display]}}</h6>
@@ -51,8 +51,20 @@
                     
 
 
-    <div class = "weekgoal-display">
-        <h3>Exercise build for the week</h3>
+    <div class="col-5 me-5 mt-2 border p-3 float-end">
+        <div class="card-title"> 
+            <h4 class="text-center">Exercise build for the week</h4>
+            <h6 class="text-center">{{[weeklyProgress_display]}}</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="progress" > 
+            <div id="weeklyprogressbar" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                {{weeklyProgress}}
+            </div>
+            </div>
+        </div>
 
         <app-commit-goal [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name" (callTimer)="callTimer()"></app-commit-goal>
 
