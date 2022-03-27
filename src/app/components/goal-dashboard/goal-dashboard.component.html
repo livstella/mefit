@@ -1,5 +1,6 @@
 <div class="main">
    
+    <!--Header and timer-->
         <h2 class="text-center">{{username}}'s' goal dashboard!</h2>
         <div class="mx-5">
              {{oneDate.getFullYear()+"-"+(oneDate.getMonth()+1)+"-"+oneDate.getDate()}}
@@ -7,18 +8,8 @@
     
         <app-start-timer (day_Commits_Initial)="dayCommitsInitial($event)" (day_Commits)="dayCommits($event)" (daily_progress)="daily_progress($event)" (daily_progress_display)="daily_progress_display($event)" (sum_ex_initial)="sumExerciseInitial($event)" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-start-timer>
      
-
-        
-   <!-- <div class = "progress mb-5 card-body">
-        <h3>{{[dailyProgress_display]}}</h3>
-        <div class="progress-bar" role="progressbar" aria-valuenow="[dailyProgress]" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progressbar" style="--widthbar:{{dailyProgress}}" data-label="progress..."></div>
-
-        <h3>{{[weeklyProgress_display]}}</h3>
-        <div class="progressbarWeek rounded mb-3" data-label="progress...">{{[weeklyProgress]}}%</div>
-        <div class="progressbarWeek" style="--widthbar:{{weeklyProgress}}" data-label="progress..."></div>
-    </div>-->
-            
+     
+    <!---Workout of the day-->    
     <div class="day" >
                   
             
@@ -50,7 +41,7 @@
     </div>
                     
 
-
+    <!--Build for the week-->
     <div class="col-5 me-5 mt-2 border p-3 float-end">
         <div class="card-title"> 
             <h4 class="text-center">Exercise build for the week</h4>
@@ -66,64 +57,69 @@
             </div>
         </div>
 
-        <app-commit-goal [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name" (callTimer)="callTimer()"></app-commit-goal>
+        <div class="text-center">
+            <app-commit-goal [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name" (callTimer)="callTimer()"></app-commit-goal>
+            <button class="clear btn btn-danger m-3" (click)="clearweek()">Clear week</button>
+            <button class ="uncommit-program btn btn-danger m-3" (click)="unCommitGoal()">Uncommit Goal</button>
+        </div>
 
         <app-picking-program [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name" [programmes]="programmes" (program_ex_Map7)="day7_program($event)" (program_ex_Map6)="day6_program($event)" (program_ex_Map5)="day5_program($event)" (program_ex_Map4)="day4_program($event)" (program_ex_Map3)="day3_program($event)" (program_ex_Map2)="day2_program($event)" (program_ex_Map)="day1_program($event)"></app-picking-program>
         
-        <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
-        <button class ="uncommit-program" (click)="unCommitGoal()">Uncommit Goal</button>
+        <br>
         <ul class="weekly-goal">
 
             <!--First day-->
             <h4>{{dayOne}}</h4>
 
-            <app-day1-program [program_ex_map_name]="program_ex_map_name" (program_ex_Map)="day1_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day1-program>
-
             <app-day1-buttons [program_ex_map_name]="program_ex_map_name"></app-day1-buttons>
            
+            <app-day1-program [program_ex_map_name]="program_ex_map_name" (program_ex_Map)="day1_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day1-program>
+
 
              <!--Second day-->
             <h4>{{dayTwo}}</h4>
 
-            <app-day2-program [program_ex_map_name2]="program_ex_map_name2" (program_ex_Map2)="day2_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day2-program>
-            
             <app-day2-buttons [program_ex_map_name2]="program_ex_map_name2"></app-day2-buttons>
 
+            <app-day2-program [program_ex_map_name2]="program_ex_map_name2" (program_ex_Map2)="day2_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day2-program>
+            
+           
             <!--Third day-->
             <h4>{{dayThree}}</h4>
 
+            <app-day3-buttons [program_ex_map_name3]="program_ex_map_name3"></app-day3-buttons>
+
             <app-day3-program [program_ex_map_name3]="program_ex_map_name3" (program_ex_Map3)="day3_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day3-program>
 
-            <app-day3-buttons [program_ex_map_name3]="program_ex_map_name3"></app-day3-buttons>
 
             <!--Fouth day-->
             <h4>{{dayFour}}</h4>
 
-            <app-day4-program [program_ex_map_name4]="program_ex_map_name4" (program_ex_Map4)="day4_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day4-program>
-
             <app-day4-buttons [program_ex_map_name4]="program_ex_map_name4"></app-day4-buttons>
+
+            <app-day4-program [program_ex_map_name4]="program_ex_map_name4" (program_ex_Map4)="day4_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day4-program>
 
             <!--Fifth day-->
             <h4>{{dayFive}}</h4>
 
-            <app-day5-program [program_ex_map_name5]="program_ex_map_name5" (program_ex_Map5)="day5_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day5-program>
-
             <app-day5-buttons [program_ex_map_name5]="program_ex_map_name5"></app-day5-buttons>
+
+            <app-day5-program [program_ex_map_name5]="program_ex_map_name5" (program_ex_Map5)="day5_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day5-program>
 
             <!--Sixth day-->
             <h4>{{daySix}}</h4>
 
-            <app-day6-program [program_ex_map_name6]="program_ex_map_name6" (program_ex_Map6)="day6_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day6-program>
-
             <app-day6-buttons [program_ex_map_name6]="program_ex_map_name6"></app-day6-buttons>
-           
 
+            <app-day6-program [program_ex_map_name6]="program_ex_map_name6" (program_ex_Map6)="day6_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day6-program>
+           
             <!--Seventh day-->
             <h4>{{daySeven}}</h4>
 
+            <app-day7-buttons [program_ex_map_name7]="program_ex_map_name7"></app-day7-buttons>
+
             <app-day7-program [program_ex_map_name7]="program_ex_map_name7" (program_ex_Map7)="day7_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day7-program>
 
-            <app-day7-buttons [program_ex_map_name7]="program_ex_map_name7"></app-day7-buttons>
             
         </ul>
     </div>

@@ -1,9 +1,9 @@
 <li *ngFor="let item of program_ex_map_name | keyvalue" >
-    <button id="day-buttons" class="day-buttons" (click)="increment_day1_10(item.key)">+10</button> 
-    <button id="day-buttons" class="day-buttons" (click)="decrement_day1_10(item.key)">-10</button>
-    <button id="day-buttons" class="day-buttons" (click)="increment_day1_1(item.key)">+1</button> 
-    <button id="day-buttons" class="day-buttons" (click)="decrement_day1_1(item.key)">-1</button>
-        {{item.key}}
-        ({{item.value}} repititions left)
-    <button id="day-buttons" class="day-buttons" (click)="remove_day1(item.key)">Remove</button>
+    <b>{{item.key}}</b>
+    ({{item.value}} repititions left)<br>
+    <button class="day-buttons btn btn-secondary m-1" (click)="increment_day1_10(item.key)">+10</button> 
+    <button class="day-buttons btn btn-secondary m-1" (click)="decrement_day1_10(item.key)">-10</button>
+    <button class="day-buttons btn btn-secondary m-1" (click)="increment_day1_1(item.key)">+1</button> 
+    <button class="day-buttons btn btn-secondary m-1" (click)="decrement_day1_1(item.key)">-1</button>
+    <button class="day-buttons btn btn-danger m-1" (click)="remove_day1(item.key)">Remove</button>
 </li> 

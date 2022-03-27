@@ -1,4 +1,6 @@
-<select class = "exercise-options" name="selectGoalEx6" (change)="onChangeGoalEx6()">
+<div class="m-3 text-center col-11">
+
+<select class = "exercise-options form-select" name="selectGoalEx6" (change)="onChangeGoalEx6()">
     <option>Choose an exercise</option>
     <option *ngFor="let ex of exercises ; let i = index" >
       {{ex.name}}
@@ -6,11 +8,15 @@
 </select>
 
 
- <select class = "workout-options" name="selectGoalWork6" (change)="onChangeGoalWork6()">
+ <select class = "workout-options form-select" name="selectGoalWork6" (change)="onChangeGoalWork6()">
     <option>Choose a workout</option>
     <option *ngFor="let work of workouts ; let i = index" >
      {{work.name}}
     </option>
 </select>
 
-<button id="clear" class="clear" (click)="clear6()">Clear day</button>
+<div class="text-center">
+  <button class="clear btn btn-danger m-1" (click)="clear6()">Clear day</button>
+</div>
+
+</div>
