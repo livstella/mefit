@@ -2,7 +2,7 @@
     <h5>Planned</h5>
     <ul class="Excersizedisplay1 h6">
         <li *ngFor="let item of ex_choice_map_name | keyvalue" >
-          {{item.key}}
+          <b>{{item.key}}</b>
           ({{item.value}} repititions)<br>
           <button class="btn btn-secondary m-1" (click)="increment10(item.key)">+10</button> 
           <button class="btn btn-secondary m-1" (click)="decrement10(item.key)">-10</button>
@@ -17,7 +17,7 @@
     <h5>Finished</h5>
     <ul class="ExFinishdisplay1 h6">
         <li *ngFor="let item of ex_finish_map_name | keyvalue" >
-            {{item.key}}
+           <b>{{item.key}}</b>
             ({{item.value}} repititions)
           <button class="NotFinish btn btn-info" (click)="updateExPlaned(item.key)">Not finished!</button>
         </li>>
