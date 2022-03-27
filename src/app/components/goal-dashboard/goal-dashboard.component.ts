@@ -207,8 +207,8 @@ export class GoalDashboardComponent implements OnInit {
       this.program_ex_map_name_in7 = new Map(JSON.parse(localStorage.getItem("day7commitInitial")||'{}'));
 
       // //---start timer
-      this.countDownDate = Number(localStorage.getItem("countdown_timer"))
-      this.callTimer(this.countDownDate)
+      //this.countDownDate = Number(localStorage.getItem("countdown_timer"))
+      this.callTimer()
       
   }
     
@@ -329,8 +329,8 @@ export class GoalDashboardComponent implements OnInit {
     location.reload();
   }
 
-  callTimer(value:number){
-    this.startTimer?.startTimer(value)
+  callTimer(){
+    this.startTimer?.startTimer()
   }
 
 }

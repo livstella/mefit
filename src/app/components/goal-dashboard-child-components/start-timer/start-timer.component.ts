@@ -82,7 +82,15 @@ export class StartTimerComponent implements OnInit {
 
   }
 
-  startTimer(value : number){
+  startTimer(){
+
+    //---Set countdowntimer
+    if(localStorage.getItem("countdown_timer")){
+      this.countDownDate = Number(localStorage.getItem("countdown_timer"))
+     }else{
+      this.countDownDate = new Date().setDate(new Date().getDate()+7);
+     }
+
     //---Update the count down every 1 second
     const sevenDayTimer = setInterval(() => {
   
@@ -97,7 +105,6 @@ export class StartTimerComponent implements OnInit {
       //---Get today's date and time
       let now = new Date().getTime();
       
-      this.countDownDate = value;
       //---calculate difference between end date and now
       let difference = this.countDownDate - now;
   

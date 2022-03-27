@@ -28,7 +28,7 @@ export class CommitGoalComponent implements OnInit {
   @Input() program_ex_map_name6: any;
   @Input() program_ex_map_name7: any;
 
-  @Output("callTimer") callTimer = new EventEmitter();
+  @Output() callTimer = new EventEmitter();
 
   constructor() { }
 
@@ -68,14 +68,9 @@ export class CommitGoalComponent implements OnInit {
 
 
      //---start timer
-     //---if timer already started, fetch the end date
-     //---otherwise set end date
-     if(localStorage.getItem("countdown_timer")){
-      this.countDownDate = Number(localStorage.getItem("countdown_timer"))
-     }else{
-      this.countDownDate = new Date().setDate(new Date().getDate()+7);
-     }
-     this.callTimer.emit({param:this.countDownDate});
+
+     //this.callTimer.emit({param:this.countDownDate});
+     this.callTimer.emit();
 
      location.reload();
     }
