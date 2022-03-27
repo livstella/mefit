@@ -1,25 +1,25 @@
 <span>
     <h5>Planned</h5>
-    <ul class="Excersizedisplay1">
+    <ul class="Excersizedisplay1 h6">
         <li *ngFor="let item of ex_choice_map_name | keyvalue" >
-          <button id="i" (click)="increment10(item.key)">+10</button> 
-          <button id="i" (click)="decrement10(item.key)">-10</button>
-          <button id="i" (click)="increment1(item.key)">+1</button> 
-          <button id="i" (click)="decrement1(item.key)">-1</button>   
-            {{item.key}}
-            ({{item.value}} repititions)
-          <button id="i" (click)="updateExFinish(item.key)">Finished!</button>
-          <button id="i" (click)="remove(item.key)">Remove!</button>
+          {{item.key}}
+          ({{item.value}} repititions)<br>
+          <button class="btn btn-secondary m-1" (click)="increment10(item.key)">+10</button> 
+          <button class="btn btn-secondary m-2" (click)="decrement10(item.key)">-10</button>
+          <button class="btn btn-secondary m-1" (click)="increment1(item.key)">+1</button> 
+          <button class="btn btn-secondary m-2" (click)="decrement1(item.key)">-1</button>   
+          <button class="btn btn-info" (click)="updateExFinish(item.key)">Finished!</button>
+          <button class="btn btn-danger" (click)="remove(item.key)">Remove!</button>
         </li>>
     </ul>
 </span>
 <span>
     <h5>Finished</h5>
-    <ul class="ExFinishdisplay1">
+    <ul class="ExFinishdisplay1 h6">
         <li *ngFor="let item of ex_finish_map_name | keyvalue" >
             {{item.key}}
             ({{item.value}} repititions)
-          <button class="NotFinish" id="i" (click)="updateExPlaned(item.key)">Not finished!</button>
+          <button class="NotFinish btn btn-info" (click)="updateExPlaned(item.key)">Not finished!</button>
         </li>>
     </ul>
 </span>
