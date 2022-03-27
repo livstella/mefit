@@ -98,6 +98,7 @@ export class CommitFinishComponent implements OnInit {
        //---calculate daily progress
        this.dailyProgress = Number((this.sumExCommited/this.sumExInitial)*100).toFixed(2);
 
+       //---show in progress bar
        $('#dailyprogressbar').attr('aria-valuenow', this.dailyProgress+"%").css('width', this.dailyProgress+"%");
 
        //---display daily progress
@@ -150,6 +151,7 @@ export class CommitFinishComponent implements OnInit {
        //---calculate weekly progress
        this.weeklyProgress = Number((this.weeklyFinish/this.weeklyGoal)*100).toFixed(2);
 
+       //---show in progress bar
        $('#weeklyprogressbar').attr('aria-valuenow', this.weeklyProgress+"%").css('width', this.weeklyProgress+"%");
       
       //---display weekly progress
