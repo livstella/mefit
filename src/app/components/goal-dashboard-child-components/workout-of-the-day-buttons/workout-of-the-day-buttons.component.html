@@ -1,5 +1,5 @@
 <span>
-    <h4>Planned</h4>
+    <h5>Planned</h5>
     <ul class="Excersizedisplay1">
         <li *ngFor="let item of ex_choice_map_name | keyvalue" >
           <button id="i" (click)="increment10(item.key)">+10</button> 
@@ -14,7 +14,7 @@
     </ul>
 </span>
 <span>
-    <h4>Finished</h4>
+    <h5>Finished</h5>
     <ul class="ExFinishdisplay1">
         <li *ngFor="let item of ex_finish_map_name | keyvalue" >
             {{item.key}}

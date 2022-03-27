@@ -1,21 +1,47 @@
 <div class="main">
-    <h1>{{username}}'s' goal dashboard!</h1>
-        <p class = "info">
-        </p>
-        
-        <span>
+   
+        <h2 class="text-center">{{username}}'s' goal dashboard!</h2>
+        <div class="text-center">
              {{oneDate.getFullYear()+"-"+(oneDate.getMonth()+1)+"-"+oneDate.getDate()}}
-        </span>
-            
-        <div class="day">
-                    <span>
-                    <h3>Workouts of the day</h3>
-                    
-                    <app-workout-of-the-day-buttons (newChoice_Map)="newChoiceMap($event)" (newFinish_Map)="newFinishMap($event)" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [ex_choice_map_name]="ex_choice_map_name"></app-workout-of-the-day-buttons>
-
-                    <app-workout-of-the-day-options [workouts]="workouts" [exercises]="exercises" (newChoice_Map)="newChoiceMap($event)"></app-workout-of-the-day-options>
-                </span>
         </div>
+
+        
+   <!-- <div class = "progress mb-5 card-body">
+        <h3>{{[dailyProgress_display]}}</h3>
+        <div class="progress-bar" role="progressbar" aria-valuenow="[dailyProgress]" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progressbar" style="--widthbar:{{dailyProgress}}" data-label="progress..."></div>
+
+        <h3>{{[weeklyProgress_display]}}</h3>
+        <div class="progressbarWeek rounded mb-3" data-label="progress...">{{[weeklyProgress]}}%</div>
+        <div class="progressbarWeek" style="--widthbar:{{weeklyProgress}}" data-label="progress..."></div>
+    </div>-->
+            
+    <div class="day" >
+                  
+            
+
+        <div class="col-5 m-5 border p-3">
+            <div class="card-title"> 
+                <h4 class="text-center">Workouts of the day</h4>
+                <h6 class="text-center">{{[dailyProgress_display]}}</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="progress" > 
+                <div id="dailyprogressbar" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    {{dailyProgress}}
+                </div>
+                </div>
+            </div>
+
+            <app-workout-of-the-day-buttons (newChoice_Map)="newChoiceMap($event)" (newFinish_Map)="newFinishMap($event)" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [ex_choice_map_name]="ex_choice_map_name"></app-workout-of-the-day-buttons>
+
+            <app-workout-of-the-day-options [workouts]="workouts" [exercises]="exercises" (newChoice_Map)="newChoiceMap($event)"></app-workout-of-the-day-options>
+         
+        </div>
+             
+    </div>
                     
 
 
@@ -87,17 +113,8 @@
     
     <app-commit-finish (weekly_progress)="weekly_progress($event.param)" (daily_progress)="daily_progress($event.param)" [dayCommitInitial]="dayCommitInitial" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-commit-finish>
 
-
-    <div class = "progress">
-        <h3>{{[dailyProgress_display]}}</h3>
-        <div class="progressbar" style="--widthbar:{{dailyProgress}}" data-label="progress..."></div>
-
-        <h3>{{[weeklyProgress_display]}}</h3>
-        <div class="progressbarWeek" style="--widthbar:{{weeklyProgress}}" data-label="progress..."></div>
-    </div>
     
     <app-start-timer (day_Commits_Initial)="dayCommitsInitial($event)" (day_Commits)="dayCommits($event)" (daily_progress)="daily_progress($event)" (daily_progress_display)="daily_progress_display($event)" (sum_ex_initial)="sumExerciseInitial($event)" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-start-timer>
  
     <!--<button id="btn-details" type="form-control" (click)="toGoalDetails()" class="btn-details">Goal details page</button>--->
 <!--<footer>By Experis Academy</footer>-->
-</div>

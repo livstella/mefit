@@ -1,4 +1,6 @@
-<select class = "exercise-options-do" name="select1.1" (change)="onChangeEx()">
+<div class="clearfix text-center">
+
+<select class = "exercise-options-do form-select col-2" name="select1.1" (change)="onChangeEx()">
     <option>Choose an exercise</option>
     <option *ngFor="let ex of exercises ; let i = index" >
       {{ex.name}}
@@ -6,9 +8,11 @@
 </select>
 
 
- <select class = "workout-options-do" name="select1.2" (change)="onChangeWork()">
+ <select class ="workout-options-do form-select col-2" name="select1.2" (change)="onChangeWork()">
     <option>Choose a workout</option>
     <option *ngFor="let work of workouts ; let i = index" >
      {{work.name}}
     </option>
 </select>
+
+</div>

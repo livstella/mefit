@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-commit-finish',
@@ -97,6 +98,8 @@ export class CommitFinishComponent implements OnInit {
        //---calculate daily progress
        this.dailyProgress = Number((this.sumExCommited/this.sumExInitial)*100).toFixed(2);
 
+       $('#dailyprogressbar').attr('aria-valuenow', this.dailyProgress+"%").css('width', this.dailyProgress+"%");
+
        //---display daily progress
        if (Number(this.dailyProgress) < 100){
           this.dailyProgress_display = this.dailyProgress +" percent finished of your daily goal!";
@@ -184,6 +187,8 @@ export class CommitFinishComponent implements OnInit {
 
     this.daily_progress.emit({param:this.dailyProgress})
     this.weekly_progress.emit({param:this.weeklyProgress})
+
+    location.reload()
     
   }
 }

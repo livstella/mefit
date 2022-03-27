@@ -150,6 +150,7 @@ export class GoalDashboardComponent implements OnInit {
     }else if(Number(this.dailyProgress) >= 100){
       this.dailyProgress_display = "You finished of your daily goal!";
     }
+    $('#dailyprogressbar').attr('aria-valuenow', this.dailyProgress+"%").css('width', this.dailyProgress+"%");
   }
   
   //---set dates
