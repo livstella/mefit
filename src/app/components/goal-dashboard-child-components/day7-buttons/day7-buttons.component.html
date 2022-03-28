@@ -1,0 +1,9 @@
+<li *ngFor="let item of program_ex_map_name7 | keyvalue" >
+    <b>{{item.key}}</b>
+    ({{item.value}} repititions left)<br>
+    <button class="day-buttons btn btn-secondary m-1" (click)="increment_day7_10(item.key)">+10</button> 
+    <button class="day-buttons btn btn-secondary m-1" (click)="decrement_day7_10(item.key)">-10</button>
+    <button class="day-buttons btn btn-secondary m-1" (click)="increment_day7_1(item.key)">+1</button> 
+    <button class="day-buttons btn btn-secondary m-1" (click)="decrement_day7_1(item.key)">-1</button>
+    <button class="day-buttons btn btn-danger m-1" (click)="remove_day7(item.key)">Remove</button>
+</li>

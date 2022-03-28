@@ -1,309 +1,134 @@
 <app-navbar></app-navbar>
 <div class="main">
-    <h1>{{username}}'s' goal dashboard!</h1>
-        <p class = "info">You cannot choice more than 5 exercizes per session! <br> 
-            you must choose all excersizes before you start looging them as finished!<br>
-            One workout has five excersizes!
-        </p>
-
-        
-        <span>
-             {{oneDate.getFullYear()+"-"+oneDate.getMonth()+"-"+oneDate.getDate()}}
-        </span>
-        <button id="commit" class="commit-finish" (click)="commitFinish()">Commit finishes!</button>
-            
-        <div class="day">
-                    <span>
-                    <h3>Workouts of the day</h3>
-                    <span>
-                        <h4>Planned</h4>
-                        <ul class="Excersizedisplay1">
-                            <li *ngFor="let item of ex_choice_map_name | keyvalue" >
-                              <button id="i" (click)="increment10(item.key)">+10</button> 
-                              <button id="i" (click)="decrement10(item.key)">-10</button>
-                              <button id="i" (click)="increment1(item.key)">+1</button> 
-                              <button id="i" (click)="decrement1(item.key)">-1</button>   
-                                {{item.key}}
-                                ({{item.value}} repititions)
-                              <button id="i" (click)="updateExFinish(item.key)">Finished!</button>
-                              <button id="i" (click)="remove(item.key)">Remove!</button>
-                            </li>>
-                        </ul>
-                    </span>
-                    <span>
-                        <h4>Finished</h4>
-                        <ul class="ExFinishdisplay1">
-                            <li *ngFor="let item of ex_finish_map_name | keyvalue" >
-                                {{item.key}}
-                                ({{item.value}} repititions)
-                              <button class="NotFinish" id="i" (click)="updateExPlaned(item.key)">Not finished!</button>
-                            </li>>
-                        </ul>
-                    </span>
-
-
-                    <select class = "exercise-options-do" name="select1.1" (change)="onChangeEx()">
-                        <option>Choose an exercise</option>
-                        <option *ngFor="let ex of exercises ; let i = index" >
-                          {{ex.name}}
-                        </option>
-                    </select>
-
-
-                     <select class = "workout-options-do" name="select1.2" (change)="onChangeWork()">
-                        <option>Choose a workout</option>
-                        <option *ngFor="let work of workouts ; let i = index" >
-                         {{work.name}}
-                        </option>
-                    </select>
-                </span>
+   
+    <!--Header and timer-->
+        <h2 class="text-center">{{username}}'s' goal dashboard!</h2>
+        <div class="mx-5">
+             {{oneDate.getFullYear()+"-"+(oneDate.getMonth()+1)+"-"+oneDate.getDate()}}
         </div>
-                    
+    
+        <app-start-timer (day_Commits_Initial)="dayCommitsInitial($event)" (day_Commits)="dayCommits($event)" (daily_progress)="daily_progress($event)" (daily_progress_display)="daily_progress_display($event)" (sum_ex_initial)="sumExerciseInitial($event)" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-start-timer>
+     
+<div class="container">
+    
+    <div class="row">
+    
+     <div class="col-sm-6">
+    <!--Build for the week-->
+    <div class="mx-auto mt-2 border p-3">
+        <div class="card-title"> 
+            <h4 class="text-center">Exercise build for the week</h4>
+            <h6 class="text-center">{{[weeklyProgress_display]}}</h6>
+        </div>
 
+        <div class="card-body">
+            <div class="progress" > 
+            <div id="weeklyprogressbar" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                {{weeklyProgress}}
+            </div>
+            </div>
+        </div>
 
-    <div class = "weekgoal-display">
-        <h3>Exercise build for the week</h3>
+        <div class="text-center">
+            <app-commit-goal [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name" (callTimer)="callTimer()"></app-commit-goal>
+            <button class="clear btn btn-danger m-3" (click)="clearweek()">Clear week</button>
+            <button class ="uncommit-program btn btn-danger m-3" (click)="unCommitGoal()">Uncommit Goal</button>
+        </div>
 
-        <button id="i" class ="commit-program" (click)="commitGoal()">Commit Goal</button>
-
-        <select class = "program-options" name="selectProgram" (change)="onChangeProgram()">
-            <option>Choose a programme</option>
-            <option *ngFor="let program of programmes ; let i = index" >
-              {{program.name}}
-            </option>     
-        </select>
-        <button id="clear" class="clear" (click)="clearweek()">Clear week</button>
-        <button id="i" class ="uncommit-program" (click)="uncommitGoal()">Uncommit Goal</button>
+        <app-picking-program [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name" [programmes]="programmes" (program_ex_Map7)="day7_program($event)" (program_ex_Map6)="day6_program($event)" (program_ex_Map5)="day5_program($event)" (program_ex_Map4)="day4_program($event)" (program_ex_Map3)="day3_program($event)" (program_ex_Map2)="day2_program($event)" (program_ex_Map)="day1_program($event)"></app-picking-program>
+        
+        <br>
         <ul class="weekly-goal">
 
             <!--First day-->
             <h4>{{dayOne}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx1" (change)="onChangeGoalEx1()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day1-buttons [program_ex_map_name]="program_ex_map_name"></app-day1-buttons>
+           
+            <app-day1-program [program_ex_map_name]="program_ex_map_name" (program_ex_Map)="day1_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day1-program>
 
-
-             <select class = "workout-options" name="selectGoalWork1" (change)="onChangeGoalWork1()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-            
-            <button id="clear" class="clear" (click)="clear1()">Clear day</button>
-
-            <li *ngFor="let item of program_ex_map_name | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day1_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day1_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day1_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day1_1(item.key)">-1</button>
-                    {{item.key}}
-                    ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day1(item.key)">Remove</button>
-            </li> 
 
              <!--Second day-->
             <h4>{{dayTwo}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx2" (change)="onChangeGoalEx2()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day2-buttons [program_ex_map_name2]="program_ex_map_name2"></app-day2-buttons>
 
-
-             <select class = "workout-options" name="selectGoalWork2" (change)="onChangeGoalWork2()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear2()">Clear day</button>
+            <app-day2-program [program_ex_map_name2]="program_ex_map_name2" (program_ex_Map2)="day2_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day2-program>
             
-            <li *ngFor="let item of program_ex_map_name2 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day2_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day2_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day2_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day2_1(item.key)">-1</button>
-                {{item.key}}
-                ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day2(item.key)">Remove</button>
-            </li>
-
-             <!--Third day-->
+           
+            <!--Third day-->
             <h4>{{dayThree}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx3" (change)="onChangeGoalEx3()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day3-buttons [program_ex_map_name3]="program_ex_map_name3"></app-day3-buttons>
 
+            <app-day3-program [program_ex_map_name3]="program_ex_map_name3" (program_ex_Map3)="day3_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day3-program>
 
-             <select class = "workout-options" name="selectGoalWork3" (change)="onChangeGoalWork3()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear3()">Clear day</button>
-
-            <li *ngFor="let item of program_ex_map_name3  | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day3_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day3_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day3_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day3_1(item.key)">-1</button>
-                {{item.key}}
-                ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day3(item.key)">Remove</button>
-            </li> 
 
             <!--Fouth day-->
             <h4>{{dayFour}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx4" (change)="onChangeGoalEx4()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day4-buttons [program_ex_map_name4]="program_ex_map_name4"></app-day4-buttons>
 
-
-             <select class = "workout-options" name="selectGoalWork4" (change)="onChangeGoalWork4()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear4()">Clear day</button>
-
-            <li *ngFor="let item of program_ex_map_name4 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day4_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day4_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day4_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day4_1(item.key)">-1</button>
-                {{item.key}}
-                ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day4(item.key)">Remove</button>
-            </li>
+            <app-day4-program [program_ex_map_name4]="program_ex_map_name4" (program_ex_Map4)="day4_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day4-program>
 
             <!--Fifth day-->
             <h4>{{dayFive}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx5" (change)="onChangeGoalEx5()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day5-buttons [program_ex_map_name5]="program_ex_map_name5"></app-day5-buttons>
 
-
-             <select class = "workout-options" name="selectGoalWork5" (change)="onChangeGoalWork5()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear5()">Clear day</button>
-
-            <li *ngFor="let item of program_ex_map_name5 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day5_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day5_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day5_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day5_1(item.key)">-1</button>
-                {{item.key}}
-                ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day5(item.key)">Remove</button>
-            </li> 
+            <app-day5-program [program_ex_map_name5]="program_ex_map_name5" (program_ex_Map5)="day5_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day5-program>
 
             <!--Sixth day-->
             <h4>{{daySix}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx6" (change)="onChangeGoalEx6()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day6-buttons [program_ex_map_name6]="program_ex_map_name6"></app-day6-buttons>
 
-
-             <select class = "workout-options" name="selectGoalWork6" (change)="onChangeGoalWork6()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear6()">Clear day</button>
-
-            <li *ngFor="let item of program_ex_map_name6 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day6_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day6_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day6_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day6_1(item.key)">-1</button>
-                {{item.key}}
-                ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day6(item.key)">Remove</button>
-            </li> 
-
+            <app-day6-program [program_ex_map_name6]="program_ex_map_name6" (program_ex_Map6)="day6_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day6-program>
+           
             <!--Seventh day-->
             <h4>{{daySeven}}</h4>
 
-            <select class = "exercise-options" name="selectGoalEx7" (change)="onChangeGoalEx7()">
-                <option>Choose an exercise</option>
-                <option *ngFor="let ex of exercises ; let i = index" >
-                  {{ex.name}}
-                </option>
-            </select>
+            <app-day7-buttons [program_ex_map_name7]="program_ex_map_name7"></app-day7-buttons>
 
+            <app-day7-program [program_ex_map_name7]="program_ex_map_name7" (program_ex_Map7)="day7_program($event)" [exercises]="exercises" [workouts]="workouts"></app-day7-program>
 
-             <select class = "workout-options" name="selectGoalWork7" (change)="onChangeGoalWork7()">
-                <option>Choose a workout</option>
-                <option *ngFor="let work of workouts ; let i = index" >
-                 {{work.name}}
-                </option>
-            </select>
-
-            <button id="clear" class="clear" (click)="clear7()">Clear day</button>
-
-            <li *ngFor="let item of program_ex_map_name7 | keyvalue" >
-                <button id="i" class="day-buttons" (click)="increment_day7_10(item.key)">+10</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day7_10(item.key)">-10</button>
-                <button id="i" class="day-buttons" (click)="increment_day7_1(item.key)">+1</button> 
-                <button id="i" class="day-buttons" (click)="decrement_day7_1(item.key)">-1</button>
-                {{item.key}}
-                ({{item.value}} repititions left)
-                <button id="i" class="day-buttons" (click)="remove_day7(item.key)">Remove</button>
-            </li>  
+            
         </ul>
     </div>
-    
-    
- 
-
-    <div class = "progress">
-        <h3>{{[dailyProgress_display]}}</h3>
-        <div class="progressbar" style="--widthbar:{{dailyProgress}}" data-label="progress..."></div>
-
-        <h3>{{[weeklyProgress_display]}}</h3>
-        <div class="progressbarWeek" style="--widthbar:{{weeklyProgress}}" data-label="progress..."></div>
     </div>
-    <div class="timer">
-        <h3>Time left to complete following program!</h3>
-        <p>{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds, </p>
-        <p>{{message}}</p>
+
+
+
+        <!---Workout of the day-->    
+    <div class="col-sm-6">
+        <div class="mx-auto mt-2 border p-3">
+            <div class="card-title"> 
+                <h4 class="text-center">Workouts of the day</h4>
+                <h6 class="text-center">{{[dailyProgress_display]}}</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="progress" > 
+                <div id="dailyprogressbar" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    {{dailyProgress}}
+                </div>
+                </div>
+            </div>
+
+            <app-workout-of-the-day-buttons (newChoice_Map)="newChoiceMap($event)" (newFinish_Map)="newFinishMap($event)" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [ex_choice_map_name]="ex_choice_map_name"></app-workout-of-the-day-buttons>
+
+            <app-workout-of-the-day-options [workouts]="workouts" [exercises]="exercises" (newChoice_Map)="newChoiceMap($event)"></app-workout-of-the-day-options>
+         
+            <app-commit-finish (weekly_progress)="weekly_progress($event.param)" (daily_progress)="daily_progress($event.param)" [dayCommitInitial]="dayCommitInitial" [dayCommit]="dayCommit" [ex_finish_map_name]="ex_finish_map_name" [program_ex_map_name_in7]="program_ex_map_name_in7" [program_ex_map_name_in6]="program_ex_map_name_in6" [program_ex_map_name_in5]="program_ex_map_name_in5" [program_ex_map_name_in4]="program_ex_map_name_in4" [program_ex_map_name_in3]="program_ex_map_name_in3" [program_ex_map_name_in2]="program_ex_map_name_in2" [program_ex_map_name_in]="program_ex_map_name_in" [program_ex_map_name7]="program_ex_map_name7" [program_ex_map_name6]="program_ex_map_name6" [program_ex_map_name5]="program_ex_map_name5" [program_ex_map_name4]="program_ex_map_name4" [program_ex_map_name3]="program_ex_map_name3" [program_ex_map_name2]="program_ex_map_name2" [program_ex_map_name]="program_ex_map_name"></app-commit-finish>
+
+        </div>
     </div>
- 
-    <button id="btn-details" type="form-control" (click)="toGoalDetails()" class="btn-details">Goal details page</button>
+    </div>
+</div>    
+</div>   
+
+<div class="fixed-bottom text-center">   
 <footer>By Experis Academy</footer>
-</div>
+</div>    
