@@ -11,25 +11,25 @@
       <div class="row rounded bg-light p-3 mt-2">     
       <div class="form-label" *ngIf="profile?.height; then height; else no_height"></div>
           <ng-template #height>Height {{ profile?.height }}cm</ng-template>
-          <ng-template #no_height>NOOOO height</ng-template>
+          <ng-template #no_height>You have not registered your hight</ng-template>
       <br>
       </div>
       <div class="row rounded bg-light p-3 mt-2"> 
       <div class="form-label" *ngIf="profile?.weight; then weight; else no_weight"></div>
           <ng-template #weight>Weight {{ profile?.height }}kg</ng-template>
-          <ng-template #no_weight>You no weight</ng-template>
+          <ng-template #no_weight>You have not registered your weight</ng-template>
       <br>
       </div>
       <div class="row rounded bg-light p-3 mt-2"> 
       <div class="form-label" *ngIf="profile?.medicalConditions; then medicalConditions; else no_medicalConditions"></div>
           <ng-template #medicalConditions>You have the following medical conditions: {{ profile?.medicalConditions }}</ng-template>
-          <ng-template #no_medicalConditions>You healthy</ng-template>
+          <ng-template #no_medicalConditions>You do not have any medical conditions listed</ng-template>
       <br>
       </div>
       <div class="row rounded bg-light p-3 mt-2"> 
       <div class="form-label" *ngIf="profile?.disabilities; then disabilities; else no_disabilities"></div>
           <ng-template #disabilities>You have the following disabilities: {{ profile?.disabilities }}</ng-template>
-          <ng-template #no_disabilities>Such healthy</ng-template>
+          <ng-template #no_disabilities>You do not have any medical conditions listed</ng-template>
       </div>
      
     </section>
