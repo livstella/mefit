@@ -44,6 +44,9 @@ import { Day7ProgramComponent } from './components/goal-dashboard-child-componen
 import { CommitFinishComponent } from './components/goal-dashboard-child-components/commit-finish/commit-finish.component';
 import { StartTimerComponent } from './components/goal-dashboard-child-components/start-timer/start-timer.component';
 import { CommitGoalComponent } from './components/goal-dashboard-child-components/commit-goal/commit-goal.component';
+import { NotAuthPageComponent } from './components/not-auth-page/not-auth-page.component';
+
+
 
 @NgModule({
   declarations: [
@@ -80,6 +83,7 @@ import { CommitGoalComponent } from './components/goal-dashboard-child-component
     CommitFinishComponent,
     StartTimerComponent,
     CommitGoalComponent,
+    NotAuthPageComponent
 
   ],
   imports: [
