@@ -4,6 +4,7 @@ import { Programme } from 'src/app/models/programme.model';
 import { Workout } from 'src/app/models/workout.model';
 import { GoalDashbordService } from 'src/app/services/goal-dashbord.service';
 import * as $ from 'jquery';
+import { Sets } from 'src/app/models/sets.model';
 
 @Component({
   selector: 'app-picking-program',
@@ -12,6 +13,8 @@ import * as $ from 'jquery';
 })
 export class PickingProgramComponent implements OnInit {
 
+  //---sets
+  sets: Sets[] = [];
 
   //---program id
   program_ids: number[] = [];
@@ -73,9 +76,13 @@ export class PickingProgramComponent implements OnInit {
       if(i==0){
         this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
         { 
-        this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+        this.sets = JSON.parse(JSON.stringify(workout)).sets
+        
+        for(let j=0; j<this.sets.length;j++){
+          
+        this.repititions = JSON.parse(JSON.stringify(workout)).sets[j].exerciseRepetitions
 
-        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[j].exercises
 
         this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
     
@@ -86,7 +93,7 @@ export class PickingProgramComponent implements OnInit {
           this.program_ex_map_name.set(ex_name, this.repititions);
         }else{
           this.program_ex_map_name.set(ex_name, (this.program_ex_map_name.get(ex_name) +this.repititions))
-   }})})
+   }})}})
 
   }
 
@@ -96,9 +103,13 @@ export class PickingProgramComponent implements OnInit {
       else if(i==1){
         this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
         { 
-        this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+        this.sets = JSON.parse(JSON.stringify(workout)).sets
+        
+        for(let j=0; j<this.sets.length;j++){
 
-        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+        this.repititions = JSON.parse(JSON.stringify(workout)).sets[j].exerciseRepetitions
+
+        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[j].exercises
 
         this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
 
@@ -110,7 +121,7 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name2.set(ex_name, (this.program_ex_map_name2.get(ex_name) +this.repititions))
       }
-    })})
+    })}})
   }
 
       //---day3
@@ -118,9 +129,13 @@ export class PickingProgramComponent implements OnInit {
       else if(i==2){
         this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
         { 
-        this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+        this.sets = JSON.parse(JSON.stringify(workout)).sets
+        
+        for(let j=0; j<this.sets.length;j++){
 
-        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+        this.repititions = JSON.parse(JSON.stringify(workout)).sets[j].exerciseRepetitions
+
+        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[j].exercises
 
         this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
 
@@ -132,7 +147,7 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name3.set(ex_name, (this.program_ex_map_name3.get(ex_name) +this.repititions))
       }
-    })})
+    })}})
   }
 
       //---day4
@@ -140,9 +155,14 @@ export class PickingProgramComponent implements OnInit {
       else if(i==3){
         this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
         { 
-        this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+
+        this.sets = JSON.parse(JSON.stringify(workout)).sets
+        
+        for(let j=0; j<this.sets.length;j++){
+        
+          this.repititions = JSON.parse(JSON.stringify(workout)).sets[j].exerciseRepetitions
   
-        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[j].exercises
   
         this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
   
@@ -153,7 +173,7 @@ export class PickingProgramComponent implements OnInit {
           this.program_ex_map_name4.set(ex_name, this.repititions);
         }else{
           this.program_ex_map_name4.set(ex_name, (this.program_ex_map_name4.get(ex_name) +this.repititions))
-      }})})
+      }})}})
     }
 
       //---day5
@@ -161,9 +181,14 @@ export class PickingProgramComponent implements OnInit {
       else if(i==4){
         this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
         { 
-        this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+
+        this.sets = JSON.parse(JSON.stringify(workout)).sets
+        
+        for(let j=0; j<this.sets.length;j++){
+        
+          this.repititions = JSON.parse(JSON.stringify(workout)).sets[j].exerciseRepetitions
     
-        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[j].exercises
     
         this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
     
@@ -175,7 +200,7 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name5.set(ex_name, (this.program_ex_map_name5.get(ex_name) +this.repititions))
         }
-      })})
+      })}})
     }
 
       //---day6
@@ -183,9 +208,14 @@ export class PickingProgramComponent implements OnInit {
       else if(i==5){
         this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
         { 
-        this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
+        
+        this.sets = JSON.parse(JSON.stringify(workout)).sets
+        
+        for(let j=0; j<this.sets.length;j++){
+        
+          this.repititions = JSON.parse(JSON.stringify(workout)).sets[j].exerciseRepetitions
       
-        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[j].exercises
       
         this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
       
@@ -197,7 +227,7 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name6.set(ex_name, (this.program_ex_map_name6.get(ex_name) +this.repititions))
         }
-      })})
+      })}})
 
     }
 
@@ -206,9 +236,14 @@ export class PickingProgramComponent implements OnInit {
       else if(i==6){
         this.goalDashBoardService.fetchWorkoutById(this.workout_ids[i]).subscribe((workout: Workout[]) =>
         { 
-        this.repititions = JSON.parse(JSON.stringify(workout)).sets[0].exerciseRepetitions
         
-        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[0].exercises
+        this.sets = JSON.parse(JSON.stringify(workout)).sets
+        
+        for(let j=0; j<this.sets.length;j++){
+        
+        this.repititions = JSON.parse(JSON.stringify(workout)).sets[j].exerciseRepetitions
+        
+        this.program_exercises_choosen = JSON.parse(JSON.stringify(workout)).sets[j].exercises
         
         this.program_exercises_choosen.forEach((exercise: Exercise[]) => {
         
@@ -220,7 +255,7 @@ export class PickingProgramComponent implements OnInit {
         }else{
           this.program_ex_map_name7.set(ex_name, (this.program_ex_map_name7.get(ex_name) +this.repititions))
       }
-    })})
+    })}})
   }
    
   }})
