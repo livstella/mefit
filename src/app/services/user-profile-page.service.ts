@@ -10,14 +10,17 @@ export class userProfileService {
   private _userData: User | null = null;
   private _profileData: Profile | null = null;
   private _error: string = '';
-  private _userId: number = 1;
-  private _profileId: number = 1;
+  private _userId: number | null = null;
+  private _profileId: number | null = null;
 
   constructor(private readonly http: HttpClient) {}
 
   //Fetches the user with the id from "current-user" in session storage
   //Setting the profileId commented out until update on backend
   public fetchUser(): void {
+    this._userId = JSON.parse(
+      sessionStorage.getItem('current-user') || '{}'
+    ).id;
     this.http
       .get<User>(`https://mefitbackend-ajlm.herokuapp.com/user/${this._userId}`)
       .subscribe(
@@ -32,6 +35,9 @@ export class userProfileService {
 
   //Gets profile with the id of the profileId from "current-user"
   public fetchProfile(): void {
+    this._profileId = JSON.parse(
+      sessionStorage.getItem('current-user') || '{}'
+    ).profile.id;
     this.http
       .get<Profile>(
         `https://mefitbackend-ajlm.herokuapp.com/profile/${this._profileId}`
