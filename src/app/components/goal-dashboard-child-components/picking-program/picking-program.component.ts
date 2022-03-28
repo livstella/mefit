@@ -267,5 +267,6 @@ export class PickingProgramComponent implements OnInit {
   this.program_ex_Map6.emit(this.program_ex_map_name6)
   this.program_ex_Map7.emit(this.program_ex_map_name7)
 
+  this.workout_ids=[];
 }
 }
