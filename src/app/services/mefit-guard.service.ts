@@ -17,7 +17,7 @@ export class MefitGuardService implements CanActivate {
         if (activeUser!=null){
             return true;
         }else{
-            this._router.navigate(['notFound'])
+            this._router.navigate(['notAuth'])
             return false;
         }
 
