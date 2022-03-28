@@ -36,10 +36,11 @@ Steps to work on this project
 
 ### Technical tools
 
-- Netlify - for CI/CD
-- GitHub for collaboration
-- Swagger UI - for endpoint documentation
-- Gradle - for dependency management in backend
+- GitHub - collaboration
+- Netlify - Deployment and for CI/CD
+- Heroku - Deployment for backend
+- Swagger UI - Endpoint documentation
+- Gradle - Dependency management in backend
 
 ### Project management tools
 
@@ -47,7 +48,7 @@ Steps to work on this project
 - All decisions made are written on the projects Trello board
 - All tasks are delegated through Trello
 - GitHub
-  - Main branch are a protected branch and need to pass Netlify checks and minimum 2 reviews
+  - Main branch is a protected branch and need to pass Netlify checks and minimum 2 reviews
   - We solve our own merge conflicts before asking for reviews on out Pull Request
 
 ### MVP
