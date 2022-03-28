@@ -48,9 +48,6 @@ export class GoalDashboardComponent implements OnInit {
   sevenDate = new Date();
 
   //---For exercises
-  ex: string = '';
-  ex_ids: number[] = [];
-  ex_id: number | undefined;
   ex_choice_map_name = new Map();
   ex_finish_map_name = new Map();
 
@@ -75,20 +72,6 @@ export class GoalDashboardComponent implements OnInit {
   //---Commits logged an commits finished
   dayCommit = new Map(); 
   dayCommitInitial = new Map();
-  
-  //---workout id
-  workout_ids: number[] = [];
-  workout_id: number | undefined;
-
-  //---program id
-  program_ids: number[] = [];
-  program_id: number | undefined;
-
-  //---programs, workouts, exercises and their repititions
-  repititions: number | undefined;
-  exercises_choosen: Exercise[] | undefined | any;
-  program_exercises_choosen: Exercise[] | undefined | any;
-  workouts_choosen: Workout[] | undefined | any;
 
   //---Used to calculated progress
   //---exercises finished and exercises initially commited to 
@@ -104,17 +87,6 @@ export class GoalDashboardComponent implements OnInit {
   weeklyProgress_display: any;
   dailyProgress_display: any;
 
-  //---timer components
-  days: number = 0;
-  hours: number = 0;
-  minutes: number = 0;
-  seconds: number = 0;
-  countDownDate: number = 0;
-
-  //---not in use yet
-  body: any|undefined;
-  timeStamp: any|undefined;
-  message: string | undefined;
 
   constructor(private router: Router, private readonly goalDashBoardService: GoalDashbordService ,private readonly exercisePageService :exercisePageService, private readonly workoutPageService: WorkoutPageService, private readonly programPageService: ProgrammePageService) { }
 
@@ -244,7 +216,7 @@ export class GoalDashboardComponent implements OnInit {
   }
   
 
-  //---Weekly goals
+  //---Get Weekly goals from child
   day1_program(map: any){
     this.program_ex_map_name= map;
   }
@@ -267,7 +239,7 @@ export class GoalDashboardComponent implements OnInit {
     this.program_ex_map_name7= map;
   }
 
-  //---progress
+  //---Get progress from child
   daily_progress(value: number){
     this.dailyProgress=value
   }
@@ -281,7 +253,7 @@ export class GoalDashboardComponent implements OnInit {
     this.sumExInitial = value
   }
 
-  //---commits
+  //---Get commits from child
   dayCommits(value: any){
     this.dayCommit = value
   }
