@@ -1,0 +1,21 @@
+<div class="m-3 text-center col-11">
+
+<select class = "exercise-options form-select" name="selectGoalEx4" (change)="onChangeGoalEx4()">
+    <option>Choose an exercise</option>
+    <option *ngFor="let ex of exercises ; let i = index" >
+      {{ex.name}}
+    </option>
+</select>
+
+<select class = "workout-options form-select" name="selectGoalWork4" (change)="onChangeGoalWork4()">
+    <option>Choose a workout</option>
+    <option *ngFor="let work of workouts ; let i = index" >
+      {{work.name}}
+    </option>
+</select>
+
+<div class="text-center">
+  <button class="clear btn btn-danger m-1" (click)="clear4()">Clear day</button>
+</div>
+
+</div>

@@ -36,4 +36,6 @@ export class GoalDashbordService {
   public fetchExById(id:number): Observable<Exercise[]>  {
     return this.http.get<Exercise[]>(`https://mefitbackend-ajlm.herokuapp.com/exercise/${id}`)
   }
+
+
 }
