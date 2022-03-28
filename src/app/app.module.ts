@@ -24,6 +24,7 @@ import { SelectedExerciseService } from './services/selected-exercise.service';
 import { SelectedWorkoutService } from './services/selected-workout.service';
 import { userProfileService } from './services/user-profile-page.service';
 import { WorkoutPageService } from './services/workout-page.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { Day1ButtonsComponent } from './components/goal-dashboard-child-components/day1-buttons/day1-buttons.component';
 import { Day2ButtonsComponent } from './components/goal-dashboard-child-components/day2-buttons/day2-buttons.component';
 import { Day3ButtonsComponent } from './components/goal-dashboard-child-components/day3-buttons/day3-buttons.component';
@@ -63,6 +64,7 @@ import { NotAuthPageComponent } from './components/not-auth-page/not-auth-page.c
     SelectedWorkoutComponent,
     SelectedProgrammeComponent,
     NotFoundPageComponent,
+    NavbarComponent,
     Day1ButtonsComponent,
     Day2ButtonsComponent,
     Day3ButtonsComponent,
