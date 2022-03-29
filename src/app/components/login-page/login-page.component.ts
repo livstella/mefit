@@ -44,7 +44,7 @@ export class LoginPageComponent implements OnInit {
 
   onNavigate() {
 
-      //---hashed password
+      //---hash password
       this.hash = shajs('sha256').update(this.password).digest('hex');
 
       //---search for user

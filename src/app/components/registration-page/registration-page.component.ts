@@ -63,13 +63,14 @@ export class RegistrationPageComponent implements OnInit {
 
     //---hash password
     this.hash = shajs('sha256').update(this.password1).digest('hex');
-    alert(this.hash)
 
+    //---check if user already exists 
     this.loginService.queryUser(this.email).subscribe((res: Login[]) => {
       if (res != null) {
         alert("This user allready exists!");
         this.router.navigateByUrl('/login');
 
+      //---if not save in database
       }else{
       this.loginService.setUserToApi(this.email, this.firstname, this.lastname, this.hash).subscribe((res: Login[]) => {
         sessionStorage.setItem("current-user", JSON.stringify(res))
