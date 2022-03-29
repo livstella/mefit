@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/models/login.model';
 import { LoginService } from 'src/app/services/login.service';
+import * as shajs from 'sha.js';
 
 @Component({
   selector: 'app-registration-page',
@@ -15,6 +16,7 @@ export class RegistrationPageComponent implements OnInit {
   lastname: string = "";
   password1: string = "";
   password2: string = "";
+  hash: any;
   
   @Input() login: Login | undefined;
   @Output() onUserLogin: EventEmitter<Login> = new EventEmitter()
@@ -36,7 +38,7 @@ export class RegistrationPageComponent implements OnInit {
       alert("Please enter a first name to continue...")
       return
     }
-    else if(this.password1 == ""){
+    else if(this.lastname == ""){
       alert("Please enter a last name to continue...")
       return
     }
@@ -59,13 +61,18 @@ export class RegistrationPageComponent implements OnInit {
   
   onNavigate(){
 
+    //---hash password
+    this.hash = shajs('sha256').update(this.password1).digest('hex');
+
+    //---check if user already exists 
     this.loginService.queryUser(this.email).subscribe((res: Login[]) => {
       if (res != null) {
         alert("This user allready exists!");
         this.router.navigateByUrl('/login');
 
+      //---if not save in database
       }else{
-      this.loginService.setUserToApi(this.email, this.firstname, this.lastname, this.password1).subscribe((res: Login[]) => {
+      this.loginService.setUserToApi(this.email, this.firstname, this.lastname, this.hash).subscribe((res: Login[]) => {
         sessionStorage.setItem("current-user", JSON.stringify(res))
         this.router.navigateByUrl('/profile');
         })
