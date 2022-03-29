@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/models/login.model';
 import { LoginService } from 'src/app/services/login.service';
+import * as shajs from 'sha.js';
 
 @Component({
   selector: 'app-login-page',
@@ -12,6 +13,7 @@ export class LoginPageComponent implements OnInit {
 
   email: string = "";
   password: string = "";
+  hash:any;
 
   @Input() login: Login | undefined;
   @Output() onUserLogin: EventEmitter<Login> = new EventEmitter()
@@ -41,6 +43,10 @@ export class LoginPageComponent implements OnInit {
     }
 
   onNavigate() {
+
+      //---hashed password
+      this.hash = shajs('sha256').update(this.password).digest('hex');
+
       //---search for user
       //---if none is found -> redirect to registration page
       this.loginService.queryUser(this.email).subscribe((res: Login[]) => {
@@ -49,7 +55,7 @@ export class LoginPageComponent implements OnInit {
           }
         //---if found -> register in session storage
         //---navigate to dashboard
-        else if(res != null && (JSON.parse(JSON.stringify(res)).password==this.password)) {
+        else if(res != null && (JSON.parse(JSON.stringify(res)).password==this.hash)) {
           this.users = res
           sessionStorage.setItem("current-user", JSON.stringify(this.users))
           this.router.navigateByUrl('/dashboard');
