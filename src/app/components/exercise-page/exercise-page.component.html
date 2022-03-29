@@ -2,9 +2,9 @@
   <div class="all-exercises">
     <h2>Here you see all the exercises you can choose from</h2>
     <h3>Click the name of an exercise to see more details</h3>
-    <ul>
+    <ul class="list-group">
       <!-- loops over fetched exercises and displays each. click function sets selected exercise so selected-exercise will be displayed -->
-      <li
+      <li class="list-group-item"
         *ngFor="let exercise of exercises"
         (click)="onExerciseClicked(exercise)"
       >
