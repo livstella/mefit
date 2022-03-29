@@ -1,18 +1,22 @@
 <div class="container col-10 col-xs-8 col-sm-6 col-lg-5">
-  <h1 class="text-center">MeFit</h1>
-  <form class="text-center" (ngSubmit)="onSubmit()">
-    <label class="label">Register below</label>
-    <div>
-      <input class="form-control m-2" type="text" name="email" [(ngModel)]="email" placeholder ="Email" />
-      <input class="form-control m-2" type="text" name="firstname" [(ngModel)]="firstname" placeholder ="First name" />
-      <input class="form-control m-2" type="text" name="lastname" [(ngModel)]="lastname" placeholder ="Last name" />
-      <input class="form-control m-2" type="password" name="password" [(ngModel)]="password1" placeholder ="Password" />
-      <input class="form-control m-2" type="password" name="password" [(ngModel)]="password2" placeholder ="Repeat password" />
-    </div> 
-    <div>
-      <button type="form-control" class="btn btn-primary m-2">Register</button>
+  <div class="card mt-3">
+    <div class="card-body">
+      <h1 class="text-center">MeFit</h1>
+      <form class="text-center" (ngSubmit)="onSubmit()">
+        <label class="label">Register below</label>
+        <div>
+          <input class="form-control mt-3" type="text" name="email" [(ngModel)]="email" placeholder ="Email" />
+          <input class="form-control mt-3" type="text" name="firstname" [(ngModel)]="firstname" placeholder ="First name" />
+          <input class="form-control mt-3" type="text" name="lastname" [(ngModel)]="lastname" placeholder ="Last name" />
+          <input class="form-control mt-3" type="password" name="password" [(ngModel)]="password1" placeholder ="Password" />
+          <input class="form-control mt-3" type="password" name="password" [(ngModel)]="password2" placeholder ="Repeat password" />
+        </div> 
+        <div>
+          <button type="form-control" class="btn btn-primary mt-3">Register</button>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
   
 <footer class="position-absolute bottom-0 end-0 m-2">By Experis Academy</footer>

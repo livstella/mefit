@@ -1,17 +1,20 @@
 <div class="container col-10 col-xs-8 col-sm-6 col-lg-5">
-  <div >
-    <h1 class="text-center">MeFit</h1>
-    <form class="text-center" (ngSubmit)="onSubmit()">
-      <label class="form-label">Welcome</label>
-      <div>
-        <input type="text" class="form-control m-2" name="username" [(ngModel)]="email" placeholder ="Email" />
-        <input type="password" class="form-control m-2" name="password" [(ngModel)]="password" placeholder ="Password" />
-      </div>
-      <div>
-        <button type="form-control" class="btn btn-primary m-2">Login</button>
-        <button (click)="toRegister()" class="btn btn-secondary m-2">Register</button>
-      </div>
-    </form>
+  <div class="card mt-3">
+    <img src="assets\images\login.jpg">
+    <div class="card-body m-2">
+      <h1 class="card-title text-center">MeFit</h1>
+      <form class="text-center" (ngSubmit)="onSubmit()">
+        <label class="form-label">Welcome</label>
+        <div>
+          <input type="text" class="form-control" name="username" [(ngModel)]="email" placeholder ="Email" />
+          <input type="password" class="form-control mt-3" name="password" [(ngModel)]="password" placeholder ="Password" />
+        </div>
+        <div>
+          <button type="form-control" class="btn btn-primary m-2">Login</button>
+          <button (click)="toRegister()" class="btn btn-secondary m-2">Register</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
   
