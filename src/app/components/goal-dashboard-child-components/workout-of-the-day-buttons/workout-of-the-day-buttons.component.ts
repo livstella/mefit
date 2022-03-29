@@ -70,7 +70,7 @@ export class WorkoutOfTheDayButtonsComponent implements OnInit {
             alert("you picked to many repititions.")
           }
         }else if(k != name && k2 !=name){
-            alert("You did not sign up for this exercise.")
+            //alert("You did not sign up for this exercise.")
         }
     }
     this.newChoice_Map.emit(this.ex_choice_map_name)
