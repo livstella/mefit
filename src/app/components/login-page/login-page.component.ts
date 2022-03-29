@@ -58,7 +58,7 @@ export class LoginPageComponent implements OnInit {
         else if(res != null && (JSON.parse(JSON.stringify(res)).password==this.hash)) {
           this.users = res
           sessionStorage.setItem("current-user", JSON.stringify(this.users))
-          this.router.navigateByUrl('/profile');
+          this.router.navigateByUrl('/dashboard');
         }
         else{
           alert("Password is incorrect!")
