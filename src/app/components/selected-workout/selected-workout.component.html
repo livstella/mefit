@@ -1,9 +1,9 @@
-<section *ngIf="workout !== null" class="selected-workout-content">
-  <h1>Details on the workout with the name: {{ workout.name }}</h1>
-  <h3>It contains the following exercises</h3>
+<section *ngIf="workout !== null" class="selected-workout-content mx-5">
+  <br><h3>Details on the workout with the name: {{ workout.name }}</h3>
+  <br><h4>It contains the following exercises</h4><br>
 
   <!-- loops over fetched workouts and displays each. click function sets selected workout so selected-workout will be displayed -->
-  <div *ngFor="let set of workoutSets">
+  <div class="card p-3" style="width: 26rem;" *ngFor="let set of workoutSets">
     {{ set.exerciseRepetitions }} repititions of
     <ul>
       <li *ngFor="let exercise of set.exercises">

@@ -1,16 +1,17 @@
 <section *ngIf="programme !== null">
-  <h1>Details on the programme with the name: {{ programme.name }}</h1>
+  <br><h4>Details on the programme with the name:</h4>  
+  <br><h4><b>{{ programme.name }}</b></h4><br>
 
-  <h4 *ngIf="programmeWorkouts.length !== 0">
+  <h5 *ngIf="programmeWorkouts.length !== 0">
     It contains the following workouts
-  </h4>
-  <div *ngFor="let workout of programmeWorkouts">
+  </h5><br>
+  <div class="card p-3" style="width: 26rem;" *ngFor="let workout of programmeWorkouts">
     <p><b> name of workout:</b> {{ workout.name }}</p>
     <p><b> type of workout: </b> {{ workout.type }}</p>
     <p>this workoutcontains the following exercises</p>
     <div *ngFor="let set of workout.sets">
-      <ul>
-        <li *ngFor="let exercise of set.exercises">
+      <ul class="list-group">
+        <li class="list-group-item bg-light" *ngFor="let exercise of set.exercises">
           {{ exercise.name }}
         </li>
       </ul>

@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
 <section class="exercise-content">
-  <div class="all-exercises">
-    <h2>Here you see all the exercises you can choose from</h2>
-    <h3>Click the name of an exercise to see more details</h3>
-    <ul>
+  <div class="all-exercises mx-3">
+    <br><h3>Here you see all the exercises you can choose from</h3>
+    <br><h4>Click the name of an exercise to see more details</h4><br>
+    <ul class="list-group">
       <!-- loops over fetched exercises and displays each. click function sets selected exercise so selected-exercise will be displayed -->
-      <li
+      <li class="list-group-item col-8"
         *ngFor="let exercise of exercises"
         (click)="onExerciseClicked(exercise)"
       >

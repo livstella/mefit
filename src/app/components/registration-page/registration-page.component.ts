@@ -74,7 +74,7 @@ export class RegistrationPageComponent implements OnInit {
       }else{
       this.loginService.setUserToApi(this.email, this.firstname, this.lastname, this.hash).subscribe((res: Login[]) => {
         sessionStorage.setItem("current-user", JSON.stringify(res))
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/dashboard');
         })
       }
     })
