@@ -32,6 +32,15 @@ Steps to work on this project
 
 ![](user-guide.PNG?raw=true)
 
+
+
+Regarding the goal dashbord:
+- First you choose all the exercises you want to do each day for the next seven days. You can choose between prebuild programmes or workouts, or you can choose specific exercises. You also have the ability to choose the amount of repititions for each exercise.
+- Once you have constructed a build for the next seven days, you click on the commit goal button. This will disable your ability to change the weekly build, and start a 7 day timer. 
+- Under "Workouts of the day" you are able to log the exercises you have performed along with the amount of repititions. You cannot log any exercises before you have pressed the commit goal button, and you can only log exercises you have committed to.
+- For the first 24 hours your logs will be substracted from the commits of the first day, the next 24 hours from the commits of the second day and so forth. There are progress bars to show your daily and weekly progress.
+- At any time you can uncommit your goal and start over. 
+
 # Project approach
 
 ### Technical tools
@@ -57,6 +66,7 @@ Decisions regarding the MVP has been made with the intention of being customer-c
 
 - Endpoints for displaying data (Create and Read) are prioritised over endpoints for editing data (Update and Delete)
 - Being able to visually show functionality is prioritised over perfect backend structure
+- As we are not dealing with sensitive data, we decided that keycloak was not a minimum requirement, instead we provided a sufficient login and registration flow that saved the user in the database, while hashing the password using SHA-256.
 
 ### Workflow / Teamwork
 
