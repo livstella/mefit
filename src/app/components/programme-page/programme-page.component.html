@@ -1,14 +1,15 @@
 <app-navbar></app-navbar>
-<section class="programme-content">
+<section class="programme-content mx-3">
   <div class="all-programmes">
-    <h2>Here you will see all the programmes you can choose from</h2>
-    <ul>
+    <br><h4>Here you will see all the programmes you can choose from</h4>
+    <br><h4>Click the name of a programme to see more details</h4><br>
+    <ul class="list-group col-10">
       <!-- loops over fetched programmes and displays each. click function sets selected programme so selected-programme will be displayed -->
-      <li
+      <li class="list-group-item"
         *ngFor="let programme of programmes"
         (click)="onProgrammeClicked(programme)"
       >
-        <h4>name of this programme: {{ programme.name }}</h4>
+        <h5>name of this programme: {{ programme.name }}</h5>
         <p>Category of this programme: {{ programme.category }}</p>
       </li>
     </ul>
